@@ -1,0 +1,228 @@
+@import 'https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans|Amatic+SC';
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Josefin Sans", sans-serif;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 43.2px;
+}
+
+h3 {
+  font-size: 38.4px;
+}
+
+h4 {
+  font-size: 33.6px;
+}
+
+h5 {
+  font-size: 28.8px;
+}
+
+h6 {
+  font-size: 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0;
+  font-family: "Dosis", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+footer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: auto;
+  width: 100%;
+  font-size: 0.8em;
+  padding: 5px 10px;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #03151f;
+  color: white;
+}
+
+.fm-container {
+  width: 100%;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background: white;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+@media all and (min-width: 768px) {
+  .fm-container {
+    width: 320px;
+    -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 3px black;
+  }
+}
+
+.fm-container .fm-container_header {
+  padding: 20px;
+  margin-bottom: 10px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.fm-container .fm-container_logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.fm-container .fm-container_title {
+  font-size: 2em;
+}
+
+.fm-container .fm-container_subtitle {
+  margin: 0;
+  font-size: 0.7em;
+}
+
+.fm-container .fm-container_body {
+  display: none;
+}
+
+.fm-form {
+  display: none;
+}
+
+.fm-form .fm-form_group {
+  width: 80%;
+  margin: 10px auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fm-form .fm-form_control {
+  margin-bottom: 10px;
+  border: 0;
+  outline: 0;
+  padding: 10px;
+  width: 100%;
+  background: #f0f0f0;
+}
+
+.fm-form .fm-form_control:hover, .fm-form .fm-form_control:focus {
+  outline: 2px solid #00b1f3;
+}
+
+.fm-form .fm-form_button {
+  margin-top: 15px;
+  background: #006bab;
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+}
+
+.fm-form .fm-form_button:hover, .fm-form .fm-form_button:active {
+  outline: 2px solid #00b1f3;
+}
+
+.fm-form .fm-form_message {
+  font-size: 0.7em;
+  margin: 0;
+  margin-top: 3px;
+}
+
+.fm-form .fm-form_link {
+  text-decoration: none;
+  color: #29daff;
+  cursor: pointer;
+}
+
+.fm-form .fm-form_link:hover {
+  font-weight: bold;
+}
+
+.indexBody {
+  background: url("../resources/images//cover.png") center center;
+  background-size: cover;
+}
+
+.main-box {
+  width: 100%;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+/*# sourceMappingURL=styles.css.map */

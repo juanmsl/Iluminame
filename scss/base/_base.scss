@@ -1,0 +1,62 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	font-size : $font-size;
+	font-family : $main-font;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+h1 {
+	font-size : $h1;
+}
+
+h2 {
+	font-size : $h2;
+}
+
+h3 {
+	font-size : $h3;
+}
+
+h4 {
+	font-size:  $h4;
+}
+
+h5 {
+	font-size:  $h5;
+}
+
+h6 {
+	font-size:  $h6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: $gutter 0;
+	font-family: $title-font;
+}
+
+img {
+	max-width : 100%;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+footer {
+	display: flex;
+	margin-top: auto;
+	width: 100%;
+	font-size: 0.8em;
+	padding: $gutter / 2 $gutter;
+	justify-content: space-between;
+	background: color('azul-oscuro');
+	color: color('blanco');
+}
