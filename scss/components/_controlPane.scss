@@ -1,0 +1,100 @@
+.control-pane {
+	flex: none;
+	align-self: stretch;
+	width: 340px;
+	margin: $gutter;
+	outline: 2px solid color('gris-oscuro');
+	display: flex;
+	flex-direction: column;
+	background: color('gris-claro');
+
+	#{&}-user {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		position: relative;
+		background: color('azul-base');
+		outline: 1px solid color('gris-oscuro');
+	}
+
+	#{&}-userinfo {
+		padding: $gutter;
+		padding-left: 0;
+	}
+
+	#{&}-usericon {
+		padding: $gutter;
+
+		img {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			display: block;
+		}
+	}
+
+	#{&}-username, #{&}-userid {
+		margin: 0;
+	}
+
+	#{&}-userconfig {
+		position: absolute;
+		bottom: $gutter;
+		right: $gutter;
+	}
+
+	#{&}-info {
+		padding: 0 $gutter;
+	}
+
+	#{&}-data {
+		margin: 0;
+		padding: $gutter / 2 0;
+	}
+
+	#{&}-section {
+		background: color('azul-opaco');
+		position: relative;
+		//margin-bottom: $gutter / 2;
+		padding: 0 $gutter;
+		outline: 1px solid color('gris-oscuro');
+
+		&:last-child {
+			margin-top: auto;
+			margin-bottom: 0;
+		}
+
+		&:hover {
+			background: color('azul-claro');
+		}
+	}
+
+	#{&}-name {
+		margin: 0;
+		line-height: $gutter * 4;
+	}
+
+	#{&}-link {
+		flex-grow: 1;
+		outline: 1px solid blue;
+	}
+
+	#{&}-notification {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: $gutter * 4;
+		display: flex;
+		align-items: center;
+	}
+
+	#{&}-counter {
+		font-weight: bold;
+		margin: 0;
+	}
+
+	#{&}-icon {
+		font-size: 20px;
+		margin: 0 $gutter;
+	}
+}

@@ -7,8 +7,8 @@
 	flex-direction: column;
 	padding: $gutter;
 
-	@include from('tablet') {
-		width: 320px;
+	@include from('mobile') {
+		width: 300px;
 		flex-grow: 0;
 		margin: 30px;
 		border-radius: 10px;
@@ -16,23 +16,23 @@
 	}
 
 	#{&}_header {
-		padding: $gutter * 2;
-		margin-bottom: $gutter;
+		padding: $gutter;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
+		padding-top: $gutter * 2;
 	}
 
 	#{&}_logo {
-		width: 150px;
-		height: 150px;
-		border-radius: 50%;
+		width: 130px;
+		height: 130px;
 	}
 
 	#{&}_title {
 		font-size: 2em;
+		margin: 0;
 	}
 
 	#{&}_subtitle {
@@ -69,30 +69,50 @@
 		}
 	}
 
+	#{&}_introMessage, #{&}_warning {
+		text-align: center;
+		font-size: 0.9em;
+		margin: 0;
+		font-weight: bold;
+	}
+
+	#{&}_warning {
+		color: color('warning');
+		margin-top: $gutter;
+		margin-bottom: $gutter * 2;
+	}
+
 	#{&}_button {
 		margin-top: 15px;
-		background: color('azul-medio');
+		background: color('azul-base');
 		border: 0;
 		padding: $gutter;
 		width: 100%;
 		color: color('blanco');
 		cursor: pointer;
+		font-weight: bold;
+		font-size: 1.2em;
+		box-shadow: 0 3px 0 0 color('azul-medio');
+		text-shadow: 1px 1px 1px color('azul-oscuro');
 
-		&:hover, &:active {
-			outline: 2px solid color('azul-base');
+		&:active {
+			transform: translateY(2px);
+			box-shadow: 0 1px 0 0 color('azul-medio');
+			text-shadow: 1px 1px 5px color('azul-oscuro');
 		}
 	}
 
 	#{&}_message {
-		font-size: 0.7em;
+		font-size: 0.8em;
 		margin: 0;
 		margin-top: 3px;
 	}
 
 	#{&}_link {
 		text-decoration: none;
-		color: color('azul-claro');
+		color: color('azul-medio');
 		cursor: pointer;
+		text-decoration: underline;
 
 		&:hover {
 			font-weight: bold;

@@ -1,10 +1,15 @@
-var form = '#main-form';
-$(form).show();
-$('.fm-container_body').delay(500).slideDown(1000);
+let initFormById = function(formContainer, mainForm) {
+	var form = '#' + formContainer;
+	var mainForm = form + ' #' + mainForm;
+	console.log(mainForm);
+	$(mainForm).show();
+	$(form + ' .fm-container_body').delay(500).slideDown(1000);
+	$(form + ' .fm-form_link').on('click', function() {
+		$(mainForm)[0].reset();
+		$(mainForm).slideUp();
+		mainForm = $(this).attr('target');
+		$(mainForm).slideDown();
+	});
+}
 
-$('.fm-form_link').on('click', function() {
-	$(form)[0].reset();
-	$(form).slideUp();
-	form = $(this).attr('target');
-	$(form).slideDown();
-});
+initFormById('initial-form', 'login-form');
