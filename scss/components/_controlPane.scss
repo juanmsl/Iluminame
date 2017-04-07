@@ -1,63 +1,121 @@
+$color-fondo: color(gris-claro);
+$color-letra: color(blanco);
+$color-borde: color(gris-oscuro);
+$color-encabezado-fondo: color(azul-medio);
+$color-encabezado-letra: color(azul-opaco);
+$color-seccion-fondo: color(azul-base);
+$color-seccion-hover: color(azul-base);
+
 .control-pane {
 	flex: none;
 	align-self: stretch;
-	width: 340px;
+	width: 360px;
 	margin: $gutter;
-	outline: 2px solid color('gris-oscuro');
+	border: 2px solid $color-borde;
 	display: flex;
 	flex-direction: column;
-	background: color('gris-claro');
+	background: $color-fondo;
+	box-shadow: 0 5px 5px 1px $color-borde;
+	transform: translateX(-370px);
+	transition: transform 0.5s ease-in-out;
+	position: relative;
+
+	&.menu__visible {
+		transform: translate(0);
+
+		.control-pane-menuIcon {
+			left: calc(100% - 42px);
+			background: transparent;
+			color: $color-encabezado-letra;
+		}
+	}
+
+	#{&}-menuIcon {
+		position: absolute;
+		top: -2px;
+		left: 100%;
+		width: 42px;
+		height: 42px;
+		background: $color-borde;
+		border: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.5s ease-in-out;
+		outline: 0;
+	}
 
 	#{&}-user {
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
 		position: relative;
-		background: color('azul-base');
-		outline: 1px solid color('gris-oscuro');
+		background: $color-encabezado-fondo;
+		color: $color-encabezado-letra;
+		outline: 1px solid $color-borde;
 	}
 
 	#{&}-userinfo {
 		padding: $gutter;
 		padding-left: 0;
+		padding-right: $gutter * 6;
 	}
 
-	#{&}-usericon {
-		padding: $gutter;
-
-		img {
-			width: 100px;
-			height: 100px;
-			border-radius: 50%;
-			display: block;
-		}
+	#{&}-userPicture {
+		margin: $gutter;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		display: block;
 	}
 
 	#{&}-username, #{&}-userid {
 		margin: 0;
 	}
 
-	#{&}-userconfig {
+	#{&}-userid {
+		color: $color-encabezado-letra;
+	}
+
+	#{&}-configIcon {
 		position: absolute;
-		bottom: $gutter;
-		right: $gutter;
+		left: calc(100% - 42px);
+		bottom: 0;
+		width: 42px;
+		height: 42px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	#{&}-info {
 		padding: 0 $gutter;
+		display: none;
+	}
+
+	#{&}-infoToggle {
+		padding: 0 $gutter;
+		background: $color-borde;
+		color: $color-letra;
+		display: flex;
+		justify-content: center;
+		padding: $gutter / 2;
+		border: 0;
+		cursor: pointer;
+		outline: 0;
 	}
 
 	#{&}-data {
 		margin: 0;
-		padding: $gutter / 2 0;
+		padding: $gutter / 5 0;
 	}
 
 	#{&}-section {
-		background: color('azul-opaco');
-		position: relative;
-		//margin-bottom: $gutter / 2;
-		padding: 0 $gutter;
-		outline: 1px solid color('gris-oscuro');
+		display: flex;
+		align-items: center;
+		background: $color-seccion-fondo;
+		padding-left: $gutter;
+		outline: 1px solid $color-borde;
 
 		&:last-child {
 			margin-top: auto;
@@ -65,36 +123,22 @@
 		}
 
 		&:hover {
-			background: color('azul-claro');
+			background: $color-seccion-hover;
+		}
+
+		&::after {
+			content: attr(data-counter);
+			font-weight: bold;
+		}
+
+		&::before {
+			order: 1;
 		}
 	}
 
 	#{&}-name {
+		flex-grow: 1;
 		margin: 0;
 		line-height: $gutter * 4;
-	}
-
-	#{&}-link {
-		flex-grow: 1;
-		outline: 1px solid blue;
-	}
-
-	#{&}-notification {
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: $gutter * 4;
-		display: flex;
-		align-items: center;
-	}
-
-	#{&}-counter {
-		font-weight: bold;
-		margin: 0;
-	}
-
-	#{&}-icon {
-		font-size: 20px;
-		margin: 0 $gutter;
 	}
 }

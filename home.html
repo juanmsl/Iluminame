@@ -5,64 +5,42 @@
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="resources/images/icon.png"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
-    <link rel="stylesheet" href="css/normalize.css"/>
-    <link rel="stylesheet" href="css/styles.css"/>
     <link href="https://file.myfontastic.com/dgDbkkB8Fa2a8wimvMu34f/icons.css" rel="stylesheet"/>
+    <link href="css/normalize.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
   </head>
   <body>
+    <nav class="main-navbar"><img src="resources/images/icon.png" class="main-navbar-logo"/>
+      <h6 class="main-navbar-name">Ilumíname</h6>
+      <form class="main-navbar-finder">
+        <input type="text" class="main-navbar-input"/><i class="ilm-caret-down"></i>
+      </form>
+      <div data-counter="9" class="main-navbar-notificator ilm-tutories activate"></div>
+      <div data-counter="10" class="main-navbar-notificator ilm-my-tutories activate"></div>
+      <div data-counter="4" class="main-navbar-notificator ilm-chat activate activate"></div>
+      <div data-counter="9" class="main-navbar-notificator ilm-notification activate"></div>
+    </nav>
     <div class="mainContent">
-      <aside class="control-pane">
-        <section class="control-pane-user">
-          <article class="control-pane-usericon"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg"/></article>
+      <aside id="user-main-control" class="control-pane">
+        <button id="menu-toogle" class="control-pane-menuIcon ilm-menu"></button>
+        <section class="control-pane-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="control-pane-userPicture"/>
           <section class="control-pane-userinfo">
             <h4 class="control-pane-username">Juan Manuel Sánchez</h4><a href="#" class="control-pane-userid">@juanmsl_pk</a>
-          </section><a href="#" class="control-pane-userconfig ilm-configuration"></a>
+          </section><a href="#" class="control-pane-configIcon ilm-configuration"></a><i id="menu-toogle" class="control-pane-menuIcon ilm-menu"></i>
         </section>
-        <section class="control-pane-info">
+        <button id="info-toggle" class="control-pane-infoToggle ilm-pull-down">Más sobre mi...</button>
+        <section id="info" class="control-pane-info">
           <p class="control-pane-data">Pontificia Universidad Javeriana</p>
           <p class="control-pane-data">Ingenieria de sistemas</p>
           <p class="control-pane-data">7mo semestre</p>
-        </section>
-        <section class="control-pane-section"><a href="#" class="control-pane-link">
-            <h6 class="control-pane-name">Notificaciones</h6></a>
-          <section class="control-pane-notification">
-            <p class="control-pane-counter">3</p><i class="control-pane-icon ilm-notification"></i>
-          </section>
-        </section>
-        <section class="control-pane-section"><a href="#" class="control-pane-link">
-            <h6 class="control-pane-name">Mensajes</h6></a>
-          <section class="control-pane-notification">
-            <p class="control-pane-counter">5</p><i class="control-pane-icon ilm-chat"></i>
-          </section>
-        </section>
-        <section class="control-pane-section"><a href="#" class="control-pane-link">
-            <h6 class="control-pane-name">Mis monitorias</h6></a>
-          <section class="control-pane-notification">
-            <p class="control-pane-counter">5</p><i class="control-pane-icon ilm-my-tutories"></i>
-          </section>
-        </section>
-        <section class="control-pane-section"><a href="#" class="control-pane-link">
-            <h6 class="control-pane-name">Usuarios que sigo</h6></a>
-          <section class="control-pane-notification">
-            <p class="control-pane-counter">53</p><i class="control-pane-icon ilm-users"></i>
-          </section>
-        </section>
-        <section class="control-pane-section"><a href="#" class="control-pane-link">
-            <h6 class="control-pane-name">Materias</h6></a>
-          <section class="control-pane-notification">
-            <p class="control-pane-counter">5</p><i class="control-pane-icon ilm-subject"></i>
-          </section>
-        </section>
-        <section class="control-pane-section"><a href="#" class="control-pane-link">
-            <h6 class="control-pane-name">Monitorias pendientes</h6></a>
-          <section class="control-pane-notification">
-            <p class="control-pane-counter">5</p><i class="control-pane-icon ilm-tutories"></i>
-          </section>
-        </section>
-        <section class="control-pane-section"><a href="#" class="control-pane-link">
-            <h6 class="control-pane-name">Cerrar sesión</h6></a>
-          <section class="control-pane-notification"><i class="control-pane-icon ilm-logout"></i></section>
-        </section>
+        </section><a href="#" data-counter="9" class="control-pane-section ilm-notification">
+          <h6 class="control-pane-name">Notificaciones</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-chat">
+          <h6 class="control-pane-name">Mensajes</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-my-tutories">
+          <h6 class="control-pane-name">Mis monitorias</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-users">
+          <h6 class="control-pane-name">Usuarios que sigo</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-subject">
+          <h6 class="control-pane-name">Materias</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-tutories">
+          <h6 class="control-pane-name">Monitorias pendientes</h6></a><a href="#" class="control-pane-section ilm-logout">
+          <h6 class="control-pane-name">Cerrar sesión</h6></a>
       </aside>
       <section>
         <h1>Hola mundo</h1>
@@ -85,4 +63,5 @@
   <script src="js/jquery.js"></script>
   <script src="js/viewport-size.js"></script>
   <script src="js/form.js"></script>
+  <script src="js/scripts.js"></script>
 </html>

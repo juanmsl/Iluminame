@@ -1,0 +1,95 @@
+$color-fondo: color(azul-medio);
+$color-letra: color(azul-opaco);
+$color-borde: color(azul-oscuro);
+$color-ntf-fondo: color(azul-base);
+$color-ntf-letra: color(azul-opaco);
+
+.main-navbar {
+	display: flex;
+	align-items: center;
+	box-shadow: 0 2px 5px $color-borde;
+	background: $color-fondo;
+	color: $color-letra;
+
+	#{&}-logo {
+		width: 45px;
+		height: 45px;
+		padding: $gutter / 2;
+		border-radius: 50%;
+	}
+
+	#{&}-name {
+		margin: 0;
+		padding-right: $gutter;
+	}
+
+	#{&}-finder {
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
+		margin: 0;
+		padding: 0 $gutter;
+	}
+
+	#{&}-input {
+		flex-grow: 1;
+		border: 0;
+		border: 1px solid $color-borde;
+		box-shadow: 0 0 3px $color-borde inset, 0 0 3px $color-borde;
+		outline: 0;
+		padding: $gutter / 2 $gutter;
+		transition: border 0.1s ease-in-out;
+		position: relative;
+
+		&::after {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: 's';
+			background: red;
+		}
+	}
+
+	#{&}-notificator {
+		width: 50px;
+		height: 50px;
+		align-self: stretch;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		border-left: 1px solid $color-borde;
+		margin: 0;
+		position: relative;
+
+		&:hover {
+			background: $color-letra;
+			color: $color-fondo;
+		}
+
+		&.activate::before {
+			margin-top: 8px;
+			margin-right: 8px;
+		}
+
+		&.activate::after {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background: $color-ntf-fondo;
+			color: $color-ntf-letra;
+			content: attr(data-counter);
+			font-weight: bold;
+			margin-top: 6px;
+			margin-right: 6px;
+		}
+	}
+}
