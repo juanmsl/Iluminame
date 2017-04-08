@@ -1,9 +1,21 @@
-$('#user-main-control #menu-toogle').on('click', function(){
-	$('#user-main-control').toggleClass('menu__visible');
+let controlPane = '#user-main-control';
+let menutoggle = $(controlPane + ' #toggle-user-main-control');
+let notificationsToggle = $(controlPane + ' #toggle-notifications');
+let informationToggle = $(controlPane + ' #toggle-information');
+
+menutoggle.on('click', function(){
+	let target = $(this).attr('data-target');
+	$(target).toggleClass('menu__visible');
 });
 
-$('#user-main-control #info-toggle').on('click', function(){
+notificationsToggle.on('click', function(){
+	let target = $(this).attr('data-target');
+	$(target).slideToggle();
+});
+
+informationToggle.on('click', function(){
 	$(this).toggleClass('ilm-pull-down');
 	$(this).toggleClass('ilm-pull-up');
-	$(this).next('#info').slideToggle();
+	let target = $(this).attr('data-target');
+	$(target).slideToggle();
 });

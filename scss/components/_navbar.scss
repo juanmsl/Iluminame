@@ -10,6 +10,9 @@ $color-ntf-letra: color(azul-opaco);
 	box-shadow: 0 2px 5px $color-borde;
 	background: $color-fondo;
 	color: $color-letra;
+	position: relative;
+	user-select: none;
+	cursor: default;
 
 	#{&}-logo {
 		width: 45px;
@@ -21,14 +24,20 @@ $color-ntf-letra: color(azul-opaco);
 	#{&}-name {
 		margin: 0;
 		padding-right: $gutter;
+		display: none;
+
+		@include from(tablet) {
+			display: block;
+		}
 	}
 
 	#{&}-finder {
 		flex-grow: 1;
+		align-self: stretch;
 		display: flex;
 		align-items: center;
 		margin: 0;
-		padding: 0 $gutter;
+		position: relative;
 	}
 
 	#{&}-input {
@@ -38,6 +47,7 @@ $color-ntf-letra: color(azul-opaco);
 		box-shadow: 0 0 3px $color-borde inset, 0 0 3px $color-borde;
 		outline: 0;
 		padding: $gutter / 2 $gutter;
+		margin-left: $gutter;
 		transition: border 0.1s ease-in-out;
 		position: relative;
 
@@ -52,19 +62,68 @@ $color-ntf-letra: color(azul-opaco);
 		}
 	}
 
-	#{&}-notificator {
+	.toogle-options {
+		cursor: pointer;
+
+		&.is-hover:before {
+			content: '\e00E';
+		}
+	}
+
+	#{&}-findOptions, #{&}-boxNotification {
+		display: none;
+		position: absolute;
+		right: 0;
+		top: 100%;
+		color: $color-borde;
+		box-shadow: 0 3px 5px -1px $color-borde;
+		z-index: z-index(navbar);
+	}
+
+	#{&}-findOptions {
+		width: 100%;
+		background: $color-ntf-fondo;
+	}
+
+	#{&}-boxNotification {
+		width: 300px;
+
+		@include from(tablet) {
+			display: none;
+		}
+	}
+
+	#{&}-logout, #{&}-notificator {
 		width: 50px;
 		height: 50px;
 		align-self: stretch;
-		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		border-left: 1px solid $color-borde;
 		margin: 0;
 		position: relative;
+		cursor: pointer;
 
 		&:hover {
+			background: $color-letra;
+			color: $color-fondo;
+		}
+	}
+
+	#{&}-logout {
+		display: flex;
+		border-left: 1px solid $color-borde;
+		margin-left: $gutter;
+	}
+
+	#{&}-notificator {
+		display: none;
+
+		@include from(tablet) {
+			display: flex;
+		}
+
+		&.is-hover {
 			background: $color-letra;
 			color: $color-fondo;
 		}
@@ -90,6 +149,24 @@ $color-ntf-letra: color(azul-opaco);
 			font-weight: bold;
 			margin-top: 6px;
 			margin-right: 6px;
+		}
+	}
+
+	#{&}-title {
+		font-size: 1em;
+		text-align: center;
+		background: $color-fondo;
+		color: $color-ntf-letra;
+		border-bottom: 1px solid $color-letra;
+		padding: 0;
+	}
+
+	#{&}-notification {
+		border-bottom: 1px solid $color-letra;
+		background: $color-ntf-fondo;
+
+		&:last-child {
+			border: 0;
 		}
 	}
 }

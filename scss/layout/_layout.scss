@@ -8,6 +8,9 @@
 		.#{$media}-auto {
 			width: auto;
 		}
+
+		.#{$media}-hidden {
+			display: none;
+		}
 	}
 }
-

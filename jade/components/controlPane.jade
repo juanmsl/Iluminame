@@ -1,28 +1,22 @@
 aside.control-pane#user-main-control
-	button.control-pane-menuIcon.ilm-menu#menu-toogle
-	section.control-pane-user
-		img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg').control-pane-userPicture
-		section.control-pane-userinfo
-			h4.control-pane-username Juan Manuel Sánchez
-			a(href='#').control-pane-userid @juanmsl_pk
-		a(href='#').control-pane-configIcon.ilm-configuration
-		i.control-pane-menuIcon.ilm-menu#menu-toogle
-	button.control-pane-infoToggle.ilm-pull-down#info-toggle Más sobre mi...
-	section.control-pane-info#info
-		p.control-pane-data Pontificia Universidad Javeriana
-		p.control-pane-data Ingenieria de sistemas
-		p.control-pane-data 7mo semestre
-	a(href='#').control-pane-section.ilm-notification(data-counter='9')
-		h6.control-pane-name Notificaciones
-	a(href='#').control-pane-section.ilm-chat(data-counter='9')
-		h6.control-pane-name Mensajes
-	a(href='#').control-pane-section.ilm-my-tutories(data-counter='9')
-		h6.control-pane-name Mis monitorias
-	a(href='#').control-pane-section.ilm-users(data-counter='9')
-		h6.control-pane-name Usuarios que sigo
-	a(href='#').control-pane-section.ilm-subject(data-counter='9')
-		h6.control-pane-name Materias
-	a(href='#').control-pane-section.ilm-tutories(data-counter='9')
-		h6.control-pane-name Monitorias pendientes
-	a(href='#').control-pane-section.ilm-logout
-		h6.control-pane-name Cerrar sesión
+	section.control-pane-mainSection
+		section.control-pane-user
+			img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg').control-pane-userPicture
+			section.control-pane-userinfo
+				h4.control-pane-username Juan Manuel Sánchez
+				a(href='#').control-pane-userid @juanmsl_pk
+			a(href='#').control-pane-configIcon.ilm-configuration
+			i.control-pane-menuIcon.ilm-menu#toggle-user-main-control(data-target='#user-main-control')
+			i.control-pane-notificationsIcon.ilm-menu#toggle-notifications(data-target='#notifications')
+		button.control-pane-infoToggle.ilm-pull-down#toggle-information(data-target='#information') Más sobre mi...
+		section.control-pane-info#information
+			p.control-pane-data Pontificia Universidad Javeriana
+			p.control-pane-data Ingenieria de sistemas
+			p.control-pane-data 7mo semestre
+	section.control-pane-notifications#notifications
+		a(href='#').control-pane-section.ilm-notification(data-counter='5') Notificaciones
+		a(href='#').control-pane-section.ilm-chat(data-counter='4') Mensajes
+		a(href='#').control-pane-section.ilm-my-tutories(data-counter='10') Mis monitorias
+		a(href='#').control-pane-section.ilm-users(data-counter='53') Usuarios que sigo
+		a(href='#').control-pane-section.ilm-subject(data-counter='2') Materias
+		a(href='#').control-pane-section.ilm-tutories(data-counter='3') Monitorias pendientes

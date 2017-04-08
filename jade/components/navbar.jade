@@ -1,10 +1,66 @@
-nav.main-navbar
+nav.main-navbar#main-navbar
 	img(src='resources/images/icon.png').main-navbar-logo
 	h6.main-navbar-name Ilumíname
 	form.main-navbar-finder
-		input(type='text').main-navbar-input
-		i.ilm-caret-down
-	.main-navbar-notificator.ilm-tutories.activate(data-counter='9')
-	.main-navbar-notificator.ilm-my-tutories.activate(data-counter='10')
-	.main-navbar-notificator.ilm-chat.activate.activate(data-counter='4')
-	.main-navbar-notificator.ilm-notification.activate(data-counter='9')
+		input(type='text' placeholder='¿Buscas una materia?').main-navbar-input
+		i.ilm-caret-down.toogle-options#toggle-findOptions(data-target='#find-options')
+		section.main-navbar-findOptions#find-options
+			h6.main-navbar-title Personalizar la busqueda
+			h5 Hola mundo
+	.main-navbar-notificator.ilm-tutories.activate#toggle-tutories(data-counter='3' data-target='#tutories')
+	.main-navbar-notificator.ilm-my-tutories.activate#toggle-my-tutories(data-counter='10' data-target='#my-tutories')
+	.main-navbar-notificator.ilm-chat.activate.activate#toggle-chat(data-counter='4' data-target='#chat')
+	.main-navbar-notificator.ilm-notification.activate#toggle-notification(data-counter='5' data-target='#notification')
+	.main-navbar-logout.ilm-logout
+	section.main-navbar-boxNotification#tutories
+		h6.main-navbar-title Tutorias pendientes
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+	section.main-navbar-boxNotification#my-tutories
+		h6.main-navbar-title Tutorias por dictar
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+	section.main-navbar-boxNotification#chat
+		h6.main-navbar-title Mensajes
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+	section.main-navbar-boxNotification#notification
+		h6.main-navbar-title Notificaciones
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo
+		section.main-navbar-notification
+			h5 Hola mundo

@@ -2,6 +2,15 @@
 	box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+	width: $gutter;
+	height: $gutter;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: color(azul-medio);
+}
+
 body {
 	font-size : $font-size;
 	font-family : $main-font;
@@ -37,7 +46,8 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $title-font;
-	margin: $gutter;
+	padding: $gutter;
+	margin: 0;
 }
 
 a {

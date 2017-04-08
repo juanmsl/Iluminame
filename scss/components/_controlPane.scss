@@ -4,51 +4,85 @@ $color-borde: color(gris-oscuro);
 $color-encabezado-fondo: color(azul-medio);
 $color-encabezado-letra: color(azul-opaco);
 $color-seccion-fondo: color(azul-base);
-$color-seccion-hover: color(azul-base);
+$color-seccion-hover: color(azul-medio);
 
 .control-pane {
-	flex: none;
-	align-self: stretch;
-	width: 360px;
-	margin: $gutter;
-	border: 2px solid $color-borde;
-	display: flex;
-	flex-direction: column;
+	align-self: flex-start;
+	width: 100%;
+	margin: 0;
 	background: $color-fondo;
 	box-shadow: 0 5px 5px 1px $color-borde;
-	transform: translateX(-370px);
 	transition: transform 0.5s ease-in-out;
-	position: relative;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+
+	@include from(tablet) {
+		position: relative;
+		width: 360px;
+		margin: $gutter;
+		align-self: stretch;
+		display: block;
+		transform: translateX(-370px);
+		border: 2px solid $color-borde;
+	}
+
+	@include from(large) {
+		transform: translateX(0);
+	}
 
 	&.menu__visible {
 		transform: translate(0);
 
 		.control-pane-menuIcon {
-			left: calc(100% - 42px);
+			right: 0;
 			background: transparent;
 			color: $color-encabezado-letra;
 		}
 	}
 
-	#{&}-menuIcon {
-		position: absolute;
-		top: -2px;
-		left: 100%;
+	#{&}-menuIcon, #{&}-notificationsIcon {
 		width: 42px;
 		height: 42px;
-		background: $color-borde;
 		border: 0;
-		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: all 0.5s ease-in-out;
 		outline: 0;
+		cursor: pointer;
+
+		@include from(tablet) {
+			position: absolute;
+			top: -2px;
+			right: 0;
+			right: -42px;
+			background: $color-borde;
+			transition: all 0.5s ease-in-out;
+		}
+	}
+
+	#{&}-notificationsIcon {
+		display: flex;
+
+		@include from(tablet) {
+			display: none;
+		}
+	}
+
+	#{&}-menuIcon {
+		display: none;
+
+		@include from(tablet) {
+			display: flex;
+		}
+
+		@include from(large) {
+			display: none;
+		}
 	}
 
 	#{&}-user {
 		display: flex;
-		align-items: flex-start;
-		justify-content: center;
+		align-items: center;
 		position: relative;
 		background: $color-encabezado-fondo;
 		color: $color-encabezado-letra;
@@ -58,34 +92,62 @@ $color-seccion-hover: color(azul-base);
 	#{&}-userinfo {
 		padding: $gutter;
 		padding-left: 0;
-		padding-right: $gutter * 6;
+		padding-right: $gutter;
+
+		@include from(tablet) {
+			padding-right: $gutter * 4;
+		}
 	}
 
 	#{&}-userPicture {
 		margin: $gutter;
-		width: 100px;
-		height: 100px;
+		width: 35px;
+		height: 35px;
 		border-radius: 50%;
 		display: block;
+
+		@include from(tablet) {
+			width: 100px;
+			height: 100px;
+		}
 	}
 
 	#{&}-username, #{&}-userid {
 		margin: 0;
+		padding: 0;
+	}
+
+	#{&}-username {
+		font-size: 1.3em;
+
+		@include from(tablet) {
+			font-size: 2em;
+		}
 	}
 
 	#{&}-userid {
 		color: $color-encabezado-letra;
+		display: none;
+
+		@include from(tablet) {
+			display: inherit;
+		}
 	}
 
 	#{&}-configIcon {
-		position: absolute;
-		left: calc(100% - 42px);
-		bottom: 0;
 		width: 42px;
 		height: 42px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin-left: auto;
+
+		@include from(tablet) {
+			position: absolute;
+			left: calc(100% - 42px);
+			bottom: 0;
+			margin-left: 0;
+		}
 	}
 
 	#{&}-info {
@@ -94,15 +156,20 @@ $color-seccion-hover: color(azul-base);
 	}
 
 	#{&}-infoToggle {
+		width: 100%;
 		padding: 0 $gutter;
 		background: $color-borde;
 		color: $color-letra;
-		display: flex;
 		justify-content: center;
 		padding: $gutter / 2;
 		border: 0;
 		cursor: pointer;
 		outline: 0;
+		display: none;
+
+		@include from(tablet) {
+			display: flex;
+		}
 	}
 
 	#{&}-data {
@@ -110,16 +177,31 @@ $color-seccion-hover: color(azul-base);
 		padding: $gutter / 5 0;
 	}
 
+	#{&}-notifications {
+		display: none;
+
+		@include from(tablet) {
+			display: block !important;
+		}
+	}
+
 	#{&}-section {
 		display: flex;
 		align-items: center;
 		background: $color-seccion-fondo;
+		line-height: $gutter * 4;
+		padding: 0;
 		padding-left: $gutter;
 		outline: 1px solid $color-borde;
+		font-size: 0.9em;
+		font-weight: bold;
 
-		&:last-child {
-			margin-top: auto;
-			margin-bottom: 0;
+		@include from(mobile) {
+			font-size: 1.2em;
+		}
+
+		@include from(tablet) {
+			font-size: 1.5em;
 		}
 
 		&:hover {
@@ -129,16 +211,22 @@ $color-seccion-hover: color(azul-base);
 		&::after {
 			content: attr(data-counter);
 			font-weight: bold;
+			font-size: 13px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background: $color-encabezado-fondo;
+			color: $color-encabezado-letra;
+			margin-right: 0;
+			margin-left: auto;
 		}
 
 		&::before {
+			margin-left: 0;
 			order: 1;
 		}
-	}
-
-	#{&}-name {
-		flex-grow: 1;
-		margin: 0;
-		line-height: $gutter * 4;
 	}
 }

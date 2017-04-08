@@ -10,37 +10,115 @@
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
   <body>
-    <nav class="main-navbar"><img src="resources/images/icon.png" class="main-navbar-logo"/>
+    <nav id="main-navbar" class="main-navbar"><img src="resources/images/icon.png" class="main-navbar-logo"/>
       <h6 class="main-navbar-name">Ilumíname</h6>
       <form class="main-navbar-finder">
-        <input type="text" class="main-navbar-input"/><i class="ilm-caret-down"></i>
+        <input type="text" placeholder="¿Buscas una materia?" class="main-navbar-input"/><i id="toggle-findOptions" data-target="#find-options" class="ilm-caret-down toogle-options"></i>
+        <section id="find-options" class="main-navbar-findOptions">
+          <h6 class="main-navbar-title">Personalizar la busqueda</h6>
+          <h5>Hola mundo</h5>
+        </section>
       </form>
-      <div data-counter="9" class="main-navbar-notificator ilm-tutories activate"></div>
-      <div data-counter="10" class="main-navbar-notificator ilm-my-tutories activate"></div>
-      <div data-counter="4" class="main-navbar-notificator ilm-chat activate activate"></div>
-      <div data-counter="9" class="main-navbar-notificator ilm-notification activate"></div>
+      <div id="toggle-tutories" data-counter="3" data-target="#tutories" class="main-navbar-notificator ilm-tutories activate"></div>
+      <div id="toggle-my-tutories" data-counter="10" data-target="#my-tutories" class="main-navbar-notificator ilm-my-tutories activate"></div>
+      <div id="toggle-chat" data-counter="4" data-target="#chat" class="main-navbar-notificator ilm-chat activate activate"></div>
+      <div id="toggle-notification" data-counter="5" data-target="#notification" class="main-navbar-notificator ilm-notification activate"></div>
+      <div class="main-navbar-logout ilm-logout"></div>
+      <section id="tutories" class="main-navbar-boxNotification">
+        <h6 class="main-navbar-title">Tutorias pendientes</h6>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+      </section>
+      <section id="my-tutories" class="main-navbar-boxNotification">
+        <h6 class="main-navbar-title">Tutorias por dictar</h6>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+      </section>
+      <section id="chat" class="main-navbar-boxNotification">
+        <h6 class="main-navbar-title">Mensajes</h6>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+      </section>
+      <section id="notification" class="main-navbar-boxNotification">
+        <h6 class="main-navbar-title">Notificaciones</h6>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+        <section class="main-navbar-notification">
+          <h5>Hola mundo</h5>
+        </section>
+      </section>
     </nav>
     <div class="mainContent">
       <aside id="user-main-control" class="control-pane">
-        <button id="menu-toogle" class="control-pane-menuIcon ilm-menu"></button>
-        <section class="control-pane-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="control-pane-userPicture"/>
-          <section class="control-pane-userinfo">
-            <h4 class="control-pane-username">Juan Manuel Sánchez</h4><a href="#" class="control-pane-userid">@juanmsl_pk</a>
-          </section><a href="#" class="control-pane-configIcon ilm-configuration"></a><i id="menu-toogle" class="control-pane-menuIcon ilm-menu"></i>
+        <section class="control-pane-mainSection">
+          <section class="control-pane-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="control-pane-userPicture"/>
+            <section class="control-pane-userinfo">
+              <h4 class="control-pane-username">Juan Manuel Sánchez</h4><a href="#" class="control-pane-userid">@juanmsl_pk</a>
+            </section><a href="#" class="control-pane-configIcon ilm-configuration"></a><i id="toggle-user-main-control" data-target="#user-main-control" class="control-pane-menuIcon ilm-menu"></i><i id="toggle-notifications" data-target="#notifications" class="control-pane-notificationsIcon ilm-menu"></i>
+          </section>
+          <button id="toggle-information" data-target="#information" class="control-pane-infoToggle ilm-pull-down">Más sobre mi...</button>
+          <section id="information" class="control-pane-info">
+            <p class="control-pane-data">Pontificia Universidad Javeriana</p>
+            <p class="control-pane-data">Ingenieria de sistemas</p>
+            <p class="control-pane-data">7mo semestre</p>
+          </section>
         </section>
-        <button id="info-toggle" class="control-pane-infoToggle ilm-pull-down">Más sobre mi...</button>
-        <section id="info" class="control-pane-info">
-          <p class="control-pane-data">Pontificia Universidad Javeriana</p>
-          <p class="control-pane-data">Ingenieria de sistemas</p>
-          <p class="control-pane-data">7mo semestre</p>
-        </section><a href="#" data-counter="9" class="control-pane-section ilm-notification">
-          <h6 class="control-pane-name">Notificaciones</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-chat">
-          <h6 class="control-pane-name">Mensajes</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-my-tutories">
-          <h6 class="control-pane-name">Mis monitorias</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-users">
-          <h6 class="control-pane-name">Usuarios que sigo</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-subject">
-          <h6 class="control-pane-name">Materias</h6></a><a href="#" data-counter="9" class="control-pane-section ilm-tutories">
-          <h6 class="control-pane-name">Monitorias pendientes</h6></a><a href="#" class="control-pane-section ilm-logout">
-          <h6 class="control-pane-name">Cerrar sesión</h6></a>
+        <section id="notifications" class="control-pane-notifications"><a href="#" data-counter="5" class="control-pane-section ilm-notification">Notificaciones</a><a href="#" data-counter="4" class="control-pane-section ilm-chat">Mensajes</a><a href="#" data-counter="10" class="control-pane-section ilm-my-tutories">Mis monitorias</a><a href="#" data-counter="53" class="control-pane-section ilm-users">Usuarios que sigo</a><a href="#" data-counter="2" class="control-pane-section ilm-subject">Materias</a><a href="#" data-counter="3" class="control-pane-section ilm-tutories">Monitorias pendientes</a></section>
       </aside>
       <section>
         <h1>Hola mundo</h1>
@@ -63,5 +141,6 @@
   <script src="js/jquery.js"></script>
   <script src="js/viewport-size.js"></script>
   <script src="js/form.js"></script>
+  <script src="js/navbar.js"></script>
   <script src="js/scripts.js"></script>
 </html>

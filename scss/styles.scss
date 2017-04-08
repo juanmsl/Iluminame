@@ -6,9 +6,6 @@
 // Base
 @import "base/base";
 
-// Layout
-//@import "layout/layout";
-
 // Modules
 @import "modules/_forms.scss";
 @import "modules/_icons.scss";
@@ -18,3 +15,6 @@
 @import "components/_index.scss";
 @import "components/_navbar.scss";
 @import "components/_controlPane.scss";
+
+// Layout
+@import "layout/layout";
