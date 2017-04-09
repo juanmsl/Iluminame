@@ -2,13 +2,13 @@
 	box-sizing: border-box;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
 	width: $gutter;
 	height: $gutter;
 }
 
-body::-webkit-scrollbar-thumb {
-	background-color: color(azul-medio);
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(90deg, color(azul-medio), lighten(color(azul-medio), 10));
 }
 
 body {

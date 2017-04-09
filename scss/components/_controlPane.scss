@@ -7,7 +7,8 @@ $color-seccion-fondo: color(azul-base);
 $color-seccion-hover: color(azul-medio);
 
 .control-pane {
-	align-self: flex-start;
+	flex-shrink: 0;
+	align-self: stretch;
 	width: 100%;
 	margin: 0;
 	background: $color-fondo;
@@ -18,7 +19,6 @@ $color-seccion-hover: color(azul-medio);
 	flex-direction: column;
 
 	@include from(tablet) {
-		position: relative;
 		width: 360px;
 		margin: $gutter;
 		align-self: stretch;
@@ -27,7 +27,8 @@ $color-seccion-hover: color(azul-medio);
 		border: 2px solid $color-borde;
 	}
 
-	@include from(large) {
+	@include from(laptop) {
+		position: relative;
 		transform: translateX(0);
 	}
 
@@ -36,6 +37,7 @@ $color-seccion-hover: color(azul-medio);
 
 		.control-pane-menuIcon {
 			right: 0;
+			opacity: 1;
 			background: transparent;
 			color: $color-encabezado-letra;
 		}
@@ -70,12 +72,17 @@ $color-seccion-hover: color(azul-medio);
 
 	#{&}-menuIcon {
 		display: none;
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+		}
 
 		@include from(tablet) {
 			display: flex;
 		}
 
-		@include from(large) {
+		@include from(laptop) {
 			display: none;
 		}
 	}

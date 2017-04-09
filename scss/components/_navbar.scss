@@ -86,7 +86,9 @@ $color-ntf-letra: color(azul-opaco);
 	}
 
 	#{&}-boxNotification {
-		width: 300px;
+		width: 350px;
+		max-height: 600px;
+		overflow-y: auto;
 
 		@include from(tablet) {
 			display: none;
@@ -161,12 +163,7 @@ $color-ntf-letra: color(azul-opaco);
 		padding: 0;
 	}
 
-	#{&}-notification {
-		border-bottom: 1px solid $color-letra;
-		background: $color-ntf-fondo;
-
-		&:last-child {
-			border: 0;
-		}
+	.ntf:last-child {
+		border: 0;
 	}
 }
