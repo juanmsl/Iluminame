@@ -2,11 +2,8 @@ nav.main-navbar#main-navbar
 	img(src='resources/images/icon.png').main-navbar-logo
 	h6.main-navbar-name Ilumíname
 	form.main-navbar-finder
-		input(type='text' placeholder='¿Buscas una materia?').main-navbar-input
-		i.ilm-caret-down.toogle-options#toggle-findOptions(data-target='#find-options')
-		section.main-navbar-findOptions#find-options
-			h6.main-navbar-title Personalizar la busqueda
-			h5 Hola mundo
+		input(type='text' placeholder='¿Buscas una materia?' data-icon="&#xe00f;").main-navbar-input
+		a(href="#").ilm-search
 	.main-navbar-notificator.ilm-tutories#toggle-tutories(data-counter='0' data-target='#tutories')
 	.main-navbar-notificator.ilm-my-tutories#toggle-my-tutories(data-counter='0' data-target='#my-tutories')
 	.main-navbar-notificator.ilm-chat#toggle-chat(data-counter='0' data-target='#chat')

@@ -10,9 +10,9 @@ $color-ntf-letra: color(azul-opaco);
 	box-shadow: 0 2px 5px $color-borde;
 	background: $color-fondo;
 	color: $color-letra;
-	position: relative;
 	user-select: none;
 	cursor: default;
+	position: relative;
 
 	#{&}-logo {
 		width: 45px;
@@ -38,16 +38,14 @@ $color-ntf-letra: color(azul-opaco);
 		align-items: center;
 		margin: 0;
 		position: relative;
+		margin: 0 $gutter;
 	}
 
 	#{&}-input {
 		flex-grow: 1;
 		border: 0;
-		border: 1px solid $color-borde;
-		box-shadow: 0 0 3px $color-borde inset, 0 0 3px $color-borde;
 		outline: 0;
 		padding: $gutter / 2 $gutter;
-		margin-left: $gutter;
 		transition: border 0.1s ease-in-out;
 		position: relative;
 
@@ -60,17 +58,19 @@ $color-ntf-letra: color(azul-opaco);
 			content: 's';
 			background: red;
 		}
-	}
 
-	.toogle-options {
-		cursor: pointer;
-
-		&.is-hover:before {
-			content: '\e00E';
+		&:focus {
+			outline: 1px solid $color-ntf-fondo;
 		}
 	}
 
-	#{&}-findOptions, #{&}-boxNotification {
+	.ilm-search {
+		position: absolute;
+		right: 0;
+		color: $color-borde;
+	}
+
+	#{&}-boxNotification {
 		display: none;
 		position: absolute;
 		right: 0;
@@ -78,14 +78,6 @@ $color-ntf-letra: color(azul-opaco);
 		color: $color-borde;
 		box-shadow: 0 3px 5px -1px $color-borde;
 		z-index: z-index(navbar);
-	}
-
-	#{&}-findOptions {
-		width: 100%;
-		background: $color-ntf-fondo;
-	}
-
-	#{&}-boxNotification {
 		width: 350px;
 		max-height: 85vh;
 		overflow-y: auto;

@@ -1,8 +1,6 @@
 let navbar = '#main-navbar';
 let toggles = $(navbar + ' [id^=\'toggle-\']');
 let notificators = $(navbar + ' .main-navbar-notificator');
-let boxNotificators = $(navbar + ' .main-navbar-boxNotification');
-let findOptions = $(navbar + ' #toggle-findOptions');
 let activeElement = null;
 
 let toggleTarget = function(element) {

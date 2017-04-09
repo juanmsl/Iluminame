@@ -309,6 +309,7 @@ footer {
 }
 
 .mainContent {
+  margin: 125px 50px 20px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -318,6 +319,19 @@ footer {
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+}
+
+@media all and (min-width: 768px) {
+  .mainContent {
+    margin-top: 70px;
+  }
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .indexBody {
@@ -354,12 +368,12 @@ footer {
   box-shadow: 0 2px 5px #03151f;
   background: #006bab;
   color: #dcf1f3;
-  position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: default;
+  position: relative;
 }
 
 .main-navbar .main-navbar-logo {
@@ -396,6 +410,7 @@ footer {
           align-items: center;
   margin: 0;
   position: relative;
+  margin: 0 10px;
 }
 
 .main-navbar .main-navbar-input {
@@ -403,11 +418,8 @@ footer {
       -ms-flex-positive: 1;
           flex-grow: 1;
   border: 0;
-  border: 1px solid #03151f;
-  box-shadow: 0 0 3px #03151f inset, 0 0 3px #03151f;
   outline: 0;
   padding: 5px 10px;
-  margin-left: 10px;
   transition: border 0.1s ease-in-out;
   position: relative;
 }
@@ -422,15 +434,17 @@ footer {
   background: red;
 }
 
-.main-navbar .toogle-options {
-  cursor: pointer;
+.main-navbar .main-navbar-input:focus {
+  outline: 1px solid #00b1f3;
 }
 
-.main-navbar .toogle-options.is-hover:before {
-  content: '\e00E';
+.main-navbar .ilm-search {
+  position: absolute;
+  right: 0;
+  color: #03151f;
 }
 
-.main-navbar .main-navbar-findOptions, .main-navbar .main-navbar-boxNotification {
+.main-navbar .main-navbar-boxNotification {
   display: none;
   position: absolute;
   right: 0;
@@ -438,14 +452,6 @@ footer {
   color: #03151f;
   box-shadow: 0 3px 5px -1px #03151f;
   z-index: 300;
-}
-
-.main-navbar .main-navbar-findOptions {
-  width: 100%;
-  background: #00b1f3;
-}
-
-.main-navbar .main-navbar-boxNotification {
   width: 350px;
   max-height: 85vh;
   overflow-y: auto;
@@ -563,7 +569,7 @@ footer {
   transition: -webkit-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
-  position: absolute;
+  position: relative;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -584,15 +590,6 @@ footer {
         -ms-transform: translateX(-370px);
             transform: translateX(-370px);
     border: 2px solid #333333;
-  }
-}
-
-@media all and (min-width: 1024px) {
-  .control-pane {
-    position: relative;
-    -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-            transform: translateX(0);
   }
 }
 
@@ -660,12 +657,6 @@ footer {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-  }
-}
-
-@media all and (min-width: 1024px) {
-  .control-pane .control-pane-menuIcon {
-    display: none;
   }
 }
 

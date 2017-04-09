@@ -1,5 +1,10 @@
 .mainContent {
+	margin: 125px 50px 20px;
 	display: flex;
 	justify-content: space-between;
 	flex-grow: 1;
+
+	@include from(tablet) {
+		margin-top: 70px;
+	}
 }
