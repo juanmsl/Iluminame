@@ -87,7 +87,7 @@ $color-ntf-letra: color(azul-opaco);
 
 	#{&}-boxNotification {
 		width: 350px;
-		max-height: 80vh;
+		max-height: 85vh;
 		overflow-y: auto;
 
 		@include from(tablet) {
