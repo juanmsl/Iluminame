@@ -1,10 +1,32 @@
 .mainContent {
-	margin: 125px 50px 20px;
+	background: color(azul-opaco);
+	width: 100vw;
+	margin: 125px auto 20px;
+	box-shadow: 0 3px 5px 1px color(azul-oscuro);
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
 	flex-grow: 1;
 
+	@include from(mobile) {
+		width: 91.6vw;
+	}
+
 	@include from(tablet) {
+		width: 83.2vw;
 		margin-top: 70px;
+	}
+
+	@include from(laptop) {
+		width: 74.8vw;
+	}
+
+	@include from(pc) {
+		width: 66.4vw;
+	}
+
+	@include from(large) {
+		width: 58vw;
 	}
 }

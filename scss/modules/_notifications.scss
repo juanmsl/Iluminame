@@ -1,7 +1,6 @@
 $color-fondo: color(azul-opaco);
 $color-letra: color(azul-oscuro);
-$color-hv-fondo: color(azul-medio);
-$color-hv-letra: color(azul-opaco);
+$color-hv-fondo: darken(color(azul-opaco), 20);
 
 .ntf {
 	color: $color-letra;
@@ -13,7 +12,6 @@ $color-hv-letra: color(azul-opaco);
 
 	&:hover {
 		background: $color-hv-fondo;
-		color: $color-hv-letra;
 	}
 
 	#{&}-picture {
@@ -32,8 +30,6 @@ $color-hv-letra: color(azul-opaco);
 	}
 
 	#{&}-monitor, #{&}-student, #{&}-place, #{&}-date, #{&}-time {
-		margin: 0;
-
 		&::before {
 			font-weight: bold;
 		}

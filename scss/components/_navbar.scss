@@ -1,15 +1,9 @@
-$color-fondo: color(azul-medio);
-$color-letra: color(azul-opaco);
-$color-borde: color(azul-oscuro);
-$color-ntf-fondo: color(azul-base);
-$color-ntf-letra: color(azul-opaco);
-
 .main-navbar {
 	display: flex;
 	align-items: center;
-	box-shadow: 0 2px 5px $color-borde;
-	background: $color-fondo;
-	color: $color-letra;
+	box-shadow: 0 2px 5px $color-borde-1;
+	background: $color-fondo-1;
+	color: $color-letra-1;
 	user-select: none;
 	cursor: default;
 	position: relative;
@@ -22,9 +16,10 @@ $color-ntf-letra: color(azul-opaco);
 	}
 
 	#{&}-name {
-		margin: 0;
+		padding: 0;
 		padding-right: $gutter;
 		display: none;
+		font-family: $logo-font;
 
 		@include from(tablet) {
 			display: block;
@@ -60,14 +55,14 @@ $color-ntf-letra: color(azul-opaco);
 		}
 
 		&:focus {
-			outline: 1px solid $color-ntf-fondo;
+			outline: 1px solid $color-fondo-3;
 		}
 	}
 
 	.ilm-search {
 		position: absolute;
 		right: 0;
-		color: $color-borde;
+		color: $color-borde-1;
 	}
 
 	#{&}-boxNotification {
@@ -75,16 +70,23 @@ $color-ntf-letra: color(azul-opaco);
 		position: absolute;
 		right: 0;
 		top: 100%;
-		color: $color-borde;
-		box-shadow: 0 3px 5px -1px $color-borde;
+		color: $color-borde-1;
+		box-shadow: 0 3px 5px -1px $color-borde-1;
 		z-index: z-index(navbar);
 		width: 350px;
-		max-height: 85vh;
-		overflow-y: auto;
+		padding-bottom: $gutter / 2;
+		margin-right: $gutter;
+		background: $color-fondo-1;
 
 		@include from(tablet) {
 			display: none;
 		}
+	}
+
+	#{&}-notifications {
+		max-height: 70vh;
+		overflow-y: auto;
+		background: $color-letra-1;
 	}
 
 	#{&}-logout, #{&}-notificator {
@@ -99,14 +101,14 @@ $color-ntf-letra: color(azul-opaco);
 		cursor: pointer;
 
 		&:hover {
-			background: $color-letra;
-			color: $color-fondo;
+			background: $color-letra-1;
+			color: $color-fondo-1;
 		}
 	}
 
 	#{&}-logout {
 		display: flex;
-		border-left: 1px solid $color-borde;
+		border-left: 1px solid $color-borde-1;
 		margin-left: $gutter;
 	}
 
@@ -118,8 +120,8 @@ $color-ntf-letra: color(azul-opaco);
 		}
 
 		&.is-hover {
-			background: $color-letra;
-			color: $color-fondo;
+			background: $color-letra-1;
+			color: $color-fondo-1;
 		}
 
 		&.activate::before {
@@ -137,8 +139,8 @@ $color-ntf-letra: color(azul-opaco);
 			width: 22px;
 			height: 22px;
 			border-radius: 50%;
-			background: $color-ntf-fondo;
-			color: $color-ntf-letra;
+			background: $color-fondo-3;
+			color: $color-letra-1;
 			content: attr(data-counter);
 			font-weight: bold;
 			margin-top: 6px;
@@ -147,12 +149,11 @@ $color-ntf-letra: color(azul-opaco);
 	}
 
 	#{&}-title {
-		font-size: 1em;
 		text-align: center;
-		background: $color-fondo;
-		color: $color-ntf-letra;
-		border-bottom: 1px solid $color-letra;
+		background: $color-fondo-1;
+		color: $color-letra-1;
 		padding: 0;
+		padding: $gutter / 2 0;
 	}
 
 	.ntf:last-child {

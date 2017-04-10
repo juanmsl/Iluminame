@@ -1,119 +1,23 @@
 nav.main-navbar#main-navbar
 	img(src='resources/images/icon.png').main-navbar-logo
-	h6.main-navbar-name Ilumíname
+	h4.main-navbar-name Ilumíname
 	form.main-navbar-finder
 		input(type='text' placeholder='¿Buscas una materia?' data-icon="&#xe00f;").main-navbar-input
 		a(href="#").ilm-search
-	.main-navbar-notificator.ilm-tutories#toggle-tutories(data-counter='0' data-target='#tutories')
 	.main-navbar-notificator.ilm-my-tutories#toggle-my-tutories(data-counter='0' data-target='#my-tutories')
+	.main-navbar-notificator.ilm-tutories#toggle-tutories(data-counter='0' data-target='#tutories')
 	.main-navbar-notificator.ilm-chat#toggle-chat(data-counter='0' data-target='#chat')
 	.main-navbar-notificator.ilm-notification#toggle-notification(data-counter='0' data-target='#notification')
 	.main-navbar-logout.ilm-logout
-	section.main-navbar-boxNotification#tutories
-		h6.main-navbar-title Tutorias pendientes
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Lenguajes de programación
-				p.ntf-monitor Carlos Eduardo Camacho
-				p.ntf-place Edificio Baron - Salón 402
-				p.ntf-date 22/04/2017
-				p.ntf-time 9:00pm - 10:00pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Lenguajes de programación
-				p.ntf-monitor José Rafael Domínguez
-				p.ntf-place Edificio Baron - Salón 402
-				p.ntf-date 22/04/2017
-				p.ntf-time 9:00pm - 10:00pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Lenguajes de programación
-				p.ntf-monitor Carlos Quimbay Cunalata
-				p.ntf-place Edificio Baron - Salón 402
-				p.ntf-date 22/04/2017
-				p.ntf-time 9:00pm - 10:00pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Lenguajes de programación
-				p.ntf-monitor Stephanie Domínguez
-				p.ntf-place Edificio Baron - Salón 402
-				p.ntf-date 22/04/2017
-				p.ntf-time 9:00pm - 10:00pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Lenguajes de programación
-				p.ntf-monitor Carlos Quimbay Cunalata
-				p.ntf-place Edificio Baron - Salón 402
-				p.ntf-date 22/04/2017
-				p.ntf-time 9:00pm - 10:00pm
 	section.main-navbar-boxNotification#my-tutories
-		h6.main-navbar-title Tutorias por dictar
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Analisis de algoritmos
-				p.ntf-student Luis David Zarate
-				p.ntf-place Biblioteca piso 2 - Sala 3
-				p.ntf-date 20/04/2017
-				p.ntf-time 2:00pm - 4:00pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Ingeniería de software
-				p.ntf-student María Paula Moreno
-				p.ntf-place Facultad ingeniería - Sala B
-				p.ntf-date 22/04/2017
-				p.ntf-time 9:00am - 10:00am
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-subject Sistemas operativos
-				p.ntf-student Carlos Eduardo Camacho
-				p.ntf-place Facultad ingeniería - Sala de redes
-				p.ntf-date 22/04/2017
-				p.ntf-time 11:00am - 1:00pm
+		h5.main-navbar-title Tutorias pendientes
+		section.main-navbar-notifications
+	section.main-navbar-boxNotification#tutories
+		h5.main-navbar-title Tutorias por dictar
+		section.main-navbar-notifications
 	section.main-navbar-boxNotification#chat
-		h6.main-navbar-title Mensajes
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-user Stephanie Domínguez
-				p.ntf-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.
-				p.ntf-dateFixed 22/04/2017 - 3:52pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-user Luis David Zarate
-				p.ntf-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.
-				p.ntf-dateFixed 22/04/2017 - 3:52pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-user Carlos Eduardo Camacho
-				p.ntf-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.
-				p.ntf-dateFixed 22/04/2017 - 3:52pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-user Carlos Quimbay Cunalata
-				p.ntf-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.
-				p.ntf-dateFixed 22/04/2017 - 3:52pm
+		h5.main-navbar-title Mensajes
+		section.main-navbar-notifications
 	section.main-navbar-boxNotification#notification
-		h6.main-navbar-title Notificaciones
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-user María Paula Moreno
-				p.ntf-description Te ha comenzado a seguir
-				p.ntf-dateFixed 22/04/2017 - 3:52pm
-		section.ntf
-			img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg').ntf-picture
-			.ntf-group
-				h6.ntf-user María Paula Moreno
-				p.ntf-description Te ha solicitado una monitoria para pensamiento algoritmico
-				p.ntf-dateFixed 22/04/2017 - 3:52pm
+		h5.main-navbar-title Notificaciones
+		section.main-navbar-notifications

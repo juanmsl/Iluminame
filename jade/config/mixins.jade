@@ -1,0 +1,15 @@
+mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn)
+	section.monitoria
+		section.monitoria-header
+			img(src= img).monitoria-picture
+			.monitoria-group
+				h6.monitoria-subject= mt
+				p.monitoria-user= nm
+		section.monitoria-info
+			p.monitoria-place= lg
+			p.monitoria-date= fc
+			p.monitoria-time= dr
+			p.monitoria-price= pr
+		section.monitoria-spec
+			p.monitoria-detail= inf
+			button(class= btn).monitoria-button Hola

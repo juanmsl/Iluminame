@@ -13,12 +13,12 @@ $gutter: 10px;
 
 // Tamaños
 $font-size: 16px;
-$h1: $font-size * 3.0;
-$h2: $font-size * 2.7;
-$h3: $font-size * 2.4;
-$h4: $font-size * 2.1;
-$h5: $font-size * 1.8;
-$h6: $font-size * 1.5;
+$h1: $font-size * 2.2;
+$h2: $font-size * 2.0;
+$h3: $font-size * 1.8;
+$h4: $font-size * 1.6;
+$h5: $font-size * 1.4;
+$h6: $font-size * 1.2;
 
 $z-index: (
 	back: -100,
@@ -62,3 +62,16 @@ $colors: (
 	blanco: #FFFFFF,
 	negro: #000000
 );
+
+$color-fondo-1: #006BAB;
+$color-fondo-2: #DCF1F3;
+$color-fondo-3: #00B1F3;
+
+$color-fondohv-1: lighten(#006BAB, 20);
+$color-fondohv-2: darken(#DCF1F3, 20);
+
+$color-letra-1: #DCF1F3;
+$color-letra-2: #006BAB;
+
+$color-borde-1: #03151F;
+$color-borde-2: lighten(#03151F, 20);

@@ -1,19 +1,7 @@
-$color-fondo: color(gris-claro);
-$color-letra: color(blanco);
-$color-borde: color(gris-oscuro);
-$color-encabezado-fondo: color(azul-medio);
-$color-encabezado-letra: color(azul-opaco);
-$color-seccion-fondo: color(azul-base);
-$color-seccion-hover: color(azul-medio);
-
 .control-pane {
-	flex-shrink: 0;
-	align-self: stretch;
 	width: 100%;
 	margin: 0;
-	background: $color-fondo;
-	box-shadow: 0 5px 5px 1px $color-borde;
-	transition: transform 0.5s ease-in-out;
+	box-shadow: 0 3px 10px 1px $color-borde-1;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -21,10 +9,9 @@ $color-seccion-hover: color(azul-medio);
 	@include from(tablet) {
 		width: 360px;
 		margin: $gutter;
-		align-self: stretch;
 		display: block;
-		transform: translateX(-370px);
-		border: 2px solid $color-borde;
+		transition: transform 0.5s ease-in-out;
+		transform: translateX(calc(-100% - #{$gutter}));
 	}
 
 	&.menu__visible {
@@ -34,26 +21,39 @@ $color-seccion-hover: color(azul-medio);
 			right: 0;
 			opacity: 1;
 			background: transparent;
-			color: $color-encabezado-letra;
+			box-shadow: none;
+			color: $color-letra-1;
 		}
 	}
 
-	#{&}-menuIcon, #{&}-notificationsIcon {
+	#{&}-menuIcon, #{&}-notificationsIcon, #{&}-configIcon {
 		width: 42px;
 		height: 42px;
-		border: 0;
-		align-items: center;
 		justify-content: center;
-		outline: 0;
+		align-items: center;
 		cursor: pointer;
 
 		@include from(tablet) {
 			position: absolute;
-			top: -2px;
 			right: 0;
-			right: -42px;
-			background: $color-borde;
+		}
+	}
+
+	#{&}-menuIcon, #{&}-notificationsIcon {
+		@include from(tablet) {
+			top: 0;
 			transition: all 0.5s ease-in-out;
+		}
+	}
+
+	#{&}-menuIcon {
+		display: none;
+
+		@include from(tablet) {
+			display: flex;
+			background: $color-fondo-1;
+			box-shadow: 1px 3px 10px $color-borde-1;
+			right: -42px;
 		}
 	}
 
@@ -65,16 +65,13 @@ $color-seccion-hover: color(azul-medio);
 		}
 	}
 
-	#{&}-menuIcon {
-		display: none;
-		opacity: 0.5;
-
-		&:hover {
-			opacity: 1;
-		}
+	#{&}-configIcon {
+		display: flex;
+		margin-left: auto;
 
 		@include from(tablet) {
-			display: flex;
+			bottom: 0;
+			margin-left: 0;
 		}
 	}
 
@@ -82,97 +79,52 @@ $color-seccion-hover: color(azul-medio);
 		display: flex;
 		align-items: center;
 		position: relative;
-		background: $color-encabezado-fondo;
-		color: $color-encabezado-letra;
-		outline: 1px solid $color-borde;
-	}
-
-	#{&}-userinfo {
-		padding: $gutter;
-		padding-left: 0;
-		padding-right: $gutter;
+		background: $color-fondo-1;
+		color: $color-letra-1;
+		padding: $gutter / 2;
+		border-bottom: 1px solid $color-borde-2;
 
 		@include from(tablet) {
+			padding: $gutter;
 			padding-right: $gutter * 4;
 		}
 	}
 
 	#{&}-userPicture {
-		margin: $gutter;
-		width: 35px;
-		height: 35px;
+		width: 40px;
+		height: 40px;
 		border-radius: 50%;
 		display: block;
+		margin-right: $gutter;
 
 		@include from(tablet) {
-			width: 100px;
-			height: 100px;
-		}
-	}
-
-	#{&}-username, #{&}-userid {
-		margin: 0;
-		padding: 0;
-	}
-
-	#{&}-username {
-		font-size: 1.3em;
-
-		@include from(tablet) {
-			font-size: 2em;
+			width: 70px;
+			height: 70px;
 		}
 	}
 
 	#{&}-userid {
-		color: $color-encabezado-letra;
 		display: none;
 
 		@include from(tablet) {
 			display: inherit;
-		}
-	}
 
-	#{&}-configIcon {
-		width: 42px;
-		height: 42px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-left: auto;
-
-		@include from(tablet) {
-			position: absolute;
-			left: calc(100% - 42px);
-			bottom: 0;
-			margin-left: 0;
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 
 	#{&}-info {
-		padding: 0 $gutter;
+		padding: $gutter;
 		display: none;
-	}
-
-	#{&}-infoToggle {
-		width: 100%;
-		padding: 0 $gutter;
-		background: $color-borde;
-		color: $color-letra;
-		justify-content: center;
-		padding: $gutter / 2;
-		border: 0;
-		cursor: pointer;
-		outline: 0;
-		display: none;
+		background: $color-fondo-1;
+		color: $color-letra-1;
+		font-size: 0.8em;
 
 		@include from(tablet) {
-			display: flex;
+			display: block;
 		}
-	}
-
-	#{&}-data {
-		margin: 0;
-		padding: $gutter / 5 0;
 	}
 
 	#{&}-notifications {
@@ -185,45 +137,51 @@ $color-seccion-hover: color(azul-medio);
 
 	#{&}-section {
 		display: flex;
-		align-items: center;
-		background: $color-seccion-fondo;
+		background: $color-fondo-2;
 		line-height: $gutter * 4;
 		padding: 0;
 		padding-left: $gutter;
-		outline: 1px solid $color-borde;
 		font-size: 0.9em;
-		font-weight: bold;
+		font-family: $title-font;
+		transition: all 0.3s ease-in-out;
+		border-bottom: 1px solid $color-borde-1;
 
 		@include from(mobile) {
-			font-size: 1.2em;
+			font-size: 1.1em;
 		}
 
 		@include from(tablet) {
-			font-size: 1.5em;
+			font-size: 1.3em;
 		}
 
 		&:hover {
-			background: $color-seccion-hover;
+			background: $color-fondohv-2;
+			padding-left: $gutter * 2;
+			font-weight: bold;
+		}
+
+		&::after, &::before {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
 		&::after {
 			content: attr(data-counter);
-			font-weight: bold;
 			font-size: 13px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
+			font-weight: bold;
 			width: 22px;
 			height: 22px;
 			border-radius: 50%;
-			background: $color-encabezado-fondo;
-			color: $color-encabezado-letra;
-			margin-right: 0;
+			background: $color-fondo-1;
+			color: $color-letra-1;
+			margin: auto;
 			margin-left: auto;
+			margin-right: $gutter;
 		}
 
 		&::before {
-			margin-left: 0;
+			padding-left: 0;
 			order: 1;
 		}
 	}

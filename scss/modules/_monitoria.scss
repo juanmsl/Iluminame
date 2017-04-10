@@ -1,0 +1,74 @@
+.monitoria {
+	align-self: stretch;
+	width: 100%;
+	margin: $gutter;
+	box-shadow: 0 3px 10px $color-borde-1;
+	display: flex;
+	flex-direction: column;
+	background: color(blanco);
+
+	@include from(laptop) {
+		width: calc(50% - #{$gutter * 2});
+	}
+
+	@include from(large) {
+		width: calc(33% - #{$gutter * 2});
+	}
+
+	#{&}-header {
+		padding: $gutter;
+		display: flex;
+		background: $color-fondo-1;
+		color: $color-letra-1;
+	}
+
+	#{&}-info {
+		margin: auto;
+		padding: $gutter;
+	}
+
+	#{&}-picture {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		margin-right: $gutter;
+	}
+
+	#{&}-place, #{&}-date, #{&}-time, #{&}-price {
+		&::before {
+			font-weight: bold;
+		}
+	}
+
+	#{&}-place::before {
+		content: 'Lugar: ';
+	}
+
+	#{&}-date::before {
+		content: 'Fecha: ';
+	}
+
+	#{&}-time::before {
+		content: 'Duración: ';
+	}
+
+	#{&}-price::before {
+		content: 'Valor: ';
+	}
+
+	#{&}-spec {
+		margin-top: auto;
+		padding: $gutter;
+		padding-top: 0;
+		text-align: center;
+	}
+
+	#{&}-detail {
+		font-size: 0.9em;
+	}
+
+	#{&}-button {
+		width: 60%;
+		//border: 1px solid $color-borde-1;
+	}
+}

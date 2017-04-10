@@ -7,12 +7,15 @@
 @import "base/base";
 
 // Modules
+@import "modules/_buttons.scss";
 @import "modules/_forms.scss";
 @import "modules/_notifications.scss";
 @import "modules/_icons.scss";
+@import "modules/_monitoria.scss";
 
 // Components
 @import "components/_mainContent.scss";
+@import "components/_chat.scss";
 @import "components/_header.scss";
 @import "components/_index.scss";
 @import "components/_navbar.scss";

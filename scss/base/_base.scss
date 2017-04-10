@@ -3,12 +3,14 @@
 }
 
 ::-webkit-scrollbar {
-	width: $gutter;
-	height: $gutter;
+	width: 6px;
+	height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(90deg, color(azul-medio), lighten(color(azul-medio), 10));
+	background: color(azul-oscuro);
+	border-radius: 5px;
+	margin-right: $gutter;
 }
 
 body {
@@ -46,7 +48,10 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $title-font;
-	padding: $gutter;
+	margin: 0;
+}
+
+p {
 	margin: 0;
 }
 

@@ -1,0 +1,11 @@
+.button {
+	background: $color-fondo-3;
+	padding: $gutter / 4;
+	border: 0;
+	cursor: pointer;
+	font-weight: bold;
+
+	&:active {
+		outline: 1px solid $color-borde-1;
+	}
+}

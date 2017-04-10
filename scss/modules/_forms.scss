@@ -12,7 +12,7 @@
 		flex-grow: 0;
 		margin: 30px;
 		border-radius: 10px;
-		box-shadow: 0 5px 10px 3px color('negro');
+		box-shadow: 0 5px 10px 3px $color-borde-1;
 	}
 
 	#{&}_header {
@@ -31,6 +31,7 @@
 	}
 
 	#{&}_title {
+		font-family: $logo-font;
 		font-size: 2em;
 		margin: 0;
 		padding: 0;
@@ -67,7 +68,7 @@
 		background: color('gris-claro');
 
 		&:hover, &:focus {
-			outline: 2px solid color('azul-base');
+			outline: 2px solid $color-fondo-3;
 		}
 	}
 
@@ -86,7 +87,7 @@
 
 	#{&}_button {
 		margin-top: 15px;
-		background: color('azul-base');
+		background: $color-fondo-3;
 		border: 0;
 		padding: $gutter;
 		width: 100%;
@@ -94,13 +95,13 @@
 		cursor: pointer;
 		font-weight: bold;
 		font-size: 1.2em;
-		box-shadow: 0 3px 0 0 color('azul-medio');
-		text-shadow: 1px 1px 1px color('azul-oscuro');
+		box-shadow: 0 3px 0 0 $color-fondo-1;
+		text-shadow: 1px 1px 1px $color-borde-1;
 
 		&:active {
 			transform: translateY(2px);
-			box-shadow: 0 1px 0 0 color('azul-medio');
-			text-shadow: 1px 1px 5px color('azul-oscuro');
+			box-shadow: 0 1px 0 0 $color-fondo-1;
+			text-shadow: 1px 1px 5px $color-borde-1;
 		}
 	}
 
@@ -112,7 +113,7 @@
 
 	#{&}_link {
 		text-decoration: none;
-		color: color('azul-medio');
+		color: $color-fondo-1;
 		cursor: pointer;
 		text-decoration: underline;
 
