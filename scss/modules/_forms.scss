@@ -1,7 +1,7 @@
 .fm-container {
 	width: 100%;
 	flex-grow: 1;
-	background: color('blanco');
+	background: $blanco;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -12,7 +12,7 @@
 		flex-grow: 0;
 		margin: 30px;
 		border-radius: 10px;
-		box-shadow: 0 5px 10px 3px $color-borde-1;
+		box-shadow: 0 5px 10px 3px $azul-oscuro;
 	}
 
 	#{&}_header {
@@ -68,7 +68,7 @@
 		background: color('gris-claro');
 
 		&:hover, &:focus {
-			outline: 2px solid $color-fondo-3;
+			outline: 2px solid $azul-base;
 		}
 	}
 
@@ -80,28 +80,28 @@
 	}
 
 	#{&}_warning {
-		color: color('warning');
+		color: $rojo-medio;
 		margin-top: $gutter;
 		margin-bottom: $gutter * 2;
 	}
 
 	#{&}_button {
 		margin-top: 15px;
-		background: $color-fondo-3;
+		background: $azul-base;
 		border: 0;
 		padding: $gutter;
 		width: 100%;
-		color: color('blanco');
+		color: $blanco;
 		cursor: pointer;
 		font-weight: bold;
 		font-size: 1.2em;
-		box-shadow: 0 3px 0 0 $color-fondo-1;
-		text-shadow: 1px 1px 1px $color-borde-1;
+		box-shadow: 0 3px 0 0 $azul-medio;
+		text-shadow: 1px 1px 1px $azul-oscuro;
 
 		&:active {
 			transform: translateY(2px);
-			box-shadow: 0 1px 0 0 $color-fondo-1;
-			text-shadow: 1px 1px 5px $color-borde-1;
+			box-shadow: 0 1px 0 0 $azul-medio;
+			text-shadow: 1px 1px 5px $azul-oscuro;
 		}
 	}
 
@@ -113,7 +113,7 @@
 
 	#{&}_link {
 		text-decoration: none;
-		color: $color-fondo-1;
+		color: $azul-medio;
 		cursor: pointer;
 		text-decoration: underline;
 

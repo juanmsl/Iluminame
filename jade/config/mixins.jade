@@ -1,4 +1,4 @@
-mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn)
+mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn, btntx)
 	section.monitoria
 		section.monitoria-header
 			img(src= img).monitoria-picture
@@ -12,4 +12,12 @@ mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn)
 			p.monitoria-price= pr
 		section.monitoria-spec
 			p.monitoria-detail= inf
-			button(class= btn).monitoria-button Hola
+			button(class= btn).monitoria-button= btntx
+			
+mixin notification(img, nm, dsc, dt)
+	section.ntf
+		img(src= img).ntf-picture
+		.ntf-group
+			h6.ntf-user= nm
+			p.ntf-description= dsc
+			p.ntf-dateFixed= dt

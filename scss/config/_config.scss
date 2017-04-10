@@ -1,10 +1,10 @@
 // Importar tipografia
-@import 'https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans|Amatic+SC';
+@import 'https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand|Poiret+One';
 
 // Fuentes
 $main-font: 'Josefin Sans', sans-serif;
-$title-font: 'Dosis', sans-serif;
-$logo-font: 'Amatic SC', cursive;
+$title-font: 'Quicksand', sans-serif;
+$logo-font: 'Poiret One', cursive;
 $light: 300;
 $normal: 400;
 
@@ -35,43 +35,29 @@ $breakpoints: (
 	large: 1824px
 );
 
-$colors: (
-	azul-opaco: #DCF1F3,
-	azul-claro: #29DAFF,
-	azul-base: #00B1F3,
-	azul-medio: #006BAB,
-	azul-oscuro: #03151F,
+$azul-opaco: #DCF1F3;
+$azul-bonito: #5EC2F7;
+$azul-claro: #29DAFF;
+$azul-base: #00B1F3;
+$azul-medio: #006BAB;
+$azul-oscuro: #03151F;
 
-	rojo-claro: #FF6646,
-	rojo: #FF3532,
-	rojo-medio: #DD5448,
-	rojo-oscuro: #E41C39,
+$rojo-opaco: #E1A29B;
+$rojo-bonito: #D57E74;
+$rojo-claro: #DE5347;
+$rojo-base: #FF3532;
+$rojo-medio: #E41C39;
+$rojo-oscuro: #4B1C23;
 
-	verde: #4BAD4E,
-	verde-oscuro: #2F7932,
+$verde-opaco: #C6E4C6;
+$verde-bonito: #AEE7AE;
+$verde-claro: #74CD77;
+$verde-base: #4BAD4E;
+$verde-medio: #2F7932;
+$verde-oscuro: #1F3025;
 
-	active: #888888,
-	success: #00CB30,
-	info: #50B2E1,
-	warning: #FDA51E,
-	danger: #BC0224,
-
-	gris-oscuro: #333333,
-	gris-medio: #787878,
-	gris-claro: #F0F0F0,
-	blanco: #FFFFFF,
-	negro: #000000
-);
-
-$color-fondo-1: #006BAB;
-$color-fondo-2: #DCF1F3;
-$color-fondo-3: #00B1F3;
-
-$color-fondohv-1: lighten(#006BAB, 20);
-$color-fondohv-2: darken(#DCF1F3, 20);
-
-$color-letra-1: #DCF1F3;
-$color-letra-2: #006BAB;
-
-$color-borde-1: #03151F;
-$color-borde-2: lighten(#03151F, 20);
+$gris-oscuro: #333333;
+$gris-medio: #787878;
+$gris-claro: #F0F0F0;
+$blanco: #FFFFFF;
+$negro: #000000;

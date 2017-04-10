@@ -1,11 +1,9 @@
-$color-fondo: color(azul-opaco);
-$color-letra: color(azul-oscuro);
-$color-hv-fondo: darken(color(azul-opaco), 20);
+$color-hv-fondo: darken($azul-opaco, 20);
 
 .ntf {
-	color: $color-letra;
-	border-bottom: 1px solid $color-letra;
-	background: $color-fondo;
+	color: $azul-oscuro;
+	border-bottom: 1px solid $azul-oscuro;
+	background: $azul-opaco;
 	position: relative;
 	display: flex;
 	padding: $gutter;

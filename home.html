@@ -10,46 +10,44 @@
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
   <body>
-    <header class="main-header">
-      <nav id="main-navbar" class="main-navbar"><img src="resources/images/icon.png" class="main-navbar-logo"/>
-        <h4 class="main-navbar-name">Ilumíname</h4>
-        <form class="main-navbar-finder">
-          <input type="text" placeholder="¿Buscas una materia?" data-icon="&amp;#xe00f;" class="main-navbar-input"/><a href="#" class="ilm-search"></a>
-        </form>
-        <div id="toggle-my-tutories" data-counter="0" data-target="#my-tutories" class="main-navbar-notificator ilm-my-tutories"></div>
-        <div id="toggle-tutories" data-counter="0" data-target="#tutories" class="main-navbar-notificator ilm-tutories"></div>
-        <div id="toggle-chat" data-counter="0" data-target="#chat" class="main-navbar-notificator ilm-chat"></div>
-        <div id="toggle-notification" data-counter="0" data-target="#notification" class="main-navbar-notificator ilm-notification"></div>
-        <div class="main-navbar-logout ilm-logout"></div>
-        <section id="my-tutories" class="main-navbar-boxNotification">
-          <h5 class="main-navbar-title">Tutorias pendientes</h5>
-          <section class="main-navbar-notifications"></section>
+    <nav id="main-navbar" class="main-navbar"><a href="home.html"><img src="resources/images/icon.png" class="main-navbar-logo"/></a><a href="home.html">
+        <h4 class="main-navbar-name">Ilumíname</h4></a>
+      <form class="main-navbar-finder">
+        <input type="text" placeholder="¿Buscas una materia?" data-icon="&amp;#xe00f;" class="main-navbar-input"/><a href="#" class="ilm-search"></a>
+      </form>
+      <div id="toggle-my-tutories" data-counter="0" data-target="#my-tutories" class="main-navbar-notificator ilm-my-tutories"></div>
+      <div id="toggle-tutories" data-counter="0" data-target="#tutories" class="main-navbar-notificator ilm-tutories"></div>
+      <div id="toggle-chat" data-counter="0" data-target="#chat" class="main-navbar-notificator ilm-chat"></div>
+      <div id="toggle-notification" data-counter="0" data-target="#notification" class="main-navbar-notificator ilm-notification"></div>
+      <div class="main-navbar-logout ilm-logout"></div>
+      <section id="my-tutories" class="main-navbar-boxNotification">
+        <h5 class="main-navbar-title">Tutorias pendientes</h5>
+        <section class="main-navbar-notifications"></section>
+      </section>
+      <section id="tutories" class="main-navbar-boxNotification">
+        <h5 class="main-navbar-title">Tutorias por dictar</h5>
+        <section class="main-navbar-notifications"></section>
+      </section>
+      <section id="chat" class="main-navbar-boxNotification">
+        <h5 class="main-navbar-title">Mensajes</h5>
+        <section class="main-navbar-notifications"></section>
+      </section>
+      <section id="notification" class="main-navbar-boxNotification">
+        <h5 class="main-navbar-title">Notificaciones</h5>
+        <section class="main-navbar-notifications"></section>
+      </section>
+    </nav>
+    <aside id="user-main-control" class="control-pane">
+      <section class="control-pane-mainSection">
+        <section class="control-pane-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="control-pane-userPicture"/>
+          <section class="control-pane-userinfo">
+            <h5 class="control-pane-username">Juan Manuel Sánchez</h5><a href="#" class="control-pane-userid">@juanmsl_pk</a>
+          </section><a href="#" class="control-pane-configIcon ilm-configuration"></a><i id="toggle-user-main-control" data-target="#user-main-control" class="control-pane-menuIcon ilm-menu"></i><i id="toggle-notifications" data-target="#notifications" class="control-pane-notificationsIcon ilm-menu"></i>
         </section>
-        <section id="tutories" class="main-navbar-boxNotification">
-          <h5 class="main-navbar-title">Tutorias por dictar</h5>
-          <section class="main-navbar-notifications"></section>
-        </section>
-        <section id="chat" class="main-navbar-boxNotification">
-          <h5 class="main-navbar-title">Mensajes</h5>
-          <section class="main-navbar-notifications"></section>
-        </section>
-        <section id="notification" class="main-navbar-boxNotification">
-          <h5 class="main-navbar-title">Notificaciones</h5>
-          <section class="main-navbar-notifications"></section>
-        </section>
-      </nav>
-      <aside id="user-main-control" class="control-pane">
-        <section class="control-pane-mainSection">
-          <section class="control-pane-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="control-pane-userPicture"/>
-            <section class="control-pane-userinfo">
-              <h4 class="control-pane-username">Juan Manuel Sánchez</h4><a href="#" class="control-pane-userid">@juanmsl_pk</a>
-            </section><a href="#" class="control-pane-configIcon ilm-configuration"></a><i id="toggle-user-main-control" data-target="#user-main-control" class="control-pane-menuIcon ilm-menu"></i><i id="toggle-notifications" data-target="#notifications" class="control-pane-notificationsIcon ilm-menu"></i>
-          </section>
-          <section class="control-pane-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
-        </section>
-        <section id="notifications" class="control-pane-notifications"><a href="#" data-counter="5" class="control-pane-section ilm-notification">Notificaciones</a><a href="#" data-counter="4" class="control-pane-section ilm-chat">Mensajes</a><a href="#" data-counter="10" class="control-pane-section ilm-my-tutories">Mis monitorias</a><a href="#" data-counter="53" class="control-pane-section ilm-users">Usuarios que sigo</a><a href="#" data-counter="2" class="control-pane-section ilm-subject">Materias</a><a href="#" data-counter="3" class="control-pane-section ilm-tutories">Monitorias pendientes</a></section>
-      </aside>
-    </header>
+        <section class="control-pane-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
+      </section>
+      <section id="notifications" class="control-pane-notifications"><a href="notifications.html" data-counter="5" class="control-pane-section ilm-notification">Notificaciones</a><a href="#" data-counter="4" class="control-pane-section ilm-chat">Mensajes</a><a href="#" data-counter="10" class="control-pane-section ilm-my-tutories">Mis monitorias</a><a href="#" data-counter="53" class="control-pane-section ilm-users">Usuarios que sigo</a><a href="#" data-counter="2" class="control-pane-section ilm-subject">Materias</a><a href="#" data-counter="3" class="control-pane-section ilm-tutories">Monitorias pendientes</a></section>
+    </aside>
     <div class="mainContent">
       <section class="monitoria">
         <section class="monitoria-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="monitoria-picture"/>
@@ -65,8 +63,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">2/5 personas</p>
+          <button class="join-button monitoria-button">Deseo unirme</button>
         </section>
       </section>
       <section class="monitoria">
@@ -83,8 +81,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">5/5 personas</p>
+          <button class="full-button monitoria-button">Monitoria llena</button>
         </section>
       </section>
       <section class="monitoria">
@@ -101,8 +99,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">1/5 personas</p>
+          <button class="leave-button monitoria-button">Abandonar monitoria</button>
         </section>
       </section>
       <section class="monitoria">
@@ -119,8 +117,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">2/5 personas</p>
+          <button class="leave-button monitoria-button">Abandonar monitoria</button>
         </section>
       </section>
       <section class="monitoria">
@@ -137,8 +135,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">3/3 personas</p>
+          <button class="leave-button monitoria-button">Abandonar monitoria</button>
         </section>
       </section>
       <section class="monitoria">
@@ -155,8 +153,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">2/5 personas</p>
+          <button class="join-button monitoria-button">Deseo unirme</button>
         </section>
       </section>
       <section class="monitoria">
@@ -173,8 +171,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">2/3 personas</p>
+          <button class="join-button monitoria-button">Deseo unirme</button>
         </section>
       </section>
       <section class="monitoria">
@@ -191,80 +189,8 @@
           <p class="monitoria-price">$40.000</p>
         </section>
         <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
-        </section>
-      </section>
-      <section class="monitoria">
-        <section class="monitoria-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="monitoria-picture"/>
-          <div class="monitoria-group">
-            <h6 class="monitoria-subject">Pensamiento algoritmico</h6>
-            <p class="monitoria-user">Maria Paula Moreno</p>
-          </div>
-        </section>
-        <section class="monitoria-info">
-          <p class="monitoria-place">Edificio Baron - Salón 402</p>
-          <p class="monitoria-date">22/04/2017</p>
-          <p class="monitoria-time">9:00pm - 10:00pm</p>
-          <p class="monitoria-price">$40.000</p>
-        </section>
-        <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
-        </section>
-      </section>
-      <section class="monitoria">
-        <section class="monitoria-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="monitoria-picture"/>
-          <div class="monitoria-group">
-            <h6 class="monitoria-subject">Lenguajes de programación</h6>
-            <p class="monitoria-user">Carlos Quimbay Cunalata</p>
-          </div>
-        </section>
-        <section class="monitoria-info">
-          <p class="monitoria-place">Edificio Baron - Salón 402</p>
-          <p class="monitoria-date">22/04/2017</p>
-          <p class="monitoria-time">9:00pm - 10:00pm</p>
-          <p class="monitoria-price">$40.000</p>
-        </section>
-        <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
-        </section>
-      </section>
-      <section class="monitoria">
-        <section class="monitoria-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="monitoria-picture"/>
-          <div class="monitoria-group">
-            <h6 class="monitoria-subject">Analisis de algoritmos</h6>
-            <p class="monitoria-user">José Domínguez</p>
-          </div>
-        </section>
-        <section class="monitoria-info">
-          <p class="monitoria-place">Edificio Baron - Salón 402</p>
-          <p class="monitoria-date">22/04/2017</p>
-          <p class="monitoria-time">9:00pm - 10:00pm</p>
-          <p class="monitoria-price">$40.000</p>
-        </section>
-        <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
-        </section>
-      </section>
-      <section class="monitoria">
-        <section class="monitoria-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="monitoria-picture"/>
-          <div class="monitoria-group">
-            <h6 class="monitoria-subject">Ingenieria de software</h6>
-            <p class="monitoria-user">Luis David Zarate</p>
-          </div>
-        </section>
-        <section class="monitoria-info">
-          <p class="monitoria-place">Edificio Baron - Salón 402</p>
-          <p class="monitoria-date">22/04/2017</p>
-          <p class="monitoria-time">9:00pm - 10:00pm</p>
-          <p class="monitoria-price">$40.000</p>
-        </section>
-        <section class="monitoria-spec">
-          <p class="monitoria-detail">Privada</p>
-          <button class="button monitoria-button">Hola</button>
+          <p class="monitoria-detail">3/3 personas</p>
+          <button class="full-button monitoria-button">Monitoria llena</button>
         </section>
       </section>
     </div>

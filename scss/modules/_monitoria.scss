@@ -2,24 +2,25 @@
 	align-self: stretch;
 	width: 100%;
 	margin: $gutter;
-	box-shadow: 0 3px 10px $color-borde-1;
+	box-shadow: 0 3px 10px $azul-oscuro;
 	display: flex;
 	flex-direction: column;
-	background: color(blanco);
+	background: $blanco;
+	overflow: hidden;
 
 	@include from(laptop) {
 		width: calc(50% - #{$gutter * 2});
 	}
 
 	@include from(large) {
-		width: calc(33% - #{$gutter * 2});
+		width: calc(33.33% - #{$gutter * 2});
 	}
 
 	#{&}-header {
 		padding: $gutter;
 		display: flex;
-		background: $color-fondo-1;
-		color: $color-letra-1;
+		background: $azul-bonito;
+		color: $azul-oscuro;
 	}
 
 	#{&}-info {
@@ -58,17 +59,17 @@
 
 	#{&}-spec {
 		margin-top: auto;
-		padding: $gutter;
-		padding-top: 0;
+		padding: $gutter / 2;
 		text-align: center;
+		background: $gris-claro;
 	}
 
 	#{&}-detail {
 		font-size: 0.9em;
+		padding-bottom: $gutter / 2;
 	}
 
 	#{&}-button {
-		width: 60%;
-		//border: 1px solid $color-borde-1;
+		width: 200px;
 	}
 }

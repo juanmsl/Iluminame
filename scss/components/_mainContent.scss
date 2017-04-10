@@ -1,13 +1,17 @@
 .mainContent {
-	background: color(azul-opaco);
+	background: $azul-opaco;
 	width: 100vw;
-	margin: 125px auto 20px;
-	box-shadow: 0 3px 5px 1px color(azul-oscuro);
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	flex-wrap: wrap;
+	margin: 115px auto 20px;
+	box-shadow: 0 3px 5px 1px $azul-oscuro;
 	flex-grow: 1;
+
+	&, .group {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		align-content: flex-start;
+		flex-wrap: wrap;
+	}
 
 	@include from(mobile) {
 		width: 91.6vw;
@@ -28,5 +32,41 @@
 
 	@include from(large) {
 		width: 58vw;
+	}
+
+	.group {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: $gutter;
+		border-bottom: 1px solid $azul-base;
+
+		&::before {
+			content: attr(data-content);
+			width: 100%;
+			font-size: 0.8em;
+			margin-top: $gutter / 2;
+			margin-left: $gutter;
+		}
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	.ntf {
+		align-self: stretch;
+		width: 100%;
+		margin: $gutter;
+		background: $blanco;
+		color: $azul-oscuro;
+		box-shadow: 0 3px 10px $azul-oscuro;
+
+		@include from(mobile) {
+			width: calc(50% - #{$gutter * 2});
+		}
+
+		@include from(pc) {
+			width: calc(33.33% - #{$gutter * 2});
+		}
 	}
 }

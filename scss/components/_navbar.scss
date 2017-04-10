@@ -1,12 +1,15 @@
 .main-navbar {
 	display: flex;
 	align-items: center;
-	box-shadow: 0 2px 5px $color-borde-1;
-	background: $color-fondo-1;
-	color: $color-letra-1;
+	box-shadow: 0 2px 5px $azul-oscuro;
+	background: $azul-medio;
+	color: $azul-opaco;
 	user-select: none;
 	cursor: default;
-	position: relative;
+	position: fixed;
+	z-index: z-index(navbar);
+	top: 0;
+	width: 100%;
 
 	#{&}-logo {
 		width: 45px;
@@ -55,14 +58,18 @@
 		}
 
 		&:focus {
-			outline: 1px solid $color-fondo-3;
+			outline: 1px solid $azul-base;
 		}
 	}
 
 	.ilm-search {
 		position: absolute;
 		right: 0;
-		color: $color-borde-1;
+		top: 0;
+		color: $azul-oscuro;
+		display: flex;
+		align-items: center;
+		height: 100%;
 	}
 
 	#{&}-boxNotification {
@@ -70,13 +77,13 @@
 		position: absolute;
 		right: 0;
 		top: 100%;
-		color: $color-borde-1;
-		box-shadow: 0 3px 5px -1px $color-borde-1;
+		color: $azul-oscuro;
+		box-shadow: 0 3px 5px -1px $azul-oscuro;
 		z-index: z-index(navbar);
 		width: 350px;
 		padding-bottom: $gutter / 2;
 		margin-right: $gutter;
-		background: $color-fondo-1;
+		background: $azul-medio;
 
 		@include from(tablet) {
 			display: none;
@@ -86,7 +93,7 @@
 	#{&}-notifications {
 		max-height: 70vh;
 		overflow-y: auto;
-		background: $color-letra-1;
+		background: $azul-opaco;
 	}
 
 	#{&}-logout, #{&}-notificator {
@@ -101,14 +108,14 @@
 		cursor: pointer;
 
 		&:hover {
-			background: $color-letra-1;
-			color: $color-fondo-1;
+			background: $azul-opaco;
+			color: $azul-medio;
 		}
 	}
 
 	#{&}-logout {
 		display: flex;
-		border-left: 1px solid $color-borde-1;
+		border-left: 1px solid $azul-oscuro;
 		margin-left: $gutter;
 	}
 
@@ -120,8 +127,8 @@
 		}
 
 		&.is-hover {
-			background: $color-letra-1;
-			color: $color-fondo-1;
+			background: $azul-opaco;
+			color: $azul-medio;
 		}
 
 		&.activate::before {
@@ -139,8 +146,8 @@
 			width: 22px;
 			height: 22px;
 			border-radius: 50%;
-			background: $color-fondo-3;
-			color: $color-letra-1;
+			background: $azul-base;
+			color: $azul-opaco;
 			content: attr(data-counter);
 			font-weight: bold;
 			margin-top: 6px;
@@ -150,8 +157,8 @@
 
 	#{&}-title {
 		text-align: center;
-		background: $color-fondo-1;
-		color: $color-letra-1;
+		background: $azul-medio;
+		color: $azul-opaco;
 		padding: 0;
 		padding: $gutter / 2 0;
 	}

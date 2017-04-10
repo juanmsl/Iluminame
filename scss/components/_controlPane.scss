@@ -1,15 +1,17 @@
 .control-pane {
 	width: 100%;
 	margin: 0;
-	box-shadow: 0 3px 10px 1px $color-borde-1;
-	position: relative;
+	position: fixed;
+	top: 50px;
 	display: flex;
+	z-index: z-index(navbar);
 	flex-direction: column;
 
 	@include from(tablet) {
 		width: 360px;
 		margin: $gutter;
 		display: block;
+		box-shadow: 0 3px 10px 1px $azul-oscuro;
 		transition: transform 0.5s ease-in-out;
 		transform: translateX(calc(-100% - #{$gutter}));
 	}
@@ -22,7 +24,7 @@
 			opacity: 1;
 			background: transparent;
 			box-shadow: none;
-			color: $color-letra-1;
+			color: $azul-opaco;
 		}
 	}
 
@@ -51,8 +53,8 @@
 
 		@include from(tablet) {
 			display: flex;
-			background: $color-fondo-1;
-			box-shadow: 1px 3px 10px $color-borde-1;
+			background: $azul-medio;
+			box-shadow: 1px 3px 10px $azul-oscuro;
 			right: -42px;
 		}
 	}
@@ -79,10 +81,10 @@
 		display: flex;
 		align-items: center;
 		position: relative;
-		background: $color-fondo-1;
-		color: $color-letra-1;
+		background: $azul-medio;
+		color: $azul-opaco;
 		padding: $gutter / 2;
-		border-bottom: 1px solid $color-borde-2;
+		border-bottom: 1px solid $azul-oscuro;
 
 		@include from(tablet) {
 			padding: $gutter;
@@ -118,8 +120,8 @@
 	#{&}-info {
 		padding: $gutter;
 		display: none;
-		background: $color-fondo-1;
-		color: $color-letra-1;
+		background: $azul-medio;
+		color: $azul-opaco;
 		font-size: 0.8em;
 
 		@include from(tablet) {
@@ -137,14 +139,14 @@
 
 	#{&}-section {
 		display: flex;
-		background: $color-fondo-2;
+		background: $azul-opaco;
 		line-height: $gutter * 4;
 		padding: 0;
 		padding-left: $gutter;
 		font-size: 0.9em;
 		font-family: $title-font;
 		transition: all 0.3s ease-in-out;
-		border-bottom: 1px solid $color-borde-1;
+		border-bottom: 1px solid $azul-oscuro;
 
 		@include from(mobile) {
 			font-size: 1.1em;
@@ -155,7 +157,7 @@
 		}
 
 		&:hover {
-			background: $color-fondohv-2;
+			background: darken($azul-opaco, 20);
 			padding-left: $gutter * 2;
 			font-weight: bold;
 		}
@@ -173,8 +175,8 @@
 			width: 22px;
 			height: 22px;
 			border-radius: 50%;
-			background: $color-fondo-1;
-			color: $color-letra-1;
+			background: $azul-medio;
+			color: $azul-opaco;
 			margin: auto;
 			margin-left: auto;
 			margin-right: $gutter;

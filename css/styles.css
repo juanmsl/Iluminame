@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import 'https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans|Amatic+SC';
+@import 'https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand|Poiret+One';
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -10,9 +10,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #03151f;
+  border: 1px solid #03151F;
+  background: #FFFFFF;
   border-radius: 5px;
-  margin-right: 10px;
 }
 
 body {
@@ -52,7 +52,7 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Dosis", sans-serif;
+  font-family: "Quicksand", sans-serif;
   margin: 0;
 }
 
@@ -76,20 +76,43 @@ footer {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: #03151f;
-  color: white;
+  background: #03151F;
+  color: #FFFFFF;
 }
 
-.button {
-  background: #00B1F3;
+[class$='-button'] {
   padding: 2.5px;
+  color: #03151F;
   border: 0;
   cursor: pointer;
   font-weight: bold;
+  box-shadow: 0 0 30px 20px transparent;
+  transition: box-shadow 0.2s ease-out;
+  outline: 0;
 }
 
-.button:active {
-  outline: 1px solid #03151F;
+.join-button {
+  background: #74CD77;
+}
+
+.join-button:active {
+  box-shadow: 0 0 0 0 #74CD77;
+}
+
+.full-button {
+  background: #DE5347;
+}
+
+.full-button:active {
+  box-shadow: 0 0 0 0 #DE5347;
+}
+
+.leave-button {
+  background: #5EC2F7;
+}
+
+.leave-button:active {
+  box-shadow: 0 0 0 0 #5EC2F7;
 }
 
 .fm-container {
@@ -97,7 +120,7 @@ footer {
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  background: white;
+  background: #FFFFFF;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -146,7 +169,7 @@ footer {
 }
 
 .fm-container .fm-container_title {
-  font-family: "Amatic SC", cursive;
+  font-family: "Poiret One", cursive;
   font-size: 2em;
   margin: 0;
   padding: 0;
@@ -186,7 +209,7 @@ footer {
   outline: 0;
   padding: 10px;
   width: 100%;
-  background: #f0f0f0;
+  background: color("gris-claro");
 }
 
 .fm-form .fm-form_control:hover, .fm-form .fm-form_control:focus {
@@ -201,7 +224,7 @@ footer {
 }
 
 .fm-form .fm-form_warning {
-  color: #fda51e;
+  color: #E41C39;
   margin-top: 10px;
   margin-bottom: 20px;
 }
@@ -212,7 +235,7 @@ footer {
   border: 0;
   padding: 10px;
   width: 100%;
-  color: white;
+  color: #FFFFFF;
   cursor: pointer;
   font-weight: bold;
   font-size: 1.2em;
@@ -246,9 +269,9 @@ footer {
 }
 
 .ntf {
-  color: #03151f;
-  border-bottom: 1px solid #03151f;
-  background: #dcf1f3;
+  color: #03151F;
+  border-bottom: 1px solid #03151F;
+  background: #DCF1F3;
   position: relative;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -334,7 +357,8 @@ footer {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: white;
+  background: #FFFFFF;
+  overflow: hidden;
 }
 
 @media all and (min-width: 1024px) {
@@ -345,7 +369,7 @@ footer {
 
 @media all and (min-width: 1824px) {
   .monitoria {
-    width: calc(33% - 20px);
+    width: calc(33.33% - 20px);
   }
 }
 
@@ -354,8 +378,8 @@ footer {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background: #006BAB;
-  color: #DCF1F3;
+  background: #5EC2F7;
+  color: #03151F;
 }
 
 .monitoria .monitoria-info {
@@ -392,24 +416,31 @@ footer {
 
 .monitoria .monitoria-spec {
   margin-top: auto;
-  padding: 10px;
-  padding-top: 0;
+  padding: 5px;
   text-align: center;
+  background: #F0F0F0;
 }
 
 .monitoria .monitoria-detail {
   font-size: 0.9em;
+  padding-bottom: 5px;
 }
 
 .monitoria .monitoria-button {
-  width: 60%;
+  width: 200px;
 }
 
 .mainContent {
-  background: #dcf1f3;
+  background: #DCF1F3;
   width: 100vw;
-  margin: 125px auto 20px;
-  box-shadow: 0 3px 5px 1px #03151f;
+  margin: 115px auto 20px;
+  box-shadow: 0 3px 5px 1px #03151F;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.mainContent, .mainContent .group {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -419,12 +450,12 @@ footer {
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-align-content: flex-start;
+      -ms-flex-line-pack: start;
+          align-content: flex-start;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
 }
 
 @media all and (min-width: 640px) {
@@ -458,12 +489,50 @@ footer {
   }
 }
 
-.main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+.mainContent .group {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00B1F3;
+}
+
+.mainContent .group::before {
+  content: attr(data-content);
   width: 100%;
-  overflow: hidden;
+  font-size: 0.8em;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.mainContent .group:last-child {
+  border-bottom: 0;
+}
+
+.mainContent .ntf {
+  -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+          align-self: stretch;
+  width: 100%;
+  margin: 10px;
+  background: #FFFFFF;
+  color: #03151F;
+  box-shadow: 0 3px 10px #03151F;
+}
+
+@media all and (min-width: 640px) {
+  .mainContent .ntf {
+    width: calc(50% - 20px);
+  }
+}
+
+@media all and (min-width: 1224px) {
+  .mainContent .ntf {
+    width: calc(33.33% - 20px);
+  }
 }
 
 .indexBody {
@@ -505,7 +574,10 @@ footer {
       -ms-user-select: none;
           user-select: none;
   cursor: default;
-  position: relative;
+  position: fixed;
+  z-index: 300;
+  top: 0;
+  width: 100%;
 }
 
 .main-navbar .main-navbar-logo {
@@ -519,7 +591,7 @@ footer {
   padding: 0;
   padding-right: 10px;
   display: none;
-  font-family: "Amatic SC", cursive;
+  font-family: "Poiret One", cursive;
 }
 
 @media all and (min-width: 768px) {
@@ -574,7 +646,15 @@ footer {
 .main-navbar .ilm-search {
   position: absolute;
   right: 0;
+  top: 0;
   color: #03151F;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
 }
 
 .main-navbar .main-navbar-boxNotification {
@@ -697,11 +777,12 @@ footer {
 .control-pane {
   width: 100%;
   margin: 0;
-  box-shadow: 0 3px 10px 1px #03151F;
-  position: relative;
+  position: fixed;
+  top: 50px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  z-index: 300;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
@@ -712,6 +793,7 @@ footer {
     width: 360px;
     margin: 10px;
     display: block;
+    box-shadow: 0 3px 10px 1px #03151F;
     transition: -webkit-transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
@@ -813,7 +895,7 @@ footer {
   background: #006BAB;
   color: #DCF1F3;
   padding: 5px;
-  border-bottom: 1px solid #0c547c;
+  border-bottom: 1px solid #03151F;
 }
 
 @media all and (min-width: 768px) {
@@ -884,7 +966,7 @@ footer {
   padding: 0;
   padding-left: 10px;
   font-size: 0.9em;
-  font-family: "Dosis", sans-serif;
+  font-family: "Quicksand", sans-serif;
   transition: all 0.3s ease-in-out;
   border-bottom: 1px solid #03151F;
 }
