@@ -1,9 +1,9 @@
 .main-navbar {
 	display: flex;
 	align-items: center;
-	box-shadow: 0 2px 5px $azul-oscuro;
-	background: $azul-medio;
-	color: $azul-opaco;
+	box-shadow: 0 2px 5px $navbar-border;
+	background: $navbar-background;
+	color: $navbar-color;
 	user-select: none;
 	cursor: default;
 	position: fixed;
@@ -47,18 +47,8 @@
 		transition: border 0.1s ease-in-out;
 		position: relative;
 
-		&::after {
-			width: 100px;
-			height: 100px;
-			position: absolute;
-			top: 0;
-			left: 0;
-			content: 's';
-			background: red;
-		}
-
 		&:focus {
-			outline: 1px solid $azul-base;
+			outline: 1px solid $navbar-ntf-background;
 		}
 	}
 
@@ -66,7 +56,7 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		color: $azul-oscuro;
+		color: $navbar-border;
 		display: flex;
 		align-items: center;
 		height: 100%;
@@ -77,13 +67,12 @@
 		position: absolute;
 		right: 0;
 		top: 100%;
-		color: $azul-oscuro;
-		box-shadow: 0 3px 5px -1px $azul-oscuro;
+		background: $navbar-background;
+		box-shadow: 0 3px 5px -1px $navbar-border;
 		z-index: z-index(navbar);
 		width: 350px;
 		padding-bottom: $gutter / 2;
 		margin-right: $gutter;
-		background: $azul-medio;
 
 		@include from(tablet) {
 			display: none;
@@ -93,7 +82,6 @@
 	#{&}-notifications {
 		max-height: 70vh;
 		overflow-y: auto;
-		background: $azul-opaco;
 	}
 
 	#{&}-logout, #{&}-notificator {
@@ -108,14 +96,14 @@
 		cursor: pointer;
 
 		&:hover {
-			background: $azul-opaco;
-			color: $azul-medio;
+			background: $navbar-color;
+			color: $navbar-background;
 		}
 	}
 
 	#{&}-logout {
 		display: flex;
-		border-left: 1px solid $azul-oscuro;
+		border-left: 1px solid $navbar-border;
 		margin-left: $gutter;
 	}
 
@@ -127,8 +115,8 @@
 		}
 
 		&.is-hover {
-			background: $azul-opaco;
-			color: $azul-medio;
+			background: $navbar-color;
+			color: $navbar-background;
 		}
 
 		&.activate::before {
@@ -146,8 +134,8 @@
 			width: 22px;
 			height: 22px;
 			border-radius: 50%;
-			background: $azul-base;
-			color: $azul-opaco;
+			background: $navbar-ntf-background;
+			color: $navbar-ntf-color;
 			content: attr(data-counter);
 			font-weight: bold;
 			margin-top: 6px;
@@ -157,8 +145,8 @@
 
 	#{&}-title {
 		text-align: center;
-		background: $azul-medio;
-		color: $azul-opaco;
+		background: $navbar-background;
+		color: $navbar-color;
 		padding: 0;
 		padding: $gutter / 2 0;
 	}

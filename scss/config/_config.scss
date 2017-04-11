@@ -20,6 +20,10 @@ $h4: $font-size * 1.6;
 $h5: $font-size * 1.4;
 $h6: $font-size * 1.2;
 
+@media all and (min-width: 768px) {
+	$font-size: 10px;
+}
+
 $z-index: (
 	back: -100,
 	tooltip: 100,
@@ -34,30 +38,3 @@ $breakpoints: (
 	pc: 1224px,
 	large: 1824px
 );
-
-$azul-opaco: #DCF1F3;
-$azul-bonito: #5EC2F7;
-$azul-claro: #29DAFF;
-$azul-base: #00B1F3;
-$azul-medio: #006BAB;
-$azul-oscuro: #03151F;
-
-$rojo-opaco: #E1A29B;
-$rojo-bonito: #D57E74;
-$rojo-claro: #DE5347;
-$rojo-base: #FF3532;
-$rojo-medio: #E41C39;
-$rojo-oscuro: #4B1C23;
-
-$verde-opaco: #C6E4C6;
-$verde-bonito: #AEE7AE;
-$verde-claro: #74CD77;
-$verde-base: #4BAD4E;
-$verde-medio: #2F7932;
-$verde-oscuro: #1F3025;
-
-$gris-oscuro: #333333;
-$gris-medio: #787878;
-$gris-claro: #F0F0F0;
-$blanco: #FFFFFF;
-$negro: #000000;

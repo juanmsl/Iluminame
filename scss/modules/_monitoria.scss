@@ -2,10 +2,11 @@
 	align-self: stretch;
 	width: 100%;
 	margin: $gutter;
-	box-shadow: 0 3px 10px $azul-oscuro;
+	box-shadow: 0 3px 10px $monitoria-border;
 	display: flex;
 	flex-direction: column;
-	background: $blanco;
+	background: $monitoria-background;
+	color: $monitoria-color;
 	overflow: hidden;
 
 	@include from(laptop) {
@@ -19,8 +20,9 @@
 	#{&}-header {
 		padding: $gutter;
 		display: flex;
-		background: $azul-bonito;
-		color: $azul-oscuro;
+		align-items: center;
+		background: $monitoria-header-background;
+		color: $monitoria-header-color;
 	}
 
 	#{&}-info {
@@ -61,7 +63,8 @@
 		margin-top: auto;
 		padding: $gutter / 2;
 		text-align: center;
-		background: $gris-claro;
+		background: $monitoria-spec-background;
+		color: $monitoria-spec-color;
 	}
 
 	#{&}-detail {

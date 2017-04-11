@@ -1,24 +1,30 @@
 // Config
 @import "config/config";
+@import "config/colors";
 @import "config/functions";
 @import "config/mixins";
+
+// Themes
+@import "themes/blue";
+//@import "themes/green";
+//@import "themes/red";
 
 // Base
 @import "base/base";
 
 // Modules
-@import "modules/_buttons.scss";
-@import "modules/_forms.scss";
-@import "modules/_notifications.scss";
-@import "modules/_icons.scss";
-@import "modules/_monitoria.scss";
+@import "modules/buttons.scss";
+@import "modules/forms.scss";
+@import "modules/notifications.scss";
+@import "modules/icons.scss";
+@import "modules/monitoria.scss";
 
 // Components
-@import "components/_mainContent.scss";
-@import "components/_chat.scss";
-@import "components/_index.scss";
-@import "components/_navbar.scss";
-@import "components/_controlPane.scss";
+@import "components/mainContent.scss";
+@import "components/chat.scss";
+@import "components/index.scss";
+@import "components/navbar.scss";
+@import "components/controlPane.scss";
 
 // Layout
-@import "layout/layout";
+//@import "layout/layout";

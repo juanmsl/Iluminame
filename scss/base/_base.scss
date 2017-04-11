@@ -8,8 +8,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	border: 1px solid $azul-oscuro;
-	background: $blanco;
+	border: 1px solid $scroll-border;
+	background: $scroll-background;
 	border-radius: 5px;
 }
 
@@ -67,6 +67,6 @@ footer {
 	font-size: 0.8em;
 	padding: $gutter / 2 $gutter;
 	justify-content: space-between;
-	background: $azul-oscuro;
-	color: $blanco;
+	background: $footer-background;
+	color: $footer-color;
 }

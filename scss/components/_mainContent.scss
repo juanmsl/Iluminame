@@ -1,13 +1,12 @@
 .mainContent {
-	background: $azul-opaco;
+	background: $mainContent-background;
 	width: 100vw;
 	margin: 115px auto 20px;
-	box-shadow: 0 3px 5px 1px $azul-oscuro;
+	box-shadow: 0 3px 5px 1px $mainContent-border;
 	flex-grow: 1;
 
 	&, .group {
 		display: flex;
-		justify-content: space-between;
 		align-items: flex-start;
 		align-content: flex-start;
 		flex-wrap: wrap;
@@ -37,15 +36,20 @@
 	.group {
 		display: flex;
 		flex-wrap: wrap;
-		margin-bottom: $gutter;
-		border-bottom: 1px solid $azul-base;
+		margin: $gutter;
 
 		&::before {
 			content: attr(data-content);
-			width: 100%;
 			font-size: 0.8em;
 			margin-top: $gutter / 2;
 			margin-left: $gutter;
+			font-weight: bold;
+		}
+
+		&::after {
+			content: '';
+			border: 1px solid $mainContent-border;
+			width: 100%;
 		}
 
 		&:last-child {
@@ -54,12 +58,13 @@
 	}
 
 	.ntf {
+		order: 1;
 		align-self: stretch;
 		width: 100%;
 		margin: $gutter;
-		background: $blanco;
-		color: $azul-oscuro;
-		box-shadow: 0 3px 10px $azul-oscuro;
+		background: $mainContent-ntf-background;
+		color: $mainContent-ntf-color;
+		box-shadow: 0 3px 10px $mainContent-border;
 
 		@include from(mobile) {
 			width: calc(50% - #{$gutter * 2});

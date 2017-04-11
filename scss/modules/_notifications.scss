@@ -1,15 +1,13 @@
-$color-hv-fondo: darken($azul-opaco, 20);
-
 .ntf {
-	color: $azul-oscuro;
-	border-bottom: 1px solid $azul-oscuro;
-	background: $azul-opaco;
+	color: $notificacion-color;
+	border-bottom: 1px solid $notificacion-border;
+	background: $notificacion-background;
 	position: relative;
 	display: flex;
 	padding: $gutter;
 
 	&:hover {
-		background: $color-hv-fondo;
+		background: $notificacion-background-hover;
 	}
 
 	#{&}-picture {

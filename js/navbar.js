@@ -20,17 +20,6 @@ let toggleTarget = function(element) {
 	$(elementTarget).show();
 }
 
-notificators.each(function(){
-	let target = $(this).attr('data-target');
-	let counterNTF = $(target + ' .main-navbar-notifications').children('.ntf').size();
-	if(counterNTF == 0) {
-		$(this).removeClass('activate');
-	} else {
-		$(this).addClass('activate');
-	}
-	$(this).attr('data-counter', counterNTF);
-});
-
 toggles.on('click', function(){
 	toggleTarget($(this));
 });

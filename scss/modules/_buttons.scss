@@ -1,6 +1,6 @@
 [class $= '-button'] {
 	padding: $gutter / 4;
-	color: $azul-oscuro;
+	color: $button-color;
 	border: 0;
 	cursor: pointer;
 	font-weight: bold;
@@ -10,25 +10,25 @@
 }
 
 .join-button {
-	background: $verde-claro;
+	background: $button-join;
 
 	&:active {
-		box-shadow: 0 0 0 0 $verde-claro;
+		box-shadow: 0 0 0 0 $button-join;
 	}
 }
 
 .full-button {
-	background: $rojo-claro;
+	background: $button-full;
 
 	&:active {
-		box-shadow: 0 0 0 0 $rojo-claro;
+		box-shadow: 0 0 0 0 $button-full;
 	}
 }
 
 .leave-button {
-	background: $azul-bonito;
+	background: $button-leave;
 
 	&:active {
-		box-shadow: 0 0 0 0 $azul-bonito;
+		box-shadow: 0 0 0 0 $button-leave;
 	}
 }
