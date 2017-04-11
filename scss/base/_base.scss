@@ -69,4 +69,13 @@ footer {
 	justify-content: space-between;
 	background: $footer-background;
 	color: $footer-color;
+
+	.ilm-github {
+		display: flex;
+		align-items: center;
+	}
+
+	.ilm-github::before {
+		font-size: 1.2em;
+	}
 }

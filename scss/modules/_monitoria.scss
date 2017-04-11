@@ -9,7 +9,7 @@
 	color: $monitoria-color;
 	overflow: hidden;
 
-	@include from(laptop) {
+	@include from(tablet) {
 		width: calc(50% - #{$gutter * 2});
 	}
 

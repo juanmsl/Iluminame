@@ -80,6 +80,19 @@ footer {
   color: #FFFFFF;
 }
 
+footer .ilm-github {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer .ilm-github::before {
+  font-size: 1.2em;
+}
+
 [class$='-button'] {
   padding: 2.5px;
   color: #03151F;
@@ -362,7 +375,7 @@ footer {
   overflow: hidden;
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 768px) {
   .monitoria {
     width: calc(50% - 20px);
   }
