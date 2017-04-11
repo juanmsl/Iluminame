@@ -36,45 +36,53 @@ let addAndUpdateNotificators = function(boxElement, element) {
 
 let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, date, duration) {
 	let notification = document.createElement('section');
-	notification.setAttribute('class', 'ntf');
+	notification.setAttribute('class', 'box-notification');
+
+	let flexContent = document.createElement('section');
+	flexContent.setAttribute('class', 'box-flex-content');
+	notification.appendChild(flexContent);
+
 	let image = document.createElement('img');
 	image.setAttribute('src', userPicture);
-	image.setAttribute('class', 'ntf-picture');
-	let group = document.createElement('div');
-	group.setAttribute('class', 'ntf-group');
+	image.setAttribute('class', 'picture');
+	flexContent.appendChild(image);
 
-	let topic = document.createElement('h6');
-	topic.setAttribute('class', 'ntf-subject');
+	let group = document.createElement('div');
+	group.setAttribute('class', 'box-info');
+	flexContent.appendChild(group);
+
+	let topic = document.createElement('label');
+	topic.setAttribute('class', 'box-data title');
 	topic.innerHTML = subjectName;
+	group.appendChild(topic);
 
 	let user = document.createElement('p');
+	user.setAttribute('class', 'box-data');
 	if(myTutorie) {
-		user.setAttribute('class', 'ntf-monitor');
+		user.setAttribute('data-name', 'Monitor: ');
 	} else {
-		user.setAttribute('class', 'ntf-student');
+		user.setAttribute('data-name', 'Estudiante: ');
 	}
 	user.innerHTML = userName;
+	group.appendChild(user);
 
 	let monitoriePlace = document.createElement('p');
-	monitoriePlace.setAttribute('class', 'ntf-place');
+	monitoriePlace.setAttribute('class', 'box-data');
+	monitoriePlace.setAttribute('data-name', 'Lugar: ');
 	monitoriePlace.innerHTML = place;
+	group.appendChild(monitoriePlace);
 
 	let monitorieDate = document.createElement('p');
-	monitorieDate.setAttribute('class', 'ntf-date');
+	monitorieDate.setAttribute('class', 'box-data');
+	monitorieDate.setAttribute('data-name', 'Lugar: ');
 	monitorieDate.innerHTML = date;
+	group.appendChild(monitorieDate);
 
 	let monitorieDuration = document.createElement('p');
-	monitorieDuration.setAttribute('class', 'ntf-time');
+	monitorieDuration.setAttribute('class', 'box-data');
+	monitorieDuration.setAttribute('data-name', 'Duración: ');
 	monitorieDuration.innerHTML = duration;
-
-	group.appendChild(topic);
-	group.appendChild(user);
-	group.appendChild(monitoriePlace);
-	group.appendChild(monitorieDate);
 	group.appendChild(monitorieDuration);
-
-	notification.appendChild(image);
-	notification.appendChild(group);
 
 	if(myTutorie){
 		addAndUpdateNotificators($(navbar + ' #toggle-my-tutories'), notification);
@@ -85,31 +93,35 @@ let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, 
 
 let addNotification = function(chat, userPicture, userName, description, date) {
 	let notification = document.createElement('section');
-	notification.setAttribute('class', 'ntf');
+	notification.setAttribute('class', 'box-notification');
+
+	let flexContent = document.createElement('section');
+	flexContent.setAttribute('class', 'box-flex-content');
+	notification.appendChild(flexContent);
+
 	let image = document.createElement('img');
 	image.setAttribute('src', userPicture);
-	image.setAttribute('class', 'ntf-picture');
-	let group = document.createElement('div');
-	group.setAttribute('class', 'ntf-group');
+	image.setAttribute('class', 'picture');
+	flexContent.appendChild(image);
 
-	let user = document.createElement('h6');
-	user.setAttribute('class', 'ntf-user');
+	let group = document.createElement('div');
+	group.setAttribute('class', 'box-info');
+	flexContent.appendChild(group);
+
+	let user = document.createElement('label');
+	user.setAttribute('class', 'box-data title');
 	user.innerHTML = userName;
+	group.appendChild(user);
 
 	let descriptionNtf = document.createElement('p');
-	descriptionNtf.setAttribute('class', 'ntf-description');
+	descriptionNtf.setAttribute('class', 'box-data');
 	descriptionNtf.innerHTML = description;
+	group.appendChild(descriptionNtf);
 
 	let ntfDate = document.createElement('p');
-	ntfDate.setAttribute('class', 'ntf-dateFixed');
+	ntfDate.setAttribute('class', 'box-data-fixed');
 	ntfDate.innerHTML = date;
-
-	group.appendChild(user);
-	group.appendChild(descriptionNtf);
 	group.appendChild(ntfDate);
-
-	notification.appendChild(image);
-	notification.appendChild(group);
 
 	if(chat){
 		addAndUpdateNotificators($(navbar + ' #toggle-chat'), notification);

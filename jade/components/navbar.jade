@@ -1,10 +1,9 @@
 nav.main-navbar#main-navbar
 	a(href='home.html')
-		img(src='resources/images/icon.png').main-navbar-logo
-	a(href='home.html')
-		h4.main-navbar-name Ilumíname
+		img(src='resources/images/icon.png').logo
+	a(href='home.html').logo-title Ilumíname
 	form.main-navbar-finder
-		input(type='text' placeholder='¿Buscas una materia?' data-icon="&#xe00f;").main-navbar-input
+		input(type='text' placeholder='¿Buscas una materia?').main-navbar-input
 		a(href="#").ilm-search
 	.main-navbar-notificator.ilm-my-tutories#toggle-my-tutories(data-counter='0' data-target='#my-tutories')
 	.main-navbar-notificator.ilm-tutories#toggle-tutories(data-counter='0' data-target='#tutories')
@@ -12,14 +11,18 @@ nav.main-navbar#main-navbar
 	.main-navbar-notificator.ilm-notification#toggle-notification(data-counter='0' data-target='#notification')
 	.main-navbar-logout.ilm-logout
 	section.main-navbar-boxNotification#my-tutories
-		h5.main-navbar-title Tutorias pendientes
+		label.sub-title Tutorias pendientes
 		section.main-navbar-notifications
+		a(href='my-tutories.html').main-navbar-more Ver todo
 	section.main-navbar-boxNotification#tutories
-		h5.main-navbar-title Tutorias por dictar
+		label.sub-title Tutorias por dictar
 		section.main-navbar-notifications
+		a(href='tutories.html').main-navbar-more Ver todo
 	section.main-navbar-boxNotification#chat
-		h5.main-navbar-title Mensajes
+		label.sub-title Mensajes
 		section.main-navbar-notifications
+		a(href='messages.html').main-navbar-more Ver todo
 	section.main-navbar-boxNotification#notification
-		h5.main-navbar-title Notificaciones
+		label.sub-title Notificaciones
 		section.main-navbar-notifications
+		a(href='notifications.html').main-navbar-more Ver todo

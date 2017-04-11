@@ -29,8 +29,8 @@
 	}
 
 	#{&}-menuIcon, #{&}-notificationsIcon, #{&}-configIcon {
-		width: 42px;
-		height: 42px;
+		width: 30px;
+		height: 30px;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
@@ -55,7 +55,7 @@
 			display: flex;
 			background: $controlPane-header-background;
 			box-shadow: 1px 3px 10px $controlPane-border;
-			right: -42px;
+			right: -30px;
 		}
 	}
 
@@ -84,7 +84,7 @@
 		background: $controlPane-header-background;
 		color: $controlPane-header-color;
 		padding: $gutter / 2;
-		border-bottom: 1px solid $controlPane-border;
+		border-bottom: 1px solid $controlPane-section-background;
 
 		@include from(tablet) {
 			padding: $gutter;
@@ -107,6 +107,7 @@
 
 	#{&}-userid {
 		display: none;
+		margin-bottom: 2px;
 
 		@include from(tablet) {
 			display: inherit;
@@ -114,6 +115,19 @@
 			&:hover {
 				text-decoration: underline;
 			}
+		}
+	}
+
+	#{&}-followers {
+		display: none;
+
+		@include from(tablet) {
+			display: inherit;
+		}
+
+		&::after {
+			font-size: 0.9em;
+			content: attr(data-counter) ' seguidores';
 		}
 	}
 

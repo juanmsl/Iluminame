@@ -1,23 +1,24 @@
 mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn, btntx)
-	section.monitoria
-		section.monitoria-header
-			img(src= img).monitoria-picture
-			.monitoria-group
-				h6.monitoria-subject= mt
-				p.monitoria-user= nm
-		section.monitoria-info
-			p.monitoria-place= lg
-			p.monitoria-date= fc
-			p.monitoria-time= dr
-			p.monitoria-price= pr
-		section.monitoria-spec
-			p.monitoria-detail= inf
+	section.box
+		section.box-header
+			img(src= img).picture
+			.box-info
+				label.title= mt
+				p= nm
+		section.box-content
+			p.box-data(data-name='Lugar: ')= lg
+			p.box-data(data-name='Fecha: ')= fc
+			p.box-data(data-name='Duración: ')= dr
+			p.box-data(data-name='Precio: ')= pr
+		section.box-footer
+			p.box-data= inf
 			button(class= btn).monitoria-button= btntx
-			
+
 mixin notification(img, nm, dsc, dt)
-	section.ntf
-		img(src= img).ntf-picture
-		.ntf-group
-			h6.ntf-user= nm
-			p.ntf-description= dsc
-			p.ntf-dateFixed= dt
+	section.box
+		section.box-flex-content
+			img(src= img).picture
+			.box-info
+				label.title.ntf-user= nm
+				p.box-data= dsc
+				p.box-data-fixed= dt

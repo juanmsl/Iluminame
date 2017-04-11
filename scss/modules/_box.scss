@@ -1,0 +1,114 @@
+.box-group {
+	display: flex;
+	flex-wrap: wrap;
+	margin: $gutter;
+
+	&::before {
+		content: attr(data-content);
+		font-size: 0.8em;
+		margin-top: $gutter / 2;
+		margin-left: $gutter;
+		font-weight: bold;
+	}
+
+	&::after {
+		content: '';
+		border: 1px solid $box-border;
+		width: 100%;
+	}
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.box, .box-notification {
+	width: 100%;
+	position: relative;
+	align-self: stretch;
+	order: 1;
+}
+
+.box {
+	background: $box-background;
+	color: $box-color;
+	box-shadow: 0 3px 10px $box-border;
+	margin: $gutter;
+	display: flex;
+	flex-direction: column;
+
+	@include from(tablet) {
+		width: calc(50% - #{$gutter * 2});
+	}
+
+	@include from(large) {
+		width: calc(33.33% - #{$gutter * 2});
+	}
+}
+
+.box-notification {
+	background: $box-notificacion-background;
+	color: $box-notificacion-color;
+	border-bottom: 1px solid $box-border;
+	padding-bottom: $gutter;
+
+	&:hover {
+		background: $box-notificacion-background-hover;
+	}
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.box-header {
+	background: $box-header-background;
+	color: $box-header-color;
+	display: flex;
+	padding: $gutter;
+}
+
+.box-content {
+	padding: $gutter;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-grow: 1;
+}
+
+.box-flex-content {
+	padding: $gutter;
+	display: flex;
+}
+
+.box-footer {
+	background: $box-footer-background;
+	color: $box-footer-color;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: $gutter / 2;
+	margin-top: auto;
+}
+
+.box-info {
+	padding-left: $gutter;
+}
+
+.box-data {
+	padding-bottom: $gutter / 3;
+
+	&::before {
+		content: attr(data-name);
+		font-weight: bold;
+	}
+}
+
+.box-data-fixed {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-right: $gutter;
+	margin-bottom: $gutter / 2;
+	font-size: 0.7em;
+}

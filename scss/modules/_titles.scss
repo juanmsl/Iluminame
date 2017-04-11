@@ -1,0 +1,25 @@
+[class *= 'title'] {
+	font-family: $title-font;
+	font-weight: bold;
+	display: block;
+	padding: 0;
+}
+
+.logo-title {
+	padding: 0;
+	font-family: $logo-font;
+	font-size: $h3;
+	font-weight: bold;
+}
+
+.main-title {
+	font-size: $h1;
+}
+
+.sub-title {
+	font-size: $h5;
+}
+
+.title {
+	font-size: $h6;
+}

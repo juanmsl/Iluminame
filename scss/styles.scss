@@ -11,18 +11,19 @@
 @import "base/base";
 
 // Modules
-@import "modules/buttons.scss";
-@import "modules/forms.scss";
-@import "modules/notifications.scss";
-@import "modules/icons.scss";
-@import "modules/monitoria.scss";
+@import "modules/pictures";
+@import "modules/titles";
+@import "modules/box";
+@import "modules/buttons";
+@import "modules/forms";
+@import "modules/icons";
 
 // Components
-@import "components/mainContent.scss";
-@import "components/chat.scss";
-@import "components/index.scss";
-@import "components/navbar.scss";
-@import "components/controlPane.scss";
+@import "components/mainContent";
+@import "components/chat";
+@import "components/index";
+@import "components/navbar";
+@import "components/controlPane";
 
 // Layout
 //@import "layout/layout";

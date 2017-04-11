@@ -1,15 +1,31 @@
 // Global colors
 $background-1: $azul-medio;
-$background-2: $azul-opaco;
-$background-3: $azul-bonito;
-$background-4: $blanco;
-
 $color-1: $azul-opaco;
+
+$background-2: $azul-opaco;
 $color-2: $azul-oscuro;
+
+$background-3: $azul-bonito;
 $color-3: $azul-oscuro;
+
+$background-4: $blanco;
 $color-4: $azul-oscuro;
 
 $borde: $azul-oscuro;
+
+// Box
+$box-background: $background-4;	// Dependiente
+$box-color: $color-4;	// Dependiente
+$box-border: $borde;	// Dependiente
+$box-header-background: $background-3;	// Dependiente
+$box-header-color: $color-3	;// Dependiente
+$box-footer-background: $background-2;	// Constantes
+$box-footer-color: $color-2;	// Constantes
+
+// Box Notification
+$box-notificacion-background: $background-4;	// Dependiente
+$box-notificacion-color: $color-4;	// Dependiente
+$box-notificacion-background-hover: darken($box-notificacion-background, 20);	// Dependiente
 
 // Buttons
 $button-color: $azul-oscuro;
@@ -40,33 +56,12 @@ $form-link: $azul-medio;
 $footer-background: $color-4;	// Dependiente
 $footer-color: $background-4;	// Dependiente
 
-// Main content
-$mainContent-background: $background-2;	// Dependiente
-$mainContent-border: $color-2;	// Dependiente
-$mainContent-ntf-background: $background-4;	// Dependiente
-$mainContent-ntf-color: $color-4;	// Dependiente
-
-// Monitoria
-$monitoria-background: $background-4;	// Dependiente
-$monitoria-color: $color-4;	// Dependiente
-$monitoria-border: $borde;	// Dependiente
-$monitoria-header-background: $background-3;	// Dependiente
-$monitoria-header-color: $color-3	;// Dependiente
-$monitoria-spec-background: $gris-claro;	// Constantes
-$monitoria-spec-color: $azul-oscuro;	// Constantes
-
 // Navbar
 $navbar-background: $background-1;	// Dependiente
 $navbar-color: $color-1; 	// Dependiente
 $navbar-border: $borde;	// Dependiente
 $navbar-ntf-background: $background-3;	// Dependiente
 $navbar-ntf-color: $color-3;	// Dependiente
-
-// Notificacion
-$notificacion-background: $background-2;	// Dependiente
-$notificacion-background-hover: darken($notificacion-background, 20);	// Dependiente
-$notificacion-color: $color-2;	// Dependiente
-$notificacion-border: $borde;	// Dependiente
 
 // Scroll-bar
 $scroll-background: $background-4;	// Dependiente

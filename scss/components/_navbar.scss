@@ -11,18 +11,9 @@
 	top: 0;
 	width: 100%;
 
-	#{&}-logo {
-		width: 45px;
-		height: 45px;
-		padding: $gutter / 2;
-		border-radius: 50%;
-	}
-
-	#{&}-name {
-		padding: 0;
-		padding-right: $gutter;
+	.logo-title {
 		display: none;
-		font-family: $logo-font;
+		padding-right: $gutter;
 
 		@include from(tablet) {
 			display: block;
@@ -71,7 +62,6 @@
 		box-shadow: 0 3px 5px -1px $navbar-border;
 		z-index: z-index(navbar);
 		width: 350px;
-		padding-bottom: $gutter / 2;
 		margin-right: $gutter;
 
 		@include from(tablet) {
@@ -79,21 +69,18 @@
 		}
 	}
 
-	#{&}-notifications {
-		max-height: 70vh;
-		overflow-y: auto;
-	}
-
 	#{&}-logout, #{&}-notificator {
-		width: 50px;
 		height: 50px;
 		align-self: stretch;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		margin: 0;
 		position: relative;
 		cursor: pointer;
+
+		&::before {
+			font-size: 20px;
+		}
 
 		&:hover {
 			background: $navbar-color;
@@ -103,11 +90,22 @@
 
 	#{&}-logout {
 		display: flex;
-		border-left: 1px solid $navbar-border;
 		margin-left: $gutter;
+
+		&::after {
+			content: 'Cerrar sesión';
+			display: none;
+
+			@include from(tablet) {
+				display: inherit;
+				padding-right: $gutter;
+			}
+		}
 	}
 
 	#{&}-notificator {
+		width: 50px;
+		flex-direction: column;
 		display: none;
 
 		@include from(tablet) {
@@ -143,11 +141,23 @@
 		}
 	}
 
-	#{&}-title {
+	.sub-title {
 		text-align: center;
 		background: $navbar-background;
 		color: $navbar-color;
-		padding: 0;
+		padding: $gutter / 2 0;
+	}
+
+	#{&}-notifications {
+		max-height: 70vh;
+		overflow-y: auto;
+	}
+
+	#{&}-more {
+		display: block;
+		text-align: center;
+		font-size: 0.9em;
+		font-weight: bold;
 		padding: $gutter / 2 0;
 	}
 
