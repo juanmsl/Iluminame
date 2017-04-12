@@ -14,13 +14,16 @@ $color-4: $azul-oscuro;
 $borde: $azul-oscuro;
 
 // Box
-$box-background: $background-4;	// Dependiente
-$box-color: $color-4;	// Dependiente
+$box-background: $background-2;	// Dependiente
+$box-color: $color-2;	// Dependiente
 $box-border: $borde;	// Dependiente
 $box-header-background: $background-3;	// Dependiente
 $box-header-color: $color-3	;// Dependiente
-$box-footer-background: $background-2;	// Constantes
+$box-footer-background: darken($box-background, 10);	// Constantes
 $box-footer-color: $color-2;	// Constantes
+$box-disabled: $gris-claro;	// Constantes
+$box-header-disabled: $gris-medio;	// Constantes
+$box-footer-disabled: darken($box-disabled, 10);	// Constantes
 
 // Box Notification
 $box-notificacion-background: $background-4;	// Dependiente
@@ -31,7 +34,9 @@ $box-notificacion-background-hover: darken($box-notificacion-background, 20);	//
 $button-color: $azul-oscuro;
 $button-join: $verde-claro;
 $button-full: $rojo-claro;
+$button-cancel: $rojo-claro;
 $button-leave: $azul-bonito;
+$button-disabled: $gris-medio;
 
 // Control pane
 $controlPane-border: $borde;	// Dependiente

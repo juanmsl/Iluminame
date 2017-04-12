@@ -25,10 +25,31 @@
 	}
 }
 
+.cancel-button {
+	background: $button-cancel;
+
+	&:active {
+		box-shadow: 0 0 0 0 $button-cancel;
+	}
+}
+
 .leave-button {
 	background: $button-leave;
 
 	&:active {
 		box-shadow: 0 0 0 0 $button-leave;
+	}
+}
+
+.disabled-button {
+	background: $button-disabled;
+	color: $blanco;
+
+	&:disabled {
+		cursor: default;
+	}
+
+	&:active {
+		box-shadow: 0 0 0 0 $button-disabled;
 	}
 }

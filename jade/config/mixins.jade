@@ -1,18 +1,34 @@
-mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn, btntx)
-	section.box
-		section.box-header
-			img(src= img).picture
-			.box-info
-				label.title= mt
-				p= nm
-		section.box-content
-			p.box-data(data-name='Lugar: ')= lg
-			p.box-data(data-name='Fecha: ')= fc
-			p.box-data(data-name='Duración: ')= dr
-			p.box-data(data-name='Precio: ')= pr
-		section.box-footer
-			p.box-data= inf
-			button(class= btn).monitoria-button= btntx
+mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn, btntx, dsb)
+	if(dsb)
+		section.box.box-disabled
+			section.box-header
+				img(src= img).picture
+				.box-info
+					label.title= mt
+					p= nm
+			section.box-content
+				p.box-data(data-name='Lugar: ')= lg
+				p.box-data(data-name='Fecha: ')= fc
+				p.box-data(data-name='Duración: ')= dr
+				p.box-data(data-name='Precio: ')= pr
+			section.box-footer
+				p.box-data= inf
+				button(class= btn disabled).monitoria-button= btntx
+	else
+		section.box
+			section.box-header
+				img(src= img).picture
+				.box-info
+					label.title= mt
+					p= nm
+			section.box-content
+				p.box-data(data-name='Lugar: ')= lg
+				p.box-data(data-name='Fecha: ')= fc
+				p.box-data(data-name='Duración: ')= dr
+				p.box-data(data-name='Precio: ')= pr
+			section.box-footer
+				p.box-data= inf
+				button(class= btn)= btntx
 
 mixin notification(img, nm, dsc, dt)
 	section.box
@@ -22,3 +38,25 @@ mixin notification(img, nm, dsc, dt)
 				label.title.ntf-user= nm
 				p.box-data= dsc
 				p.box-data-fixed= dt
+
+mixin user(img, nm)
+	section.box
+		section.box-flex-content
+			img(src= img).big-picture
+			.box-info
+				label.title.ntf-user= nm
+				p.box-data(data-name='12 ') seguidores
+
+mixin subject(sbj, topics, vpr, vpb, nmax)
+	section.box
+		section.box-header
+			label.title= sbj
+		section.box-content
+			p.box-data Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?
+			ul.box-list(data-name='Posibles temas a tratar: ')
+				each topic in topics
+					li.box-list-item= topic
+			p.box-data(data-name= vpr + ' / hora privada' data-tooltip-long='Solo tu y el monitor' data-tooltip-short= '(x1)')
+			p.box-data(data-name= vpb + ' / hora publica' data-tooltip-long='Maximo ' + nmax + ' personas' data-tooltip-short= '(x' + nmax + ')')
+		section.box-footer
+			button.join-button Pedir una monitoria

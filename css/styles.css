@@ -29,6 +29,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100vh;
+  min-width: 350px;
 }
 
 h1 {
@@ -111,6 +112,13 @@ footer .ilm-github::before {
   border-radius: 50%;
 }
 
+.big-picture {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 [class*='title'] {
   font-family: "Quicksand", sans-serif;
   font-weight: bold;
@@ -149,7 +157,6 @@ footer .ilm-github::before {
 
 .box-group::before {
   content: attr(data-content);
-  font-size: 0.8em;
   margin-top: 5px;
   margin-left: 10px;
   font-weight: bold;
@@ -166,6 +173,8 @@ footer .ilm-github::before {
 }
 
 .box, .box-notification {
+  background: #DCF1F3;
+  color: #03151F;
   width: 100%;
   position: relative;
   -webkit-align-self: stretch;
@@ -177,8 +186,6 @@ footer .ilm-github::before {
 }
 
 .box {
-  background: #FFFFFF;
-  color: #03151F;
   box-shadow: 0 3px 10px #03151F;
   margin: 10px;
   display: -webkit-flex;
@@ -195,15 +202,13 @@ footer .ilm-github::before {
   }
 }
 
-@media all and (min-width: 1824px) {
+@media all and (min-width: 1224px) {
   .box {
     width: calc(33.33% - 20px);
   }
 }
 
 .box-notification {
-  background: #FFFFFF;
-  color: #03151F;
   border-bottom: 1px solid #03151F;
   padding-bottom: 10px;
 }
@@ -227,15 +232,6 @@ footer .ilm-github::before {
 
 .box-content {
   padding: 10px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -249,7 +245,7 @@ footer .ilm-github::before {
 }
 
 .box-footer {
-  background: #DCF1F3;
+  background: #b6e2e6;
   color: #03151F;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -260,12 +256,21 @@ footer .ilm-github::before {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 5px;
+  padding: 10px;
   margin-top: auto;
 }
 
 .box-info {
   padding-left: 10px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .box-data {
@@ -277,6 +282,16 @@ footer .ilm-github::before {
   font-weight: bold;
 }
 
+.box-data::after {
+  content: attr(data-tooltip-short);
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+.box-data:hover::after {
+  content: attr(data-tooltip-long);
+}
+
 .box-data-fixed {
   position: absolute;
   right: 0;
@@ -284,6 +299,37 @@ footer .ilm-github::before {
   margin-right: 10px;
   margin-bottom: 5px;
   font-size: 0.7em;
+}
+
+.box-list {
+  padding: 0;
+}
+
+.box-list::before {
+  display: block;
+  content: attr(data-name);
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.box-list .box-list-item {
+  margin-left: 30px;
+}
+
+.box-list .box-list-item::before {
+  content: '';
+}
+
+.box-disabled {
+  background: #F0F0F0;
+}
+
+.box-disabled .box-header {
+  background: #787878;
+}
+
+.box-disabled .box-footer {
+  background: #d6d6d6;
 }
 
 [class$='-button'] {
@@ -313,12 +359,33 @@ footer .ilm-github::before {
   box-shadow: 0 0 0 0 #DE5347;
 }
 
+.cancel-button {
+  background: #DE5347;
+}
+
+.cancel-button:active {
+  box-shadow: 0 0 0 0 #DE5347;
+}
+
 .leave-button {
   background: #5EC2F7;
 }
 
 .leave-button:active {
   box-shadow: 0 0 0 0 #5EC2F7;
+}
+
+.disabled-button {
+  background: #787878;
+  color: #FFFFFF;
+}
+
+.disabled-button:disabled {
+  cursor: default;
+}
+
+.disabled-button:active {
+  box-shadow: 0 0 0 0 #787878;
 }
 
 .fm-container {

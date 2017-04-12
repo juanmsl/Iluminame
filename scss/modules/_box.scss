@@ -5,7 +5,6 @@
 
 	&::before {
 		content: attr(data-content);
-		font-size: 0.8em;
 		margin-top: $gutter / 2;
 		margin-left: $gutter;
 		font-weight: bold;
@@ -23,6 +22,8 @@
 }
 
 .box, .box-notification {
+	background: $box-background;
+	color: $box-color;
 	width: 100%;
 	position: relative;
 	align-self: stretch;
@@ -30,8 +31,6 @@
 }
 
 .box {
-	background: $box-background;
-	color: $box-color;
 	box-shadow: 0 3px 10px $box-border;
 	margin: $gutter;
 	display: flex;
@@ -41,14 +40,12 @@
 		width: calc(50% - #{$gutter * 2});
 	}
 
-	@include from(large) {
+	@include from(pc) {
 		width: calc(33.33% - #{$gutter * 2});
 	}
 }
 
 .box-notification {
-	background: $box-notificacion-background;
-	color: $box-notificacion-color;
 	border-bottom: 1px solid $box-border;
 	padding-bottom: $gutter;
 
@@ -70,9 +67,6 @@
 
 .box-content {
 	padding: $gutter;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	flex-grow: 1;
 }
 
@@ -87,12 +81,15 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: $gutter / 2;
+	padding: $gutter;
 	margin-top: auto;
 }
 
 .box-info {
 	padding-left: $gutter;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .box-data {
@@ -101,6 +98,16 @@
 	&::before {
 		content: attr(data-name);
 		font-weight: bold;
+	}
+
+	&::after {
+		content: attr(data-tooltip-short);
+		font-size: 0.9em;
+		margin-left: $gutter;
+	}
+
+	&:hover::after {
+		content: attr(data-tooltip-long);
 	}
 }
 
@@ -111,4 +118,34 @@
 	margin-right: $gutter;
 	margin-bottom: $gutter / 2;
 	font-size: 0.7em;
+}
+
+.box-list {
+	padding: 0;
+
+	&::before {
+		display: block;
+		content: attr(data-name);
+		padding-bottom: $gutter;
+		font-weight: bold;
+	}
+
+	.box-list-item {
+		margin-left: $gutter * 3;
+		&::before {
+			content: '';
+		}
+	}
+}
+
+.box-disabled {
+	background: $box-disabled;
+
+	.box-header {
+		background: $box-header-disabled;
+	}
+
+	.box-footer {
+		background: $box-footer-disabled;
+	}
 }
