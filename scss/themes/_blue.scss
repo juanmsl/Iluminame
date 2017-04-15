@@ -33,18 +33,21 @@ $box-notificacion-background-hover: darken($box-notificacion-background, 20);	//
 // Buttons
 $button-color: $azul-oscuro;
 $button-join: $verde-claro;
+$button-add: $verde-claro;
+$button-follow: $verde-claro;
 $button-full: $rojo-claro;
 $button-cancel: $rojo-claro;
 $button-leave: $azul-bonito;
 $button-disabled: $gris-medio;
+$button-send: $azul-bonito;
 
 // Control pane
-$controlPane-border: $borde;	// Dependiente
-$controlPane-header-background: $background-1;	// Dependiente
-$controlPane-header-color: $color-1; 	// Dependiente
-$controlPane-section-background: $background-2;	// Dependiente
-$controlPane-section-color: $color-2;	// Dependiente
-$controlPane-section-background-hover: darken($controlPane-section-background, 20);	// Dependiente
+$widget-profile-border: $borde;	// Dependiente
+$widget-profile-header-background: $background-1;	// Dependiente
+$widget-profile-header-color: $color-1; 	// Dependiente
+$widget-profile-section-background: $background-2;	// Dependiente
+$widget-profile-section-color: $color-2;	// Dependiente
+$widget-profile-section-background-hover: darken($widget-profile-section-background, 20);	// Dependiente
 
 // Form
 $form-background: $background-4;	// Dependiente

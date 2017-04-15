@@ -1,5 +1,5 @@
-[class $= '-button'] {
-	padding: $gutter / 4 $gutter;
+[class *= '-button'] {
+	padding: $gutter / 2 $gutter * 2;
 	color: $button-color;
 	border: 0;
 	cursor: pointer;
@@ -7,6 +7,11 @@
 	box-shadow: 0 0 30px 20px transparent;
 	transition: box-shadow 0.2s ease-out;
 	outline: 0;
+}
+
+.buttons-group {
+	display: flex;
+	margin: $gutter;
 }
 
 .join-button {
@@ -17,11 +22,27 @@
 	}
 }
 
+.add-button {
+	background: $button-add;
+
+	&:active {
+		box-shadow: 0 0 0 0 $button-add;
+	}
+}
+
 .full-button {
 	background: $button-full;
 
 	&:active {
 		box-shadow: 0 0 0 0 $button-full;
+	}
+}
+
+.send-button {
+	background: $button-send;
+
+	&:active {
+		box-shadow: 0 0 0 0 $button-send;
 	}
 }
 
@@ -38,6 +59,15 @@
 
 	&:active {
 		box-shadow: 0 0 0 0 $button-leave;
+	}
+}
+
+.follow-button {
+	background: $button-follow;
+	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+
+	&:active {
+		box-shadow: 0 0 0 0 $button-follow, 0 1px 3px 0 $button-color;
 	}
 }
 

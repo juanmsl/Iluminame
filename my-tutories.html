@@ -10,112 +10,103 @@
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
   <body>
-    <nav id="main-navbar" class="main-navbar"><a href="home.html"><img src="resources/images/icon.png" class="logo"/></a><a href="home.html" class="logo-title">Ilumíname</a>
-      <form class="main-navbar-finder">
-        <input type="text" placeholder="¿Buscas una materia?" class="main-navbar-input"/><a href="#" class="ilm-search"></a>
+    <nav id="main-navbar" class="navbar"><a href="home.html"><img src="resources/images/icon.png" class="logo"/></a><a href="home.html" class="logo-title">Ilumíname</a>
+      <form class="navbar-finder">
+        <input type="text" placeholder="¿Buscas una materia?" class="navbar-input"/><a href="#" class="ilm-search"></a>
       </form>
-      <div id="toggle-my-tutories" data-counter="0" data-target="#my-tutories" class="main-navbar-notificator ilm-my-tutories"></div>
-      <div id="toggle-tutories" data-counter="0" data-target="#tutories" class="main-navbar-notificator ilm-tutories"></div>
-      <div id="toggle-chat" data-counter="0" data-target="#chat" class="main-navbar-notificator ilm-chat"></div>
-      <div id="toggle-notification" data-counter="0" data-target="#notification" class="main-navbar-notificator ilm-notification"></div>
-      <div class="main-navbar-logout ilm-logout"></div>
-      <section id="my-tutories" class="main-navbar-boxNotification">
+      <div id="toggle-notification" data-counter="0" data-target="#notification" class="navbar-notificator ilm-notification"></div>
+      <div id="toggle-chat" data-counter="0" data-target="#chat" class="navbar-notificator ilm-chat"></div>
+      <div id="toggle-my-tutories" data-counter="0" data-target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
+      <div id="toggle-tutories" data-counter="0" data-target="#tutories" class="navbar-notificator ilm-tutories"></div><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" id="toggle-user-profile-widget" data-target="#user-profile-widget" class="navbar-profile picture"/>
+      <aside id="user-profile-widget" class="profile-widget">
+        <section class="profile-widget-mainSection">
+          <section class="profile-widget-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="profile-widget-userPicture"/>
+            <section class="profile-widget-userinfo"><a href="profile.html" class="sub-title">Juan Manuel Sánchez</a><a href="profile.html" class="profile-widget-userid">juanmsl_pk</a>
+              <p data-counter="23" class="profile-widget-followers"></p>
+            </section><a href="#" class="profile-widget-configIcon ilm-configuration"></a>
+          </section>
+          <section class="profile-widget-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
+        </section>
+        <section class="profile-widget-notifications"><a href="notifications.html" data-counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.html" data-counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.html" data-counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.html" data-counter="53" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.html" data-counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.html" data-counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="index.html" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
+      </aside>
+      <section id="my-tutories" class="navbar-boxNotification">
         <label class="sub-title">Tutorias pendientes</label>
-        <section class="main-navbar-notifications"></section><a href="my-tutories.html" class="main-navbar-more">Ver todo</a>
+        <section class="navbar-notifications"></section><a href="my-tutories.html" class="navbar-more">Ver todo</a>
       </section>
-      <section id="tutories" class="main-navbar-boxNotification">
+      <section id="tutories" class="navbar-boxNotification">
         <label class="sub-title">Tutorias por dictar</label>
-        <section class="main-navbar-notifications"></section><a href="tutories.html" class="main-navbar-more">Ver todo</a>
+        <section class="navbar-notifications"></section><a href="tutories.html" class="navbar-more">Ver todo</a>
       </section>
-      <section id="chat" class="main-navbar-boxNotification">
+      <section id="chat" class="navbar-boxNotification">
         <label class="sub-title">Mensajes</label>
-        <section class="main-navbar-notifications"></section><a href="messages.html" class="main-navbar-more">Ver todo</a>
+        <section class="navbar-notifications"></section><a href="messages.html" class="navbar-more">Ver todo</a>
       </section>
-      <section id="notification" class="main-navbar-boxNotification">
+      <section id="notification" class="navbar-boxNotification">
         <label class="sub-title">Notificaciones</label>
-        <section class="main-navbar-notifications"></section><a href="notifications.html" class="main-navbar-more">Ver todo</a>
+        <section class="navbar-notifications"></section><a href="notifications.html" class="navbar-more">Ver todo</a>
       </section>
     </nav>
-    <aside id="user-main-control" class="control-pane">
-      <section class="control-pane-mainSection">
-        <section class="control-pane-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="control-pane-userPicture"/>
-          <section class="control-pane-userinfo">
-            <label class="sub-title">Juan Manuel Sánchez</label><a href="#" class="control-pane-userid">@juanmsl_pk</a>
-            <p data-counter="23" class="control-pane-followers"></p>
-          </section><a href="#" class="control-pane-configIcon ilm-configuration"></a><i id="toggle-user-main-control" data-target="#user-main-control" class="control-pane-menuIcon ilm-menu"></i><i id="toggle-notifications" data-target="#notifications" class="control-pane-notificationsIcon ilm-menu"></i>
-        </section>
-        <section class="control-pane-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
-      </section>
-      <section id="notifications" class="control-pane-notifications"><a href="notifications.html" data-counter="5" class="control-pane-section ilm-notification">Notificaciones</a><a href="messages.html" data-counter="4" class="control-pane-section ilm-chat">Mensajes</a><a href="my-tutories.html" data-counter="10" class="control-pane-section ilm-my-tutories">Mis monitorias</a><a href="users.html" data-counter="53" class="control-pane-section ilm-users">Usuarios que sigo</a><a href="subjects.html" data-counter="2" class="control-pane-section ilm-subject">Materias</a><a href="tutories.html" data-counter="3" class="control-pane-section ilm-tutories">Monitorias pendientes</a></section>
-    </aside>
     <div class="mainContent">
-      <div data-content="Mis monitorias activas" class="box-group">
-        <section class="box">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+      <div data-content="Mis monitorias activas" class="separator"></div>
+      <div class="box-group">
+        <section class="box-card"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Pensamiento algoritmico</label>
+              <p class="title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
             <button class="leave-button">Abandonar monitoria</button>
           </section>
         </section>
-        <section class="box">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box-card"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Lenguajes de programación</label>
+              <p class="title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">5/5 personas</p>
             <button class="leave-button">Abandonar monitoria</button>
           </section>
         </section>
-        <section class="box">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box-card"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Analisis de algoritmos</label>
+              <p class="title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">1/5 personas</p>
             <button class="leave-button">Abandonar monitoria</button>
           </section>
         </section>
-        <section class="box">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box-card"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Ingenieria de software</label>
+              <p class="title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">3/3 personas</p>
@@ -123,365 +114,306 @@
           </section>
         </section>
       </div>
-      <div data-content="Historial de monitorias asistidas" class="box-group">
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+      <div data-content="Historial de monitorias asistidas" class="separator"></div>
+      <div class="box-group">
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Pensamiento algoritmico</label>
+              <p class="title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Lenguajes de programación</label>
+              <p class="title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">5/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Analisis de algoritmos</label>
+              <p class="title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">1/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Ingenieria de software</label>
+              <p class="title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Pensamiento algoritmico</label>
+              <p class="title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">3/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Lenguajes de programación</label>
+              <p class="title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Analisis de algoritmos</label>
+              <p class="title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Ingenieria de software</label>
+              <p class="title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">3/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Analisis de algoritmos</label>
+              <p class="title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">1/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Ingenieria de software</label>
+              <p class="title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Pensamiento algoritmico</label>
+              <p class="title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">3/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Lenguajes de programación</label>
+              <p class="title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Analisis de algoritmos</label>
+              <p class="title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Ingenieria de software</label>
+              <p class="title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">3/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Analisis de algoritmos</label>
+              <p class="title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">1/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Ingenieria de software</label>
+              <p class="title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Pensamiento algoritmico</label>
+              <p class="title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">3/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Lenguajes de programación</label>
+              <p class="title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/5 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Analisis de algoritmos</label>
+              <p class="title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">2/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
-        <section class="box box-disabled">
-          <section class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box-card box-disabled"><a href="#" class="box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-info">
-              <label class="title">Ingenieria de software</label>
+              <p class="title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
-            </div>
-          </section>
+            </div></a>
           <section class="box-content">
             <p data-name="Lugar: " class="box-data">Edificio Baron - Salón 402</p>
             <p data-name="Fecha: " class="box-data">22/04/2017</p>
             <p data-name="Duración: " class="box-data">9:00pm - 10:00pm</p>
-            <p data-name="Precio: " class="box-data">$40.000</p>
+            <p data-name="Precio por estudiante: " class="box-data">$40.000</p>
           </section>
           <section class="box-footer">
             <p class="box-data">3/3 personas</p>
-            <button disabled="disabled" class="disabled-button monitoria-button">Cerrada</button>
           </section>
         </section>
       </div>

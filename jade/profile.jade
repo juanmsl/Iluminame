@@ -1,0 +1,24 @@
+extends templates/base
+
+append config
+	-title= "Ilumíname - Perfil"
+	
+block nav
+	include components/navbar
+
+block main
+	.mainContent.profile
+		section.profile-header
+			section.profile-card
+				section.profile-card-header
+					img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg').profile-picture
+					section.profile-card-header-info
+						label.main-title Juan Manuel Sánchez
+						p juanmsl_pk
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident in, ipsam ipsa suscipit laborum eveniet?
+				section.profile-card-body
+					a.profile-data.item(data-counter='23') Seguidores
+					a.profile-data.item(data-counter='6') Seguidos
+			button.follow-button Seguir
+		section.profile-body
+			

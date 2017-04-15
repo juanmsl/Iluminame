@@ -1,0 +1,10 @@
+.monitoria {
+	.monitoria-info {
+		flex-direction: column;
+		align-items: center;
+
+		@include from(tablet) {
+			flex-direction: row;
+		}
+	}
+}

@@ -1,8 +1,27 @@
+.indexBody {
+	background: image('/cover.png') center center;
+	background-size: cover;
+}
+
+.main-box {
+	width: 100%;
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.chatBody {
+	max-height: 100vh;
+}
+
 .mainContent {
 	width: 100%;
-	margin: 115px auto 20px;
-	//outline: 1px solid;
+	margin: 60px auto 10px;
 	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
 
 	@include from(mobile) {
 		width: 91.6%;
@@ -10,7 +29,6 @@
 
 	@include from(tablet) {
 		width: 83.2%;
-		margin-top: 70px;
 	}
 
 	@include from(laptop) {

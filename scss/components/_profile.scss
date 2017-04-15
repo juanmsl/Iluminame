@@ -1,0 +1,110 @@
+.profile {
+	#{&}-picture {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+
+		@include from(tablet) {
+			width: 150px;
+			height: 150px;
+		}
+	}
+
+	#{&}-header {
+		background: $background-1;
+		color: $color-1;
+		padding: $gutter * 2 $gutter * 3 $gutter * 2;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#{&}-card {
+		padding: $gutter;
+		width: 100%;
+		background: $background-2;
+		color: $color-2;
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0 5px 8px 1px $borde;
+
+		@include from(tablet) {
+			width: 450px;
+			align-items: center;
+			padding: $gutter * 3 $gutter * 3 $gutter;
+			background: linear-gradient(45deg, $background-3 50%, $background-2 50%);
+			transform: translateY($gutter * 6);
+		}
+	}
+
+	#{&}-card-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	#{&}-card-header-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-left: $gutter;
+	}
+
+	#{&}-card-body {
+		display: flex;
+		justify-content: center;
+		margin-top: $gutter;
+
+		@include from(tablet) {
+			margin-top: $gutter * 3;
+			flex-direction: row;
+		}
+	}
+
+	#{&}-data {
+		display: flex;
+		align-items: center;
+		margin: 0 $gutter;
+
+		@include from(tablet) {
+			flex-direction: column;
+			font-weight: bold;
+		}
+
+		&::before {
+			content: attr(data-counter);
+			font-size: initial;
+			font-weight: normal;
+			margin-right: $gutter / 2;
+
+			@include from(tablet) {
+				font-size: $h1;
+				margin: 0;
+			}
+		}
+	}
+
+	#{&}-body {
+		padding: $gutter;
+		background: $background-2;
+
+		@include from(tablet) {
+			margin-top: $gutter;
+			padding-top: $gutter * 5;
+		}
+	}
+
+	.follow-button {
+		margin-top: $gutter * 2;
+
+		@include from(tablet) {
+			position: absolute;
+			margin: $gutter;
+			bottom: 0;
+			right: 0;
+		}
+	}
+}

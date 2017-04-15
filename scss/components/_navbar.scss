@@ -1,4 +1,4 @@
-.main-navbar {
+.navbar {
 	display: flex;
 	align-items: center;
 	box-shadow: 0 2px 5px $navbar-border;
@@ -59,65 +59,38 @@
 		right: 0;
 		top: 100%;
 		background: $navbar-background;
-		box-shadow: 0 3px 5px -1px $navbar-border;
+		box-shadow: 0 3px 10px 1px $navbar-border;
 		z-index: z-index(navbar);
-		width: 350px;
-		margin-right: $gutter;
+		width: 360px;
+		margin: $gutter;
 
 		@include from(tablet) {
 			display: none;
 		}
 	}
 
-	#{&}-logout, #{&}-notificator {
+	#{&}-notificator {
+		width: 50px;
 		height: 50px;
+		flex-direction: column;
 		align-self: stretch;
 		align-items: center;
 		justify-content: center;
-		margin: 0;
+		margin: auto 0;
 		position: relative;
-		cursor: pointer;
-
-		&::before {
-			font-size: 20px;
-		}
-
-		&:hover {
-			background: $navbar-color;
-			color: $navbar-background;
-		}
-	}
-
-	#{&}-logout {
-		display: flex;
-		margin-left: $gutter;
-
-		&::after {
-			content: 'Cerrar sesión';
-			display: none;
-
-			@include from(tablet) {
-				display: inherit;
-				padding-right: $gutter;
-			}
-		}
-	}
-
-	#{&}-notificator {
-		width: 50px;
-		flex-direction: column;
 		display: none;
 
 		@include from(tablet) {
 			display: flex;
 		}
 
-		&.is-hover {
+		&:hover, &.is-hover {
 			background: $navbar-color;
 			color: $navbar-background;
 		}
 
 		&.activate::before {
+			font-size: 20px;
 			margin-top: 8px;
 			margin-right: 8px;
 		}
@@ -163,5 +136,16 @@
 
 	.ntf:last-child {
 		border: 0;
+	}
+
+	#{&}-profile {
+		margin: 0 $gutter;
+
+		@include from(tablet) {
+			&.is-hover, &:hover {
+				box-shadow: 0 2px 3px $navbar-border;
+				transform: translateY(-2px);
+			}
+		}
 	}
 }

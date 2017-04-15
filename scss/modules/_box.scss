@@ -1,6 +1,18 @@
 .box-group {
 	display: flex;
 	flex-wrap: wrap;
+	width: 100%;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.separator {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 100%;
 	margin: $gutter;
 
 	&::before {
@@ -13,24 +25,27 @@
 	&::after {
 		content: '';
 		border: 1px solid $box-border;
-		width: 100%;
-	}
-
-	&:last-child {
-		border-bottom: 0;
 	}
 }
 
-.box, .box-notification {
+.box-card, .box-notification {
 	background: $box-background;
 	color: $box-color;
 	width: 100%;
 	position: relative;
-	align-self: stretch;
 	order: 1;
 }
 
 .box {
+	background: $box-background;
+	color: $box-color;
+	position: relative;
+	order: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.box-card {
 	box-shadow: 0 3px 10px $box-border;
 	margin: $gutter;
 	display: flex;
@@ -48,6 +63,7 @@
 .box-notification {
 	border-bottom: 1px solid $box-border;
 	padding-bottom: $gutter;
+	display: flex;
 
 	&:hover {
 		background: $box-notificacion-background-hover;
@@ -58,11 +74,16 @@
 	}
 }
 
+.box-header, .box-footer {
+	flex-shrink: 0;
+}
+
 .box-header {
 	background: $box-header-background;
 	color: $box-header-color;
 	display: flex;
 	padding: $gutter;
+	cursor: inherit;
 }
 
 .box-content {
@@ -82,7 +103,7 @@
 	flex-direction: column;
 	align-items: center;
 	padding: $gutter;
-	margin-top: auto;
+	margin: 0;
 }
 
 .box-info {
@@ -118,24 +139,6 @@
 	margin-right: $gutter;
 	margin-bottom: $gutter / 2;
 	font-size: 0.7em;
-}
-
-.box-list {
-	padding: 0;
-
-	&::before {
-		display: block;
-		content: attr(data-name);
-		padding-bottom: $gutter;
-		font-weight: bold;
-	}
-
-	.box-list-item {
-		margin-left: $gutter * 3;
-		&::before {
-			content: '';
-		}
-	}
 }
 
 .box-disabled {

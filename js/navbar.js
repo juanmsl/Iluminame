@@ -1,6 +1,6 @@
 let navbar = '#main-navbar';
 let toggles = $(navbar + ' [id^=\'toggle-\']');
-let notificators = $(navbar + ' .main-navbar-notificator');
+let notificators = $(navbar + ' .navbar-notificator');
 let activeElement = null;
 
 let toggleTarget = function(element) {
@@ -8,7 +8,7 @@ let toggleTarget = function(element) {
 	if(activeElement != null) {
 		activeTarget = activeElement.attr('data-target');
 		activeElement.removeClass('is-hover');
-		$(activeTarget).hide();
+		$(activeTarget).fadeOut('fast');
 	}
 	let elementTarget = element.attr('data-target');
 	if(activeTarget === elementTarget) {
@@ -17,7 +17,7 @@ let toggleTarget = function(element) {
 	}
 	activeElement = element;
 	activeElement.addClass('is-hover');
-	$(elementTarget).show();
+	$(elementTarget).fadeIn('fast');
 }
 
 toggles.on('click', function(){
@@ -31,12 +31,13 @@ let addAndUpdateNotificators = function(boxElement, element) {
 		boxElement.addClass('activate');
 	}
 	boxElement.attr('data-counter', parseInt(counter) + 1);
-	$(navbar + ' ' + target + ' .main-navbar-notifications').append(element);
+	$(navbar + ' ' + target + ' .navbar-notifications').append(element);
 }
 
 let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, date, duration) {
-	let notification = document.createElement('section');
+	let notification = document.createElement('a');
 	notification.setAttribute('class', 'box-notification');
+	notification.setAttribute('href', '#');
 
 	let flexContent = document.createElement('section');
 	flexContent.setAttribute('class', 'box-flex-content');
@@ -51,7 +52,7 @@ let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, 
 	group.setAttribute('class', 'box-info');
 	flexContent.appendChild(group);
 
-	let topic = document.createElement('label');
+	let topic = document.createElement('p');
 	topic.setAttribute('class', 'box-data title');
 	topic.innerHTML = subjectName;
 	group.appendChild(topic);
@@ -92,8 +93,9 @@ let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, 
 }
 
 let addNotification = function(chat, userPicture, userName, description, date) {
-	let notification = document.createElement('section');
+	let notification = document.createElement('a');
 	notification.setAttribute('class', 'box-notification');
+	notification.setAttribute('href', '#');
 
 	let flexContent = document.createElement('section');
 	flexContent.setAttribute('class', 'box-flex-content');
@@ -108,7 +110,7 @@ let addNotification = function(chat, userPicture, userName, description, date) {
 	group.setAttribute('class', 'box-info');
 	flexContent.appendChild(group);
 
-	let user = document.createElement('label');
+	let user = document.createElement('p');
 	user.setAttribute('class', 'box-data title');
 	user.innerHTML = userName;
 	group.appendChild(user);

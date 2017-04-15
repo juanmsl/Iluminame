@@ -1,13 +1,9 @@
-let controlPane = '#user-main-control';
-let menutoggle = $(controlPane + ' #toggle-user-main-control');
-let notificationsToggle = $(controlPane + ' #toggle-notifications');
+var textarea = document.querySelector('.chat-typetext');
+textarea.addEventListener('keydown', autosize);
 
-menutoggle.on('click', function(){
-	let target = $(this).attr('data-target');
-	$(target).toggleClass('menu__visible');
-});
-
-notificationsToggle.on('click', function(){
-	let target = $(this).attr('data-target');
-	$(target).slideToggle();
-});
+function autosize(){
+	var el = this;
+	setTimeout(function(){
+		el.style.cssText = 'height:' + (el.scrollHeight + 2) + 'px';
+	},0);
+}

@@ -17,13 +17,15 @@
 @import "modules/buttons";
 @import "modules/forms";
 @import "modules/icons";
+@import "modules/rating";
 
 // Components
 @import "components/mainContent";
 @import "components/chat";
-@import "components/index";
 @import "components/navbar";
-@import "components/controlPane";
+@import "components/profileWidget";
+@import "components/profile";
+@import "components/tutorie";
 
 // Layout
 //@import "layout/layout";

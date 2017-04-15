@@ -1,0 +1,49 @@
+.ranking {
+	align-self: flex-start;
+	position: relative;
+	width: auto;
+	font-size: $h4;
+	display: flex;
+	cursor: default;
+
+	.fst {
+		text-shadow: 0 0 3px;
+	}
+
+	.scd {
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		color: #FFBB00;
+	}
+
+	.value, .data {
+		width: 200%;
+		position: absolute;
+		left: 100%;
+		bottom: 0;
+		line-height: $h3;
+		font-size: 1rem;
+		margin-left: $gutter;
+	}
+
+	.value {
+		display: block;
+	}
+
+	.data {
+		display: none;
+	}
+
+	&:hover {
+		.value {
+			display: none;
+		}
+
+		.data {
+			display: block;
+		}
+	}
+}

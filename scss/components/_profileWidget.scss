@@ -1,78 +1,42 @@
-.control-pane {
+.profile-widget {
 	width: 100%;
 	margin: 0;
-	position: fixed;
-	top: 50px;
-	display: flex;
-	z-index: z-index(navbar);
-	flex-direction: column;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	display: none;
 
 	@include from(tablet) {
 		width: 360px;
 		margin: $gutter;
-		display: block;
-		box-shadow: 0 3px 10px 1px $controlPane-border;
-		transition: transform 0.5s ease-in-out;
-		transform: translateX(calc(-100% - #{$gutter}));
+		box-shadow: 0 3px 10px 1px $widget-profile-border;
 	}
 
-	&.menu__visible {
-		transform: translate(0);
-
-		.control-pane-menuIcon {
-			right: 0;
-			opacity: 1;
-			background: transparent;
-			box-shadow: none;
-			color: $controlPane-header-color;
-		}
-	}
-
-	#{&}-menuIcon, #{&}-notificationsIcon, #{&}-configIcon {
+	#{&}-notificationsIcon, #{&}-configIcon {
 		width: 30px;
 		height: 30px;
+		display: flex;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
 
-		@include from(tablet) {
-			position: absolute;
-			right: 0;
-		}
-	}
-
-	#{&}-menuIcon, #{&}-notificationsIcon {
-		@include from(tablet) {
-			top: 0;
-			transition: all 0.5s ease-in-out;
-		}
-	}
-
-	#{&}-menuIcon {
-		display: none;
-
-		@include from(tablet) {
-			display: flex;
-			background: $controlPane-header-background;
-			box-shadow: 1px 3px 10px $controlPane-border;
-			right: -30px;
-		}
 	}
 
 	#{&}-notificationsIcon {
-		display: flex;
-
+		top: 0;
 		@include from(tablet) {
+			transition: all 0.5s ease-in-out;
 			display: none;
 		}
 	}
 
 	#{&}-configIcon {
-		display: flex;
 		margin-left: auto;
 
 		@include from(tablet) {
+			position: absolute;
 			bottom: 0;
+			right: 0;
 			margin-left: 0;
 		}
 	}
@@ -81,14 +45,14 @@
 		display: flex;
 		align-items: center;
 		position: relative;
-		background: $controlPane-header-background;
-		color: $controlPane-header-color;
+		background: $widget-profile-header-background;
+		color: $widget-profile-header-color;
 		padding: $gutter / 2;
-		border-bottom: 1px solid $controlPane-section-background;
+		border-bottom: 1px solid $widget-profile-section-background;
 
 		@include from(tablet) {
 			padding: $gutter;
-			padding-right: $gutter * 4;
+			padding-right: $gutter * 3;
 		}
 	}
 
@@ -134,8 +98,8 @@
 	#{&}-info {
 		padding: $gutter;
 		display: none;
-		background: $controlPane-header-background;
-		color: $controlPane-header-color;
+		background: $widget-profile-header-background;
+		color: $widget-profile-header-color;
 		font-size: 0.8em;
 
 		@include from(tablet) {
@@ -144,24 +108,20 @@
 	}
 
 	#{&}-notifications {
-		display: none;
-
-		@include from(tablet) {
-			display: block !important;
-		}
+		overflow: auto;
 	}
 
-	#{&}-section {
+	#{&}-logout, #{&}-section {
 		display: flex;
-		background: $controlPane-section-background;
-		color: $controlPane-section-color;
+		background: $widget-profile-section-background;
+		color: $widget-profile-section-color;
 		line-height: $gutter * 4;
 		padding: 0;
 		padding-left: $gutter;
 		font-size: 0.9em;
 		font-family: $title-font;
 		transition: all 0.3s ease-in-out;
-		border-bottom: 1px solid $controlPane-border;
+		border-bottom: 1px solid $widget-profile-border;
 
 		@include from(mobile) {
 			font-size: 1.1em;
@@ -172,7 +132,7 @@
 		}
 
 		&:hover {
-			background: $controlPane-section-background-hover;
+			background: $widget-profile-section-background-hover;
 			padding-left: $gutter * 2;
 			font-weight: bold;
 		}
@@ -183,6 +143,22 @@
 			justify-content: center;
 		}
 
+		&::before {
+			order: 1;
+			padding-left: 0;
+		}
+	}
+
+	#{&}-logout {
+		background: $widget-profile-section-background-hover;
+		font-weight: bold;
+
+		&::before {
+			margin-left: auto;
+		}
+	}
+
+	#{&}-section {
 		&::after {
 			content: attr(data-counter);
 			font-size: 13px;
@@ -190,16 +166,14 @@
 			width: 22px;
 			height: 22px;
 			border-radius: 50%;
-			background: $controlPane-header-background;
-			color: $controlPane-header-color;
 			margin: auto;
 			margin-left: auto;
 			margin-right: $gutter;
 		}
 
-		&::before {
-			padding-left: 0;
-			order: 1;
+		&.active::after {
+			background: $widget-profile-header-background;
+			color: $widget-profile-header-color;
 		}
 	}
 }
