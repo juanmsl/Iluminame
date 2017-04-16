@@ -1,27 +1,23 @@
+
 <?php
 define('PAGE_ID', "index");
 require_once "global.php";
-
 if (LOGGED_IN)
 {
-	header("Location: " . WWW . "/home.html");
+	header("Location: " . WWW . "/home.php");
 	exit;
 }
-
 $login_result = "";
-$credentials_username = "";
-
-if (isset($_POST['credentials_username']) && isset($_POST['credentials_password']))
+$login_username = "";
+if (isset($_POST['login_username']) && isset($_POST['login_password']))
 {
-	$credentials_username = $_POST['credentials_username'];
-	$credUser = filter($_POST['credentials_username']);
-	$credPass = filter($_POST['credentials_password']);
-
-	if ($credUser != $credentials_username)
+	$login_username = $_POST['login_username'];
+	$credUser = filter($_POST['login_username']);
+	$credPass = filter($_POST['login_password']);
+	if ($credUser != $login_username)
 	{
 		$credUser = "";
 	}
-
 	if (strlen($credUser) < 1)
 	{
 		$login_result = "Por favor, ingresa tu usuario";
@@ -64,12 +60,12 @@ if (isset($_POST['credentials_username']) && isset($_POST['credentials_password'
           <h5 class="fm-container_subtitle">Portal web de monitorias dedicado a estudiantes</h5>
         </div>
         <div class="fm-container_body">
-          <form id="login-form" class="fm-form actual_form" action="index.php" method="post">
+          <form id="login-form" action="index.php" method="post" class="fm-form actual_form">
             <div class="fm-form_group">
               <label class="fm-form_introMessage">¡Hola! Bienvenido</label>
-              <label class="fm-form_warning"><?php echo clean($login_result); ?></label>
-              <input type="text" placeholder="Usuario" required="required" class="fm-form_control" name="credentials_username" value="<?php echo clean($credentials_username); ?>"/>
-              <input type="password" placeholder="Contraseña" required="required" class="fm-form_control" name="credentials_password"/>
+              <label class="fm-form_warning"></label>
+              <input type="text" name="login_username" placeholder="Usuario" required="required" class="fm-form_control"/>
+              <input type="password" name="login_password" placeholder="Contraseña" required="required" class="fm-form_control"/>
               <input type="submit" value="Ingresar" class="fm-form_button"/>
             </div>
             <div class="fm-form_group">
@@ -77,14 +73,14 @@ if (isset($_POST['credentials_username']) && isset($_POST['credentials_password'
               <p class="fm-form_message">¿Olvidaste tu contraseña? <a target="#forgot-form" class="fm-form_link">Recuperala</a></p>
             </div>
           </form>
-          <form id="register-form" class="fm-form">
+          <form id="register-form" action="register.php" method="post" class="fm-form">
             <div class="fm-form_group">
               <label class="fm-form_introMessage">Registrate y encuentra las monitorias que necesitas de forma facil y rapida<br/>¡Es gratis!</label>
               <label class="fm-form_warning"></label>
-              <input type="text" placeholder="Usuario" required="required" class="fm-form_control"/>
-              <input type="email" placeholder="Correo" required="required" class="fm-form_control"/>
-              <input type="password" placeholder="Contraseña" required="required" class="fm-form_control"/>
-              <input type="password" placeholder="Contraseña" required="required" class="fm-form_control"/>
+              <input type="text" name="register_username" placeholder="Usuario" required="required" class="fm-form_control"/>
+              <input type="email" name="register_email" placeholder="Correo" required="required" class="fm-form_control"/>
+              <input type="password" name="register_password" placeholder="Contraseña" required="required" class="fm-form_control"/>
+              <input type="password" name="register_password_conf" placeholder="Contraseña" required="required" class="fm-form_control"/>
               <input type="submit" value="Registrarme" class="fm-form_button"/>
             </div>
             <div class="fm-form_group">
@@ -92,11 +88,11 @@ if (isset($_POST['credentials_username']) && isset($_POST['credentials_password'
               <p class="fm-form_message">¿Olvidaste tu contraseña? <a target="#forgot-form" class="fm-form_link">Recuperala</a></p>
             </div>
           </form>
-          <form id="forgot-form" class="fm-form">
+          <form id="forgot-form" action="forgot.php" method="post" class="fm-form">
             <div class="fm-form_group">
               <label class="fm-form_introMessage">Brindanos tu correo para enviarte los pasos para cambiar tu contraseña</label>
               <label class="fm-form_warning"></label>
-              <input type="email" placeholder="Correo" required="required" class="fm-form_control"/>
+              <input type="email" name="forgot_email" placeholder="Correo" required="required" class="fm-form_control"/>
               <input type="submit" value="Recuperar" class="fm-form_button"/>
             </div>
             <div class="fm-form_group">
