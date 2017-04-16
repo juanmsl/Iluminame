@@ -1,11 +1,6 @@
 .box-group {
 	display: flex;
 	flex-wrap: wrap;
-	width: 100%;
-
-	&:last-child {
-		border-bottom: 0;
-	}
 }
 
 .separator {
@@ -16,7 +11,7 @@
 	margin: $gutter;
 
 	&::before {
-		content: attr(data-content);
+		content: attr(name);
 		margin-top: $gutter / 2;
 		margin-left: $gutter;
 		font-weight: bold;
@@ -28,127 +23,133 @@
 	}
 }
 
-.box-card, .box-notification {
-	background: $box-background;
-	color: $box-color;
-	width: 100%;
-	position: relative;
-	order: 1;
-}
-
 .box {
 	background: $box-background;
 	color: $box-color;
+	box-shadow: 0 3px 10px 0 $box-border;
 	position: relative;
-	order: 1;
-	display: flex;
-	flex-direction: column;
-}
-
-.box-card {
-	box-shadow: 0 3px 10px $box-border;
-	margin: $gutter;
 	display: flex;
 	flex-direction: column;
 
-	@include from(tablet) {
-		width: calc(50% - #{$gutter * 2});
+	&.card {
+		margin: $gutter;
+		width: 100%;
+
+		@include from(600px) {
+			width: calc(50% - #{$gutter * 2});
+		}
+
+		@include from(pc) {
+			width: calc(33.33% - #{$gutter * 2});
+		}
+
+		@include from(2200px) {
+			width: calc(25% - #{$gutter * 2});
+		}
+
+		@include from(3000px) {
+			width: calc(20% - #{$gutter * 2});
+		}
+
+		@include from(3800px) {
+			width: calc(16.66% - #{$gutter * 2});
+		}
+
+		.box-footer {
+			margin-top: auto;
+		}
 	}
 
-	@include from(pc) {
-		width: calc(33.33% - #{$gutter * 2});
-	}
-}
+	&.notification {
+		background: $box-background;
 
-.box-notification {
-	border-bottom: 1px solid $box-border;
-	padding-bottom: $gutter;
-	display: flex;
-
-	&:hover {
-		background: $box-notificacion-background-hover;
+		&:hover {
+			background: $box-notificacion-background-hover;
+		}
 	}
 
-	&:last-child {
-		border-bottom: 0;
-	}
-}
-
-.box-header, .box-footer {
-	flex-shrink: 0;
-}
-
-.box-header {
-	background: $box-header-background;
-	color: $box-header-color;
-	display: flex;
-	padding: $gutter;
-	cursor: inherit;
-}
-
-.box-content {
-	padding: $gutter;
-	flex-grow: 1;
-}
-
-.box-flex-content {
-	padding: $gutter;
-	display: flex;
-}
-
-.box-footer {
-	background: $box-footer-background;
-	color: $box-footer-color;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: $gutter;
-	margin: 0;
-}
-
-.box-info {
-	padding-left: $gutter;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.box-data {
-	padding-bottom: $gutter / 3;
-
-	&::before {
-		content: attr(data-name);
-		font-weight: bold;
+	#{&}-v-section, #{&}-h-section {
+		display: flex;
+		padding: $gutter;
 	}
 
-	&::after {
-		content: attr(data-tooltip-short);
-		font-size: 0.9em;
-		margin-left: $gutter;
+	.gutter-0 {
+		padding: 0 $gutter;
 	}
 
-	&:hover::after {
-		content: attr(data-tooltip-long);
-	}
-}
-
-.box-data-fixed {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	margin-right: $gutter;
-	margin-bottom: $gutter / 2;
-	font-size: 0.7em;
-}
-
-.box-disabled {
-	background: $box-disabled;
-
-	.box-header {
-		background: $box-header-disabled;
+	#{&}-break {
+		flex-wrap: wrap;
 	}
 
-	.box-footer {
-		background: $box-footer-disabled;
+	#{&}-v-section {
+		flex-direction: column;
+	}
+
+	#{&}-h-section {
+		flex-direction: row;
+	}
+
+	#{&}-align-center {
+		align-items: center;
+		align-content: center;
+	}
+
+	#{&}-justify-center {
+		justify-content: center;
+	}
+
+	#{&}-header {
+		background: $box-header-background;
+		flex-shrink: 0;
+	}
+
+	#{&}-footer {
+		background: $box-footer-background;
+		flex-shrink: 0;
+		padding: $gutter / 2;
+	}
+
+	#{&}-data {
+		margin: $gutter / 4;
+
+		&::before {
+			content: attr(name);
+			font-weight: bold;
+		}
+
+		&::after {
+			content: attr(data-tooltip-short);
+			font-size: 0.9em;
+			margin-left: $gutter;
+		}
+
+		&:hover::after {
+			content: attr(data-tooltip-long);
+		}
+	}
+
+	&.data-fixed {
+		padding-bottom: $gutter;
+
+		&::after {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			margin: $gutter / 2 $gutter;
+			font-size: 0.7em;
+			content: attr(data-fixed);
+		}
+	}
+
+	&.box-disabled {
+		background: $box-disabled;
+
+		.box-header {
+			background: $box-header-disabled;
+		}
+
+		.box-footer {
+			background: $box-footer-disabled;
+		}
 	}
 }

@@ -5,44 +5,44 @@ nav.navbar#main-navbar
 	form.navbar-finder
 		input(type='text' placeholder='¿Buscas una materia?').navbar-input
 		a(href="#").ilm-search
-	.navbar-notificator.ilm-notification#toggle-notification(data-counter='0' data-target='#notification')
-	.navbar-notificator.ilm-chat#toggle-chat(data-counter='0' data-target='#chat')
-	.navbar-notificator.ilm-my-tutories#toggle-my-tutories(data-counter='0' data-target='#my-tutories')
-	.navbar-notificator.ilm-tutories#toggle-tutories(data-counter='0' data-target='#tutories')
-	img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg').navbar-profile.picture#toggle-user-profile-widget(data-target='#user-profile-widget')
+	.navbar-notificator.ilm-notification#toggle-notification(counter='0' target='#notification')
+	.navbar-notificator.ilm-chat#toggle-chat(counter='0' target='#chat')
+	.navbar-notificator.ilm-my-tutories#toggle-my-tutories(counter='0' target='#my-tutories')
+	.navbar-notificator.ilm-tutories#toggle-tutories(counter='0' target='#tutories')
+	img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg').navbar-profile.picture#toggle-user-profile-widget(target='#user-profile-widget')
 
 	aside.profile-widget#user-profile-widget
 		section.profile-widget-mainSection
 			section.profile-widget-user
-				img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg').profile-widget-userPicture
+				img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg').profile-widget-userPicture
 				section.profile-widget-userinfo
-					a(href="profile.html").sub-title Juan Manuel Sánchez
-					a(href='profile.html').profile-widget-userid juanmsl_pk
-					p.profile-widget-followers(data-counter='23')
+					a(href="profile.html").title Juan Manuel Sánchez
+					a(href='profile.html').user-id juanmsl_pk
+					p.profile-widget-followers(counter='23')
 				a(href='#').profile-widget-configIcon.ilm-configuration
-			section.profile-widget-info Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.
+			section.user-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.
 		section.profile-widget-notifications
-			a(href='notifications.html').profile-widget-section.ilm-notification.active(data-counter='2') Notificaciones
-			a(href='messages.html').profile-widget-section.ilm-chat.active(data-counter='4') Mensajes
-			a(href='my-tutories.html').profile-widget-section.ilm-my-tutories.active(data-counter='4') Mis monitorias
-			a(href='users.html').profile-widget-section.ilm-users(data-counter='53') Usuarios que sigo
-			a(href='subjects.html').profile-widget-section.ilm-subject(data-counter='3') Materias
-			a(href='tutories.html').profile-widget-section.ilm-tutories.active(data-counter='3') Monitorias pendientes
+			a(href='notifications.html').profile-widget-section.ilm-notification.active(counter='2') Notificaciones
+			a(href='messages.html').profile-widget-section.ilm-chat.active(counter='4') Mensajes
+			a(href='my-tutories.html').profile-widget-section.ilm-my-tutories.active(counter='4') Mis monitorias
+			a(href='users.html').profile-widget-section.ilm-users(counter='53') Usuarios que sigo
+			a(href='subjects.html').profile-widget-section.ilm-subject(counter='3') Materias
+			a(href='tutories.html').profile-widget-section.ilm-tutories.active(counter='3') Monitorias pendientes
 			a(href='index.html').profile-widget-logout.ilm-logout Cerrar sesión
 
 	section.navbar-boxNotification#my-tutories
-		label.sub-title Tutorias pendientes
+		label.title Monitorias pendientes
 		section.navbar-notifications
 		a(href='my-tutories.html').navbar-more Ver todo
 	section.navbar-boxNotification#tutories
-		label.sub-title Tutorias por dictar
+		label.title Monitorias por dictar
 		section.navbar-notifications
 		a(href='tutories.html').navbar-more Ver todo
 	section.navbar-boxNotification#chat
-		label.sub-title Mensajes
+		label.title Mensajes
 		section.navbar-notifications
 		a(href='messages.html').navbar-more Ver todo
 	section.navbar-boxNotification#notification
-		label.sub-title Notificaciones
+		label.title Notificaciones
 		section.navbar-notifications
 		a(href='notifications.html').navbar-more Ver todo

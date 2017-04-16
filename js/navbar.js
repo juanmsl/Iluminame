@@ -6,11 +6,11 @@ let activeElement = null;
 let toggleTarget = function(element) {
 	let activeTarget = null;
 	if(activeElement != null) {
-		activeTarget = activeElement.attr('data-target');
+		activeTarget = activeElement.attr('target');
 		activeElement.removeClass('is-hover');
 		$(activeTarget).fadeOut('fast');
 	}
-	let elementTarget = element.attr('data-target');
+	let elementTarget = element.attr('target');
 	if(activeTarget === elementTarget) {
 		activeElement = null;
 		return;
@@ -25,22 +25,22 @@ toggles.on('click', function(){
 });
 
 let addAndUpdateNotificators = function(boxElement, element) {
-	let target = boxElement.attr('data-target');
-	let counter = boxElement.attr('data-counter');
+	let target = boxElement.attr('target');
+	let counter = boxElement.attr('counter');
 	if(counter == 0) {
 		boxElement.addClass('activate');
 	}
-	boxElement.attr('data-counter', parseInt(counter) + 1);
+	boxElement.attr('counter', parseInt(counter) + 1);
 	$(navbar + ' ' + target + ' .navbar-notifications').append(element);
 }
 
 let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, date, duration) {
 	let notification = document.createElement('a');
-	notification.setAttribute('class', 'box-notification');
+	notification.setAttribute('class', 'box notification');
 	notification.setAttribute('href', '#');
 
 	let flexContent = document.createElement('section');
-	flexContent.setAttribute('class', 'box-flex-content');
+	flexContent.setAttribute('class', 'box-h-section');
 	notification.appendChild(flexContent);
 
 	let image = document.createElement('img');
@@ -49,39 +49,39 @@ let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, 
 	flexContent.appendChild(image);
 
 	let group = document.createElement('div');
-	group.setAttribute('class', 'box-info');
+	group.setAttribute('class', 'box-v-section box-justify-center gutter-0');
 	flexContent.appendChild(group);
 
 	let topic = document.createElement('p');
-	topic.setAttribute('class', 'box-data title');
+	topic.setAttribute('class', 'sub-title');
 	topic.innerHTML = subjectName;
 	group.appendChild(topic);
 
 	let user = document.createElement('p');
 	user.setAttribute('class', 'box-data');
 	if(myTutorie) {
-		user.setAttribute('data-name', 'Monitor: ');
+		user.setAttribute('name', 'Monitor: ');
 	} else {
-		user.setAttribute('data-name', 'Estudiante: ');
+		user.setAttribute('name', 'Estudiante: ');
 	}
 	user.innerHTML = userName;
 	group.appendChild(user);
 
 	let monitoriePlace = document.createElement('p');
 	monitoriePlace.setAttribute('class', 'box-data');
-	monitoriePlace.setAttribute('data-name', 'Lugar: ');
+	monitoriePlace.setAttribute('name', 'Lugar: ');
 	monitoriePlace.innerHTML = place;
 	group.appendChild(monitoriePlace);
 
 	let monitorieDate = document.createElement('p');
 	monitorieDate.setAttribute('class', 'box-data');
-	monitorieDate.setAttribute('data-name', 'Lugar: ');
+	monitorieDate.setAttribute('name', 'Lugar: ');
 	monitorieDate.innerHTML = date;
 	group.appendChild(monitorieDate);
 
 	let monitorieDuration = document.createElement('p');
 	monitorieDuration.setAttribute('class', 'box-data');
-	monitorieDuration.setAttribute('data-name', 'Duración: ');
+	monitorieDuration.setAttribute('name', 'Duración: ');
 	monitorieDuration.innerHTML = duration;
 	group.appendChild(monitorieDuration);
 
@@ -94,11 +94,12 @@ let addTutorie = function(myTutorie, userPicture, subjectName, userName, place, 
 
 let addNotification = function(chat, userPicture, userName, description, date) {
 	let notification = document.createElement('a');
-	notification.setAttribute('class', 'box-notification');
+	notification.setAttribute('class', 'box notification data-fixed');
 	notification.setAttribute('href', '#');
+	notification.setAttribute('data-fixed', date);
 
 	let flexContent = document.createElement('section');
-	flexContent.setAttribute('class', 'box-flex-content');
+	flexContent.setAttribute('class', 'box-h-section');
 	notification.appendChild(flexContent);
 
 	let image = document.createElement('img');
@@ -107,11 +108,11 @@ let addNotification = function(chat, userPicture, userName, description, date) {
 	flexContent.appendChild(image);
 
 	let group = document.createElement('div');
-	group.setAttribute('class', 'box-info');
+	group.setAttribute('class', 'box-v-section box-justify-center gutter-0');
 	flexContent.appendChild(group);
 
 	let user = document.createElement('p');
-	user.setAttribute('class', 'box-data title');
+	user.setAttribute('class', 'sub-title');
 	user.innerHTML = userName;
 	group.appendChild(user);
 
@@ -119,11 +120,6 @@ let addNotification = function(chat, userPicture, userName, description, date) {
 	descriptionNtf.setAttribute('class', 'box-data');
 	descriptionNtf.innerHTML = description;
 	group.appendChild(descriptionNtf);
-
-	let ntfDate = document.createElement('p');
-	ntfDate.setAttribute('class', 'box-data-fixed');
-	ntfDate.innerHTML = date;
-	group.appendChild(ntfDate);
 
 	if(chat){
 		addAndUpdateNotificators($(navbar + ' #toggle-chat'), notification);

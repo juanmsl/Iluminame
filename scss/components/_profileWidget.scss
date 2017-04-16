@@ -69,16 +69,11 @@
 		}
 	}
 
-	#{&}-userid {
+	.user-id {
 		display: none;
-		margin-bottom: 2px;
 
 		@include from(tablet) {
 			display: inherit;
-
-			&:hover {
-				text-decoration: underline;
-			}
 		}
 	}
 
@@ -91,16 +86,14 @@
 
 		&::after {
 			font-size: 0.9em;
-			content: attr(data-counter) ' seguidores';
+			content: attr(counter) ' seguidores';
 		}
 	}
 
-	#{&}-info {
-		padding: $gutter;
+	.user-description {
 		display: none;
 		background: $widget-profile-header-background;
 		color: $widget-profile-header-color;
-		font-size: 0.8em;
 
 		@include from(tablet) {
 			display: block;
@@ -160,7 +153,7 @@
 
 	#{&}-section {
 		&::after {
-			content: attr(data-counter);
+			content: attr(counter);
 			font-size: 13px;
 			font-weight: bold;
 			width: 22px;

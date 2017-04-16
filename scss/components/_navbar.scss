@@ -11,6 +11,14 @@
 	top: 0;
 	width: 100%;
 
+	@include from(pc) {
+		padding: 0 16.8%;
+	}
+
+	@include from(large) {
+		padding: 0 21%;
+	}
+
 	.logo-title {
 		display: none;
 		padding-right: $gutter;
@@ -79,6 +87,7 @@
 		margin: auto 0;
 		position: relative;
 		display: none;
+		text-shadow: 0 3px 5px $navbar-border;
 
 		@include from(tablet) {
 			display: flex;
@@ -87,6 +96,7 @@
 		&:hover, &.is-hover {
 			background: $navbar-color;
 			color: $navbar-background;
+			text-shadow: 0 0 0;
 		}
 
 		&.activate::before {
@@ -96,6 +106,7 @@
 		}
 
 		&.activate::after {
+			text-shadow: 0 0 0;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -107,14 +118,14 @@
 			border-radius: 50%;
 			background: $navbar-ntf-background;
 			color: $navbar-ntf-color;
-			content: attr(data-counter);
+			content: attr(counter);
 			font-weight: bold;
-			margin-top: 6px;
-			margin-right: 6px;
+			margin-top: 5px;
+			margin-right: 9px;
 		}
 	}
 
-	.sub-title {
+	.title {
 		text-align: center;
 		background: $navbar-background;
 		color: $navbar-color;
@@ -139,12 +150,14 @@
 	}
 
 	#{&}-profile {
-		margin: 0 $gutter;
+		box-shadow: 0 2px 3px $navbar-border;
+		margin: $gutter / 2;
 
 		@include from(tablet) {
 			&.is-hover, &:hover {
-				box-shadow: 0 2px 3px $navbar-border;
-				transform: translateY(-2px);
+				box-shadow: 0 0 0;
+				box-shadow: 0 0 15px $navbar-border;
+				transform: translateY(2px);
 			}
 		}
 	}

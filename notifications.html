@@ -14,157 +14,141 @@
       <form class="navbar-finder">
         <input type="text" placeholder="¿Buscas una materia?" class="navbar-input"/><a href="#" class="ilm-search"></a>
       </form>
-      <div id="toggle-notification" data-counter="0" data-target="#notification" class="navbar-notificator ilm-notification"></div>
-      <div id="toggle-chat" data-counter="0" data-target="#chat" class="navbar-notificator ilm-chat"></div>
-      <div id="toggle-my-tutories" data-counter="0" data-target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
-      <div id="toggle-tutories" data-counter="0" data-target="#tutories" class="navbar-notificator ilm-tutories"></div><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" id="toggle-user-profile-widget" data-target="#user-profile-widget" class="navbar-profile picture"/>
+      <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
+      <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
+      <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
+      <div id="toggle-tutories" counter="0" target="#tutories" class="navbar-notificator ilm-tutories"></div><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" id="toggle-user-profile-widget" target="#user-profile-widget" class="navbar-profile picture"/>
       <aside id="user-profile-widget" class="profile-widget">
         <section class="profile-widget-mainSection">
-          <section class="profile-widget-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg" class="profile-widget-userPicture"/>
-            <section class="profile-widget-userinfo"><a href="profile.html" class="sub-title">Juan Manuel Sánchez</a><a href="profile.html" class="profile-widget-userid">juanmsl_pk</a>
-              <p data-counter="23" class="profile-widget-followers"></p>
+          <section class="profile-widget-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" class="profile-widget-userPicture"/>
+            <section class="profile-widget-userinfo"><a href="profile.html" class="title">Juan Manuel Sánchez</a><a href="profile.html" class="user-id">juanmsl_pk</a>
+              <p counter="23" class="profile-widget-followers"></p>
             </section><a href="#" class="profile-widget-configIcon ilm-configuration"></a>
           </section>
-          <section class="profile-widget-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
+          <section class="user-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
         </section>
-        <section class="profile-widget-notifications"><a href="notifications.html" data-counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.html" data-counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.html" data-counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.html" data-counter="53" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.html" data-counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.html" data-counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="index.html" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
+        <section class="profile-widget-notifications"><a href="notifications.html" counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.html" counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.html" counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.html" counter="53" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.html" counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.html" counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="index.html" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
       </aside>
       <section id="my-tutories" class="navbar-boxNotification">
-        <label class="sub-title">Tutorias pendientes</label>
+        <label class="title">Monitorias pendientes</label>
         <section class="navbar-notifications"></section><a href="my-tutories.html" class="navbar-more">Ver todo</a>
       </section>
       <section id="tutories" class="navbar-boxNotification">
-        <label class="sub-title">Tutorias por dictar</label>
+        <label class="title">Monitorias por dictar</label>
         <section class="navbar-notifications"></section><a href="tutories.html" class="navbar-more">Ver todo</a>
       </section>
       <section id="chat" class="navbar-boxNotification">
-        <label class="sub-title">Mensajes</label>
+        <label class="title">Mensajes</label>
         <section class="navbar-notifications"></section><a href="messages.html" class="navbar-more">Ver todo</a>
       </section>
       <section id="notification" class="navbar-boxNotification">
-        <label class="sub-title">Notificaciones</label>
+        <label class="title">Notificaciones</label>
         <section class="navbar-notifications"></section><a href="notifications.html" class="navbar-more">Ver todo</a>
       </section>
     </nav>
     <div class="mainContent">
-      <div data-content="22/04/2017" class="separator"></div>
-      <div class="box-group"><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Maria Paula Moreno</p>
+      <div name="22/04/2017" class="separator"></div>
+      <div class="box-group"><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Maria Paula Moreno</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, aliquid.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Eduardo Camacho</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Eduardo Camacho</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Quimbay Cunalata</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Quimbay Cunalata</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Stephanie Domínguez</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Stephanie Domínguez</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
           </section></a>
       </div>
-      <div data-content="21/04/2017" class="separator"></div>
-      <div class="box-group"><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Luis David Zarate</p>
+      <div name="21/04/2017" class="separator"></div>
+      <div class="box-group"><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Luis David Zarate</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Eduardo Camacho</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Eduardo Camacho</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Quimbay Cunalata</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Quimbay Cunalata</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia repellat doloremque incidunt qui. Incidunt, dicta.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Luis David Zarate</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Luis David Zarate</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Eduardo Camacho</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Eduardo Camacho</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
           </section></a>
       </div>
-      <div data-content="20/04/2017" class="separator"></div>
-      <div class="box-group"><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Maria Paula Moreno</p>
+      <div name="20/04/2017" class="separator"></div>
+      <div class="box-group"><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Maria Paula Moreno</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, aliquid.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Eduardo Camacho</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15625369_1740657899586089_5204408783928819712_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Eduardo Camacho</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Quimbay Cunalata</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Quimbay Cunalata</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Quimbay Cunalata</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Quimbay Cunalata</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Luis David Zarate</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Luis David Zarate</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Carlos Quimbay Cunalata</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Carlos Quimbay Cunalata</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
-          </section></a><a href="#" class="box-card">
-          <section class="box-flex-content"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
-            <div class="box-info">
-              <p class="title ntf-user">Luis David Zarate</p>
+          </section></a><a href="#" data-fixed="3:52pm" class="box card data-fixed">
+          <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
+            <div class="box-v-section box-justify-center gutter-0">
+              <p class="sub-title">Luis David Zarate</p>
               <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.</p>
-              <p class="box-data-fixed">3:52pm</p>
             </div>
           </section></a>
       </div>

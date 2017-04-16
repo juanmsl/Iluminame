@@ -3,20 +3,23 @@
 	height: 45px;
 	padding: $gutter / 2;
 	border-radius: 50%;
+	display: block;
+}
+
+[class *= 'picture'] {
+	display: block;
+	border-radius: 50%;
+	display: block;
 }
 
 .picture {
-	display: block;
 	width: 40px;
 	height: 40px;
-	border-radius: 50%;
 }
 
 .big-picture {
-	display: block;
 	width: 60px;
 	height: 60px;
-	border-radius: 50%;
 }
 
 .photo {
@@ -24,4 +27,5 @@
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
+	display: block;
 }

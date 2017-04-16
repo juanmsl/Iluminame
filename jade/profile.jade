@@ -10,15 +10,33 @@ block main
 	.mainContent.profile
 		section.profile-header
 			section.profile-card
-				section.profile-card-header
-					img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-19/s150x150/16908563_725695954277996_8202653276341010432_a.jpg').profile-picture
-					section.profile-card-header-info
-						label.main-title Juan Manuel Sánchez
-						p juanmsl_pk
-						p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident in, ipsam ipsa suscipit laborum eveniet?
-				section.profile-card-body
-					a.profile-data.item(data-counter='23') Seguidores
-					a.profile-data.item(data-counter='6') Seguidos
-			button.follow-button Seguir
+				img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg').profile-card-photo
+				section.profile-card-info
+					p.main-title Juan Manuel Sánchez
+					p.user-id juanmsl_pk
+					section.profile-card-follows
+						a.profile-data.item(counter='23') Seguidores
+						a.profile-data.item(counter='6') Seguidos
+					p.user-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident in, ipsam ipsa suscipit laborum eveniet?
+					section.button-group
+						button.follow-button Seguir
+						button.chat-button Chat
+				a(href='#').profile-edit.ilm-configuration
 		section.profile-body
-			
+			.box-group
+				.box
+					.box-h-section.box-align-center.box-justify-center
+						h1.ilm-subject
+					.box-h-section.box-justify-center
+						h3.sub-title.box-data(name='3 ') materias
+				.box
+					.box-h-section.box-align-center.box-justify-center
+						h1.ilm-tutories
+					.box-h-section.box-justify-center
+						h3.sub-title.box-data(name='32 ') monitorias dictadas
+				.box
+					.box-h-section.box-align-center.box-justify-center
+						h1.ilm-users
+					.box-h-section.box-justify-center
+						h3.sub-title.box-data(name='54 ') estudiantes monitoreados
+				

@@ -1,64 +1,63 @@
 mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn, btntx, dsb)
 	if(dsb)
-		section.box-card.box-disabled
-			a(href="#").box-header
+		section.box.card.box-disabled
+			a(href="#").box-h-section.box-header
 				img(src= img).picture
-				.box-info
-					p.title= mt
+				.box-v-section.box-justify-center.gutter-0
+					p.sub-title= mt
 					p= nm
-			section.box-content
-				p.box-data(data-name='Lugar: ')= lg
-				p.box-data(data-name='Fecha: ')= fc
-				p.box-data(data-name='Duración: ')= dr
-				p.box-data(data-name='Precio por estudiante: ')= pr
-			section.box-footer
+			section.box-v-section
+				p.box-data(name='Lugar: ')= lg
+				p.box-data(name='Fecha: ')= fc
+				p.box-data(name='Duración: ')= dr
+				p.box-data(name='Precio por estudiante: ')= pr
+			section.box-v-section.box-footer.box-align-center
 				p.box-data= inf
 	else
-		section.box-card
-			a(href="#").box-header
+		section.box.card
+			a(href="#").box-h-section.box-header
 				img(src= img).picture
-				.box-info
-					p.title= mt
+				.box-v-section.box-justify-center.gutter-0
+					p.sub-title= mt
 					p= nm
-			section.box-content
-				p.box-data(data-name='Lugar: ')= lg
-				p.box-data(data-name='Fecha: ')= fc
-				p.box-data(data-name='Duración: ')= dr
-				p.box-data(data-name='Precio por estudiante: ')= pr
-			section.box-footer
+			section.box-v-section
+				p.box-data(name='Lugar: ')= lg
+				p.box-data(name='Fecha: ')= fc
+				p.box-data(name='Duración: ')= dr
+				p.box-data(name='Precio por estudiante: ')= pr
+			section.box-v-section.box-footer.box-align-center
 				p.box-data= inf
 				button(class= btn)= btntx
 
 mixin notification(img, nm, dsc, dt)
-	a(href="#").box-card
-		section.box-flex-content
-			img(src= img).picture
-			.box-info
-				p.title.ntf-user= nm
+	a(href="#" data-fixed= dt).box.card.data-fixed
+		section.box-h-section
+			img(src= img).big-picture
+			.box-v-section.box-justify-center.gutter-0
+				p.sub-title= nm
 				p.box-data= dsc
-				p.box-data-fixed= dt
 
 mixin user(img, nm)
-	a(href="#").box-card
-		section.box-flex-content
+	a(href="#").box.card
+		section.box-h-section
 			img(src= img).big-picture
-			.box-info
-				p.title.ntf-user= nm
-				p.box-data(data-name='12 ') seguidores
+			.box-v-section.box-justify-center.gutter-0
+				p.sub-title= nm
+				p.box-data(name='12 ') seguidores
 
 mixin subject(sbj, prt, n, vpr, vpb, nmax)
-	section.box-card
-		a(href="#").box-header.box-info
-			p.title= sbj
+	section.box.card
+		a(href="#").box-v-section.box-header
+			p.sub-title= sbj
 			.ranking
 				.fst &#x2606&#x2606&#x2606&#x2606&#x2606
 				.scd(style='width: ' + prt + '%;') &#x2605&#x2605&#x2605&#x2605&#x2605
 				.value= prt + ' / 100'
 				.data= n + ' monitorias dictadas'
-		section.box-content
+		section.box-v-section
 			p.box-data Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?
-		section.box-content
-			p.box-data(data-name= vpr + ' / hora privada' data-tooltip-long='Solo tu y el monitor' data-tooltip-short= '(x1)')
-			p.box-data(data-name= vpb + ' / hora publica' data-tooltip-long='Maximo ' + nmax + ' personas' data-tooltip-short= '(x' + nmax + ')')
-		section.box-footer
+		section.box-v-section.box-align-center
+			p.box-data(name= vpr + ' / hora privada' data-tooltip-long='Solo tu y el monitor' data-tooltip-short= '(x1)')
+			p.box-data(name= vpb + ' / hora publica' data-tooltip-long='Maximo ' + nmax + ' personas' data-tooltip-short= '(x' + nmax + ')')
+		section.box-h-section.box-footer.box-justify-center
 			button.join-button Pedir una monitoria
