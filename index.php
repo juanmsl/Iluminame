@@ -1,4 +1,51 @@
-<!DOCTYPE html5>
+<?php
+define('PAGE_ID', "index");
+require_once "global.php";
+
+if (LOGGED_IN)
+{
+	header("Location: " . WWW . "/home.html");
+	exit;
+}
+
+$login_result = "";
+$credentials_username = "";
+
+if (isset($_POST['credentials_username']) && isset($_POST['credentials_password']))
+{
+	$credentials_username = $_POST['credentials_username'];
+	$credUser = filter($_POST['credentials_username']);
+	$credPass = filter($_POST['credentials_password']);
+
+	if ($credUser != $credentials_username)
+	{
+		$credUser = "";
+	}
+
+	if (strlen($credUser) < 1)
+	{
+		$login_result = "Por favor, ingresa tu usuario";
+	}
+	elseif (strlen($credPass) < 1)
+	{
+		$login_result = "Por favor, ingresa tu contraseña";
+	}
+	else
+	{
+		if ($users->ValidateUser($credUser, $core->UberHash($credPass)))
+		{
+			$_SESSION['UBER_USER_E'] = $credUser;
+			$_SESSION['UBER_USER_H'] = $core->UberHash($credPass);
+			header("Location: " . WWW . "/security_check.php");
+			exit;
+		}
+		else
+		{
+			$login_result = "La contraseña no es correcta";
+		}
+	}
+}
+?><!DOCTYPE html5>
 <html lang="es">
   <head>
     <title>Ilumíname</title>
@@ -17,12 +64,12 @@
           <h5 class="fm-container_subtitle">Portal web de monitorias dedicado a estudiantes</h5>
         </div>
         <div class="fm-container_body">
-          <form id="login-form" class="fm-form actual_form">
+          <form id="login-form" class="fm-form actual_form" action="index.php" method="post">
             <div class="fm-form_group">
               <label class="fm-form_introMessage">¡Hola! Bienvenido</label>
-              <label class="fm-form_warning"></label>
-              <input type="text" placeholder="Usuario" required="required" class="fm-form_control"/>
-              <input type="password" placeholder="Contraseña" required="required" class="fm-form_control"/>
+              <label class="fm-form_warning"><?php echo clean($login_result); ?></label>
+              <input type="text" placeholder="Usuario" required="required" class="fm-form_control" name="credentials_username" value="<?php echo clean($credentials_username); ?>"/>
+              <input type="password" placeholder="Contraseña" required="required" class="fm-form_control" name="credentials_password"/>
               <input type="submit" value="Ingresar" class="fm-form_button"/>
             </div>
             <div class="fm-form_group">
