@@ -1,7 +1,7 @@
 nav.navbar#main-navbar
-	a(href='home.html')
+	a(href='home.php')
 		img(src='resources/images/icon.png').logo
-	a(href='home.html').logo-title Ilumíname
+	a(href='home.php').logo-title Ilumíname
 	form.navbar-finder
 		input(type='text' placeholder='¿Buscas una materia?').navbar-input
 		a(href="#").ilm-search
@@ -16,33 +16,33 @@ nav.navbar#main-navbar
 			section.profile-widget-user
 				img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg').profile-widget-userPicture
 				section.profile-widget-userinfo
-					a(href="profile.html").title Juan Manuel Sánchez
-					a(href='profile.html').user-id juanmsl_pk
+					a(href="profile.php").title Juan Manuel Sánchez
+					a(href='profile.php').user-id juanmsl_pk
 					p.profile-widget-followers(counter='23')
 				a(href='#').profile-widget-configIcon.ilm-configuration
 			section.user-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.
 		section.profile-widget-notifications
-			a(href='notifications.html').profile-widget-section.ilm-notification.active(counter='2') Notificaciones
-			a(href='messages.html').profile-widget-section.ilm-chat.active(counter='4') Mensajes
-			a(href='my-tutories.html').profile-widget-section.ilm-my-tutories.active(counter='4') Mis monitorias
-			a(href='users.html').profile-widget-section.ilm-users(counter='53') Usuarios que sigo
-			a(href='subjects.html').profile-widget-section.ilm-subject(counter='3') Materias
-			a(href='tutories.html').profile-widget-section.ilm-tutories.active(counter='3') Monitorias pendientes
-			a(href='index.html').profile-widget-logout.ilm-logout Cerrar sesión
+			a(href='notifications.php').profile-widget-section.ilm-notification.active(counter='2') Notificaciones
+			a(href='messages.php').profile-widget-section.ilm-chat.active(counter='4') Mensajes
+			a(href='my-tutories.php').profile-widget-section.ilm-my-tutories.active(counter='4') Mis monitorias
+			a(href='users.php').profile-widget-section.ilm-users(counter='53') Usuarios que sigo
+			a(href='subjects.php').profile-widget-section.ilm-subject(counter='3') Materias
+			a(href='tutories.php').profile-widget-section.ilm-tutories.active(counter='3') Monitorias pendientes
+			a(href='logout.php').profile-widget-logout.ilm-logout Cerrar sesión
 
 	section.navbar-boxNotification#my-tutories
-		label.title Monitorias pendientes
+		label.title.navbar-title Monitorias pendientes
 		section.navbar-notifications
-		a(href='my-tutories.html').navbar-more Ver todo
+		a(href='my-tutories.php').navbar-more Ver todo
 	section.navbar-boxNotification#tutories
-		label.title Monitorias por dictar
+		label.title.navbar-title Monitorias por dictar
 		section.navbar-notifications
-		a(href='tutories.html').navbar-more Ver todo
+		a(href='tutories.php').navbar-more Ver todo
 	section.navbar-boxNotification#chat
-		label.title Mensajes
+		label.title.navbar-title Mensajes
 		section.navbar-notifications
-		a(href='messages.html').navbar-more Ver todo
+		a(href='messages.php').navbar-more Ver todo
 	section.navbar-boxNotification#notification
-		label.title Notificaciones
+		label.title.navbar-title Notificaciones
 		section.navbar-notifications
-		a(href='notifications.html').navbar-more Ver todo
+		a(href='notifications.php').navbar-more Ver todo
