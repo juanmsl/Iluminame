@@ -4,20 +4,20 @@ require_once "global.php";
 
 if (LOGGED_IN)
 {
-	header("Location: " . WWW . "/home.html");
+	header("Location: " . WWW . "/home.php");
 	exit;
 }
 
 $login_result = "";
-$credentials_username = "";
+$login_username = "";
 
-if (isset($_POST['credentials_username']) && isset($_POST['credentials_password']))
+if (isset($_POST['login_username']) && isset($_POST['login_password']))
 {
-	$credentials_username = $_POST['credentials_username'];
-	$credUser = filter($_POST['credentials_username']);
-	$credPass = filter($_POST['credentials_password']);
+	$login_username = $_POST['login_username'];
+	$credUser = filter($_POST['login_username']);
+	$credPass = filter($_POST['login_password']);
 
-	if ($credUser != $credentials_username)
+	if ($credUser != $login_username)
 	{
 		$credUser = "";
 	}
@@ -68,8 +68,8 @@ if (isset($_POST['credentials_username']) && isset($_POST['credentials_password'
             <div class="fm-form_group">
               <label class="fm-form_introMessage">¡Hola! Bienvenido</label>
               <label class="fm-form_warning"><?php echo clean($login_result); ?></label>
-              <input type="text" placeholder="Usuario" required="required" class="fm-form_control" name="credentials_username" value="<?php echo clean($credentials_username); ?>"/>
-              <input type="password" placeholder="Contraseña" required="required" class="fm-form_control" name="credentials_password"/>
+              <input type="text" placeholder="Usuario" required="required" class="fm-form_control" name="login_username" value="<?php echo clean($login_username); ?>"/>
+              <input type="password" placeholder="Contraseña" required="required" class="fm-form_control" name="login_password"/>
               <input type="submit" value="Ingresar" class="fm-form_button"/>
             </div>
             <div class="fm-form_group">
