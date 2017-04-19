@@ -1,5 +1,4 @@
 <?php
-define('PAGE_ID', "me");
 require_once "global.php";
 
 if (!LOGGED_IN)
@@ -7,6 +6,8 @@ if (!LOGGED_IN)
 	header("Location: " . WWW . "/");
 	exit;
 }
+
+$search_result = $myrow;
 if (isset($_GET["id"]))
 {
   $user_id = filter($_GET["id"]);
@@ -16,10 +17,24 @@ if (isset($_GET["id"]))
 		exit;
 	}
   $user_id = intval($user_id);
-  $user_query = dbquery("SELECT nombre, usuario, foto FROM estudiantes WHERE id = '" . $user_id . "'");
-  if ($user_query->num_rows != 1)
+  $user_query = dbquery("SELECT nombre, usuario, foto, aboutme, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . $user_id . "') as seguidos, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = '" . $user_id . "') as seguidores FROM estudiantes WHERE id = '" . $user_id . "'");
+  if ($user_query->num_rows == 1)
   {
-
+		$search_result = $user_query->fetch_assoc();
+  }
+}
+if (isset($_GET["user"]))
+{
+  $user_name = filter($_GET["user"]);
+  if ($user_name != $_GET["user"])
+	{
+		header("Location: " . WWW . "/logout.php");
+		exit;
+	}
+  $user_query = dbquery("SELECT nombre, usuario, foto, aboutme, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = COALESCE((SELECT id FROM estudiantes WHERE usuario LIKE '" . $user_name . "'), 0)) as seguidos, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = COALESCE((SELECT id FROM estudiantes WHERE usuario LIKE '" . $user_name . "'), 0)) as seguidores FROM estudiantes WHERE usuario LIKE '" . $user_name . "'");
+  if ($user_query->num_rows == 1)
+  {
+		$search_result = $user_query->fetch_assoc();
   }
 }
 ?><!DOCTYPE html5>
@@ -37,15 +52,15 @@ if (isset($_GET["id"]))
     <?php	include('inc/templates/navbar.php'); ?>
     <div class="mainContent profile">
       <section class="profile-header">
-        <section class="profile-card"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" class="profile-card-photo"/>
+        <section class="profile-card"><img src="<?php echo clean($search_result["foto"]); ?>" class="profile-card-photo"/>
           <section class="profile-card-info">
-            <p class="main-title">Juan Manuel Sánchez</p>
-            <p class="user-id">juanmsl_pk</p>
-            <section class="profile-card-follows"><a counter="23" class="profile-data item">Seguidores</a><a counter="6" class="profile-data item">Seguidos</a></section>
-            <p class="user-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident in, ipsam ipsa suscipit laborum eveniet?</p>
+            <p class="main-title"><?php echo clean($search_result["nombre"]); ?></p>
+            <p class="user-id"><?php echo clean($search_result["usuario"]); ?></p>
+            <section class="profile-card-follows"><a counter="<?php echo clean($search_result["seguidores"]); ?>" class="profile-data item">Seguidores</a><a counter="<?php echo clean($search_result["seguidos"]); ?>" class="profile-data item">Seguidos</a></section>
+            <p class="user-description"><?php echo clean($search_result["aboutme"]); ?></p>
             <section class="button-group">
               <button class="follow-button">Seguir</button>
-              <button class="chat-button">Chat</button>
+              <a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>"><button class="chat-button">Chat</button></a>
             </section>
           </section><a href="#" class="profile-edit ilm-configuration"></a>
         </section>

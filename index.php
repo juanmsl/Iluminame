@@ -1,5 +1,4 @@
 <?php
-define('PAGE_ID', "index");
 require_once "global.php";
 
 if (LOGGED_IN)

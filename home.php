@@ -1,5 +1,4 @@
 <?php
-define('PAGE_ID', "me");
 require_once "global.php";
 
 if (!LOGGED_IN)
@@ -7,7 +6,7 @@ if (!LOGGED_IN)
 	header("Location: " . WWW . "/");
 	exit;
 }
-$itemsQuery = dbquery("SELECT
+$items_query = dbquery("SELECT
 monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id,
 estudiantes.nombre as estudiante_nombre, estudiantes.usuario, estudiantes.foto,
 materias.nombre as materia_nombre,
@@ -16,15 +15,16 @@ estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
 FROM monitorias
 JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id)
 JOIN materias ON (materias.id = monitorias.materia_id)
-JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id);");
+JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
+ORDER BY monitoria_id;");
 
-$items_available = $itemsQuery->num_rows;
+$items_available = $items_query->num_rows;
 $items_data = "";
 if ($items_available > 0) {
-	while ($item = $itemsQuery->fetch_assoc())
+	while ($item = $items_query->fetch_assoc())
 	{
 
-		$items_data .= '<section class="box card"><a href="#" class="box-h-section box-header"><img src="' . clean($item["foto"]) . '" class="picture"/>
+		$items_data .= '<section class="box card"><a href="profile.php?user=' . clean($item["usuario"]) . '" class="box-h-section box-header"><img src="' . clean($item["foto"]) . '" class="picture"/>
 				<div class="box-v-section box-justify-center gutter-0">
 					<p class="sub-title">' . clean($item["materia_nombre"]) . '</p>
 					<p>' . clean($item["estudiante_nombre"]) . '</p>
@@ -41,17 +41,6 @@ if ($items_available > 0) {
 			</section>
 		</section>
 		';
-		/*var_dump($item["monitoria_id"]) . chr(10);
-		var_dump($item["fecha_inicio"]) . chr(10);
-		var_dump($item["fecha_fin"]) . chr(10);
-		var_dump($item["lugar"]) . chr(10);
-		var_dump($item["estudiante_id"]) . chr(10);
-		var_dump($item["materia_id"]) . chr(10);
-		var_dump($item["estudiante_nombre"]) . chr(10);
-		var_dump($item["usuario"]) . chr(10);
-		var_dump($item["foto"]) . chr(10);
-		var_dump($item["materia_nombre"]) . chr(10);
-		var_dump($item["monitoria_inscripciones"]) . chr(10);*/
 	}
 
 }

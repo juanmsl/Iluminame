@@ -3,6 +3,8 @@ $myPic = clean($myrow["foto"]);
 $myName = clean($myrow["nombre"]);
 $myUsername = clean($myrow["usuario"]);
 $myDescription = clean($myrow["aboutme"]);
+$myFollowers = clean($myrow["seguidores"]);
+$myFollowing = clean($myrow["seguidos"]);
 ?>
 <nav id="main-navbar" class="navbar"><a href="/"><img src="resources/images/icon.png" class="logo"/></a><a href="/" class="logo-title">Ilumíname</a>
   <form class="navbar-finder">
@@ -17,12 +19,12 @@ $myDescription = clean($myrow["aboutme"]);
     <section class="profile-widget-mainSection">
       <section class="profile-widget-user"><img src="<?php echo $myPic; ?>" class="profile-widget-userPicture"/>
         <section class="profile-widget-userinfo"><a href="profile.php" class="title"><?php echo $myName; ?></a><a href="profile.php" class="user-id"><?php echo $myUsername; ?></a>
-          <p counter="23" class="profile-widget-followers"></p>
+          <p counter="<?php echo $myFollowers; ?>" class="profile-widget-followers"></p>
         </section><a href="#" class="profile-widget-configIcon ilm-configuration"></a>
       </section>
       <section class="user-description"><?php echo $myDescription; ?></section>
     </section>
-    <section class="profile-widget-notifications"><a href="notifications.html" counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.html" counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.html" counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.html" counter="53" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.html" counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.html" counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="index.php" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
+    <section class="profile-widget-notifications"><a href="notifications.html" counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="#" counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.html" counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.html" counter="<?php echo $myFollowing; ?>" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.html" counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.html" counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="logout.php" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
   </aside>
   <section id="my-tutories" class="navbar-boxNotification">
     <label class="title">Monitorias pendientes</label>
@@ -34,7 +36,7 @@ $myDescription = clean($myrow["aboutme"]);
   </section>
   <section id="chat" class="navbar-boxNotification">
     <label class="title">Mensajes</label>
-    <section class="navbar-notifications"></section><a href="messages.html" class="navbar-more">Ver todo</a>
+    <section class="navbar-notifications"></section><a href="#" class="navbar-more">Ver todo</a>
   </section>
   <section id="notification" class="navbar-boxNotification">
     <label class="title">Notificaciones</label>

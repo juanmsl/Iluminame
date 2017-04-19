@@ -38,7 +38,7 @@ if (isset($_SESSION['UBER_USER_E']) && isset($_SESSION['UBER_USER_H']))
 	$userE = $_SESSION['UBER_USER_E'];
 	$userH = $_SESSION['UBER_USER_H'];
 
-	$usersql = dbquery("SELECT id, usuario, correo, nombre, foto, telefono, aboutme FROM estudiantes WHERE usuario LIKE '" . $userE . "' AND contrasena = '" . $userH . "' LIMIT 1");
+	$usersql = dbquery("SELECT id, usuario, correo, nombre, foto, telefono, aboutme, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = COALESCE((SELECT id FROM estudiantes WHERE usuario LIKE '" . $userE . "'), 0)) as seguidos, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = COALESCE((SELECT id FROM estudiantes WHERE usuario LIKE '" . $userE . "'), 0)) as seguidores FROM estudiantes WHERE usuario LIKE '" . $userE . "' AND contrasena = '" . $userH . "' LIMIT 1");
 	$myrow = mysqli_fetch_assoc($usersql);
 	if (mysqli_num_rows($usersql) > 0)
 	{
