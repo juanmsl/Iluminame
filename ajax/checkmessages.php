@@ -1,8 +1,6 @@
 <?php
 require_once "../global.php";
 
-$_POST["user"] = "4";
-
 if (!isset($_POST["user"])){
   exit;
 }
