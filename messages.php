@@ -42,7 +42,9 @@ if (!isset($search_result))
   exit;
 }
 
-$message_query = dbquery("SELECT mensaje, fecha, estudiante_id_recibe, estudiante_id_envia FROM mensajes WHERE (estudiante_id_recibe = '" . $myrow["id"] . "' AND estudiante_id_envia = '" . $search_result["id"] . "') OR (estudiante_id_recibe = '" . $search_result["id"] . "' AND estudiante_id_envia = '" . $myrow["id"] . "') ORDER BY fecha ASC;");
+$last_id = -1;
+
+$message_query = dbquery("SELECT id, mensaje, fecha, estudiante_id_recibe, estudiante_id_envia FROM mensajes WHERE (estudiante_id_recibe = '" . $myrow["id"] . "' AND estudiante_id_envia = '" . $search_result["id"] . "') OR (estudiante_id_recibe = '" . $search_result["id"] . "' AND estudiante_id_envia = '" . $myrow["id"] . "') ORDER BY fecha ASC;");
 $messages_available = $message_query->num_rows;
 
 $message_data = "";
@@ -51,6 +53,7 @@ if ($messages_available > 0)
   while ($message = $message_query->fetch_assoc())
   {
     $message_data .= '<article time="hace ' . timeAgo($message["fecha"]) . '" class="chat-message chat-user-' . ($myrow["id"] == $message["estudiante_id_recibe"] ? '1' : '2') . '">' . clean($message["mensaje"]) . '</article>';
+		$last_id = $message["id"];
   }
 }
 
@@ -86,6 +89,7 @@ if ($messages_available > 0)
       <div class="github-link"><a href="https://github.com/juanmsl/Iluminame" class="ilm-github">View Source</a></div>
     </footer>
   </body>
+	<script>var last_message_id = <?php echo $last_id; ?>; </script>
   <script src="js/jquery.js"></script>
   <script src="js/viewport-size.js"></script>
   <script src="js/form.js"></script>

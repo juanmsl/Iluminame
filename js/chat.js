@@ -47,13 +47,14 @@ function checkMessages(user)
   $.ajax({
     type: "POST",
     url: "/ajax/checkmessages.php",
-    data: { user: user },
+    data: { user: user, last_id: last_message_id },
       success: function (msg) {
         console.log("Ok!")
         var response = JSON.parse(msg);
         for (var i = 0; i < response.length; i++)
         {
           addMessageFromPartner(response[i].date, response[i].text);
+          last_message_id = response[i].id;
         }
       }
   });
