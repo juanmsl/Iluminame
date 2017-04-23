@@ -7,14 +7,14 @@ textarea.addEventListener('keydown', function(e){
 	textarea.style.cssText = 'height:' + (textarea.scrollHeight + 2) + 'px';
 });
 
-function scrollDown()
-{
-  var container = $("#message-container");
-  var height = container.height();
-  container.scroll();
-  container.animate({
-    scrollTop: height
-}, 1000);
+function scrollDown() {
+	var container = $("#message-container");
+	var height = container[0].scrollHeight - container[0].clientHeight;
+	console.log(height);
+	container.scroll();
+	container.animate({
+		scrollTop: height
+	}, 2000);
 }
 
 function addMessageFromMe(date, text)

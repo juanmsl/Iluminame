@@ -3,13 +3,9 @@ extends templates/base
 append config
 	-title= "Ilumíname - Home"
 
-block php
-	|<?php include('php/php_home.php') ?>
-
 block nav
 	|<?php include('inc/templates/navbar.php') ?>
 
 block main
 	.mainContent
-		.box-group
-			| <?php echo $items_data; ?>
+		.box-group#home-monitories

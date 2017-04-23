@@ -7,7 +7,7 @@ if (!LOGGED_IN)
 }
 
 if (!isset($_POST["user"]) || !isset($_POST["text"])){
-  exit;
+	exit;
 }
 
 $receiver = intval(filter($_POST["user"]));
