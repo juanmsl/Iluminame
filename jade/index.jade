@@ -4,9 +4,6 @@ append config
 	-title= "Ilumíname"
 	-bodyClass= "indexBody"
 
-block php
-	|<?php include('php/php_index.php') ?>
-
 block main
 	.main-box
 		.fm-container#initial-form
@@ -54,11 +51,3 @@ block main
 							a(target='#login-form').fm-form_link Ingresa
 						p.fm-form_message ¿No tienes una cuenta aun? 
 							a(target='#register-form').fm-form_link Registrate
-append scripts
-	|<?php
-	|	if($first_load) {
-	|		echo "<script>initFormById('initial-form', 'login-form', true);</script>";
-	|	} else {
-	|		echo "<script>initFormById('initial-form', 'login-form', false);</script>";
-	|	}
-	|?>
