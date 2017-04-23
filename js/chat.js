@@ -10,10 +10,10 @@ textarea.addEventListener('keydown', function(e){
 function scrollDown()
 {
   var container = $("#message-container");
-  var height = container.height();
+  var height = container.scrollHeight;
   container.scroll();
   container.animate({
-    scrollTop: height
+    scrollTop: 100%
 }, 1000);
 }
 

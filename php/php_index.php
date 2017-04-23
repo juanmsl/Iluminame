@@ -34,6 +34,7 @@ if (isset($_POST['login_username']) && isset($_POST['login_password']))
 	}
 	else
 	{
+		$credPass = hash('sha256',$credPass);
 		if ($users->ValidateUser($credUser, $core->UberHash($credPass)))
 		{
 			$_SESSION['UBER_USER_E'] = $credUser;
