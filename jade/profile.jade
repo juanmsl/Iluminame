@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 extends templates/base
 
 append config
@@ -46,52 +45,3 @@ block main
 					.box-h-section.box-justify-center
 						h3.sub-title.box-data(name='54 ') estudiantes monitoreados
 				
-=======
-extends templates/base
-
-append config
-	-title= "Ilumíname - Perfil"
-	
-block php
-	|<?php include('php/php_profile.php') ?>
-
-block nav
-	|<?php include('inc/templates/navbar.php') ?>
-
-block main
-	.mainContent.profile
-		section.profile-header
-			section.profile-card
-				| <img src='<?php echo clean($search_result["foto"]); ?>' class='profile-card-photo'>
-				section.profile-card-info
-					p.main-title <?php echo clean($search_result["nombre"]); ?>
-					p.user-id <?php echo clean($search_result["usuario"]); ?>
-					section.profile-card-follows
-						| <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>'>Seguidores</a>
-						| <a class='profile-data item' counter='<?php echo clean($search_result["seguidos"]); ?>'>Seguidos</a>
-					p.user-description <?php echo clean($search_result["aboutme"]); ?>
-					section.button-group
-						button.follow-button Seguir
-						| <a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
-						|	<button class='chat-button'>Chat</button>
-						| </a>
-				a(href='#').profile-edit.ilm-configuration
-		section.profile-body
-			.box-group
-				.box
-					.box-h-section.box-align-center.box-justify-center
-						h1.ilm-subject
-					.box-h-section.box-justify-center
-						h3.sub-title.box-data(name='3 ') materias
-				.box
-					.box-h-section.box-align-center.box-justify-center
-						h1.ilm-tutories
-					.box-h-section.box-justify-center
-						h3.sub-title.box-data(name='32 ') monitorias dictadas
-				.box
-					.box-h-section.box-align-center.box-justify-center
-						h1.ilm-users
-					.box-h-section.box-justify-center
-						h3.sub-title.box-data(name='54 ') estudiantes monitoreados
-				
->>>>>>> refs/remotes/origin/master
