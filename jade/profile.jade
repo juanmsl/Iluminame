@@ -3,24 +3,29 @@ extends templates/base
 append config
 	-title= "Ilumíname - Perfil"
 	
+block php
+	|<?php include('php/php_profile.php') ?>
+
 block nav
-	include components/navbar
+	|<?php include('inc/templates/navbar.php') ?>
 
 block main
 	.mainContent.profile
 		section.profile-header
 			section.profile-card
-				img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg').profile-card-photo
+				| <img src='<?php echo clean($search_result["foto"]); ?>' class='profile-card-photo'>
 				section.profile-card-info
-					p.main-title Juan Manuel Sánchez
-					p.user-id juanmsl_pk
+					p.main-title <?php echo clean($search_result["nombre"]); ?>
+					p.user-id <?php echo clean($search_result["usuario"]); ?>
 					section.profile-card-follows
-						a.profile-data.item(counter='23') Seguidores
-						a.profile-data.item(counter='6') Seguidos
-					p.user-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident in, ipsam ipsa suscipit laborum eveniet?
+						| <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>'>Seguidores</a>
+						| <a class='profile-data item' counter='<?php echo clean($search_result["seguidos"]); ?>'>Seguidos</a>
+					p.user-description <?php echo clean($search_result["aboutme"]); ?>
 					section.button-group
 						button.follow-button Seguir
-						button.chat-button Chat
+						| <a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
+						|	<button class='chat-button'>Chat</button>
+						| </a>
 				a(href='#').profile-edit.ilm-configuration
 		section.profile-body
 			.box-group

@@ -47,7 +47,7 @@
           <form id="forgot-form" action="forgot.php" method="post" autocomplete="off" class="fm-form">
             <div class="fm-form_group">
               <label class="fm-form_introMessage">Brindanos tu correo para enviarte los pasos para cambiar tu contraseña</label>
-              <label class="fm-form_warning"><?php echo clean($forgot_result);?></label>
+              <label class="fm-form_warning"></label>
               <input type="email" name="forgot_email" placeholder="Correo" required="required" class="fm-form_control"/>
               <input type="submit" value="Recuperar" class="fm-form_button"/>
             </div>
@@ -68,10 +68,10 @@
   <script src="js/form.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/scripts.js"></script><?php
-  if($first_load) {
-  	echo "<script>initFormById('initial-form', 'login-form', true);</script>";
-  } else {
-  	echo "<script>initFormById('initial-form', 'login-form', false);</script>";
-  }
+  	if($first_load) {
+  		echo "<script>initFormById('initial-form', 'login-form', true);</script>";
+  	} else {
+  		echo "<script>initFormById('initial-form', 'login-form', false);</script>";
+  	}
   ?>
 </html>

@@ -1,7 +1,9 @@
+|<?php include('php/php_navbar.php') ?>
+
 nav.navbar#main-navbar
-	a(href='home.html')
+	a(href='/')
 		img(src='resources/images/icon.png').logo
-	a(href='home.html').logo-title Ilumíname
+	a(href='/').logo-title Ilumíname
 	form.navbar-finder
 		input(type='text' placeholder='¿Buscas una materia?').navbar-input
 		a(href="#").ilm-search
@@ -9,40 +11,40 @@ nav.navbar#main-navbar
 	.navbar-notificator.ilm-chat#toggle-chat(counter='0' target='#chat')
 	.navbar-notificator.ilm-my-tutories#toggle-my-tutories(counter='0' target='#my-tutories')
 	.navbar-notificator.ilm-tutories#toggle-tutories(counter='0' target='#tutories')
-	img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg').navbar-profile.picture#toggle-user-profile-widget(target='#user-profile-widget')
+	| <img src='<?php echo $myPic; ?>' class='navbar-profile picture' id='toggle-user-profile-widget' target='#user-profile-widget'>
 
 	aside.profile-widget#user-profile-widget
 		section.profile-widget-mainSection
 			section.profile-widget-user
-				img(src='https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg').profile-widget-userPicture
+				| <img src='<?php echo $myPic; ?>' class='profile-widget-userPicture'>
 				section.profile-widget-userinfo
-					a(href="profile.html").title Juan Manuel Sánchez
-					a(href='profile.html').user-id juanmsl_pk
-					p.profile-widget-followers(counter='23')
+					a(href="profile.php").title <?php echo $myName; ?>
+					a(href='profile.php').user-id <?php echo $myUsername; ?>
+					| <p class='profile-widget-followers' counter='<?php echo $myFollowers; ?>'></p>
 				a(href='#').profile-widget-configIcon.ilm-configuration
-			section.user-description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.
+			section.user-description <?php echo $myDescription; ?>
 		section.profile-widget-notifications
-			a(href='notifications.html').profile-widget-section.ilm-notification.active(counter='2') Notificaciones
-			a(href='messages.html').profile-widget-section.ilm-chat.active(counter='4') Mensajes
-			a(href='my-tutories.html').profile-widget-section.ilm-my-tutories.active(counter='4') Mis monitorias
-			a(href='users.html').profile-widget-section.ilm-users(counter='53') Usuarios que sigo
-			a(href='subjects.html').profile-widget-section.ilm-subject(counter='3') Materias
-			a(href='tutories.html').profile-widget-section.ilm-tutories.active(counter='3') Monitorias pendientes
-			a(href='index.html').profile-widget-logout.ilm-logout Cerrar sesión
+			a(href='notifications.php').profile-widget-section.ilm-notification.active(counter='0') Notificaciones
+			a(href='messages.php').profile-widget-section.ilm-chat.active(counter='0') Mensajes
+			a(href='my-tutories.php').profile-widget-section.ilm-my-tutories.active(counter='0') Mis monitorias
+			| <a href='users.php' class='profile-widget-section ilm-users' counter='<?php echo $myFollowing; ?>'>Usuarios que sigo</a>
+			a(href='subjects.php').profile-widget-section.ilm-subject(counter='0') Materias
+			a(href='tutories.php').profile-widget-section.ilm-tutories.active(counter='0') Monitorias pendientes
+			a(href='logout.php').profile-widget-logout.ilm-logout Cerrar sesión
 
 	section.navbar-boxNotification#my-tutories
-		label.title Monitorias pendientes
+		label.title.navbar-title Monitorias pendientes
 		section.navbar-notifications
-		a(href='my-tutories.html').navbar-more Ver todo
+		a(href='my-tutories.php').navbar-more Ver todo
 	section.navbar-boxNotification#tutories
-		label.title Monitorias por dictar
+		label.title.navbar-title Monitorias por dictar
 		section.navbar-notifications
-		a(href='tutories.html').navbar-more Ver todo
+		a(href='tutories.php').navbar-more Ver todo
 	section.navbar-boxNotification#chat
-		label.title Mensajes
+		label.title.navbar-title Mensajes
 		section.navbar-notifications
-		a(href='messages.html').navbar-more Ver todo
+		a(href='messages.php').navbar-more Ver todo
 	section.navbar-boxNotification#notification
-		label.title Notificaciones
+		label.title.navbar-title Notificaciones
 		section.navbar-notifications
-		a(href='notifications.html').navbar-more Ver todo
+		a(href='notifications.php').navbar-more Ver todo

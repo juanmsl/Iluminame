@@ -3,36 +3,32 @@ extends templates/base
 append config
 	-title= "Ilumíname - Mensajes"
 	-bodyClass= "chatBody"
-	
+
+block php
+	|<?php include('php/php_messages.php') ?>
+
 block nav
-	include components/navbar
+	|<?php include('inc/templates/navbar.php') ?>
 
 block main
 	.mainContent
 		section.box.chat
 			section.box-h-section.box-header.box-align-center
-				a(href='#'): img(src='https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg').picture
+				a(href='#')
+					| <img src='<?php echo clean($search_result["foto"]); ?>' class='picture'>
 				section.box-v-section.gutter-0
-					a(href='#').title Luis David Zarate
-			section.box-v-section.chat-history
-				article.chat-message.chat-user-1(time='Hoy, 3:14 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, cum.
-				article.chat-message.chat-user-2(time='Hoy, 3:18 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident aspernatur est dolorem ratione, deserunt dolorum!
-				article.chat-message.chat-user-2(time='Hoy, 3:18 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				article.chat-message.chat-user-1(time='Hoy, 3:25 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure asperiores, reprehenderit consectetur quod, soluta vel natus assumenda aspernatur minima voluptatibus, ipsum facilis.
-				article.chat-message.chat-user-2(time='Hoy, 3:27 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, earum consequatur magni!
-				article.chat-message.chat-user-1(time='Hoy, 3:39 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas adipisci aliquam ducimus reiciendis, quod ipsum.
-				article.chat-message.chat-user-1(time='Hoy, 3:39 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis earum, nostrum perferendis laborum.
-				article.chat-message.chat-user-1(time='Hoy, 3:40 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, quas!
-				article.chat-message.chat-user-2(time='Hoy, 3:52 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aperiam, voluptatibus est perspiciatis beatae et provident facilis.
-				article.chat-message.chat-user-1(time='Hoy, 4:05 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, cum.
-				article.chat-message.chat-user-2(time='Hoy, 4:10 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident aspernatur est dolorem ratione, deserunt dolorum!
-				article.chat-message.chat-user-2(time='Hoy, 4:10 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				article.chat-message.chat-user-1(time='Hoy, 4:15 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure asperiores, reprehenderit consectetur quod, soluta vel natus assumenda aspernatur minima voluptatibus, ipsum facilis.
-				article.chat-message.chat-user-2(time='Hoy, 4:30 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, earum consequatur magni!
-				article.chat-message.chat-user-1(time='Hoy, 4:45 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas adipisci aliquam ducimus reiciendis, quod ipsum.
-				article.chat-message.chat-user-1(time='Hoy, 4:46 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis earum, nostrum perferendis laborum.
-				article.chat-message.chat-user-1(time='Hoy, 4:46 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, quas!
-				article.chat-message.chat-user-2(time='Hoy, 4:52 pm') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aperiam, voluptatibus est perspiciatis beatae et provident facilis.
-			section.box-h-section.box-footer.chat-footer
-				textarea(placeholder='Escribe tu mensaje aqui' rows='1').chat-typetext
-				input(type='submit' value='Enviar').send-button
+					a(href='#').title <?php echo clean($search_result["nombre"]); ?>
+			section.box-v-section.chat-history#message-container
+				<?php echo $message_data; ?>
+			| 
+			| <form class='box-h-section box-footer chat-footer' id='message-chat' action="javascript:sendMessage('<?php echo clean($search_result["id"]); ?>')">
+			textarea(placeholder='Escribe tu mensaje aqui' rows='1').chat-typetext#message-input
+			input(type='submit' class='send-button' value='Enviar')
+			</form>
+append scripts
+	| <script>$('body').ready(function(){
+	|	scrollDown();
+	|	setInterval('checkMessages(<?php echo $search_result['id']; ?>)', 1000);
+	| });</script>
+	| <script> var last_message_id = <?php echo $last_id; ?>; </script>
+	| <script src="js/chat.js"></script>
