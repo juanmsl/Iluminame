@@ -32,7 +32,7 @@
           <form id="register-form" action="register.php" method="post" autocomplete="off" class="fm-form">
             <div class="fm-form_group">
               <label class="fm-form_introMessage">Registrate y encuentra las monitorias que necesitas de forma facil y rapida<br/>¡Es gratis!</label>
-              <label class="fm-form_warning"><?php echo clean($register_result);?></label>
+              <label class="fm-form_warning"></label>
               <input type="text" name="register_username" placeholder="Usuario" required="required" class="fm-form_control"/>
               <input type="email" name="register_email" placeholder="Correo" required="required" class="fm-form_control"/>
               <input type="password" name="register_password" placeholder="Contraseña" required="required" class="fm-form_control"/>
@@ -65,7 +65,6 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
-  <!--script(src="js/viewport-size.js")-->
   <script src="js/form.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/scripts.js"></script><?php

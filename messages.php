@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<?php include('php/php_messages.php') ?><!DOCTYPE html5>
 <html lang="es">
   <head>
     <title>Ilumíname - Mensajes</title>
@@ -9,72 +9,16 @@
     <link href="css/normalize.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
-  <body class="chatBody">
-    <nav id="main-navbar" class="navbar"><a href="home.php"><img src="resources/images/icon.png" class="logo"/></a><a href="home.php" class="logo-title">Ilumíname</a>
-      <form class="navbar-finder">
-        <input type="text" placeholder="¿Buscas una materia?" class="navbar-input"/><a href="#" class="ilm-search"></a>
-      </form>
-      <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
-      <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
-      <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
-      <div id="toggle-tutories" counter="0" target="#tutories" class="navbar-notificator ilm-tutories"></div><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" id="toggle-user-profile-widget" target="#user-profile-widget" class="navbar-profile picture"/>
-      <aside id="user-profile-widget" class="profile-widget">
-        <section class="profile-widget-mainSection">
-          <section class="profile-widget-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" class="profile-widget-userPicture"/>
-            <section class="profile-widget-userinfo"><a href="profile.php" class="title">Juan Manuel Sánchez</a><a href="profile.php" class="user-id">juanmsl_pk</a>
-              <p counter="23" class="profile-widget-followers"></p>
-            </section><a href="#" class="profile-widget-configIcon ilm-configuration"></a>
-          </section>
-          <section class="user-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
-        </section>
-        <section class="profile-widget-notifications"><a href="notifications.php" counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.php" counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.php" counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.php" counter="53" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.php" counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.php" counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="logout.php" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
-      </aside>
-      <section id="my-tutories" class="navbar-boxNotification">
-        <label class="title navbar-title">Monitorias pendientes</label>
-        <section class="navbar-notifications"></section><a href="my-tutories.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="tutories" class="navbar-boxNotification">
-        <label class="title navbar-title">Monitorias por dictar</label>
-        <section class="navbar-notifications"></section><a href="tutories.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="chat" class="navbar-boxNotification">
-        <label class="title navbar-title">Mensajes</label>
-        <section class="navbar-notifications"></section><a href="messages.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="notification" class="navbar-boxNotification">
-        <label class="title navbar-title">Notificaciones</label>
-        <section class="navbar-notifications"></section><a href="notifications.php" class="navbar-more">Ver todo</a>
-      </section>
-    </nav>
+  <body class="chatBody"><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
       <section class="box chat">
-        <section class="box-h-section box-header box-align-center"><a href="#"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/></a>
-          <section class="box-v-section gutter-0"><a href="#" class="title">Luis David Zarate</a></section>
+        <section class="box-h-section box-header box-align-center"><a href="#"><img src='<?php echo clean($search_result["foto"]); ?>' class='picture'></a>
+          <section class="box-v-section gutter-0"><a href="#" class="title"><?php echo clean($search_result["nombre"]); ?></a></section>
         </section>
-        <section class="box-v-section chat-history">
-          <article time="Hoy, 3:14 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, cum.</article>
-          <article time="Hoy, 3:18 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident aspernatur est dolorem ratione, deserunt dolorum!</article>
-          <article time="Hoy, 3:18 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</article>
-          <article time="Hoy, 3:25 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure asperiores, reprehenderit consectetur quod, soluta vel natus assumenda aspernatur minima voluptatibus, ipsum facilis.</article>
-          <article time="Hoy, 3:27 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, earum consequatur magni!</article>
-          <article time="Hoy, 3:39 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas adipisci aliquam ducimus reiciendis, quod ipsum.</article>
-          <article time="Hoy, 3:39 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis earum, nostrum perferendis laborum.</article>
-          <article time="Hoy, 3:40 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, quas!</article>
-          <article time="Hoy, 3:52 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aperiam, voluptatibus est perspiciatis beatae et provident facilis.</article>
-          <article time="Hoy, 4:05 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, cum.</article>
-          <article time="Hoy, 4:10 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident aspernatur est dolorem ratione, deserunt dolorum!</article>
-          <article time="Hoy, 4:10 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</article>
-          <article time="Hoy, 4:15 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure asperiores, reprehenderit consectetur quod, soluta vel natus assumenda aspernatur minima voluptatibus, ipsum facilis.</article>
-          <article time="Hoy, 4:30 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, earum consequatur magni!</article>
-          <article time="Hoy, 4:45 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas adipisci aliquam ducimus reiciendis, quod ipsum.</article>
-          <article time="Hoy, 4:46 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis earum, nostrum perferendis laborum.</article>
-          <article time="Hoy, 4:46 pm" class="chat-message chat-user-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, quas!</article>
-          <article time="Hoy, 4:52 pm" class="chat-message chat-user-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aperiam, voluptatibus est perspiciatis beatae et provident facilis.</article>
-        </section>
-        <section class="box-h-section box-footer chat-footer">
-          <textarea placeholder="Escribe tu mensaje aqui" rows="1" class="chat-typetext"></textarea>
-          <input type="submit" value="Enviar" class="send-button"/>
-        </section>
+        <section id="message-container" class="box-v-section chat-history"><?php echo $message_data; ?></section> 
+        <form class='box-h-section box-footer chat-footer' id='message-chat' action="javascript:sendMessage('<?php echo clean($search_result["id"]); ?>')">
+        <textarea placeholder="Escribe tu mensaje aqui" rows="1" id="message-input" class="chat-typetext"></textarea>
+        <input type="submit" value="Enviar" class="send-button"/></form>
       </section>
     </div>
     <footer class="footer">
@@ -83,8 +27,12 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
-  <!--script(src="js/viewport-size.js")-->
   <script src="js/form.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="js/scripts.js"></script><script>$('body').ready(function(){
+  	scrollDown();
+  	setInterval('checkMessages(<?php echo $search_result['id']; ?>)', 1000);
+  });</script>
+  <script> var last_message_id = <?php echo $last_id; ?>; </script>
+  <script src="js/chat.js"></script>
 </html>

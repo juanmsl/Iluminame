@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<?php include('php/php_profile.php') ?><!DOCTYPE html5>
 <html lang="es">
   <head>
     <title>Ilumíname - Perfil</title>
@@ -9,54 +9,22 @@
     <link href="css/normalize.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
-  <body>
-    <nav id="main-navbar" class="navbar"><a href="home.php"><img src="resources/images/icon.png" class="logo"/></a><a href="home.php" class="logo-title">Ilumíname</a>
-      <form class="navbar-finder">
-        <input type="text" placeholder="¿Buscas una materia?" class="navbar-input"/><a href="#" class="ilm-search"></a>
-      </form>
-      <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
-      <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
-      <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
-      <div id="toggle-tutories" counter="0" target="#tutories" class="navbar-notificator ilm-tutories"></div><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" id="toggle-user-profile-widget" target="#user-profile-widget" class="navbar-profile picture"/>
-      <aside id="user-profile-widget" class="profile-widget">
-        <section class="profile-widget-mainSection">
-          <section class="profile-widget-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" class="profile-widget-userPicture"/>
-            <section class="profile-widget-userinfo"><a href="profile.php" class="title">Juan Manuel Sánchez</a><a href="profile.php" class="user-id">juanmsl_pk</a>
-              <p counter="23" class="profile-widget-followers"></p>
-            </section><a href="#" class="profile-widget-configIcon ilm-configuration"></a>
-          </section>
-          <section class="user-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
-        </section>
-        <section class="profile-widget-notifications"><a href="notifications.php" counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.php" counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.php" counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.php" counter="53" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.php" counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.php" counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="logout.php" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
-      </aside>
-      <section id="my-tutories" class="navbar-boxNotification">
-        <label class="title navbar-title">Monitorias pendientes</label>
-        <section class="navbar-notifications"></section><a href="my-tutories.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="tutories" class="navbar-boxNotification">
-        <label class="title navbar-title">Monitorias por dictar</label>
-        <section class="navbar-notifications"></section><a href="tutories.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="chat" class="navbar-boxNotification">
-        <label class="title navbar-title">Mensajes</label>
-        <section class="navbar-notifications"></section><a href="messages.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="notification" class="navbar-boxNotification">
-        <label class="title navbar-title">Notificaciones</label>
-        <section class="navbar-notifications"></section><a href="notifications.php" class="navbar-more">Ver todo</a>
-      </section>
-    </nav>
+  <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent profile">
       <section class="profile-header">
-        <section class="profile-card"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" class="profile-card-photo"/>
+        <section class="profile-card"><img src='<?php echo clean($search_result["foto"]); ?>' class='profile-card-photo'>
           <section class="profile-card-info">
-            <p class="main-title">Juan Manuel Sánchez</p>
-            <p class="user-id">juanmsl_pk</p>
-            <section class="profile-card-follows"><a counter="23" class="profile-data item">Seguidores</a><a counter="6" class="profile-data item">Seguidos</a></section>
-            <p class="user-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident in, ipsam ipsa suscipit laborum eveniet?</p>
+            <p class="main-title"><?php echo clean($search_result["nombre"]); ?></p>
+            <p class="user-id"><?php echo clean($search_result["usuario"]); ?></p>
+            <section class="profile-card-follows">
+              <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>'>Seguidores</a>
+              <a class='profile-data item' counter='<?php echo clean($search_result["seguidos"]); ?>'>Seguidos</a>
+            </section>
+            <p class="user-description"><?php echo clean($search_result["aboutme"]); ?></p>
             <section class="button-group">
-              <button class="follow-button">Seguir</button>
-              <button class="chat-button">Chat</button>
+              <button class="follow-button">Seguir</button><a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
+              	<button class='chat-button'>Chat</button>
+              </a>
             </section>
           </section><a href="#" class="profile-edit ilm-configuration"></a>
         </section>
@@ -96,7 +64,6 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
-  <!--script(src="js/viewport-size.js")-->
   <script src="js/form.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/scripts.js"></script>

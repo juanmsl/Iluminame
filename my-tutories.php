@@ -9,43 +9,7 @@
     <link href="css/normalize.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
-  <body>
-    <nav id="main-navbar" class="navbar"><a href="home.php"><img src="resources/images/icon.png" class="logo"/></a><a href="home.php" class="logo-title">Ilumíname</a>
-      <form class="navbar-finder">
-        <input type="text" placeholder="¿Buscas una materia?" class="navbar-input"/><a href="#" class="ilm-search"></a>
-      </form>
-      <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
-      <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
-      <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
-      <div id="toggle-tutories" counter="0" target="#tutories" class="navbar-notificator ilm-tutories"></div><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" id="toggle-user-profile-widget" target="#user-profile-widget" class="navbar-profile picture"/>
-      <aside id="user-profile-widget" class="profile-widget">
-        <section class="profile-widget-mainSection">
-          <section class="profile-widget-user"><img src="https://instagram.feoh3-1.fna.fbcdn.net/t51.2885-15/e35/12407299_1707501209487342_1845282389_n.jpg" class="profile-widget-userPicture"/>
-            <section class="profile-widget-userinfo"><a href="profile.php" class="title">Juan Manuel Sánchez</a><a href="profile.php" class="user-id">juanmsl_pk</a>
-              <p counter="23" class="profile-widget-followers"></p>
-            </section><a href="#" class="profile-widget-configIcon ilm-configuration"></a>
-          </section>
-          <section class="user-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor reiciendis enim id consequatur sapiente.</section>
-        </section>
-        <section class="profile-widget-notifications"><a href="notifications.php" counter="2" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.php" counter="4" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.php" counter="4" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href="users.php" counter="53" class="profile-widget-section ilm-users">Usuarios que sigo</a><a href="subjects.php" counter="3" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.php" counter="3" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="logout.php" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
-      </aside>
-      <section id="my-tutories" class="navbar-boxNotification">
-        <label class="title navbar-title">Monitorias pendientes</label>
-        <section class="navbar-notifications"></section><a href="my-tutories.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="tutories" class="navbar-boxNotification">
-        <label class="title navbar-title">Monitorias por dictar</label>
-        <section class="navbar-notifications"></section><a href="tutories.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="chat" class="navbar-boxNotification">
-        <label class="title navbar-title">Mensajes</label>
-        <section class="navbar-notifications"></section><a href="messages.php" class="navbar-more">Ver todo</a>
-      </section>
-      <section id="notification" class="navbar-boxNotification">
-        <label class="title navbar-title">Notificaciones</label>
-        <section class="navbar-notifications"></section><a href="notifications.php" class="navbar-more">Ver todo</a>
-      </section>
-    </nav>
+  <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
       <div name="Mis monitorias activas" class="separator"></div>
       <div class="box-group">
@@ -424,7 +388,6 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
-  <!--script(src="js/viewport-size.js")-->
   <script src="js/form.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/scripts.js"></script>
