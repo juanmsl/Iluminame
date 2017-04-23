@@ -1,6 +1,7 @@
 .chat {
 	display: flex;
 	flex-direction: column;
+	flex-grow: 1;
 
 	#{&}-footer {
 		flex-direction: row;
@@ -11,6 +12,7 @@
 		overflow-x: hidden;
 		overflow-y: auto;
 		padding: 0;
+		flex-grow: 1;
 		margin: $gutter / 2;
 	}
 
@@ -39,6 +41,7 @@
 		&::after {
 			content: attr(time);
 			top: 100%;
+			min-width: 150px;
 			font-size: 0.7em;
 			margin: $gutter / 2 $gutter 0;
 		}
@@ -58,6 +61,7 @@
 		}
 		&::after {
 			left: 0;
+			text-align: left;
 		}
 	}
 
@@ -76,6 +80,7 @@
 		}
 		&::after {
 			right: 0;
+			text-align: right;
 		}
 	}
 

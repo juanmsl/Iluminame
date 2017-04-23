@@ -7,6 +7,7 @@ if (LOGGED_IN)
 	exit;
 }
 
+
 if (isset($_POST['register_username']) && isset($_POST['register_email']) && isset($_POST['register_password']) && isset($_POST['register_password_check']))
 {
 	$register_username = $_POST['register_username'];

@@ -1,10 +1,20 @@
+var textarea = document.querySelector('.chat-typetext');
+textarea.addEventListener('keydown', function(e){
+	if(e.which == 13) {
+		e.preventDefault();
+		$('#message-chat').submit();
+	}
+	textarea.style.cssText = 'height:' + (textarea.scrollHeight + 2) + 'px';
+});
+
 function scrollDown()
 {
   var container = $("#message-container");
+  var height = container.height();
   container.scroll();
   container.animate({
-    scrollTop: 1000
-  }, 2000);
+    scrollTop: height
+}, 1000);
 }
 
 function addMessageFromMe(date, text)
@@ -23,22 +33,20 @@ function addMessageFromPartner(date, text)
   scrollDown();
 }
 
-function sendMessage(user)
-{
-  console.log("Sending...");
-  var text = $("#message-input").val();
-
-  $.ajax({
-    type: "POST",
-    url: "/ajax/sendmessage.php",
-    data: { user: user, text: text},
-      success: function (msg) {
-        console.log("Ok!");
-        var response = JSON.parse(msg);
-        addMessageFromMe(response.date, response.text);
-        $("#message-input").val("");
-      }
-  });
+function sendMessage(user) {
+	console.log("Sending...");
+	var text = $("#message-input").val();
+	$("#message-input").val("");
+	$.ajax({
+	type: "POST",
+	url: "/ajax/sendmessage.php",
+	data: { user: user, text: text},
+		success: function (msg) {
+			console.log("Ok!");
+			var response = JSON.parse(msg);
+			addMessageFromMe(response.date, response.text);
+		}
+	});
 }
 
 function checkMessages(user)

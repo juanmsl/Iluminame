@@ -71,6 +71,7 @@
 	#{&}-v-section, #{&}-h-section {
 		display: flex;
 		padding: $gutter;
+		margin: 0;
 	}
 
 	.gutter-0 {
