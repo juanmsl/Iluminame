@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 |<?php include('php/php_navbar.php') ?>
 
 nav.navbar#main-navbar
@@ -48,3 +49,55 @@ nav.navbar#main-navbar
 		label.title.navbar-title Notificaciones
 		section.navbar-notifications
 		a(href='notifications.php').navbar-more Ver todo
+=======
+|<?php include('php/php_navbar.php') ?>
+
+nav.navbar#main-navbar
+	a(href='/')
+		img(src='resources/images/icon.png').logo
+	a(href='/').logo-title Ilumíname
+	form.navbar-finder
+		input(type='text' placeholder='¿Buscas una materia?').navbar-input
+		a(href="#").ilm-search
+	.navbar-notificator.ilm-notification#toggle-notification(counter='0' target='#notification')
+	.navbar-notificator.ilm-chat#toggle-chat(counter='0' target='#chat')
+	.navbar-notificator.ilm-my-tutories#toggle-my-tutories(counter='0' target='#my-tutories')
+	.navbar-notificator.ilm-tutories#toggle-tutories(counter='0' target='#tutories')
+	| <img src='<?php echo $myPic; ?>' class='navbar-profile picture' id='toggle-user-profile-widget' target='#user-profile-widget'>
+
+	aside.profile-widget#user-profile-widget
+		section.profile-widget-mainSection
+			section.profile-widget-user
+				| <img src='<?php echo $myPic; ?>' class='profile-widget-userPicture'>
+				section.profile-widget-userinfo
+					a(href="profile.php").title <?php echo $myName; ?>
+					a(href='profile.php').user-id <?php echo $myUsername; ?>
+					| <p class='profile-widget-followers' counter='<?php echo $myFollowers; ?>'></p>
+				a(href='#').profile-widget-configIcon.ilm-configuration
+			section.user-description <?php echo $myDescription; ?>
+		section.profile-widget-notifications
+			a(href='notifications.php').profile-widget-section.ilm-notification.active(counter='0') Notificaciones
+			a(href='messages.php').profile-widget-section.ilm-chat.active(counter='0') Mensajes
+			a(href='my-tutories.php').profile-widget-section.ilm-my-tutories.active(counter='0') Mis monitorias
+			| <a href='users.php' class='profile-widget-section ilm-users' counter='<?php echo $myFollowing; ?>'>Usuarios que sigo</a>
+			a(href='subjects.php').profile-widget-section.ilm-subject(counter='0') Materias
+			a(href='tutories.php').profile-widget-section.ilm-tutories.active(counter='0') Monitorias pendientes
+			a(href='logout.php').profile-widget-logout.ilm-logout Cerrar sesión
+
+	section.navbar-boxNotification#my-tutories
+		label.title.navbar-title Monitorias pendientes
+		section.navbar-notifications
+		a(href='my-tutories.php').navbar-more Ver todo
+	section.navbar-boxNotification#tutories
+		label.title.navbar-title Monitorias por dictar
+		section.navbar-notifications
+		a(href='tutories.php').navbar-more Ver todo
+	section.navbar-boxNotification#chat
+		label.title.navbar-title Mensajes
+		section.navbar-notifications
+		a(href='messages.php').navbar-more Ver todo
+	section.navbar-boxNotification#notification
+		label.title.navbar-title Notificaciones
+		section.navbar-notifications
+		a(href='notifications.php').navbar-more Ver todo
+>>>>>>> refs/remotes/origin/master

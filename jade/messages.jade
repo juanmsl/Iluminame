@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 extends templates/base
 
 append config
@@ -32,3 +33,39 @@ append scripts
 	| });</script>
 	| <script> var last_message_id = <?php echo $last_id; ?>; </script>
 	| <script src="js/chat.js"></script>
+=======
+extends templates/base
+
+append config
+	-title= "Ilumíname - Mensajes"
+	-bodyClass= "chatBody"
+
+block php
+	|<?php include('php/php_messages.php') ?>
+
+block nav
+	|<?php include('inc/templates/navbar.php') ?>
+
+block main
+	.mainContent
+		section.box.chat
+			section.box-h-section.box-header.box-align-center
+				a(href='#')
+					| <img src='<?php echo clean($search_result["foto"]); ?>' class='picture'>
+				section.box-v-section.gutter-0
+					a(href='#').title <?php echo clean($search_result["nombre"]); ?>
+			section.box-v-section.chat-history#message-container
+				<?php echo $message_data; ?>
+			| 
+			| <form class='box-h-section box-footer chat-footer' id='message-chat' action="javascript:sendMessage('<?php echo clean($search_result["id"]); ?>')">
+			textarea(placeholder='Escribe tu mensaje aqui' rows='1').chat-typetext#message-input
+			input(type='submit' class='send-button' value='Enviar')
+			</form>
+append scripts
+	| <script>$('body').ready(function(){
+	|	scrollDown();
+	|	setInterval('checkMessages(<?php echo $search_result['id']; ?>)', 1000);
+	| });</script>
+	| <script> var last_message_id = <?php echo $last_id; ?>; </script>
+	| <script src="js/chat.js"></script>
+>>>>>>> refs/remotes/origin/master

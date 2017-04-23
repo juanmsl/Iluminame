@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .box-group {
 	display: flex;
 	flex-wrap: wrap;
@@ -154,3 +155,161 @@
 		}
 	}
 }
+=======
+.box-group {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.separator {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: $gutter;
+
+	&::before {
+		content: attr(name);
+		margin-top: $gutter / 2;
+		margin-left: $gutter;
+		font-weight: bold;
+	}
+
+	&::after {
+		content: '';
+		border: 1px solid $box-border;
+	}
+}
+
+.box {
+	background: $box-background;
+	color: $box-color;
+	box-shadow: 0 3px 10px 0 $box-border;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	&.card {
+		margin: $gutter;
+		width: 100%;
+
+		@include from(600px) {
+			width: calc(50% - #{$gutter * 2});
+		}
+
+		@include from(pc) {
+			width: calc(33.33% - #{$gutter * 2});
+		}
+
+		@include from(2200px) {
+			width: calc(25% - #{$gutter * 2});
+		}
+
+		@include from(3000px) {
+			width: calc(20% - #{$gutter * 2});
+		}
+
+		@include from(3800px) {
+			width: calc(16.66% - #{$gutter * 2});
+		}
+
+		.box-footer {
+			margin-top: auto;
+		}
+	}
+
+	&.notification {
+		background: $box-background;
+
+		&:hover {
+			background: $box-notificacion-background-hover;
+		}
+	}
+
+	#{&}-v-section, #{&}-h-section {
+		display: flex;
+		padding: $gutter;
+		margin: 0;
+	}
+
+	.gutter-0 {
+		padding: 0 $gutter;
+	}
+
+	#{&}-break {
+		flex-wrap: wrap;
+	}
+
+	#{&}-v-section {
+		flex-direction: column;
+	}
+
+	#{&}-h-section {
+		flex-direction: row;
+	}
+
+	#{&}-align-center {
+		align-items: center;
+		align-content: center;
+	}
+
+	#{&}-justify-center {
+		justify-content: center;
+	}
+
+	#{&}-header {
+		background: $box-header-background;
+		flex-shrink: 0;
+	}
+
+	#{&}-footer {
+		background: $box-footer-background;
+		flex-shrink: 0;
+		padding: $gutter / 2;
+	}
+
+	#{&}-data {
+		margin: $gutter / 4;
+
+		&::before {
+			content: attr(name);
+			font-weight: bold;
+		}
+
+		&::after {
+			content: attr(data-tooltip-short);
+			font-size: 0.9em;
+			margin-left: $gutter;
+		}
+
+		&:hover::after {
+			content: attr(data-tooltip-long);
+		}
+	}
+
+	&.data-fixed {
+		padding-bottom: $gutter;
+
+		&::after {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			margin: $gutter / 2 $gutter;
+			font-size: 0.7em;
+			content: attr(data-fixed);
+		}
+	}
+
+	&.box-disabled {
+		background: $box-disabled;
+
+		.box-header {
+			background: $box-header-disabled;
+		}
+
+		.box-footer {
+			background: $box-footer-disabled;
+		}
+	}
+}
+>>>>>>> refs/remotes/origin/master

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .navbar {
 	display: flex;
 	align-items: center;
@@ -162,3 +163,169 @@
 		}
 	}
 }
+=======
+.navbar {
+	display: flex;
+	align-items: center;
+	box-shadow: 0 2px 5px $navbar-border;
+	background: $navbar-background;
+	color: $navbar-color;
+	user-select: none;
+	cursor: default;
+	position: fixed;
+	z-index: z-index(navbar);
+	top: 0;
+	width: 100%;
+
+	@include from(pc) {
+		padding: 0 16.8%;
+	}
+
+	@include from(large) {
+		padding: 0 21%;
+	}
+
+	.logo-title {
+		display: none;
+		padding-right: $gutter;
+
+		@include from(tablet) {
+			display: block;
+		}
+	}
+
+	#{&}-finder {
+		flex-grow: 1;
+		align-self: stretch;
+		display: flex;
+		align-items: center;
+		margin: 0;
+		position: relative;
+		margin: 0 $gutter;
+	}
+
+	#{&}-input {
+		flex-grow: 1;
+		border: 0;
+		outline: 0;
+		padding: $gutter / 2 $gutter;
+		transition: border 0.1s ease-in-out;
+		position: relative;
+
+		&:focus {
+			outline: 1px solid $navbar-ntf-background;
+		}
+	}
+
+	.ilm-search {
+		position: absolute;
+		right: 0;
+		top: 0;
+		color: $navbar-border;
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+
+	#{&}-boxNotification {
+		display: none;
+		position: absolute;
+		right: 0;
+		top: 100%;
+		background: $navbar-background;
+		box-shadow: 0 3px 10px 1px $navbar-border;
+		z-index: z-index(navbar);
+		width: 360px;
+		margin: $gutter;
+
+		@include from(tablet) {
+			display: none;
+		}
+	}
+
+	#{&}-notificator {
+		width: 50px;
+		height: 50px;
+		flex-direction: column;
+		align-self: stretch;
+		align-items: center;
+		justify-content: center;
+		margin: auto 0;
+		position: relative;
+		display: none;
+		text-shadow: 0 3px 5px $navbar-border;
+
+		@include from(tablet) {
+			display: flex;
+		}
+
+		&:hover, &.is-hover {
+			background: $navbar-color;
+			color: $navbar-background;
+			text-shadow: 0 0 0;
+		}
+
+		&.activate::before {
+			font-size: 20px;
+			margin-top: 8px;
+			margin-right: 8px;
+		}
+
+		&.activate::after {
+			text-shadow: 0 0 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background: $navbar-ntf-background;
+			color: $navbar-ntf-color;
+			content: attr(counter);
+			font-weight: bold;
+			margin-top: 5px;
+			margin-right: 9px;
+		}
+	}
+
+	#{&}-title {
+		text-align: center;
+		background: $navbar-background;
+		color: $navbar-color;
+		padding: $gutter / 2 0;
+	}
+
+	#{&}-notifications {
+		max-height: 70vh;
+		overflow-y: auto;
+	}
+
+	#{&}-more {
+		display: block;
+		text-align: center;
+		font-size: 0.9em;
+		font-weight: bold;
+		padding: $gutter / 2 0;
+	}
+
+	.ntf:last-child {
+		border: 0;
+	}
+
+	#{&}-profile {
+		box-shadow: 0 2px 3px $navbar-border;
+		margin: $gutter / 2;
+
+		@include from(tablet) {
+			&.is-hover, &:hover {
+				box-shadow: 0 0 0;
+				box-shadow: 0 0 15px $navbar-border;
+				transform: translateY(2px);
+			}
+		}
+	}
+}
+>>>>>>> refs/remotes/origin/master
