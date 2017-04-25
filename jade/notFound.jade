@@ -1,0 +1,13 @@
+extends templates/base
+
+append config
+	-title= "Ilumíname - Error"
+	
+block nav
+	|<?php include('inc/templates/navbar.php') ?>
+
+block main
+	.mainContent
+		.not-found-box.box
+			i.ilm-sad
+			h1 Usuario no encontrado

@@ -71,6 +71,15 @@
 	}
 }
 
+.unfollow-button {
+	background: $button-unfollow;
+	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+
+	&:active {
+		box-shadow: 0 0 0 0 $button-unfollow, 0 1px 3px 0 $button-color;
+	}
+}
+
 .chat-button {
 	background: $button-chat;
 	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;

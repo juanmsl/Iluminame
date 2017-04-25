@@ -8,35 +8,52 @@ if (!LOGGED_IN)
 }
 
 $search_result = $myrow;
-if (isset($_GET["id"]))
-{
+$final_query = "";
+$user_query = false;
+if (isset($_GET["id"])) {
+	$user_query = true;
 	$user_id = filter($_GET["id"]);
-	if ($user_id != $_GET["id"])
-	{
+	if ($user_id != $_GET["id"]) {
 		header("Location: " . WWW . "/logout.php");
 		exit;
 	}
 	$user_id = intval($user_id);
-	$user_query = dbquery("SELECT id, nombre, usuario, foto, aboutme, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . $user_id . "') as seguidos, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = '" . $user_id . "') as seguidores FROM estudiantes WHERE id = '" . $user_id . "'");
-	if ($user_query->num_rows == 1)
-	{
-		$search_result = $user_query->fetch_assoc();
-	}
+	$final_query = "id = '" . $user_id . "'";
 }
-if (isset($_GET["user"]))
-{
+elseif (isset($_GET["user"])) {
+	$user_query = true;
 	$user_name = filter($_GET["user"]);
-	if ($user_name != $_GET["user"])
-	{
+	if ($user_name != $_GET["user"]) {
 		header("Location: " . WWW . "/logout.php");
 		exit;
 	}
-	$user_query = dbquery("SELECT id, nombre, usuario, foto, aboutme, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = COALESCE((SELECT id FROM estudiantes WHERE usuario LIKE '" . $user_name . "'), 0)) as seguidos, (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = COALESCE((SELECT id FROM estudiantes WHERE usuario LIKE '" . $user_name . "'), 0)) as seguidores FROM estudiantes WHERE usuario LIKE '" . $user_name . "'");
-	if ($user_query->num_rows == 1)
-	{
-		$search_result = $user_query->fetch_assoc();
-	}
+	$final_query = "usuario = '" . $user_name . "'";
 }
 
-include ('php/profile_content.php');
+if($user_query) {
+	$user_query = dbquery("SELECT id, nombre, usuario, foto, aboutme,
+		(SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = id) as seguidos,
+		(SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = id) as seguidores,
+		(SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . USER_ID . "' and estudiante_id_seguido = id) as isFollow
+		FROM estudiantes WHERE " . $final_query);
+
+	if ($user_query->num_rows == 1) {
+		$search_result = $user_query->fetch_assoc();
+		$follow_button_class = 'follow';
+		$follow_button_text = 'Seguir';
+		$isMyProfile = $search_result["id"] == USER_ID;
+		if($search_result["isFollow"] == '1') {
+			$follow_button_class = 'unfollow';
+			$follow_button_text = 'Dejar de seguir';
+		}
+		include ('php/profile_content.php');
+	} else {
+		include ('php/notFound_content.php');
+	}
+}
+else {
+	$isMyProfile = true;
+	include ('php/profile_content.php');
+}
+
 ?>

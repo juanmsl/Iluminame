@@ -1,0 +1,11 @@
+.not-found-box {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.ilm-sad {
+		font-size: 10em;
+	}
+}

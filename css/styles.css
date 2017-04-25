@@ -308,6 +308,10 @@ footer .ilm-github::before {
           flex-direction: row;
 }
 
+.box .box-text-center {
+  text-align: center;
+}
+
 .box .box-align-center {
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -455,6 +459,15 @@ footer .ilm-github::before {
 
 .follow-button:active {
   box-shadow: 0 0 0 0 #74CD77, 0 1px 3px 0 #03151F;
+}
+
+.unfollow-button {
+  background: #5EC2F7;
+  box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 #03151F;
+}
+
+.unfollow-button:active {
+  box-shadow: 0 0 0 0 #5EC2F7, 0 1px 3px 0 #03151F;
 }
 
 .chat-button {
@@ -1410,7 +1423,7 @@ footer .ilm-github::before {
   padding: 10px 40px;
 }
 
-.profile .follow-button {
+.profile .button-group {
   margin: 10px;
   margin-bottom: 30px;
 }
@@ -1424,13 +1437,18 @@ footer .ilm-github::before {
 @media all and (min-width: 500px) {
   .profile .profile-body {
     margin-top: 10px;
-    padding-top: 40px;
+    margin: 5px 0;
+  }
+  .profile .profile-body:nth-child(2) {
+    margin-top: 0;
+    padding-top: 50px;
   }
 }
 
 .profile .profile-mini-card {
   min-width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   text-align: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -1438,7 +1456,8 @@ footer .ilm-github::before {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10px;
+  margin: 10px auto;
+  background: #b6e2e6;
 }
 
 .monitoria .monitoria-info {
@@ -1456,6 +1475,28 @@ footer .ilm-github::before {
         -ms-flex-direction: row;
             flex-direction: row;
   }
+}
+
+.not-found-box {
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.not-found-box .ilm-sad {
+  font-size: 10em;
 }
 
 /*# sourceMappingURL=styles.css.map */

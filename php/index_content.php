@@ -33,6 +33,7 @@
             <div class="fm-form_group">
               <label class="fm-form_introMessage">Registrate y encuentra las monitorias que necesitas de forma facil y rapida<br/>¡Es gratis!</label>
               <label class="fm-form_warning"></label>
+              <input type="text" name="register_name" placeholder="Nombre" required="required" class="fm-form_control"/>
               <input type="text" name="register_username" placeholder="Usuario" required="required" class="fm-form_control"/>
               <input type="email" name="register_email" placeholder="Correo" required="required" class="fm-form_control"/>
               <input type="password" name="register_password" placeholder="Contraseña" required="required" class="fm-form_control"/>

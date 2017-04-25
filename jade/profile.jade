@@ -6,14 +6,22 @@ append config
 block nav
 	|<?php include('inc/templates/navbar.php') ?>
 
-append head
+block head
+	title= title
+	meta(charset="utf-8")
+	link(rel="icon" type="image/png" href="resources/images/icon.png")
+	meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1")
+	link(href="css/normalize.css" rel="stylesheet")
+	link(href="https://file.myfontastic.com/dgDbkkB8Fa2a8wimvMu34f/icons.css" rel="stylesheet")
 	link(href="css/owl.carousel.min.css" rel="stylesheet")
 	link(href="css/owl.theme.default.min.css" rel="stylesheet")
+	link(href="css/styles.css" rel="stylesheet")
 
 block scripts
 	script(src="js/jquery.js")
 	script(src="js/owl.carousel.min.js")
 	script(src="js/scripts.js")
+	script(src="js/profile.js")
 	script(src="js/form.js")
 	script(src="js/navbar.js")
 
@@ -26,14 +34,16 @@ block main
 					p.main-title <?php echo clean($search_result["nombre"]); ?>
 					p.user-id <?php echo clean($search_result["usuario"]); ?>
 					section.profile-card-follows
-						| <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>'>Seguidores</a>
+						| <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>Seguidores</a>
 						| <a class='profile-data item' counter='<?php echo clean($search_result["seguidos"]); ?>'>Seguidos</a>
 					p.user-description <?php echo clean($search_result["aboutme"]); ?>
 					section.button-group
-						| <button class='follow-button' onclick="follow('<?php echo clean($search_result["id"]) ?>')">Seguir</button>
+						| <?php if(!$isMyProfile) { ?>
+						| <button class='<?php echo clean($follow_button_class) ?>-button' onclick="<?php echo clean($follow_button_class) ?>('<?php echo clean($search_result["id"]) ?>', this)"><?php echo clean($follow_button_text) ?></button>
 						| <a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
-						|	<button class='chat-button'">Chat</button>
+						|	<button class='chat-button'>Chat</button>
 						| </a>
+						| <?php	} ?>
 				a(href='#').profile-edit.ilm-configuration
 		section.profile-body
 			.profile-cards-group.owl-carousel.owl-theme#cards
@@ -57,6 +67,7 @@ block main
 						h1.ilm-my-tutories
 					.box-h-section.box-justify-center
 						h3.sub-title.box-data(name='23 ') monitorias asistidas
+		section.profile-body
 			.separator(name='Materias en las que brindo monitorias')
 			.profile-cards-group.owl-carousel.owl-theme#profile-subjects
 				section.box.box-margin
@@ -149,8 +160,9 @@ block main
 						p.box-data(name= '$15.000 / hora publica' data-tooltip-long='Maximo 5 personas' data-tooltip-short= '(x5)')
 					section.box-h-section.box-footer.box-justify-center
 						button.join-button Pedir una monitoria
+		section.profile-body
 			.separator(name='Monitorias publicas activas')
-			.profile-cards-group.owl-carousel.owl-theme#profile-active-monitories
+			.box-group.owl-carousel.owl-theme#profile-active-monitories
 				section.box.box-margin
 					a(href="#").box-h-section.box-header
 						img(src='https://ig-s-a-a.akamaihd.net/hphotos-ak-xpa1/t51.2885-15/e35/12145363_500768776766300_40156557_n.jpg').picture

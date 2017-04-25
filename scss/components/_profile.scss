@@ -80,7 +80,7 @@
 		padding: $gutter $gutter * 4;
 	}
 
-	.follow-button {
+	.button-group {
 		margin: $gutter;
 		margin-bottom: $gutter * 3;
 	}
@@ -92,16 +92,23 @@
 
 		@include from(500px) {
 			margin-top: $gutter;
-			padding-top: $gutter * 4;
+			margin: $gutter / 2 0;
+
+			&:nth-child(2) {
+				margin-top: 0;
+				padding-top: $gutter * 5;
+			}
 		}
 	}
 
 	#{&}-mini-card {
 		min-width: 150px;
-		height: 150px;
+		width: 200px;
+		height: 200px;
 		text-align: center;
 		justify-content: center;
 		align-items: center;
-		margin: $gutter;
+		margin: $gutter auto;
+		background: $box-footer-background;
 	}
 }

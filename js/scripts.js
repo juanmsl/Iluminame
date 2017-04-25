@@ -71,54 +71,6 @@ let monitorie_template = "" +
 "	</section>" +
 "</section>";
 
-$('#cards').owlCarousel({
-	autoplay: true,
-	margin: 10,
-	responsive:{
-		0:{
-			items:1,
-			loop:true,
-			center:true
-		},
-		400:{
-			items:2,
-			loop:false,
-			center:false
-		},
-		800:{
-			items:3,
-			loop:false,
-			center:false
-		},
-		1200:{
-			items:4,
-			loop:false,
-			center:false
-		}
-	}
-});
-
-$('#profile-subjects, #profile-active-monitories').owlCarousel({
-	margin: 10,
-	responsive:{
-		0:{
-			items:1,
-			loop:true,
-			center:true
-		},
-		600:{
-			items:2,
-			loop:false,
-			center:false
-		},
-		1200:{
-			items:3,
-			loop:false,
-			center:false
-		}
-	}
-});
-
 
 function join_monitorie(id, element) {
 	$.ajax({
@@ -164,15 +116,46 @@ function updateJoinButton(id, element, res) {
 	element.innerHTML = 'Deseo unirme';
 }
 
-function follow(id) {
+function follow(id, element) {
 	$.ajax({
 	type: "POST",
 	url: "/ajax/follow.php",
 	data: { id : id },
 		success: function (msg) {
-			console.log("Ok!");
 			var response = JSON.parse(msg);
-			console.log(response.count + " total");
+			console.log(response.result);
+			updateUnfollowButton(element, response);
 		}
 	});
+}
+
+function updateUnfollowButton(element, response) {
+	var followers = document.getElementById('profile-followers');
+	followers.setAttribute('counter', response.count);
+	element.setAttribute('class','unfollow-button');
+	var action = element.getAttribute('onclick');
+	element.setAttribute('onclick', action.replace('follow(','unfollow('));
+	element.innerHTML = 'Dejar de seguir';
+}
+
+function unfollow(id, element) {
+	$.ajax({
+	type: "POST",
+	url: "/ajax/unfollow.php",
+	data: { id : id },
+		success: function (msg) {
+			var response = JSON.parse(msg);
+			console.log(response.result);
+			updateFollowButton(element, response);
+		}
+	});
+}
+
+function updateFollowButton(element, response) {
+	var followers = document.getElementById('profile-followers');
+	followers.setAttribute('counter', response.count);
+	element.setAttribute('class','follow-button');
+	var action = element.getAttribute('onclick');
+	element.setAttribute('onclick', action.replace('unfollow(','follow('));
+	element.innerHTML = 'Seguir';
 }

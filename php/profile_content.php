@@ -1,16 +1,14 @@
 <!DOCTYPE html5>
 <html lang="es">
-  <head>
-    <title>Ilumíname - Perfil</title>
-    <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="resources/images/icon.png"/>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
-    <link href="https://file.myfontastic.com/dgDbkkB8Fa2a8wimvMu34f/icons.css" rel="stylesheet"/>
-    <link href="css/normalize.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-  </head>
+  <title>Ilumíname - Perfil</title>
+  <meta charset="utf-8"/>
+  <link rel="icon" type="image/png" href="resources/images/icon.png"/>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+  <link href="css/normalize.css" rel="stylesheet"/>
+  <link href="https://file.myfontastic.com/dgDbkkB8Fa2a8wimvMu34f/icons.css" rel="stylesheet"/>
   <link href="css/owl.carousel.min.css" rel="stylesheet"/>
   <link href="css/owl.theme.default.min.css" rel="stylesheet"/>
+  <link href="css/styles.css" rel="stylesheet"/>
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent profile">
       <section class="profile-header">
@@ -19,15 +17,17 @@
             <p class="main-title"><?php echo clean($search_result["nombre"]); ?></p>
             <p class="user-id"><?php echo clean($search_result["usuario"]); ?></p>
             <section class="profile-card-follows">
-              <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>'>Seguidores</a>
+              <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>Seguidores</a>
               <a class='profile-data item' counter='<?php echo clean($search_result["seguidos"]); ?>'>Seguidos</a>
             </section>
             <p class="user-description"><?php echo clean($search_result["aboutme"]); ?></p>
             <section class="button-group">
-              <button class='follow-button' onclick="follow('<?php echo clean($search_result["id"]) ?>')">Seguir</button>
+              <?php if(!$isMyProfile) { ?>
+              <button class='<?php echo clean($follow_button_class) ?>-button' onclick="<?php echo clean($follow_button_class) ?>('<?php echo clean($search_result["id"]) ?>', this)"><?php echo clean($follow_button_text) ?></button>
               <a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
-              	<button class='chat-button'">Chat</button>
+              	<button class='chat-button'>Chat</button>
               </a>
+              <?php	} ?>
             </section>
           </section><a href="#" class="profile-edit ilm-configuration"></a>
         </section>
@@ -67,6 +67,8 @@
             </div>
           </div>
         </div>
+      </section>
+      <section class="profile-body">
         <div name="Materias en las que brindo monitorias" class="separator"></div>
         <div id="profile-subjects" class="profile-cards-group owl-carousel owl-theme">
           <section class="box box-margin"><a href="#" class="box-v-section box-header">
@@ -184,8 +186,10 @@
             </section>
           </section>
         </div>
+      </section>
+      <section class="profile-body">
         <div name="Monitorias publicas activas" class="separator"></div>
-        <div id="profile-active-monitories" class="profile-cards-group owl-carousel owl-theme">
+        <div id="profile-active-monitories" class="box-group owl-carousel owl-theme">
           <section class="box box-margin"><a href="#" class="box-h-section box-header"><img src="https://ig-s-a-a.akamaihd.net/hphotos-ak-xpa1/t51.2885-15/e35/12145363_500768776766300_40156557_n.jpg" class="picture"/>
               <div class="box-v-section box-justify-center gutter-0">
                 <p class="sub-title">Ingenieria de software</p>
@@ -261,6 +265,7 @@
   <script src="js/jquery.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/scripts.js"></script>
+  <script src="js/profile.js"></script>
   <script src="js/form.js"></script>
   <script src="js/navbar.js"></script>
 </html>
