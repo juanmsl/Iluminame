@@ -14,7 +14,7 @@ function scrollDown() {
 	container.scroll();
 	container.animate({
 		scrollTop: height
-	}, 2000);
+	}, 1000);
 }
 
 function addMessageFromMe(date, text)

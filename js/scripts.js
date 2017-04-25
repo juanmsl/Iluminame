@@ -52,7 +52,7 @@ let chat_notification_template = "" +
 // Monitories
 
 let monitorie_template = "" +
-"<section class='box card'>" +
+"<section class='box card box-margin'>" +
 "	<a href='[user_link]' class='box-h-section box-header'>" +
 "	<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
@@ -66,7 +66,113 @@ let monitorie_template = "" +
 "		<p name='Precio por estudiante: ' class='box-data'>[monitorie_price]</p>" +
 "	</section>" +
 "	<section class='box-v-section box-footer box-align-center'>" +
-"		<p class='box-data'>[monitorie_type]</p>" +
-"		<button class='[button_class]-button'>[button_text]</button>" +
+"		<p class='box-data' id='state_monitorie_[monitorie_id]'>[monitorie_type]</p>" +
+"		<button class='[button_class]-button' onclick='[button_function]_monitorie([monitorie_id], this)'>[button_text]</button>" +
 "	</section>" +
 "</section>";
+
+$('#cards').owlCarousel({
+	autoplay: true,
+	margin: 10,
+	responsive:{
+		0:{
+			items:1,
+			loop:true,
+			center:true
+		},
+		400:{
+			items:2,
+			loop:false,
+			center:false
+		},
+		800:{
+			items:3,
+			loop:false,
+			center:false
+		},
+		1200:{
+			items:4,
+			loop:false,
+			center:false
+		}
+	}
+});
+
+$('#profile-subjects, #profile-active-monitories').owlCarousel({
+	margin: 10,
+	responsive:{
+		0:{
+			items:1,
+			loop:true,
+			center:true
+		},
+		600:{
+			items:2,
+			loop:false,
+			center:false
+		},
+		1200:{
+			items:3,
+			loop:false,
+			center:false
+		}
+	}
+});
+
+
+function join_monitorie(id, element) {
+	$.ajax({
+	type: "POST",
+	url: "/ajax/join.php",
+	data: { id : id },
+		success: function (msg) {
+			console.log("Ok!");
+			var response = JSON.parse(msg);
+			console.log(response.count + ' / ' + response.max);
+			updateLeaveButton(id, element, response);
+		}
+	});
+}
+
+function updateLeaveButton(id, element, res) {
+	var state = document.getElementById('state_monitorie_' + id);
+	state.innerHTML = res.count + ' / ' + res.max + ' inscritos';
+	element.setAttribute('onclick','leave_monitorie(' + id + ', this)');
+	element.setAttribute('class','leave-button');
+	element.innerHTML = 'Abandonar monitoria';
+}
+
+function leave_monitorie(id, element) {
+	$.ajax({
+	type: "POST",
+	url: "/ajax/leave.php",
+	data: { id : id },
+		success: function (msg) {
+			console.log("Ok!");
+			var response = JSON.parse(msg);
+			console.log(response.count + ' / ' + response.max);
+			updateJoinButton(id, element, response);
+		}
+	});
+}
+
+function updateJoinButton(id, element, res) {
+	var state = document.getElementById('state_monitorie_' + id);
+	state.innerHTML = res.count + ' / ' + res.max + ' inscritos';
+	element.setAttribute('onclick','join_monitorie(' + id + ', this)');
+	element.setAttribute('class','join-button');
+	element.innerHTML = 'Deseo unirme';
+}
+
+function follow(id) {
+	$.ajax({
+	type: "POST",
+	url: "/ajax/follow.php",
+	data: { id : id },
+		success: function (msg) {
+			console.log("Ok!");
+			var response = JSON.parse(msg);
+			console.log(response.count + " total");
+		}
+	});
+}

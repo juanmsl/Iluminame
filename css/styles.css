@@ -200,7 +200,6 @@ footer .ilm-github::before {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  width: 100%;
   margin: 10px;
 }
 
@@ -229,8 +228,11 @@ footer .ilm-github::before {
           flex-direction: column;
 }
 
-.box.card {
+.box.box-margin {
   margin: 10px;
+}
+
+.box.card {
   width: 100%;
 }
 
@@ -1414,12 +1416,9 @@ footer .ilm-github::before {
 }
 
 .profile .profile-body {
-  background: #DCF1F3;
   color: #03151F;
   padding: 10px;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  background: #DCF1F3;
 }
 
 @media all and (min-width: 500px) {
@@ -1427,6 +1426,19 @@ footer .ilm-github::before {
     margin-top: 10px;
     padding-top: 40px;
   }
+}
+
+.profile .profile-mini-card {
+  min-width: 150px;
+  height: 150px;
+  text-align: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
 }
 
 .monitoria .monitoria-info {

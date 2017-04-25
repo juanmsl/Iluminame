@@ -107,6 +107,24 @@ function clean($strInput = '', $ignoreHtml = false, $nl2br = false, $encoding = 
 	return $strInput;
 }
 
+function easyNumber($number)
+{
+	$test=555;
+	$string_return='';
+	$count_numbers=0;
+	for ($i = 1; $i <= strlen($number); $i++)
+	{
+		$string_return=substr($number,strlen($number)-$i,1).$string_return;
+		$count_numbers++;
+		if($count_numbers==3 && $i != strlen($number))
+		{
+			$string_return=','.$string_return;
+			$count_numbers=0;
+		}
+	}
+	return $string_return;
+}
+
 function timeAgo($timestamp, $minute = "minuto", $hour = "hora", $day = "d&iacute;a", $week = "semana", $seconds = "segundos", $minutes = "minutos", $hours = "horas", $days = "d&iacute;as", $weeks = "semanas")
 {
 	$difference = time() - $timestamp;

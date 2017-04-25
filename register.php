@@ -26,9 +26,10 @@ if (isset($_POST['register_username']) && isset($_POST['register_email']) && iss
 
 	if (!$users->IsEmailTaken($reg_email) && !$users->IsNameTaken($reg_username) && $reg_password_check == $reg_password)
 	{
+		$reg_password = $core->UberHash($reg_password);
 		dbquery("INSERT INTO estudiantes (usuario, contrasena, correo, nombre, foto, telefono, aboutme) VALUES ('" . $reg_username . "', '" . $reg_password . "', '" . $reg_email . "', '" . $reg_username . "', 'http://i.imgur.com/jFUbUdc.jpg', '', 'Bienvenid@ a Iluminame');");
 		$_SESSION['UBER_USER_E'] = $reg_username;
-		$_SESSION['UBER_USER_H'] = $core->UberHash($reg_password);
+		$_SESSION['UBER_USER_H'] = $reg_password;
 
 		header("Location: " . WWW . "/security_check.php");
 	}

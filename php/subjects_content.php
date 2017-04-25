@@ -16,7 +16,7 @@
         <button class="add-button">Añadir materia</button>
       </div>
       <div class="box-group">
-        <section class="box card"><a href="#" class="box-v-section box-header">
+        <section class="box card box-margin"><a href="#" class="box-v-section box-header">
             <p class="sub-title">Ingeniería de software</p>
             <div class="ranking">
               <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
@@ -35,7 +35,7 @@
             <button class="join-button">Pedir una monitoria</button>
           </section>
         </section>
-        <section class="box card"><a href="#" class="box-v-section box-header">
+        <section class="box card box-margin"><a href="#" class="box-v-section box-header">
             <p class="sub-title">Pensamiento algoritmico</p>
             <div class="ranking">
               <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
@@ -54,7 +54,7 @@
             <button class="join-button">Pedir una monitoria</button>
           </section>
         </section>
-        <section class="box card"><a href="#" class="box-v-section box-header">
+        <section class="box card box-margin"><a href="#" class="box-v-section box-header">
             <p class="sub-title">Estructuras de datos</p>
             <div class="ranking">
               <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
