@@ -1,44 +1,29 @@
 mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn, btntx, dsb)
-	if(dsb)
-		section.box.card.box-disabled
-			a(href="#").box-h-section.box-header
-				img(src= img).picture
-				.box-v-section.box-justify-center.gutter-0
-					p.sub-title= mt
-					p= nm
-			section.box-v-section
-				p.box-data(name='Lugar: ')= lg
-				p.box-data(name='Fecha: ')= fc
-				p.box-data(name='Duración: ')= dr
-				p.box-data(name='Precio por estudiante: ')= pr
-			section.box-v-section.box-footer.box-align-center
-				p.box-data= inf
-	else
-		section.box.card
-			a(href="#").box-h-section.box-header
-				img(src= img).picture
-				.box-v-section.box-justify-center.gutter-0
-					p.sub-title= mt
-					p= nm
-			section.box-v-section
-				p.box-data(name='Lugar: ')= lg
-				p.box-data(name='Fecha: ')= fc
-				p.box-data(name='Duración: ')= dr
-				p.box-data(name='Precio por estudiante: ')= pr
-			section.box-v-section.box-footer.box-align-center
-				p.box-data= inf
+	section.box.card.box-margin(class= dsb ? 'box-disabled' : '')
+		a(href="#").box-h-section.box-header
+			img(src= img).picture
+			.box-v-section.box-justify-center.gutter-0
+				p.sub-title= mt
+				p= nm
+		section.box-v-section
+			p.box-data(name='Lugar: ')= lg
+			p.box-data(name='Fecha: ')= fc
+			p.box-data(name='Duración: ')= dr
+			p.box-data(name='Precio por estudiante: ')= pr
+		section.box-v-section.box-footer.box-align-center
+			p.box-data= inf
+			if(!dsb)
 				button(class= btn)= btntx
 
-mixin notification(img, nm, dsc, dt)
-	a(href="#" data-fixed= dt).box.card.data-fixed
+mixin notification(img, dsc, dt)
+	a(href="#" data-fixed= dt).box.card.box-margin.data-fixed
 		section.box-h-section
 			img(src= img).big-picture
 			.box-v-section.box-justify-center.gutter-0
-				p.sub-title= nm
 				p.box-data= dsc
 
 mixin user(img, nm)
-	a(href="#").box.card
+	a(href="#").box.card.box-margin
 		section.box-h-section
 			img(src= img).big-picture
 			.box-v-section.box-justify-center.gutter-0
@@ -46,7 +31,7 @@ mixin user(img, nm)
 				p.box-data(name='12 ') seguidores
 
 mixin subject(sbj, prt, n, vpr, vpb, nmax)
-	section.box.card
+	section.box.card.box-margin
 		a(href="#").box-v-section.box-header
 			p.sub-title= sbj
 			.ranking

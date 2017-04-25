@@ -86,14 +86,22 @@
 	}
 
 	#{&}-body {
-		background: $background-2;
 		color: $color-2;
 		padding: $gutter;
-		flex-grow: 1;
+		background: $background-2;
 
 		@include from(500px) {
 			margin-top: $gutter;
 			padding-top: $gutter * 4;
 		}
+	}
+
+	#{&}-mini-card {
+		min-width: 150px;
+		height: 150px;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		margin: $gutter;
 	}
 }

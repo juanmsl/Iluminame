@@ -13,7 +13,7 @@
     <div class="mainContent">
       <div name="Mis monitorias por dictar" class="separator"></div>
       <div class="box-group">
-        <section class="box card"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+        <section class="box card box-margin"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
@@ -29,7 +29,7 @@
             <button class="cancel-button">Cancelar monitoria</button>
           </section>
         </section>
-        <section class="box card"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box card box-margin"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
@@ -45,7 +45,7 @@
             <button class="cancel-button">Cancelar monitoria</button>
           </section>
         </section>
-        <section class="box card"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box card box-margin"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
@@ -64,7 +64,7 @@
       </div>
       <div name="Historial de monitorias dictadas" class="separator"></div>
       <div class="box-group">
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
@@ -79,7 +79,7 @@
             <p class="box-data">2/5 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
@@ -94,7 +94,7 @@
             <p class="box-data">5/5 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
@@ -109,7 +109,7 @@
             <p class="box-data">1/5 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
@@ -124,7 +124,7 @@
             <p class="box-data">2/5 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
@@ -139,7 +139,7 @@
             <p class="box-data">3/3 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
@@ -154,7 +154,7 @@
             <p class="box-data">1/5 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Ingenieria de software</p>
               <p>Luis David Zarate</p>
@@ -169,7 +169,7 @@
             <p class="box-data">2/5 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Pensamiento algoritmico</p>
               <p>Maria Paula Moreno</p>
@@ -184,7 +184,7 @@
             <p class="box-data">3/3 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Lenguajes de programación</p>
               <p>Carlos Quimbay Cunalata</p>
@@ -199,7 +199,7 @@
             <p class="box-data">2/5 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Analisis de algoritmos</p>
               <p>José Domínguez</p>
@@ -214,7 +214,7 @@
             <p class="box-data">2/3 personas</p>
           </section>
         </section>
-        <section class="box card box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
+        <section class="box card box-margin box-disabled"><a href="#" class="box-h-section box-header"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="picture"/>
             <div class="box-v-section box-justify-center gutter-0">
               <p class="sub-title">Ingenieria de software</p>
               <p>Luis David Zarate</p>

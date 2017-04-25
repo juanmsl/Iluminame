@@ -39,9 +39,9 @@ class uberCore
 
 	public function UberHash($input = '')
 	{
-		return $input;
+		//return $input;
 		//return base64_encode($input);
-		//return sha1($input . $this->config['Site']['hash_secret']);
+		return sha1($input);
 	}
 
 	public static function GetIP()

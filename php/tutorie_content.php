@@ -33,19 +33,19 @@
         </section>
         <section class="box-footer">
           <div name="Estudiantes inscritos" class="separator"></div>
-          <div class="box-group"><a href="#" class="box card">
+          <div class="box-group"><a href="#" class="box card box-margin">
               <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="big-picture"/>
                 <div class="box-v-section box-justify-center gutter-0">
                   <p class="sub-title">Maria Paula Moreno</p>
                   <p name="12 " class="box-data">seguidores</p>
                 </div>
-              </section></a><a href="#" class="box card">
+              </section></a><a href="#" class="box card box-margin">
               <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg" class="big-picture"/>
                 <div class="box-v-section box-justify-center gutter-0">
                   <p class="sub-title">Stephanie Domínguez</p>
                   <p name="12 " class="box-data">seguidores</p>
                 </div>
-              </section></a><a href="#" class="box card">
+              </section></a><a href="#" class="box card box-margin">
               <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
                 <div class="box-v-section box-justify-center gutter-0">
                   <p class="sub-title">Luis David Zarate</p>
@@ -56,19 +56,19 @@
         </section>
         <section class="box-footer">
           <div name="Comentarios" class="separator"></div>
-          <div class="box-group"><a href="#" class="box card">
+          <div class="box-group"><a href="#" class="box card box-margin">
               <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="big-picture"/>
                 <div class="box-v-section box-justify-center gutter-0">
                   <p class="sub-title">Maria Paula Moreno</p>
                   <p name="12 " class="box-data">seguidores</p>
                 </div>
-              </section></a><a href="#" class="box card">
+              </section></a><a href="#" class="box card box-margin">
               <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg" class="big-picture"/>
                 <div class="box-v-section box-justify-center gutter-0">
                   <p class="sub-title">Stephanie Domínguez</p>
                   <p name="12 " class="box-data">seguidores</p>
                 </div>
-              </section></a><a href="#" class="box card">
+              </section></a><a href="#" class="box card box-margin">
               <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
                 <div class="box-v-section box-justify-center gutter-0">
                   <p class="sub-title">Luis David Zarate</p>

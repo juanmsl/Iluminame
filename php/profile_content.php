@@ -9,6 +9,8 @@
     <link href="css/normalize.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
+  <link href="css/owl.carousel.min.css" rel="stylesheet"/>
+  <link href="css/owl.theme.default.min.css" rel="stylesheet"/>
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent profile">
       <section class="profile-header">
@@ -22,16 +24,17 @@
             </section>
             <p class="user-description"><?php echo clean($search_result["aboutme"]); ?></p>
             <section class="button-group">
-              <button class="follow-button">Seguir</button><a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
-              	<button class='chat-button'>Chat</button>
+              <button class='follow-button' onclick="follow('<?php echo clean($search_result["id"]) ?>')">Seguir</button>
+              <a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
+              	<button class='chat-button'">Chat</button>
               </a>
             </section>
           </section><a href="#" class="profile-edit ilm-configuration"></a>
         </section>
       </section>
       <section class="profile-body">
-        <div class="box-group">
-          <div class="box">
+        <div id="cards" class="profile-cards-group owl-carousel owl-theme">
+          <div class="box profile-mini-card">
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-subject"></h1>
             </div>
@@ -39,7 +42,7 @@
               <h3 name="3 " class="sub-title box-data">materias</h3>
             </div>
           </div>
-          <div class="box">
+          <div class="box profile-mini-card">
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-tutories"></h1>
             </div>
@@ -47,7 +50,7 @@
               <h3 name="32 " class="sub-title box-data">monitorias dictadas</h3>
             </div>
           </div>
-          <div class="box">
+          <div class="box profile-mini-card">
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-users"></h1>
             </div>
@@ -55,6 +58,198 @@
               <h3 name="54 " class="sub-title box-data">estudiantes monitoreados</h3>
             </div>
           </div>
+          <div class="box profile-mini-card">
+            <div class="box-h-section box-align-center box-justify-center">
+              <h1 class="ilm-my-tutories"></h1>
+            </div>
+            <div class="box-h-section box-justify-center">
+              <h3 name="23 " class="sub-title box-data">monitorias asistidas</h3>
+            </div>
+          </div>
+        </div>
+        <div name="Materias en las que brindo monitorias" class="separator"></div>
+        <div id="profile-subjects" class="profile-cards-group owl-carousel owl-theme">
+          <section class="box box-margin"><a href="#" class="box-v-section box-header">
+              <p class="sub-title">Ingeniería de software</p>
+              <div class="ranking">
+                <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
+                <div style="width: 80%;" class="scd">&#x2605&#x2605&#x2605&#x2605&#x2605</div>
+                <div class="value">80 / 100'</div>
+                <div class="data">30 monitorias dictadas</div>
+              </div></a>
+            <section class="box-v-section">
+              <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?</p>
+            </section>
+            <section class="box-v-section box-align-center">
+              <p name="$20.000 / hora privada" data-tooltip-long="Solo tu y el monitor" data-tooltip-short="(x1)" class="box-data"></p>
+              <p name="$15.000 / hora publica" data-tooltip-long="Maximo 5 personas" data-tooltip-short="(x5)" class="box-data"></p>
+            </section>
+            <section class="box-h-section box-footer box-justify-center">
+              <button class="join-button">Pedir una monitoria</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-v-section box-header">
+              <p class="sub-title">Pensamiento algoritmico</p>
+              <div class="ranking">
+                <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
+                <div style="width: 80%;" class="scd">&#x2605&#x2605&#x2605&#x2605&#x2605</div>
+                <div class="value">80 / 100'</div>
+                <div class="data">30 monitorias dictadas</div>
+              </div></a>
+            <section class="box-v-section">
+              <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?</p>
+            </section>
+            <section class="box-v-section box-align-center">
+              <p name="$20.000 / hora privada" data-tooltip-long="Solo tu y el monitor" data-tooltip-short="(x1)" class="box-data"></p>
+              <p name="$15.000 / hora publica" data-tooltip-long="Maximo 5 personas" data-tooltip-short="(x5)" class="box-data"></p>
+            </section>
+            <section class="box-h-section box-footer box-justify-center">
+              <button class="join-button">Pedir una monitoria</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-v-section box-header">
+              <p class="sub-title">Calculo vectorial</p>
+              <div class="ranking">
+                <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
+                <div style="width: 80%;" class="scd">&#x2605&#x2605&#x2605&#x2605&#x2605</div>
+                <div class="value">80 / 100'</div>
+                <div class="data">30 monitorias dictadas</div>
+              </div></a>
+            <section class="box-v-section">
+              <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?</p>
+            </section>
+            <section class="box-v-section box-align-center">
+              <p name="$20.000 / hora privada" data-tooltip-long="Solo tu y el monitor" data-tooltip-short="(x1)" class="box-data"></p>
+              <p name="$15.000 / hora publica" data-tooltip-long="Maximo 5 personas" data-tooltip-short="(x5)" class="box-data"></p>
+            </section>
+            <section class="box-h-section box-footer box-justify-center">
+              <button class="join-button">Pedir una monitoria</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-v-section box-header">
+              <p class="sub-title">Estructuras de datos</p>
+              <div class="ranking">
+                <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
+                <div style="width: 80%;" class="scd">&#x2605&#x2605&#x2605&#x2605&#x2605</div>
+                <div class="value">80 / 100'</div>
+                <div class="data">30 monitorias dictadas</div>
+              </div></a>
+            <section class="box-v-section">
+              <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?</p>
+            </section>
+            <section class="box-v-section box-align-center">
+              <p name="$20.000 / hora privada" data-tooltip-long="Solo tu y el monitor" data-tooltip-short="(x1)" class="box-data"></p>
+              <p name="$15.000 / hora publica" data-tooltip-long="Maximo 5 personas" data-tooltip-short="(x5)" class="box-data"></p>
+            </section>
+            <section class="box-h-section box-footer box-justify-center">
+              <button class="join-button">Pedir una monitoria</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-v-section box-header">
+              <p class="sub-title">Sistemas operativos</p>
+              <div class="ranking">
+                <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
+                <div style="width: 80%;" class="scd">&#x2605&#x2605&#x2605&#x2605&#x2605</div>
+                <div class="value">80 / 100'</div>
+                <div class="data">30 monitorias dictadas</div>
+              </div></a>
+            <section class="box-v-section">
+              <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?</p>
+            </section>
+            <section class="box-v-section box-align-center">
+              <p name="$20.000 / hora privada" data-tooltip-long="Solo tu y el monitor" data-tooltip-short="(x1)" class="box-data"></p>
+              <p name="$15.000 / hora publica" data-tooltip-long="Maximo 5 personas" data-tooltip-short="(x5)" class="box-data"></p>
+            </section>
+            <section class="box-h-section box-footer box-justify-center">
+              <button class="join-button">Pedir una monitoria</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-v-section box-header">
+              <p class="sub-title">Administración basica de linux</p>
+              <div class="ranking">
+                <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
+                <div style="width: 80%;" class="scd">&#x2605&#x2605&#x2605&#x2605&#x2605</div>
+                <div class="value">80 / 100'</div>
+                <div class="data">30 monitorias dictadas</div>
+              </div></a>
+            <section class="box-v-section">
+              <p class="box-data">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ut saepe neque, atque corporis magnam perspiciatis expedita, exercitationem adipisci modi?</p>
+            </section>
+            <section class="box-v-section box-align-center">
+              <p name="$20.000 / hora privada" data-tooltip-long="Solo tu y el monitor" data-tooltip-short="(x1)" class="box-data"></p>
+              <p name="$15.000 / hora publica" data-tooltip-long="Maximo 5 personas" data-tooltip-short="(x5)" class="box-data"></p>
+            </section>
+            <section class="box-h-section box-footer box-justify-center">
+              <button class="join-button">Pedir una monitoria</button>
+            </section>
+          </section>
+        </div>
+        <div name="Monitorias publicas activas" class="separator"></div>
+        <div id="profile-active-monitories" class="profile-cards-group owl-carousel owl-theme">
+          <section class="box box-margin"><a href="#" class="box-h-section box-header"><img src="https://ig-s-a-a.akamaihd.net/hphotos-ak-xpa1/t51.2885-15/e35/12145363_500768776766300_40156557_n.jpg" class="picture"/>
+              <div class="box-v-section box-justify-center gutter-0">
+                <p class="sub-title">Ingenieria de software</p>
+                <p>José Domínguez</p>
+              </div></a>
+            <section class="box-v-section">
+              <p name="Lugar: " class="box-data">Biblioteca sotano 2 - sala 3</p>
+              <p name="Fecha: " class="box-data">Abril 19 de 2017</p>
+              <p name="Duración: " class="box-data">2:00pm - 4:00pm</p>
+              <p name="Precio por estudiante: " class="box-data">$15.000</p>
+            </section>
+            <section class="box-v-section box-footer box-align-center">
+              <p class="box-data">2 / 3 estudiantes inscritos</p>
+              <button class="join-button">Deseo unirme</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-h-section box-header"><img src="https://ig-s-a-a.akamaihd.net/hphotos-ak-xpa1/t51.2885-15/e35/12145363_500768776766300_40156557_n.jpg" class="picture"/>
+              <div class="box-v-section box-justify-center gutter-0">
+                <p class="sub-title">Ingenieria de software</p>
+                <p>José Domínguez</p>
+              </div></a>
+            <section class="box-v-section">
+              <p name="Lugar: " class="box-data">Biblioteca sotano 2 - sala 3</p>
+              <p name="Fecha: " class="box-data">Abril 19 de 2017</p>
+              <p name="Duración: " class="box-data">2:00pm - 4:00pm</p>
+              <p name="Precio por estudiante: " class="box-data">$15.000</p>
+            </section>
+            <section class="box-v-section box-footer box-align-center">
+              <p class="box-data">2 / 3 estudiantes inscritos</p>
+              <button class="join-button">Deseo unirme</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-h-section box-header"><img src="https://ig-s-a-a.akamaihd.net/hphotos-ak-xpa1/t51.2885-15/e35/12145363_500768776766300_40156557_n.jpg" class="picture"/>
+              <div class="box-v-section box-justify-center gutter-0">
+                <p class="sub-title">Ingenieria de software</p>
+                <p>José Domínguez</p>
+              </div></a>
+            <section class="box-v-section">
+              <p name="Lugar: " class="box-data">Biblioteca sotano 2 - sala 3</p>
+              <p name="Fecha: " class="box-data">Abril 19 de 2017</p>
+              <p name="Duración: " class="box-data">2:00pm - 4:00pm</p>
+              <p name="Precio por estudiante: " class="box-data">$15.000</p>
+            </section>
+            <section class="box-v-section box-footer box-align-center">
+              <p class="box-data">2 / 3 estudiantes inscritos</p>
+              <button class="join-button">Deseo unirme</button>
+            </section>
+          </section>
+          <section class="box box-margin"><a href="#" class="box-h-section box-header"><img src="https://ig-s-a-a.akamaihd.net/hphotos-ak-xpa1/t51.2885-15/e35/12145363_500768776766300_40156557_n.jpg" class="picture"/>
+              <div class="box-v-section box-justify-center gutter-0">
+                <p class="sub-title">Ingenieria de software</p>
+                <p>José Domínguez</p>
+              </div></a>
+            <section class="box-v-section">
+              <p name="Lugar: " class="box-data">Biblioteca sotano 2 - sala 3</p>
+              <p name="Fecha: " class="box-data">Abril 19 de 2017</p>
+              <p name="Duración: " class="box-data">2:00pm - 4:00pm</p>
+              <p name="Precio por estudiante: " class="box-data">$15.000</p>
+            </section>
+            <section class="box-v-section box-footer box-align-center">
+              <p class="box-data">2 / 3 estudiantes inscritos</p>
+              <button class="join-button">Deseo unirme</button>
+            </section>
+          </section>
         </div>
       </section>
     </div>
@@ -64,6 +259,7 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
   <script src="js/scripts.js"></script>
   <script src="js/form.js"></script>
   <script src="js/navbar.js"></script>
