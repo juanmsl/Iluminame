@@ -22,7 +22,6 @@ function addMessageFromMe(date, text)
   var container = $("#message-container");
   var child = '<article time="' + date + '" class="chat-message chat-user-2">' + atob(text) + '</article>';
   container.append(child);
-  scrollDown();
 }
 
 function addMessageFromPartner(date, text)
@@ -30,7 +29,6 @@ function addMessageFromPartner(date, text)
   var container = $("#message-container");
   var child = '<article time="' + date + '" class="chat-message chat-user-1">' + atob(text) + '</article>';
   container.append(child);
-  scrollDown();
 }
 
 function sendMessage(user) {
@@ -45,6 +43,7 @@ function sendMessage(user) {
 			console.log("Ok!");
 			var response = JSON.parse(msg);
 			addMessageFromMe(response.date, response.text);
+			scrollDown();
 		}
 	});
 }
@@ -64,6 +63,7 @@ function checkMessages(user)
 				addMessageFromPartner(response[i].date, response[i].text);
 				last_message_id = response[i].id;
 			}
+			scrollDown();
 		}
 	});
 }

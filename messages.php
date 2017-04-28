@@ -62,7 +62,7 @@ if ($messages_available > 0)
 		}
 		$last_id = $message["id"];
 	}
-
+	echo "<script> scrollDown(); </script>";
 }
 
 echo "<script> var last_message_id = " . $last_id . "; </script>\n";

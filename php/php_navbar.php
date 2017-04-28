@@ -43,7 +43,7 @@ $msgs_query = dbquery("SELECT DISTINCT mensajes.estudiante_id_envia as est_envia
 						notification_date: '" . strftime("%d de %B del %Y, %I:%M %p", $msg["fecha"]) . "',
 						user_picture: '" . $user_foto . "',
 						user_name: '" . $user_user . "',
-						notification_description: '" . clean($msg["mensaje"]) . "',
+						notification_description: '" . $msg["mensaje"] . "',
 					});
 				</script>";
 			}
