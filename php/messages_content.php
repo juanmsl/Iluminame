@@ -15,7 +15,7 @@
         <section class="box-h-section box-header box-align-center"><a href="#"><img src='<?php echo clean($search_result["foto"]); ?>' class='picture'></a>
           <section class="box-v-section gutter-0"><a href="#" class="title"><?php echo clean($search_result["nombre"]); ?></a></section>
         </section>
-        <section id="message-container" class="box-v-section chat-history"><?php echo $message_data; ?></section> 
+        <section id="message-container" class="box-v-section chat-history"></section> 
         <form class='box-h-section box-footer chat-footer' id='message-chat' action="javascript:sendMessage('<?php echo clean($search_result["id"]); ?>')">
         <textarea placeholder="Escribe tu mensaje aqui" rows="1" id="message-input" class="chat-typetext"></textarea>
         <input type="submit" value="Enviar" class="send-button"/></form>
@@ -30,9 +30,4 @@
   <script src="js/push.min.js"></script>
   <script src="js/scripts.js"></script>
   <script src="js/navbar.js"></script><?php echo $chatNotifications; ?>
-  <script src="js/chat.js"></script><script>$('body').ready(function(){
-  	scrollDown();
-  	setInterval('checkMessages(<?php echo $search_result['id']; ?>)', 1000);
-  });</script>
-  <script> var last_message_id = <?php echo $last_id; ?>; </script>
 </html>

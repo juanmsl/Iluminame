@@ -16,7 +16,7 @@ for ($i = 0; $i < $chat_query->num_rows; $i++)
 	$chat_item = $chat_query->fetch_assoc();
 
 	@$myObj->id = intval($chat_item["id"]);
-	$myObj->text = clean($chat_item["mensaje"]);
+	$myObj->text = $chat_item["mensaje"];
 	$myObj->date = "hace " . timeAgo($chat_item["fecha"]);
 	$messages[] = $myObj;
 }

@@ -42,20 +42,29 @@ if (!isset($search_result))
 	exit;
 }
 
+include ('php/messages_content.php');
+
 $last_id = -1;
+
+echo "<script src='js/chat.js'></script>";
 
 $message_query = dbquery("SELECT id, mensaje, fecha, estudiante_id_recibe, estudiante_id_envia FROM mensajes WHERE (estudiante_id_recibe = '" . $myrow["id"] . "' AND estudiante_id_envia = '" . $search_result["id"] . "') OR (estudiante_id_recibe = '" . $search_result["id"] . "' AND estudiante_id_envia = '" . $myrow["id"] . "') ORDER BY fecha ASC;");
 $messages_available = $message_query->num_rows;
 
-$message_data = "";
 if ($messages_available > 0)
 {
 	while ($message = $message_query->fetch_assoc())
 	{
-		$message_data .= '<article time="hace ' . timeAgo($message["fecha"]) . '" class="chat-message chat-user-' . ($myrow["id"] == $message["estudiante_id_recibe"] ? '1' : '2') . '">' . clean($message["mensaje"]) . '</article>';
+		if($myrow["id"] == $message["estudiante_id_recibe"]) {
+			echo "<script> addMessageFromPartner('" . timeAgo($message["fecha"]) . "', '" . $message["mensaje"] . "'); </script>";
+		} else {
+			echo "<script> addMessageFromMe('" . timeAgo($message["fecha"]) . "', '" . $message["mensaje"] . "'); </script>";
+		}
 		$last_id = $message["id"];
 	}
+
 }
 
-include ('php/messages_content.php');
+echo "<script> var last_message_id = " . $last_id . "; </script>\n";
+echo "<script> setInterval(\"checkMessages('" . $search_result['id'] . "')\", 1000); </script>\n";
 ?>
