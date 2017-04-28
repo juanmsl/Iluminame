@@ -30,20 +30,20 @@ if ($items_available > 0)
 	{
 		echo "<script>
 			addHomeMonitorie({
-				monitorie_link: '#',
-				monitorie_id: '" . clean($item["monitoria_id"]) . "',
+				link: '#',
+				id: '" . clean($item["monitoria_id"]) . "',
 				user_link: 'profile.php?user=" . clean($item["usuario"]) . "',
 				user_picture: '" . clean($item["foto"]) . "',
 				subject_name: '" . clean($item["materia_nombre"]) . "',
 				user_name: '" . clean($item["estudiante_nombre"]) . "',
-				monitorie_place: '" . clean($item["lugar"]) . "',
-				monitorie_date: '" . strftime("%B %d de %Y", $item["fecha_inicio"]) . "',
-				monitorie_time: '" . strftime("%I:%M%p", $item["fecha_inicio"]) . " - " . strftime("%I:%M%p", $item["fecha_fin"]) . "',
-				monitorie_price: '" . easyNumber(clean($item["costo_h_public"])) . "',
-				monitorie_inscriptions: '" . clean($item["monitoria_inscripciones"]) . "',
-				monitorie_type: '" . (clean($item["es_publica"]) == '0'? false : true ) . "',
-				monitorie_is_signed: " . clean($item["inscrito"]) . ",
-				monitorie_maximun: '" . clean($item["max_estud"]) . "'
+				place: '" . clean($item["lugar"]) . "',
+				date: '" . strftime("%d de %B del %Y", $item["fecha_inicio"]) . "',
+				time: '" . strftime("%I:%M %p", $item["fecha_inicio"]) . " - " . strftime("%I:%M %p", $item["fecha_fin"]) . "',
+				price: '" . easyNumber(clean($item["costo_h_public"])) . "',
+				inscriptions: '" . clean($item["monitoria_inscripciones"]) . "',
+				type: '" . (clean($item["es_publica"]) == '0'? false : true ) . "',
+				is_signed: " . clean($item["inscrito"]) . ",
+				maximun: '" . clean($item["max_estud"]) . "'
 			});
 		</script>";
 	}

@@ -27,12 +27,12 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
+  <script src="js/push.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="js/form.js"></script>
-  <script src="js/navbar.js"></script><script>$('body').ready(function(){
+  <script src="js/navbar.js"></script><?php echo $chatNotifications; ?>
+  <script src="js/chat.js"></script><script>$('body').ready(function(){
   	scrollDown();
   	setInterval('checkMessages(<?php echo $search_result['id']; ?>)', 1000);
   });</script>
   <script> var last_message_id = <?php echo $last_id; ?>; </script>
-  <script src="js/chat.js"></script>
 </html>

@@ -1301,15 +1301,9 @@ footer .ilm-github::before {
   font-weight: bold;
   width: 22px;
   height: 22px;
-  border-radius: 50%;
   margin: auto;
   margin-left: auto;
   margin-right: 10px;
-}
-
-.profile-widget .profile-widget-section.active::after {
-  background: #006BAB;
-  color: #DCF1F3;
 }
 
 .profile {

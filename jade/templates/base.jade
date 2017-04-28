@@ -21,5 +21,12 @@ html(lang="es")
 		block footer
 			include ../components/footer
 
+	script(src="js/jquery.js")
+	script(src="js/push.min.js")
+	script(src="js/scripts.js")
+	if isIndex
+		script(src="js/form.js")
+	else
+		script(src="js/navbar.js")
+		| <?php echo $chatNotifications; ?>
 	block scripts
-		include ../config/scrips

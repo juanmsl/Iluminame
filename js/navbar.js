@@ -77,44 +77,6 @@ let addChatNotification = function(notification) {
 	addAndUpdateNotificators($(navbar + ' #toggle-chat'), element);
 }
 
-let addHomeMonitorie = function(notification) {
-	var monitorie_id = notification.monitorie_id;
-	var inscriptions = parseInt(notification.monitorie_inscriptions);
-	var maximun = parseInt(notification.monitorie_maximun);
-	var isPublic = notification.monitorie_type;
-	var isSigned = parseInt(notification.monitorie_is_signed);
-	var state = 'Privada';
-	if(isPublic) {
-		state = inscriptions + ' / ' + maximun + ' inscritos';
-	}
-	var button_class = 'join';
-	var button_text = 'Deseo unirme';
-	if(inscriptions == maximun) {
-		button_class = 'full';
-		button_text = 'Monitoria llena';
-	} else if(isSigned == 1) {
-		button_class = 'leave';
-		button_text = 'Abandonar monitoria';
-	}
-
-	var element = monitorie_template
-		.replace('[monitorie_id]', notification.monitorie_id)
-		.replace('[monitorie_id]', notification.monitorie_id)
-		.replace('[user_link]', notification.user_link)
-		.replace('[user_picture]', notification.user_picture)
-		.replace('[subject_name]', notification.subject_name)
-		.replace('[user_name]', notification.user_name)
-		.replace('[monitorie_place]', notification.monitorie_place)
-		.replace('[monitorie_date]', notification.monitorie_date)
-		.replace('[monitorie_time]', notification.monitorie_time)
-		.replace('[monitorie_price]', '$' + notification.monitorie_price)
-		.replace('[monitorie_type]', state)
-		.replace('[button_class]', button_class)
-		.replace('[button_function]', button_class)
-		.replace('[button_text]', button_text);
-	$('#home-monitories').append(element);
-}
-
 var mapa = {
 	monitorie_link: '#',
 	user_picture: 'https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg',
@@ -145,12 +107,3 @@ var luis = {
 	notification_description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.',
 };
 addNotification(luis);
-
-var jose = {
-	notification_link: '#',
-	notification_date: 'Abril 20 de 2017, 8:28pm',
-	user_picture: 'https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg',
-	user_name: 'José Rafael Domínguez',
-	notification_description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.',
-};
-addChatNotification(jose);

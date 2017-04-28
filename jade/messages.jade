@@ -7,6 +7,15 @@ append config
 block nav
 	|<?php include('inc/templates/navbar.php') ?>
 
+block scripts
+	script(src="js/chat.js")
+	| <script>$('body').ready(function(){
+	|	scrollDown();
+	|	setInterval('checkMessages(<?php echo $search_result['id']; ?>)', 1000);
+	| });</script>
+	| <script> var last_message_id = <?php echo $last_id; ?>; </script>
+
+
 block main
 	.mainContent
 		section.box.chat
@@ -22,10 +31,3 @@ block main
 			textarea(placeholder='Escribe tu mensaje aqui' rows='1').chat-typetext#message-input
 			input(type='submit' class='send-button' value='Enviar')
 			</form>
-append scripts
-	| <script>$('body').ready(function(){
-	|	scrollDown();
-	|	setInterval('checkMessages(<?php echo $search_result['id']; ?>)', 1000);
-	| });</script>
-	| <script> var last_message_id = <?php echo $last_id; ?>; </script>
-	| <script src="js/chat.js"></script>

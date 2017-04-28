@@ -66,7 +66,7 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
+  <script src="js/push.min.js"></script>
   <script src="js/scripts.js"></script>
   <script src="js/form.js"></script>
-  <script src="js/navbar.js"></script>
 </html>

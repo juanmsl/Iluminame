@@ -14,7 +14,14 @@
       </section>
       <section class="user-description"><?php echo $myDescription; ?></section>
     </section>
-    <section class="profile-widget-notifications"><a href="notifications.php" counter="0" class="profile-widget-section ilm-notification active">Notificaciones</a><a href="messages.php" counter="0" class="profile-widget-section ilm-chat active">Mensajes</a><a href="my-tutories.php" counter="0" class="profile-widget-section ilm-my-tutories active">Mis monitorias</a><a href='users.php' class='profile-widget-section ilm-users' counter='<?php echo $myFollowing; ?>'>Usuarios que sigo</a><a href="subjects.php" counter="0" class="profile-widget-section ilm-subject">Materias</a><a href="tutories.php" counter="0" class="profile-widget-section ilm-tutories active">Monitorias pendientes</a><a href="logout.php" class="profile-widget-logout ilm-logout">Cerrar sesión</a></section>
+    <section class="profile-widget-notifications">
+      <a href='notifications.php' class='profile-widget-section ilm-notification' counter='<?php echo clean($navbar_query["count_notifications"]); ?>'>Notificaciones</a>
+      <a href='messages.php' class='profile-widget-section ilm-chat' counter='<?php echo clean($navbar_query["count_msgs"]); ?>'>Mensajes</a>
+      <a href='my-tutories.php' class='profile-widget-section ilm-my-tutories' counter='<?php echo clean($navbar_query["count_my_monitories"]); ?>'>Mis monitorias</a>
+      <a href='users.php' class='profile-widget-section ilm-users' counter='<?php echo clean($navbar_query["count_users"]); ?>'>Usuarios que sigo</a>
+      <a href='subjects.php' class='profile-widget-section ilm-subject' counter='<?php echo clean($navbar_query["count_subjects"]); ?>'>Materias</a>
+      <a href='tutories.php' class='profile-widget-section ilm-tutories' counter='<?php echo clean($navbar_query["count_monitories"]); ?>'>Monitorias pendientes</a><a href="logout.php" class="profile-widget-logout ilm-logout">Cerrar sesión</a>
+    </section>
   </aside>
   <section id="my-tutories" class="navbar-boxNotification">
     <label class="title navbar-title">Monitorias pendientes</label>

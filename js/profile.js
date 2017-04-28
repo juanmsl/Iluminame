@@ -1,5 +1,6 @@
 $('#cards').owlCarousel({
 	autoplay: true,
+	autoplayTimeout: 2500,
 	loop: true,
 	rewind: true,
 	responsive:{
