@@ -159,7 +159,7 @@ function follow(id, element) {
 			var response = JSON.parse(msg);
 			console.log(response.result);
 			var followers = document.getElementById('profile-followers');
-			followers.setAttribute('counter', response.count);
+			followers.setAttribute('data', response.count);
 			element.setAttribute('class','unfollow-button');
 			var action = element.getAttribute('onclick');
 			element.setAttribute('onclick', action.replace('follow(','unfollow('));
@@ -177,7 +177,7 @@ function unfollow(id, element) {
 			var response = JSON.parse(msg);
 			console.log(response.result);
 			var followers = document.getElementById('profile-followers');
-			followers.setAttribute('counter', response.count);
+			followers.setAttribute('data', response.count);
 			element.setAttribute('class','follow-button');
 			var action = element.getAttribute('onclick');
 			element.setAttribute('onclick', action.replace('unfollow(','follow('));

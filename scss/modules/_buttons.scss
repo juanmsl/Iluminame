@@ -1,5 +1,6 @@
 [class *= '-button'] {
 	padding: $gutter / 2 $gutter * 2;
+	margin: 0 $gutter;
 	color: $button-color;
 	border: 0;
 	cursor: pointer;

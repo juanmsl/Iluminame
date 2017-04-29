@@ -34,7 +34,8 @@ if($user_query) {
 	$user_query = dbquery("SELECT id, nombre, usuario, foto, aboutme,
 		(SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = id) as seguidos,
 		(SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = id) as seguidores,
-		(SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . USER_ID . "' and estudiante_id_seguido = id) as isFollow
+		(SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . USER_ID . "' and estudiante_id_seguido = id) as isFollow,
+        (SELECT count(*) FROM estudiantes_seguidores WHERE estudiante_id_seguido = '" . USER_ID . "' and estudiante_id_seguidor = id) as isFollowMe
 		FROM estudiantes WHERE " . $final_query);
 
 	if ($user_query->num_rows == 1) {
@@ -42,6 +43,7 @@ if($user_query) {
 		$follow_button_class = 'follow';
 		$follow_button_text = 'Seguir';
 		$isMyProfile = $search_result["id"] == USER_ID;
+		$isFollowMe = $search_result["isFollowMe"] == 1;
 		if($search_result["isFollow"] == '1') {
 			$follow_button_class = 'unfollow';
 			$follow_button_text = 'Dejar de seguir';

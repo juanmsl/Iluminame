@@ -12,28 +12,28 @@
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent profile">
       <section class="profile-header">
-        <section class="profile-card"><img src='<?php echo clean($search_result["foto"]); ?>' class='profile-card-photo'>
-          <section class="profile-card-info">
-            <p class="main-title"><?php echo clean($search_result["nombre"]); ?></p>
+        <section class="profile-card"><img src='<?php echo clean($search_result["foto"]); ?>' class='profile-photo'>
+          <div class="info">
+            <h1 class="main-title"><?php echo clean($search_result["nombre"]); ?></h1>
             <p class="user-id"><?php echo clean($search_result["usuario"]); ?></p>
-            <section class="profile-card-follows">
-              <a class='profile-data item' counter='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>Seguidores</a>
-              <a class='profile-data item' counter='<?php echo clean($search_result["seguidos"]); ?>'>Seguidos</a>
-            </section>
-            <p class="user-description"><?php echo clean($search_result["aboutme"]); ?></p>
-            <section class="button-group">
-              <?php if(!$isMyProfile) { ?>
-              <button class='<?php echo clean($follow_button_class) ?>-button' onclick="<?php echo clean($follow_button_class) ?>('<?php echo clean($search_result["id"]) ?>', this)"><?php echo clean($follow_button_text) ?></button>
-              <a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
-              	<button class='chat-button'>Chat</button>
-              </a>
-              <?php	} ?>
-            </section>
-          </section><a href="#" class="profile-edit ilm-configuration"></a>
+            <article class="follows"><a class='data' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
+              <div class="follows-separator"></div><a class='data' data='<?php echo clean($search_result["seguidos"]); ?>'>seguidos</a>
+            </article><?php if(!$isMyProfile && $isFollowMe) { ?>
+            <p>Te sigue</p>
+            <?php	} ?>
+            <p class="user-description"><?php echo clean($search_result["aboutme"]); ?></p><?php if(!$isMyProfile) { ?>
+            <article class='buttons-group'>
+            	<button class='<?php echo clean($follow_button_class) ?>-button' onclick="<?php echo clean($follow_button_class) ?>('<?php echo clean($search_result["id"]) ?>', this)"><?php echo clean($follow_button_text) ?></button>
+            	<a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
+            		<button class='chat-button'>Chat</button>
+            	</a>
+            </article>
+            <?php	} ?><a href="#" class="profile-edit ilm-configuration"></a>
+          </div>
         </section>
       </section>
       <section class="profile-body">
-        <div id="cards" class="profile-cards-group owl-carousel owl-theme">
+        <div id="cards" class="owl-carousel owl-theme">
           <div class="box profile-mini-card">
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-subject"></h1>
@@ -70,7 +70,7 @@
       </section>
       <section class="profile-body">
         <div name="Materias en las que brindo monitorias" class="separator"></div>
-        <div id="profile-subjects" class="profile-cards-group owl-carousel owl-theme">
+        <div id="profile-subjects" class="owl-carousel owl-theme">
           <section class="box box-margin"><a href="#" class="box-v-section box-header">
               <p class="sub-title">Ingeniería de software</p>
               <div class="ranking">

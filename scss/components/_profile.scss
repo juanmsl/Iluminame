@@ -5,7 +5,6 @@
 	#{&}-header {
 		background: $background-1;
 		color: $color-1;
-		flex-shrink: 0;
 	}
 
 	#{&}-edit {
@@ -14,75 +13,6 @@
 		top: 0;
 		padding: $gutter 0;
 		cursor: pointer;
-	}
-
-	#{&}-card {
-		background: $background-2;
-		color: $color-2;
-		width: 100%;
-		position: relative;
-
-		@include from(500px) {
-			width: 400px;
-			margin: 0 auto;
-			border-radius: $gutter;
-			overflow: hidden;
-			transform: translateY(30px);
-			box-shadow: 0 3px 10px $borde;
-		}
-	}
-
-	#{&}-card-photo {
-		width: 100%;
-		display: block;
-	}
-
-	#{&}-card-info {
-		background: rgba($blanco, 0.3);
-		position: absolute;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		align-items: center;
-		text-align: center;
-	}
-
-	#{&}-card-follows {
-		display: flex;
-		justify-content: center;
-		margin: $gutter;
-
-		.profile-data {
-			display: flex;
-			align-items: center;
-			margin: 0 $gutter;
-			flex-direction: column;
-			font-weight: bold;
-			border-bottom: 1px solid transparent;
-
-			&:hover {
-				border-bottom: 1px solid;
-			}
-
-			&::before {
-				content: attr(counter);
-				font-weight: normal;
-				margin-right: $gutter / 2;
-				font-size: $h1;
-			}
-		}
-	}
-
-	.user-description {
-		padding: $gutter $gutter * 4;
-	}
-
-	.button-group {
-		margin: $gutter;
-		margin-bottom: $gutter * 3;
 	}
 
 	#{&}-body {
@@ -110,5 +40,120 @@
 		align-items: center;
 		margin: $gutter auto;
 		background: $box-footer-background;
+	}
+}
+
+.profile-card {
+	position: relative;
+	background: $background-1;
+	color: $color-1;
+	margin: 0 auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@include from(tablet) {
+		flex-direction: row;
+		max-width: 90%;
+		width: 100%;
+		height: 325px;
+		max-width: 100%;
+		overflow: hidden;
+	}
+
+	@include from(laptop) {
+		width: 700px;
+		border-radius: $gutter;
+		transform: translateY(30px);
+		box-shadow: 0 3px 10px $borde;
+		background: $background-2;
+		color: $color-2;
+	}
+
+	.profile-photo {
+		width: 250px;
+		height: 250px;
+		display: block;
+		object-fit: cover;
+		border-radius: 50%;
+		padding: $gutter;
+		margin: auto;
+		background: $background-1;
+
+		@include from(tablet) {
+			padding: 0;
+			width: 325px;
+			height: 325px;
+			border-radius: 0 25% 25% 0 / 0 50% 50% 0;
+		}
+
+		@include from(laptop) {
+			border-radius: 0;
+		}
+	}
+
+	.info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: $gutter $gutter * 2 $gutter * 2;
+
+		@include from(tablet) {
+			padding: $gutter $gutter * 2;
+			position: relative;
+			flex-grow: 1;
+			height: 100%;
+		}
+	}
+
+	.follows {
+		display: flex;
+		margin: $gutter;
+	}
+
+	.follows-separator {
+		border-left: 1px solid;
+		margin: $gutter 0;
+	}
+
+	.data {
+		margin: $gutter;
+		display: flex;
+		flex-direction: row;
+		border-bottom: 1px solid transparent;
+		cursor: pointer;
+
+		&:hover {
+			border-bottom: 1px solid;
+		}
+
+		&::before {
+			content: attr(data);
+			margin-right: $gutter / 2;
+		}
+
+		@include from(tablet) {
+			flex-direction: column;
+
+			&::before {
+				font-size: 3em;
+				content: attr(data);
+			}
+		}
+	}
+
+	.user-id, .user-description {
+		display: none;
+		@include from(tablet) {
+			display: block;
+		}
+	}
+
+	.description {
+		margin: $gutter;
+		font-size: 0.85em;
 	}
 }

@@ -165,7 +165,7 @@ footer .ilm-github::before {
 }
 
 .user-id {
-  margin-bottom: 3px;
+  cursor: pointer;
 }
 
 .user-id:hover {
@@ -388,6 +388,7 @@ footer .ilm-github::before {
 
 [class*='-button'] {
   padding: 5px 20px;
+  margin: 0 10px;
   color: #03151F;
   border: 0;
   cursor: pointer;
@@ -1318,9 +1319,6 @@ footer .ilm-github::before {
 .profile .profile-header {
   background: #006BAB;
   color: #DCF1F3;
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
 }
 
 .profile .profile-edit {
@@ -1329,97 +1327,6 @@ footer .ilm-github::before {
   top: 0;
   padding: 10px 0;
   cursor: pointer;
-}
-
-.profile .profile-card {
-  background: #DCF1F3;
-  color: #03151F;
-  width: 100%;
-  position: relative;
-}
-
-@media all and (min-width: 500px) {
-  .profile .profile-card {
-    width: 400px;
-    margin: 0 auto;
-    border-radius: 10px;
-    overflow: hidden;
-    -webkit-transform: translateY(30px);
-        -ms-transform: translateY(30px);
-            transform: translateY(30px);
-    box-shadow: 0 3px 10px #03151F;
-  }
-}
-
-.profile .profile-card-photo {
-  width: 100%;
-  display: block;
-}
-
-.profile .profile-card-info {
-  background: rgba(255, 255, 255, 0.3);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-}
-
-.profile .profile-card-follows {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 10px;
-}
-
-.profile .profile-card-follows .profile-data {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 10px;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  font-weight: bold;
-  border-bottom: 1px solid transparent;
-}
-
-.profile .profile-card-follows .profile-data:hover {
-  border-bottom: 1px solid;
-}
-
-.profile .profile-card-follows .profile-data::before {
-  content: attr(counter);
-  font-weight: normal;
-  margin-right: 5px;
-  font-size: 35.2px;
-}
-
-.profile .user-description {
-  padding: 10px 40px;
-}
-
-.profile .button-group {
-  margin: 10px;
-  margin-bottom: 30px;
 }
 
 .profile .profile-body {
@@ -1452,6 +1359,163 @@ footer .ilm-github::before {
           align-items: center;
   margin: 10px auto;
   background: #b6e2e6;
+}
+
+.profile-card {
+  position: relative;
+  background: #006BAB;
+  color: #DCF1F3;
+  margin: 0 auto;
+  overflow: hidden;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media all and (min-width: 768px) {
+  .profile-card {
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    max-width: 90%;
+    width: 100%;
+    height: 325px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .profile-card {
+    width: 700px;
+    border-radius: 10px;
+    -webkit-transform: translateY(30px);
+        -ms-transform: translateY(30px);
+            transform: translateY(30px);
+    box-shadow: 0 3px 10px #03151F;
+    background: #DCF1F3;
+    color: #03151F;
+  }
+}
+
+.profile-card .profile-photo {
+  width: 250px;
+  height: 250px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 10px;
+  margin: auto;
+  background: #006BAB;
+}
+
+@media all and (min-width: 768px) {
+  .profile-card .profile-photo {
+    padding: 0;
+    width: 325px;
+    height: 325px;
+    border-radius: 0 25% 25% 0 / 0 50% 50% 0;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .profile-card .profile-photo {
+    border-radius: 0;
+  }
+}
+
+.profile-card .info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding: 10px 20px 20px;
+}
+
+@media all and (min-width: 768px) {
+  .profile-card .info {
+    padding: 10px 20px;
+    position: relative;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    height: 100%;
+  }
+}
+
+.profile-card .follows {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px;
+}
+
+.profile-card .follows-separator {
+  border-left: 1px solid;
+  margin: 10px 0;
+}
+
+.profile-card .data {
+  margin: 10px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+
+.profile-card .data:hover {
+  border-bottom: 1px solid;
+}
+
+.profile-card .data::before {
+  content: attr(data);
+  margin-right: 5px;
+}
+
+@media all and (min-width: 768px) {
+  .profile-card .data {
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .profile-card .data::before {
+    font-size: 3em;
+    content: attr(data);
+  }
+}
+
+.profile-card .user-id, .profile-card .user-description {
+  display: none;
+}
+
+@media all and (min-width: 768px) {
+  .profile-card .user-id, .profile-card .user-description {
+    display: block;
+  }
+}
+
+.profile-card .description {
+  margin: 10px;
+  font-size: 0.85em;
 }
 
 .monitoria .monitoria-info {
