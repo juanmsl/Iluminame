@@ -44,6 +44,7 @@ if($user_query) {
 		$follow_button_text = 'Seguir';
 		$isMyProfile = $search_result["id"] == USER_ID;
 		$isFollowMe = $search_result["isFollowMe"] == 1;
+		$extra = '?id=' . clean($search_result["id"]);
 		if($search_result["isFollow"] == '1') {
 			$follow_button_class = 'unfollow';
 			$follow_button_text = 'Dejar de seguir';
@@ -55,6 +56,7 @@ if($user_query) {
 }
 else {
 	$isMyProfile = true;
+	$extra = '';
 	include ('php/profile_content.php');
 }
 

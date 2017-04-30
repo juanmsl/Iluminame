@@ -20,14 +20,14 @@ function scrollDown() {
 function addMessageFromMe(date, text)
 {
   var container = $("#message-container");
-  var child = '<article time="' + date + '" class="chat-message chat-user-2">' + atob(text) + '</article>';
+  var child = '<article time="' + date + '" class="chat-message chat-user-2">' + text + '</article>';
   container.append(child);
 }
 
 function addMessageFromPartner(date, text)
 {
   var container = $("#message-container");
-  var child = '<article time="' + date + '" class="chat-message chat-user-1">' + atob(text) + '</article>';
+  var child = '<article time="' + date + '" class="chat-message chat-user-1">' + text + '</article>';
   container.append(child);
 }
 
@@ -42,7 +42,7 @@ function sendMessage(user) {
 		success: function (msg) {
 			console.log("Ok!");
 			var response = JSON.parse(msg);
-			addMessageFromMe(response.date, response.text);
+			addMessageFromMe(response.date, atob(response.text));
 			scrollDown();
 		}
 	});
@@ -60,7 +60,7 @@ function checkMessages(user)
 			var response = JSON.parse(msg);
 			for (var i = 0; i < response.length; i++)
 			{
-				addMessageFromPartner(response[i].date, response[i].text);
+				addMessageFromPartner(response[i].date, atob(response[i].text));
 				last_message_id = response[i].id;
 			}
 			scrollDown();

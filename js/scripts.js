@@ -185,3 +185,28 @@ function unfollow(id, element) {
 		}
 	});
 }
+
+let user_box = "" +
+"<a href='[link]' class='box card box-margin data-fixed' data-fixed='[isFollow]'>" +
+"	<section class='box-h-section'><img src='[picture]' class='big-picture'>" +
+"		<div class='box-v-section box-justify-center gutter-0'>" +
+"			<p class='sub-title'>[name]</p>" +
+"			<p name='[followers] ' class='box-data'>seguidores</p>" +
+"		</div>" +
+"	</section>" +
+"</a>";
+
+let createUser = function(n) {
+	var user = user_box
+		.replace('[isFollow]', n.isFollow)
+		.replace('[link]', n.link)
+		.replace('[picture]', n.picture)
+		.replace('[name]', n.name)
+		.replace('[followers]', n.followers);
+	return user;
+}
+
+let addUserUI = function(user) {
+	var user = createUser(user);
+	$('#users-group').append(user);
+}

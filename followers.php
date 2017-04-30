@@ -7,7 +7,7 @@ if (!LOGGED_IN)
 	exit;
 }
 
-include ('php/users_content.php');
+include ('php/followers_content.php');
 
 $id_user = '';
 if (isset($_GET["id"])) {
@@ -26,8 +26,8 @@ $items_query = dbquery("SELECT estudiantes.foto, estudiantes.nombre, estudiantes
 	(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiantes_seguidores.estudiante_id_seguido = estudiantes.id) as seguidos,
 	(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiantes_seguidores.estudiante_id_seguidor = estudiantes.id AND estudiantes_seguidores.estudiante_id_seguido = " . USER_ID . ") as isFollow
 	FROM estudiantes, estudiantes_seguidores
-	WHERE estudiantes_seguidores.estudiante_id_seguido = estudiantes.id AND
-	estudiantes_seguidores.estudiante_id_seguidor = " . $id_user . "
+	WHERE estudiantes_seguidores.estudiante_id_seguidor = estudiantes.id AND
+	estudiantes_seguidores.estudiante_id_seguido = " . $id_user . "
 	order by nombre;");
 
 $items_available = $items_query->num_rows;

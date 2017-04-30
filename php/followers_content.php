@@ -1,7 +1,7 @@
 <!DOCTYPE html5>
 <html lang="es">
   <head>
-    <title>Ilumíname - Usuarios</title>
+    <title>Ilumíname - Seguidores</title>
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="resources/images/icon.png"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
@@ -11,7 +11,7 @@
   </head>
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
-      <div name="Usuarios a los cuales sigo" class="separator"></div>
+      <div name="Mis seguidores" class="separator"></div>
       <div id="users-group" class="box-group"></div>
     </div>
     <footer class="footer">

@@ -30,9 +30,9 @@ block main
 					h1.main-title <?php echo clean($search_result["nombre"]); ?>
 					p.user-id <?php echo clean($search_result["usuario"]); ?>
 					article.follows
-						| <a class='data' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
+						| <a class='data' href='followers.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
 						.follows-separator
-						| <a class='data' data='<?php echo clean($search_result["seguidos"]); ?>'>seguidos</a>
+						| <a class='data' href='users.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidos"]); ?>'>seguidos</a>
 					| <?php if(!$isMyProfile && $isFollowMe) { ?>
 					| <p>Te sigue</p>
 					| <?php	} ?>

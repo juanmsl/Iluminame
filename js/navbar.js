@@ -73,7 +73,7 @@ let addChatNotification = function(notification) {
 		.replace('[notification_date]', notification.notification_date)
 		.replace('[user_picture]', notification.user_picture)
 		.replace('[user_name]', notification.user_name)
-		.replace('[notification_description]', atob(notification.notification_description));
+		.replace('[notification_description]', notification.notification_description);
 	addAndUpdateNotificators($(navbar + ' #toggle-chat'), element);
 }
 

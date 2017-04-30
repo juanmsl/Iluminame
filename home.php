@@ -21,7 +21,7 @@ JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id)
 JOIN materias ON (materias.id = monitorias.materia_id)
 JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
 WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores WHERE estudiante_id_seguidor = " . USER_ID . ")
-ORDER BY monitoria_id;");
+ORDER BY fecha_inicio;");
 
 $items_available = $items_query->num_rows;
 if ($items_available > 0)

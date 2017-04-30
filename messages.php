@@ -56,9 +56,9 @@ if ($messages_available > 0)
 	while ($message = $message_query->fetch_assoc())
 	{
 		if($myrow["id"] == $message["estudiante_id_recibe"]) {
-			echo "<script> addMessageFromPartner('" . timeAgo($message["fecha"]) . "', '" . $message["mensaje"] . "'); </script>";
+			echo "<script> addMessageFromPartner('" . timeAgo($message["fecha"]) . "', '" . clean(base64_decode($message["mensaje"])) . "'); </script>";
 		} else {
-			echo "<script> addMessageFromMe('" . timeAgo($message["fecha"]) . "', '" . $message["mensaje"] . "'); </script>";
+			echo "<script> addMessageFromMe('" . timeAgo($message["fecha"]) . "', '" . clean(base64_decode($message["mensaje"])) . "'); </script>";
 		}
 		$last_id = $message["id"];
 	}
