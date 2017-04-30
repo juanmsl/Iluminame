@@ -9,6 +9,7 @@ let tutorie_notification_template = "" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
 "			<p class='sub-title'>[subject_name]</p>" +
 "			<p class='box-data' name='Monitor: '>[user_name]</p>" +
+"			<p class='box-data' name='Tipo: '>[monitorie_type]</p>" +
 "			<p class='box-data' name='Lugar: '>[monitorie_place]</p>" +
 "			<p class='box-data' name='Fecha: '>[monitorie_date]</p>" +
 "			<p class='box-data' name='Duración: '>[monitorie_time]</p>" +

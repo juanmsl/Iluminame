@@ -9,19 +9,36 @@ if (!LOGGED_IN)
 
 include ('php/home_content.php');
 
-$items_query = dbquery("SELECT
-monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
-estudiantes.nombre as estudiante_nombre, estudiantes.usuario, estudiantes.foto,
-materias.nombre as materia_nombre,
-estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
-(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id) AND estudiante_id = " . USER_ID . ") as inscrito,
-(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id)) as monitoria_inscripciones
-FROM monitorias
-JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id)
-JOIN materias ON (materias.id = monitorias.materia_id)
-JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
-WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores WHERE estudiante_id_seguidor = " . USER_ID . ")
-ORDER BY fecha_inicio;");
+if (isset($search)) {
+	$items_query = dbquery("SELECT
+		monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
+		estudiantes.nombre as estudiante_nombre, estudiantes.usuario, estudiantes.foto,
+		materias.nombre as materia_nombre,
+		estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
+		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id) AND estudiante_id = " . USER_ID . ") as inscrito,
+		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id)) as monitoria_inscripciones
+		FROM monitorias
+		JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id)
+		JOIN materias ON (materias.id = monitorias.materia_id)
+		JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
+		WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores)
+        AND (estudiantes.nombre LIKE '%" . $search . "%' OR materias.nombre LIKE '%" . $search . "%')
+		ORDER BY fecha_inicio DESC;");
+} else {
+	$items_query = dbquery("SELECT
+		monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
+		estudiantes.nombre as estudiante_nombre, estudiantes.usuario, estudiantes.foto,
+		materias.nombre as materia_nombre,
+		estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
+		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id) AND estudiante_id = " . USER_ID . ") as inscrito,
+		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id)) as monitoria_inscripciones
+		FROM monitorias
+		JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id)
+		JOIN materias ON (materias.id = monitorias.materia_id)
+		JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
+		WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores WHERE estudiante_id_seguidor = " . USER_ID . ")
+		ORDER BY fecha_inicio DESC;");
+}
 
 $items_available = $items_query->num_rows;
 if ($items_available > 0)

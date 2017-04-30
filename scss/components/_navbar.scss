@@ -69,7 +69,7 @@
 		background: $navbar-background;
 		box-shadow: 0 3px 10px 1px $navbar-border;
 		z-index: z-index(navbar);
-		width: 360px;
+		width: 400px;
 		margin: $gutter;
 
 		@include from(tablet) {

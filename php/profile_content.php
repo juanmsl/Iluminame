@@ -14,7 +14,7 @@
       <section class="profile-header">
         <section class="profile-card"><img src='<?php echo clean($search_result["foto"]); ?>' class='profile-photo'>
           <div class="info">
-            <h1 class="main-title"><?php echo clean($search_result["nombre"]); ?></h1>
+            <h3><?php echo clean($search_result["nombre"]); ?></h3>
             <p class="user-id"><?php echo clean($search_result["usuario"]); ?></p>
             <article class="follows"><a class='data' href='followers.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
               <div class="follows-separator"></div><a class='data' href='users.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidos"]); ?>'>seguidos</a>
@@ -28,7 +28,9 @@
             		<button class='chat-button'>Chat</button>
             	</a>
             </article>
-            <?php	} ?><a href="#" class="profile-edit ilm-configuration"></a>
+            <?php	} else { ?>
+            <a href='#' class='profile-edit ilm-configuration'></a>
+            <?php	} ?>
           </div>
         </section>
       </section>
@@ -38,33 +40,25 @@
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-subject"></h1>
             </div>
-            <div class="box-h-section box-justify-center">
-              <h3 name="3 " class="sub-title box-data">materias</h3>
-            </div>
+            <div class="box-h-section box-justify-center"><h3 class='sub-title box-data' name='<?php echo $count_materias ?> '>materias</h3></div>
           </div>
           <div class="box profile-mini-card">
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-tutories"></h1>
             </div>
-            <div class="box-h-section box-justify-center">
-              <h3 name="32 " class="sub-title box-data">monitorias dictadas</h3>
-            </div>
+            <div class="box-h-section box-justify-center"><h3 class='sub-title box-data' name='<?php echo $count_monitorias_dictadas ?> '>monitorias dictadas</h3></div>
           </div>
           <div class="box profile-mini-card">
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-users"></h1>
             </div>
-            <div class="box-h-section box-justify-center">
-              <h3 name="54 " class="sub-title box-data">estudiantes monitoreados</h3>
-            </div>
+            <div class="box-h-section box-justify-center"><h3 class='sub-title box-data' name='<?php echo $count_estudiantes ?> '>estudiantes monitoreados</h3></div>
           </div>
           <div class="box profile-mini-card">
             <div class="box-h-section box-align-center box-justify-center">
               <h1 class="ilm-my-tutories"></h1>
             </div>
-            <div class="box-h-section box-justify-center">
-              <h3 name="23 " class="sub-title box-data">monitorias asistidas</h3>
-            </div>
+            <div class="box-h-section box-justify-center"><h3 class='sub-title box-data' name='<?php echo $count_monitorias_asistidas ?> '>monitorias asistidas</h3></div>
           </div>
         </div>
       </section>
@@ -265,7 +259,7 @@
   <script src="js/jquery.js"></script>
   <script src="js/push.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="js/navbar.js"></script><?php echo $chatNotifications; ?>
+  <script src="js/navbar.js"></script><?php echo $notifications; ?>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/profile.js"></script>
 </html>

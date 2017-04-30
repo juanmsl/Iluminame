@@ -7,7 +7,7 @@
 	display: none;
 
 	@include from(tablet) {
-		width: 360px;
+		width: 400px;
 		margin: $gutter;
 		box-shadow: 0 3px 10px 1px $widget-profile-border;
 	}

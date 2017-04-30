@@ -463,21 +463,21 @@ footer .ilm-github::before {
 }
 
 .unfollow-button {
-  background: #5EC2F7;
+  background: #29DAFF;
   box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 #03151F;
 }
 
 .unfollow-button:active {
-  box-shadow: 0 0 0 0 #5EC2F7, 0 1px 3px 0 #03151F;
+  box-shadow: 0 0 0 0 #29DAFF, 0 1px 3px 0 #03151F;
 }
 
 .chat-button {
-  background: #5EC2F7;
+  background: #29DAFF;
   box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 #03151F;
 }
 
 .chat-button:active {
-  box-shadow: 0 0 0 0 #5EC2F7, 0 1px 3px 0 #03151F;
+  box-shadow: 0 0 0 0 #29DAFF, 0 1px 3px 0 #03151F;
 }
 
 .disabled-button {
@@ -987,7 +987,7 @@ footer .ilm-github::before {
   background: #006BAB;
   box-shadow: 0 3px 10px 1px #03151F;
   z-index: 300;
-  width: 360px;
+  width: 400px;
   margin: 10px;
 }
 
@@ -1113,7 +1113,7 @@ footer .ilm-github::before {
 
 @media all and (min-width: 768px) {
   .profile-widget {
-    width: 360px;
+    width: 400px;
     margin: 10px;
     box-shadow: 0 3px 10px 1px #03151F;
   }
@@ -1335,13 +1335,18 @@ footer .ilm-github::before {
   background: #DCF1F3;
 }
 
-@media all and (min-width: 500px) {
+@media all and (min-width: 768px) {
   .profile .profile-body {
     margin-top: 10px;
     margin: 5px 0;
   }
   .profile .profile-body:nth-child(2) {
     margin-top: 0;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .profile .profile-body:nth-child(2) {
     padding-top: 50px;
   }
 }
@@ -1399,7 +1404,7 @@ footer .ilm-github::before {
         -ms-transform: translateY(30px);
             transform: translateY(30px);
     box-shadow: 0 3px 10px #03151F;
-    background: #DCF1F3;
+    background: #5EC2F7;
     color: #03151F;
   }
 }
@@ -1421,12 +1426,6 @@ footer .ilm-github::before {
     width: 325px;
     height: 325px;
     border-radius: 0 25% 25% 0 / 0 50% 50% 0;
-  }
-}
-
-@media all and (min-width: 1024px) {
-  .profile-card .profile-photo {
-    border-radius: 0;
   }
 }
 
@@ -1498,7 +1497,7 @@ footer .ilm-github::before {
             flex-direction: column;
   }
   .profile-card .data::before {
-    font-size: 3em;
+    font-size: 2em;
     content: attr(data);
   }
 }

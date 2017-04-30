@@ -4,9 +4,9 @@ nav.navbar#main-navbar
 	a(href='/')
 		img(src='resources/images/icon.png').logo
 	a(href='/').logo-title Ilumíname
-	form.navbar-finder
-		input(type='text' placeholder='¿Buscas una materia?').navbar-input
-		a(href="#").ilm-search
+	form(action='home.php' method='get').navbar-finder
+		| <input type='text' placeholder='¿Buscas una materia?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
+		i(onclick='search.submit()').ilm-search
 	.navbar-notificator.ilm-notification#toggle-notification(counter='0' target='#notification')
 	.navbar-notificator.ilm-chat#toggle-chat(counter='0' target='#chat')
 	.navbar-notificator.ilm-my-tutories#toggle-my-tutories(counter='0' target='#my-tutories')

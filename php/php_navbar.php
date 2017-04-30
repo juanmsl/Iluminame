@@ -6,6 +6,11 @@ $myDescription = clean($myrow["aboutme"]);
 $myFollowers = clean($myrow["seguidores"]);
 $myFollowing = clean($myrow["seguidos"]);
 
+if (isset($_GET["search"])) {
+	$search = filter($_GET["search"]);
+}
+
+
 $navbar_query = dbquery("SELECT
 	(SELECT COUNT(*) FROM notificaciones WHERE notificaciones.estudiante_id_recibe = estudiantes.id) as count_notifications,
 	(SELECT COUNT(*) FROM mensajes WHERE mensajes.estudiante_id_envia = estudiantes.id) as count_msgs,
@@ -22,32 +27,101 @@ $msgs_query = dbquery("SELECT DISTINCT mensajes.estudiante_id_envia as est_envia
 	FROM mensajes JOIN estudiantes nombre_envia ON (estudiante_id_envia= nombre_envia.id) JOIN estudiantes nombre_recibe ON (estudiante_id_recibe = nombre_recibe.id)
 	WHERE mensajes.estudiante_id_envia = " . USER_ID . " OR mensajes.estudiante_id_recibe = " . USER_ID . " ORDER BY fecha DESC;");
 
-	$msgs_available = $msgs_query->num_rows;
-	$chatNotifications = "";
-	$showed = array();
-	if ($msgs_available > 0)
+$msgs_available = $msgs_query->num_rows;
+$notifications = "";
+$showed = array();
+if ($msgs_available > 0)
+{
+	while ($msg = $msgs_query->fetch_assoc())
 	{
-		while ($msg = $msgs_query->fetch_assoc())
-		{
-			$user_id = ($msg["est_envia"] != USER_ID) ? clean($msg["est_envia"]) : clean($msg["est_recibe"]);
-			$user_msg = ($msg["est_envia"] != USER_ID) ? clean($msg["usuario_envia"]) : clean($msg["usuario_recibe"]);
-			$user_foto = ($msg["est_envia"] != USER_ID) ? clean($msg["foto_envia"]) : clean($msg["foto_recibe"]);
-			$user_user = ($msg["est_envia"] != USER_ID) ? clean($msg["envia"]) : clean($msg["recibe"]);
+		$user_id = ($msg["est_envia"] != USER_ID) ? clean($msg["est_envia"]) : clean($msg["est_recibe"]);
+		$user_msg = ($msg["est_envia"] != USER_ID) ? clean($msg["usuario_envia"]) : clean($msg["usuario_recibe"]);
+		$user_foto = ($msg["est_envia"] != USER_ID) ? clean($msg["foto_envia"]) : clean($msg["foto_recibe"]);
+		$user_user = ($msg["est_envia"] != USER_ID) ? clean($msg["envia"]) : clean($msg["recibe"]);
 
 
-			if (!in_array($user_id, $showed)) {
-				$showed[] = $user_id;
-				$chatNotifications .= "<script>
-					addChatNotification({
-						notification_link: 'messages.php?user=" . $user_msg . "',
-						notification_date: '" . strftime("%d de %B del %Y, %I:%M %p", $msg["fecha"]) . "',
-						user_picture: '" . $user_foto . "',
-						user_name: '" . $user_user . "',
-						notification_description: '" . clean(base64_decode($msg["mensaje"])) . "',
-					});
-				</script>";
-			}
+		if (!in_array($user_id, $showed)) {
+			$showed[] = $user_id;
+			$notifications .= "<script>
+				addChatNotification({
+					notification_link: 'messages.php?user=" . $user_msg . "',
+					notification_date: '" . strftime("%d de %B del %Y, %I:%M %p", $msg["fecha"]) . "',
+					user_picture: '" . $user_foto . "',
+					user_name: '" . $user_user . "',
+					notification_description: '" . clean(base64_decode($msg["mensaje"])) . "'
+				});
+			</script>";
 		}
 	}
+}
+
+$msgs_query = dbquery("SELECT notificaciones.descripcion, notificaciones.id, notificaciones.fecha, notificaciones.fecha, notificaciones.vista, notificaciones.estudiante_id_recibe, notificaciones.estudiante_id_envia, estudiantes.nombre, estudiantes.foto, estudiantes.usuario
+	FROM notificaciones JOIN estudiantes ON (notificaciones.estudiante_id_envia = estudiantes.id)
+	WHERE notificaciones.vista = '0' AND notificaciones.estudiante_id_recibe = " . USER_ID . "
+	ORDER BY fecha DESC;");
+
+$msgs_available = $msgs_query->num_rows;
+if ($msgs_available > 0)
+{
+	while ($msg = $msgs_query->fetch_assoc())
+	{
+		$notifications .= "<script>
+			addNotification({
+				notification_link: 'profile.php?user=" . clean($msg["usuario"]) . "',
+				notification_date: '" . strftime("%d de %B del %Y, %I:%M %p", $msg["fecha"]) . "',
+				user_picture: '" . clean($msg["foto"]) . "',
+				notification_description: '" . $msg["descripcion"] . "'
+			});
+		</script>";
+	}
+}
+
+
+$msgs_query = dbquery("SELECT materias.nombre as materia, foto, usuario, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
+	FROM estudiantes JOIN monitorias ON (estudiantes.id = monitorias.estudiante_id) JOIN materias ON (materias.id = monitorias.materia_id)
+	WHERE estudiantes.id = " . USER_ID . ";");
+
+$msgs_available = $msgs_query->num_rows;
+if ($msgs_available > 0)
+{
+	while ($msg = $msgs_query->fetch_assoc())
+	{
+		$notifications .= "<script>
+			addMyTutorie({
+				monitorie_link: 'profile.php?user=" . clean($msg["usuario"]) . "',
+				user_picture: '" . clean($msg["foto"]) . "',
+				subject_name: '" . clean($msg["materia"]) . "',
+				monitorie_type: '" . ($msg["es_publica"] == '1' ? 'Publica' : 'Privada') . "',
+				monitorie_place: '" . clean($msg["lugar"]) . "',
+				monitorie_date: '" . strftime("%d de %B del %Y", $msg["fecha_inicio"]) . "',
+				monitorie_time: '" . strftime("%I:%M %p", $msg["fecha_inicio"]) . " - " . strftime("%I:%M %p", $msg["fecha_fin"]) . "'
+			});
+		</script>";
+	}
+}
+
+$msgs_query = dbquery("SELECT materias.nombre as materia, estudiantes.nombre, foto, usuario, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
+FROM estudiantes_monitorias_inscripciones JOIN monitorias ON (estudiantes_monitorias_inscripciones.monitoria_id = monitorias.id) JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id) JOIN materias on (materias.id = monitorias.materia_id)
+WHERE estudiantes_monitorias_inscripciones.estudiante_id = " . USER_ID . ";");
+
+$msgs_available = $msgs_query->num_rows;
+if ($msgs_available > 0)
+{
+	while ($msg = $msgs_query->fetch_assoc())
+	{
+		$notifications .= "<script>
+			addTutorie({
+				monitorie_link: 'profile.php?user=" . clean($msg["usuario"]) . "',
+				user_picture: '" . clean($msg["foto"]) . "',
+				subject_name: '" . clean($msg["materia"]) . "',
+				user_name: '" . clean($msg["nombre"]) . "',
+				monitorie_type: '" . ($msg["es_publica"] == '1' ? 'Publica' : 'Privada') . "',
+				monitorie_place: '" . clean($msg["lugar"]) . "',
+				monitorie_date: '" . strftime("%d de %B del %Y", $msg["fecha_inicio"]) . "',
+				monitorie_time: '" . strftime("%I:%M %p", $msg["fecha_inicio"]) . " - " . strftime("%I:%M %p", $msg["fecha_fin"]) . "'
+			});
+		</script>";
+	}
+}
 
 ?>

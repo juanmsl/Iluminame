@@ -27,7 +27,7 @@ block main
 			section.profile-card
 				| <img src='<?php echo clean($search_result["foto"]); ?>' class='profile-photo'>
 				.info
-					h1.main-title <?php echo clean($search_result["nombre"]); ?>
+					h3 <?php echo clean($search_result["nombre"]); ?>
 					p.user-id <?php echo clean($search_result["usuario"]); ?>
 					article.follows
 						| <a class='data' href='followers.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
@@ -44,30 +44,31 @@ block main
 					|		<button class='chat-button'>Chat</button>
 					| 	</a>
 					| </article>
+					| <?php	} else { ?>
+					| <a href='#' class='profile-edit ilm-configuration'></a>
 					| <?php	} ?>
-					a(href='#').profile-edit.ilm-configuration
 		section.profile-body
 			.owl-carousel.owl-theme#cards
 				.box.profile-mini-card
 					.box-h-section.box-align-center.box-justify-center
 						h1.ilm-subject
 					.box-h-section.box-justify-center
-						h3.sub-title.box-data(name='3 ') materias
+						| <h3 class='sub-title box-data' name='<?php echo $count_materias ?> '>materias</h3>
 				.box.profile-mini-card
 					.box-h-section.box-align-center.box-justify-center
 						h1.ilm-tutories
 					.box-h-section.box-justify-center
-						h3.sub-title.box-data(name='32 ') monitorias dictadas
+						| <h3 class='sub-title box-data' name='<?php echo $count_monitorias_dictadas ?> '>monitorias dictadas</h3>
 				.box.profile-mini-card
 					.box-h-section.box-align-center.box-justify-center
 						h1.ilm-users
 					.box-h-section.box-justify-center
-						h3.sub-title.box-data(name='54 ') estudiantes monitoreados
+						| <h3 class='sub-title box-data' name='<?php echo $count_estudiantes ?> '>estudiantes monitoreados</h3>
 				.box.profile-mini-card
 					.box-h-section.box-align-center.box-justify-center
 						h1.ilm-my-tutories
 					.box-h-section.box-justify-center
-						h3.sub-title.box-data(name='23 ') monitorias asistidas
+						| <h3 class='sub-title box-data' name='<?php echo $count_monitorias_asistidas ?> '>monitorias asistidas</h3>
 		section.profile-body
 			.separator(name='Materias en las que brindo monitorias')
 			.owl-carousel.owl-theme#profile-subjects

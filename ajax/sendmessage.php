@@ -11,7 +11,7 @@ if (!isset($_POST["user"]) || !isset($_POST["text"])){
 }
 
 $receiver = intval(filter($_POST["user"]));
-$message = $_POST["text"];
+$message = base64_encode(filter($_POST["text"]));
 
 dbquery("INSERT INTO mensajes (mensaje, fecha, estudiante_id_envia, estudiante_id_recibe) VALUES ('" . $message . "', '" . time() . "', '" . $myrow["id"] . "', '" . $receiver . "');");
 

@@ -20,12 +20,17 @@
 		padding: $gutter;
 		background: $background-2;
 
-		@include from(500px) {
+		@include from(tablet) {
 			margin-top: $gutter;
 			margin: $gutter / 2 0;
 
 			&:nth-child(2) {
 				margin-top: 0;
+			}
+		}
+
+		@include from(laptop) {
+			 &:nth-child(2) {
 				padding-top: $gutter * 5;
 			}
 		}
@@ -67,8 +72,8 @@
 		border-radius: $gutter;
 		transform: translateY(30px);
 		box-shadow: 0 3px 10px $borde;
-		background: $background-2;
-		color: $color-2;
+		background: $background-3;
+		color: $color-3;
 	}
 
 	.profile-photo {
@@ -88,9 +93,6 @@
 			border-radius: 0 25% 25% 0 / 0 50% 50% 0;
 		}
 
-		@include from(laptop) {
-			border-radius: 0;
-		}
 	}
 
 	.info {
@@ -139,7 +141,7 @@
 			flex-direction: column;
 
 			&::before {
-				font-size: 3em;
+				font-size: 2em;
 				content: attr(data);
 			}
 		}

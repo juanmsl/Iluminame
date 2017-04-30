@@ -1,8 +1,6 @@
 <?php include('php/php_navbar.php') ?>
 <nav id="main-navbar" class="navbar"><a href="/"><img src="resources/images/icon.png" class="logo"/></a><a href="/" class="logo-title">Ilumíname</a>
-  <form class="navbar-finder">
-    <input type="text" placeholder="¿Buscas una materia?" class="navbar-input"/><a href="#" class="ilm-search"></a>
-  </form>
+  <form action="home.php" method="get" class="navbar-finder"><input type='text' placeholder='¿Buscas una materia?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'><i onclick="search.submit()" class="ilm-search"></i></form>
   <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
   <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
   <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>

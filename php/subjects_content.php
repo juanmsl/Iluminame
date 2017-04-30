@@ -83,5 +83,5 @@
   <script src="js/jquery.js"></script>
   <script src="js/push.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="js/navbar.js"></script><?php echo $chatNotifications; ?>
+  <script src="js/navbar.js"></script><?php echo $notifications; ?>
 </html>

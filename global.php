@@ -98,7 +98,7 @@ function clean($strInput = '', $ignoreHtml = false, $nl2br = false, $encoding = 
 	$strInput = stripslashes(trim($strInput));
 	if (!$ignoreHtml)
 	{
-		$strInput = htmlentities($strInput, ENT_QUOTES | ENT_HTML5, $encoding);
+		$strInput = htmlspecialchars($strInput, ENT_QUOTES | ENT_HTML5, $encoding);
 	}
 	if ($nl2br)
 	{

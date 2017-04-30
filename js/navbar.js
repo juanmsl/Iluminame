@@ -40,6 +40,7 @@ let addTutorie = function(notification) {
 		.replace('[user_picture]', notification.user_picture)
 		.replace('[subject_name]', notification.subject_name)
 		.replace('[user_name]', notification.user_name)
+		.replace('[monitorie_type]', notification.monitorie_type)
 		.replace('[monitorie_place]', notification.monitorie_place)
 		.replace('[monitorie_date]', notification.monitorie_date)
 		.replace('[monitorie_time]', notification.monitorie_time);
@@ -76,34 +77,3 @@ let addChatNotification = function(notification) {
 		.replace('[notification_description]', notification.notification_description);
 	addAndUpdateNotificators($(navbar + ' #toggle-chat'), element);
 }
-
-var mapa = {
-	monitorie_link: '#',
-	user_picture: 'https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg',
-	subject_name: 'Lenguajes de programación',
-	user_name: 'Maria Paula Moreno',
-	monitorie_place: 'Edificio Baron - Salón 402',
-	monitorie_date: 'Abril 17 de 2017',
-	monitorie_time: '9:00am - 10:00am'
-};
-addTutorie(mapa);
-
-var carlos = {
-	monitorie_link: '#',
-	user_picture: 'https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg',
-	subject_name: 'Ingeniería de software',
-	monitorie_type: 'Privada',
-	monitorie_place: 'Edificio Baron - Salón 402',
-	monitorie_date: 'Abril 25 de 2017',
-	monitorie_time: '2:00pm - 4:00pm'
-};
-addMyTutorie(carlos);
-
-
-var luis = {
-	notification_link: '#',
-	notification_date: 'Abril 15 de 2017, 3:52pm',
-	user_picture: 'https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg',
-	notification_description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, temporibus.',
-};
-addNotification(luis);

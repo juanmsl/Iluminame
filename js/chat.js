@@ -38,7 +38,7 @@ function sendMessage(user) {
 	$.ajax({
 	type: "POST",
 	url: "/ajax/sendmessage.php",
-	data: { user: user, text: btoa(text)},
+	data: { user: user, text: text},
 		success: function (msg) {
 			console.log("Ok!");
 			var response = JSON.parse(msg);
