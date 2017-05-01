@@ -11,7 +11,13 @@
   </head>
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
-      <div id="home-monitories" class="box-group"></div>
+      <?php if (isset($search)) { ?>
+      <div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($search) ?>'"></div>
+      <?php } ?>
+      <div id="home-monitories" class="box-group"></div><?php if (isset($search)) { ?>
+      <div class='separator' name="Usuarios relacionados a '<?php echo clean($search) ?>'"></div>
+      <div class='box-group' id='users-search'></div>
+      <?php } ?>
     </div>
     <footer class="footer">
       <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños</div>

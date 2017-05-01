@@ -8,4 +8,11 @@ block nav
 
 block main
 	.mainContent
+		| <?php if (isset($search)) { ?>
+		| <div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($search) ?>'"></div>
+		| <?php } ?>
 		.box-group#home-monitories
+		| <?php if (isset($search)) { ?>
+		| <div class='separator' name="Usuarios relacionados a '<?php echo clean($search) ?>'"></div>
+		| <div class='box-group' id='users-search'></div>
+		| <?php } ?>

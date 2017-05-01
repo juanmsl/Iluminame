@@ -7,8 +7,6 @@ if (!LOGGED_IN)
 	exit;
 }
 
-include ('php/users_content.php');
-
 $id_user = '';
 if (isset($_GET["id"])) {
 	$user_id = filter($_GET["id"]);
@@ -23,7 +21,6 @@ if (isset($_GET["id"])) {
 }
 
 $items_query = dbquery("SELECT estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
-	(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiantes_seguidores.estudiante_id_seguido = estudiantes.id) as seguidos,
 	(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiantes_seguidores.estudiante_id_seguidor = estudiantes.id AND estudiantes_seguidores.estudiante_id_seguido = " . USER_ID . ") as isFollow
 	FROM estudiantes, estudiantes_seguidores
 	WHERE estudiantes_seguidores.estudiante_id_seguido = estudiantes.id AND
@@ -31,8 +28,11 @@ $items_query = dbquery("SELECT estudiantes.foto, estudiantes.nombre, estudiantes
 	order by nombre;");
 
 $items_available = $items_query->num_rows;
+
 if ($items_available > 0)
 {
+	include ('php/users_content.php');
+
 	while ($item = $items_query->fetch_assoc())
 	{
 		echo "<script>
@@ -40,10 +40,13 @@ if ($items_available > 0)
 				link: 'profile.php?user=" . clean($item["usuario"]) . "',
 				picture: '" . clean($item["foto"]) . "',
 				name: '" . clean($item["nombre"]) . "',
-				followers: '" . clean($item["seguidos"]) . "',
+				user: '" . clean($item["usuario"]) . "',
 				isFollow: '" . (clean($item["isFollow"]) == 1 ? 'Te sigue' : '') . "'
 			});
 		</script>";
 	}
+} else {
+	$object_not_found = 'Usuario';
+	include ('php/notFound_content.php');
 }
 ?>

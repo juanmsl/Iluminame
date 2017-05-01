@@ -44,6 +44,7 @@ if ($user_query->num_rows == 1) {
 
 	include ('php/profile_content.php');
 } else {
+	$object_not_found = 'Usuario';
 	include ('php/notFound_content.php');
 }
 ?>

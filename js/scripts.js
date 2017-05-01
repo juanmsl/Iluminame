@@ -192,7 +192,7 @@ let user_box = "" +
 "	<section class='box-h-section'><img src='[picture]' class='big-picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
 "			<p class='sub-title'>[name]</p>" +
-"			<p name='[followers] ' class='box-data'>seguidores</p>" +
+"			<p class='user-id'>[user]</p>" +
 "		</div>" +
 "	</section>" +
 "</a>";
@@ -203,11 +203,16 @@ let createUser = function(n) {
 		.replace('[link]', n.link)
 		.replace('[picture]', n.picture)
 		.replace('[name]', n.name)
-		.replace('[followers]', n.followers);
+		.replace('[user]', n.user);
 	return user;
 }
 
 let addUserUI = function(user) {
 	var user = createUser(user);
 	$('#users-group').append(user);
+}
+
+let addUserSearch = function(user) {
+	var user = createUser(user);
+	$('#users-search').append(user);
 }

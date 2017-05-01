@@ -22,8 +22,14 @@ if (isset($search)) {
 		JOIN materias ON (materias.id = monitorias.materia_id)
 		JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
 		WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores)
-        AND (estudiantes.nombre LIKE '%" . $search . "%' OR materias.nombre LIKE '%" . $search . "%')
+		AND (materias.nombre LIKE '%" . $search . "%')
 		ORDER BY fecha_inicio DESC;");
+
+	$users_query = dbquery("SELECT estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
+		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiantes_seguidores.estudiante_id_seguidor = estudiantes.id AND estudiantes_seguidores.estudiante_id_seguido = " . USER_ID . ") as isFollow
+		FROM estudiantes
+		WHERE estudiantes.nombre LIKE '%" . $search . "%' OR estudiantes.usuario LIKE '%" . $search . "%'
+		ORDER BY nombre;");
 } else {
 	$items_query = dbquery("SELECT
 		monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
@@ -63,6 +69,25 @@ if ($items_available > 0)
 				maximun: '" . clean($item["max_estud"]) . "'
 			});
 		</script>";
+	}
+}
+
+if(isset($search)) {
+	$users = $users_query->num_rows;
+	if ($users > 0)
+	{
+		while ($user = $users_query->fetch_assoc())
+		{
+			echo "<script>
+				addUserSearch({
+					link: 'profile.php?user=" . clean($user["usuario"]) . "',
+					picture: '" . clean($user["foto"]) . "',
+					name: '" . clean($user["nombre"]) . "',
+					user: '" . clean($user["usuario"]) . "',
+					isFollow: '" . (clean($user["isFollow"]) == 1 ? 'Te sigue' : '') . "'
+				});
+			</script>";
+		}
 	}
 }
 ?>

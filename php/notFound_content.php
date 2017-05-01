@@ -11,8 +11,9 @@
   </head>
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
-      <div class="not-found-box box"><i class="ilm-sad"></i>
-        <h1>Usuario no encontrado</h1>
+      <div class="not-found-box box">
+        <div class="planet"><a target="_blank" href="http://codepen.io/jonny-dev/"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+            <h5><?php echo $object_not_found; ?> no encontrado</h5></a></div>
       </div>
     </div>
     <footer class="footer">
