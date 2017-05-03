@@ -13,7 +13,7 @@
     <div class="mainContent">
       <div class="not-found-box box">
         <div class="planet"><a target="_blank" href="http://codepen.io/jonny-dev/"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
-            <h5><?php echo $object_not_found; ?> no encontrado</h5></a></div>
+            <h5 class='glitch' data-text='<?php echo $object_not_found; ?> no encontrado'><?php echo $object_not_found; ?> no encontrado</h5></a></div>
       </div>
     </div>
     <footer class="footer">

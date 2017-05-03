@@ -151,7 +151,7 @@ function leave_monitorie(id, element) {
 	});
 }
 
-function follow(id, element) {
+function follow(id, element, update) {
 	$.ajax({
 	type: "POST",
 	url: "/ajax/follow.php",
@@ -159,17 +159,22 @@ function follow(id, element) {
 		success: function (msg) {
 			var response = JSON.parse(msg);
 			console.log(response.result);
-			var followers = document.getElementById('profile-followers');
-			followers.setAttribute('data', response.count);
-			element.setAttribute('class','unfollow-button');
+			if(update) {
+				var followers = document.getElementById('profile-followers');
+				followers.setAttribute('data', response.count);
+				element.setAttribute('class','unfollow-button');
+				element.innerHTML = 'Dejar de seguir';
+			} else {
+				element.setAttribute('class','ilm-unfollow user-follow default-button');
+			}
 			var action = element.getAttribute('onclick');
+			element.setAttribute('title','Dejar de seguir');
 			element.setAttribute('onclick', action.replace('follow(','unfollow('));
-			element.innerHTML = 'Dejar de seguir';
 		}
 	});
 }
 
-function unfollow(id, element) {
+function unfollow(id, element, update) {
 	$.ajax({
 	type: "POST",
 	url: "/ajax/unfollow.php",
@@ -177,33 +182,52 @@ function unfollow(id, element) {
 		success: function (msg) {
 			var response = JSON.parse(msg);
 			console.log(response.result);
-			var followers = document.getElementById('profile-followers');
-			followers.setAttribute('data', response.count);
-			element.setAttribute('class','follow-button');
+			if(update) {
+				var followers = document.getElementById('profile-followers');
+				followers.setAttribute('data', response.count);
+				element.setAttribute('class','follow-button');
+				element.innerHTML = 'Seguir';
+			} else {
+				element.setAttribute('class','ilm-follow user-follow default-button');
+			}
 			var action = element.getAttribute('onclick');
+			element.setAttribute('title','Seguir');
 			element.setAttribute('onclick', action.replace('unfollow(','follow('));
-			element.innerHTML = 'Seguir';
 		}
 	});
 }
 
 let user_box = "" +
-"<a href='[link]' class='box card box-margin data-fixed' data-fixed='[isFollow]'>" +
-"	<section class='box-h-section'><img src='[picture]' class='big-picture'>" +
-"		<div class='box-v-section box-justify-center gutter-0'>" +
-"			<p class='sub-title'>[name]</p>" +
-"			<p class='user-id'>[user]</p>" +
+"<section class='user-box'>" +
+"	<a href='[link]'><img src='[picture]' class='big-picture'></a>" +
+"	<div class='user-data'>" +
+"		<a href='[link]' class='sub-title'>[name]</a>" +
+"		<div class='user-sub-group'>" +
+"			<a href='[link]' class='user-id'>[user]</a>" +
+"			<p class='follow-you'>[isFollowMe]</p>" +
 "		</div>" +
-"	</section>" +
-"</a>";
+"	</div>" +
+"	<button class='user-follow default-button ilm-[button_class] [hidden]' onclick='[button_action]([user_id], this, false)' title='[button_text]'></button>" +
+"</section>";
 
 let createUser = function(n) {
+	var follow_button_action = (n.isFollow == '1') ? 'unfollow' : 'follow';
+	var follow_button_text = (n.isFollow == '1') ? 'Dejar de seguir' : 'Seguir';
+	var is_follow_me = (n.isFollowMe == '1') ? '<b class="dot"></b>Te sigue' : '';
+
 	var user = user_box
-		.replace('[isFollow]', n.isFollow)
-		.replace('[link]', n.link)
+		.replace('[isFollowMe]', is_follow_me)
 		.replace('[picture]', n.picture)
+		.replace('[link]', n.link)
+		.replace('[link]', n.link)
+		.replace('[link]', n.link)
 		.replace('[name]', n.name)
-		.replace('[user]', n.user);
+		.replace('[user]', n.user)
+		.replace('[button_class]', follow_button_action)
+		.replace('[button_action]', follow_button_action)
+		.replace('[user_id]', n.user_id)
+		.replace('[button_text]', follow_button_text)
+		.replace('[hidden]', n.isMe ? 'hidden' : '');
 	return user;
 }
 

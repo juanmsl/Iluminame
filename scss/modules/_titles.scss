@@ -24,6 +24,16 @@
 	font-size: $h6;
 }
 
+.follow-you, .user-id {
+	margin: $gutter / 2 0;
+	font-size: 0.8em;
+}
+
+.dot::before {
+	content: '•';
+	margin: 0 $gutter / 2;
+}
+
 .user-id {
 	cursor: pointer;
 

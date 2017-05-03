@@ -25,8 +25,9 @@ if (isset($search)) {
 		AND (materias.nombre LIKE '%" . $search . "%')
 		ORDER BY fecha_inicio DESC;");
 
-	$users_query = dbquery("SELECT estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
-		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiantes_seguidores.estudiante_id_seguidor = estudiantes.id AND estudiantes_seguidores.estudiante_id_seguido = " . USER_ID . ") as isFollow
+	$users_query = dbquery("SELECT estudiantes.id, estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
+		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = estudiantes.id AND estudiante_id_seguido = " . USER_ID . ") as isFollowMe,
+		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . USER_ID . "' AND estudiante_id_seguido = id) as isFollow
 		FROM estudiantes
 		WHERE estudiantes.nombre LIKE '%" . $search . "%' OR estudiantes.usuario LIKE '%" . $search . "%'
 		ORDER BY nombre;");
@@ -84,7 +85,10 @@ if(isset($search)) {
 					picture: '" . clean($user["foto"]) . "',
 					name: '" . clean($user["nombre"]) . "',
 					user: '" . clean($user["usuario"]) . "',
-					isFollow: '" . (clean($user["isFollow"]) == 1 ? 'Te sigue' : '') . "'
+					user_id: '" . clean($user["id"]) . "',
+					isFollowMe: '" . clean($user["isFollowMe"]) . "',
+					isFollow: '" . clean($user["isFollow"]) . "',
+					isMe: '" . (clean($user["id"]) == USER_ID) . "'
 				});
 			</script>";
 		}

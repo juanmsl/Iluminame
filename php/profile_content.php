@@ -19,11 +19,11 @@
             <article class="follows"><a class='data' href='followers.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
               <div class="follows-separator"></div><a class='data' href='users.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidos"]); ?>'>seguidos</a>
             </article><?php if(!$isMyProfile && $isFollowMe) { ?>
-            <p>Te sigue</p>
+            <p class='follow-you'>Te sigue</p>
             <?php	} ?>
             <p class="user-description"><?php echo clean($search_result["aboutme"]); ?></p><?php if(!$isMyProfile) { ?>
             <article class='buttons-group'>
-            	<button class='<?php echo clean($follow_button_class) ?>-button' onclick="<?php echo clean($follow_button_class) ?>('<?php echo clean($search_result["id"]) ?>', this)"><?php echo clean($follow_button_text) ?></button>
+            	<button class='<?php echo clean($follow_button_class) ?>-button' onclick="<?php echo clean($follow_button_class) ?>('<?php echo clean($search_result["id"]) ?>', this, true)"><?php echo clean($follow_button_text) ?></button>
             	<a href="messages.php?user=<?php echo clean($search_result["usuario"]); ?>">
             		<button class='chat-button'>Chat</button>
             	</a>
