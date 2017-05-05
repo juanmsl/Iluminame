@@ -77,7 +77,7 @@ if ($msgs_available > 0)
 }
 
 
-$msgs_query = dbquery("SELECT materias.nombre as materia, foto, usuario, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
+$msgs_query = dbquery("SELECT materias.nombre as materia, foto, usuario, monitorias.id as monitoria_id, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
 	FROM estudiantes JOIN monitorias ON (estudiantes.id = monitorias.estudiante_id) JOIN materias ON (materias.id = monitorias.materia_id)
 	WHERE estudiantes.id = " . USER_ID . ";");
 
@@ -88,7 +88,7 @@ if ($msgs_available > 0)
 	{
 		$notifications .= "<script>
 			addMyTutorie({
-				monitorie_link: 'profile.php?user=" . clean($msg["usuario"]) . "',
+				monitorie_link: 'tutorie.php?id=" . clean($msg["monitoria_id"]) . "',
 				user_picture: '" . clean($msg["foto"]) . "',
 				subject_name: '" . clean($msg["materia"]) . "',
 				monitorie_type: '" . ($msg["es_publica"] == '1' ? 'Publica' : 'Privada') . "',
@@ -100,7 +100,7 @@ if ($msgs_available > 0)
 	}
 }
 
-$msgs_query = dbquery("SELECT materias.nombre as materia, estudiantes.nombre, foto, usuario, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
+$msgs_query = dbquery("SELECT materias.nombre as materia, estudiantes.nombre, foto, usuario, monitorias.id as monitoria_id, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
 FROM estudiantes_monitorias_inscripciones JOIN monitorias ON (estudiantes_monitorias_inscripciones.monitoria_id = monitorias.id) JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id) JOIN materias on (materias.id = monitorias.materia_id)
 WHERE estudiantes_monitorias_inscripciones.estudiante_id = " . USER_ID . ";");
 
@@ -111,7 +111,7 @@ if ($msgs_available > 0)
 	{
 		$notifications .= "<script>
 			addTutorie({
-				monitorie_link: 'profile.php?user=" . clean($msg["usuario"]) . "',
+				monitorie_link: 'tutorie.php?id=" . clean($msg["monitoria_id"]) . "',
 				user_picture: '" . clean($msg["foto"]) . "',
 				subject_name: '" . clean($msg["materia"]) . "',
 				user_name: '" . clean($msg["nombre"]) . "',

@@ -56,21 +56,22 @@ let chat_notification_template = "" +
 
 let monitorie_template = "" +
 "<section class='box card box-margin'>" +
-"	<a href='[user_link]' class='box-h-section box-header'>" +
-"	<img src='[user_picture]' class='picture'>" +
+"	<a href='[link]' class='box-h-section box-header'>" +
+"		<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
 "			<p class='sub-title'>[subject_name]</p>" +
 "			<p>[user_name]</p>" +
-"		</div></a>" +
+"		</div>" +
+"	</a>" +
 "	<section class='box-v-section'>" +
-"		<p name='Lugar: ' class='box-data'>[place]</p>" +
-"		<p name='Fecha: ' class='box-data'>[date]</p>" +
-"		<p name='Duración: ' class='box-data'>[time]</p>" +
-"		<p name='Precio por estudiante: ' class='box-data'>[price]</p>" +
+"		<p class='ilm-place data' title='Lugar de la monitoria'>[place]</p>" +
+"		<p class='ilm-date data' title='Fecha de la monitoria'>[date]</p>" +
+"		<p class='ilm-time data' title='Duración de la monitoria'>[time]</p>" +
+"		<p class='ilm-money data' title='Precio por estudiante'>[price] / estudiante</p>" +
 "	</section>" +
-"	<section class='box-v-section box-footer box-align-center'>" +
+"	<section class='box-v-section box-footer box-align-center box-justify-center'>" +
 "		<p class='box-data' id='state_monitorie_[id]'>[type]</p>" +
-"		<button class='[button_class]-button' [button_function] [button_enable]>[button_text]</button>" +
+"		<button class='[button_class]-button no-shadow' id='button_monitorie_[id]' [button_function] [button_enable]>[button_text]</button>" +
 "	</section>" +
 "</section>";
 
@@ -83,25 +84,31 @@ let addHomeMonitorie = function(n) {
 
 	var element = monitorie_template
 		.replace('[id]', n.id)
-		.replace('[user_link]', n.user_link)
+		.replace('[id]', n.id)
+		.replace('[link]', n.link)
 		.replace('[user_picture]', n.user_picture)
 		.replace('[subject_name]', n.subject_name)
 		.replace('[user_name]', n.user_name)
 		.replace('[place]', n.place)
 		.replace('[date]', n.date)
 		.replace('[time]', n.time)
-		.replace('[price]', '$' + n.price)
+		.replace('[price]', n.price)
 		.replace('[type]', state)
 		.replace('[button_class]', button_class)
-		.replace('[button_function]', button_function == '' ? '' : 'onclick=\'' + button_function + '_monitorie(' + n.id + ', this)\'')
+		.replace('[button_function]', button_function == '' ? '' : 'onclick=\'' + button_function + '_monitorie(' + n.id + ', this, true)\'')
 		.replace('[button_text]', button_text)
 		.replace('[button_enable]', button_enable ? '' : 'disabled');
 	$('#home-monitories').append(element);
+	if(n.isMe == 1) {
+		var button = document.getElementById('button_monitorie_' + n.id);
+		button.parentElement.removeChild(button);
+	}
 }
 
-function join_monitorie(id, element) {
+function join_monitorie(id, element, update) {
 	element.disabled = true;
-	element.setAttribute('class','disabled-button');
+	element.classList.remove('join-button');
+	element.classList.add('disabled-button');
 	element.innerHTML = "Procesando";
 	$.ajax({
 	type: "POST",
@@ -113,21 +120,26 @@ function join_monitorie(id, element) {
 			Push.create(response.materia, {
 				body: response.result + ' de ' + response.materia + ' de ' + response.monitor,
 				icon: 'resources/emojis/happy-2.png',
-				timeout: 10000
+				timeout: 5000
 			});
-			var state = document.getElementById('state_monitorie_' + id);
-			state.innerHTML = response.inscritos + ' / ' + response.maximun + ' inscritos';
-			element.setAttribute('onclick','leave_monitorie(' + id + ', this)');
-			element.setAttribute('class','leave-button');
+			if(update) {
+				var state = document.getElementById('state_monitorie_' + id);
+				state.innerHTML = response.inscritos + ' / ' + response.maximun + ' inscritos';
+			}
+			var action = element.getAttribute('onclick');
+			element.setAttribute('onclick', action.replace('join_','leave_'));
+			element.classList.remove('disabled-button');
+			element.classList.add('leave-button');
 			element.innerHTML = 'Abandonar monitoria';
 			element.disabled = false;
 		}
 	});
 }
 
-function leave_monitorie(id, element) {
+function leave_monitorie(id, element, update) {
 	element.disabled = true;
-	element.setAttribute('class','disabled-button');
+	element.classList.remove('leave-button');
+	element.classList.add('disabled-button');
 	element.innerHTML = "Procesando";
 	$.ajax({
 	type: "POST",
@@ -139,12 +151,16 @@ function leave_monitorie(id, element) {
 			Push.create(response.materia, {
 				body: response.result + ' de ' + response.materia + ' de ' + response.monitor,
 				icon: 'resources/emojis/sad-2.png',
-				timeout: 10000
+				timeout: 5000
 			});
-			var state = document.getElementById('state_monitorie_' + id);
-			state.innerHTML = response.inscritos + ' / ' + response.maximun + ' inscritos';
-			element.setAttribute('onclick','join_monitorie(' + id + ', this)');
-			element.setAttribute('class','join-button');
+			if(update) {
+				var state = document.getElementById('state_monitorie_' + id);
+				state.innerHTML = response.inscritos + ' / ' + response.maximun + ' inscritos';
+			}
+			var action = element.getAttribute('onclick');
+			element.setAttribute('onclick', action.replace('leave_','join_'));
+			element.classList.remove('disabled-button');
+			element.classList.add('join-button');
 			element.innerHTML = 'Deseo unirme';
 			element.disabled = false;
 		}
@@ -231,12 +247,15 @@ let createUser = function(n) {
 	return user;
 }
 
-let addUserUI = function(user) {
+let addUserTo = function(user, container) {
 	var user = createUser(user);
-	$('#users-group').append(user);
+	$(container).append(user);
 }
 
-let addUserSearch = function(user) {
-	var user = createUser(user);
-	$('#users-search').append(user);
-}
+$('input[name = "rating"]').on('click', function(){
+	var element = document.querySelector('input[name = "rating"]:checked');
+	var parent = element.parentElement;
+	var value = element.value;
+	console.log(value);
+	parent.setAttribute('data-value', value);
+});

@@ -8,5 +8,10 @@ block nav
 
 block main
 	.mainContent
-		.separator(name='Usuarios a los cuales sigo')
-		.box-group#users-group
+		section.users
+			section.users-section.followers
+				.separator(name='Seguidores')
+				.box-group#users-followers-group
+			section.users-section.follows
+				.separator(name='Seguidos')
+				.box-group#users-follows-group

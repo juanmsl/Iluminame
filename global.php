@@ -118,7 +118,7 @@ function easyNumber($number)
 		$count_numbers++;
 		if($count_numbers==3 && $i != strlen($number))
 		{
-			$string_return=','.$string_return;
+			$string_return='.'.$string_return;
 			$count_numbers=0;
 		}
 	}

@@ -15,21 +15,6 @@ mixin monitoria(img, mt, nm, lg, fc, dr, pr, inf, btn, btntx, dsb)
 			if(!dsb)
 				button(class= btn)= btntx
 
-mixin notification(img, dsc, dt)
-	a(href="#" data-fixed= dt).box.card.box-margin.data-fixed
-		section.box-h-section
-			img(src= img).big-picture
-			.box-v-section.box-justify-center.gutter-0
-				p.box-data= dsc
-
-mixin user(img, nm)
-	a(href="#").box.card.box-margin
-		section.box-h-section
-			img(src= img).big-picture
-			.box-v-section.box-justify-center.gutter-0
-				p.sub-title= nm
-				p.box-data(name='12 ') seguidores
-
 mixin subject(sbj, prt, n, vpr, vpb, nmax)
 	section.box.card.box-margin
 		a(href="#").box-v-section.box-header

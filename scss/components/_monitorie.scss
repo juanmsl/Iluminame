@@ -1,0 +1,78 @@
+.monitoria {
+	display: flex;
+	flex-direction: column;
+
+	.photo {
+		border-radius: 50%;
+		width: 150px;
+		height: 150px;
+		object-fit: cover;
+		margin: $gutter;
+
+		@include from(tablet) {
+			border-radius: 0 25% 25% 0 / 0 50% 50% 0;
+			width: 300px;
+			height: 300px;
+			margin: 0;
+		}
+	}
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: $background-3;
+		color: $color-3;
+		position: relative;
+
+		@include from(tablet) {
+			flex-direction: row;
+		}
+	}
+
+	.header-group {
+		margin-left: $gutter * 2;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include from(tablet) {
+			align-items: flex-start;
+		}
+	}
+
+	.data {
+		margin: $gutter;
+
+		&::before {
+			content: attr(name);
+			font-weight: bold;
+		}
+	}
+
+	.information {
+		display: flex;
+		flex-direction: column;
+
+		@include from(tablet) {
+			flex-direction: row;
+		}
+	}
+
+	.information-group {
+		width: 100%;
+
+		@include from(tablet) {
+			width: 50%;
+		}
+	}
+
+	.monitoria-actions {
+		margin: $gutter 0;
+		@include from(tablet) {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	}
+}

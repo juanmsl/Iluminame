@@ -11,8 +11,16 @@
   </head>
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
-      <div name="Usuarios a los cuales sigo" class="separator"></div>
-      <div id="users-group" class="box-group"></div>
+      <section class="users">
+        <section class="users-section followers">
+          <div name="Seguidores" class="separator"></div>
+          <div id="users-followers-group" class="box-group"></div>
+        </section>
+        <section class="users-section follows">
+          <div name="Seguidos" class="separator"></div>
+          <div id="users-follows-group" class="box-group"></div>
+        </section>
+      </section>
     </div>
     <footer class="footer">
       <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños</div>

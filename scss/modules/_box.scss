@@ -118,7 +118,7 @@
 	}
 
 	#{&}-data {
-		margin: $gutter / 4;
+		margin: $gutter / 3;
 
 		&::before {
 			content: attr(name);
@@ -134,6 +134,10 @@
 		&:hover::after {
 			content: attr(data-tooltip-long);
 		}
+	}
+
+	.data {
+		margin: $gutter / 3;
 	}
 
 	&.data-fixed {

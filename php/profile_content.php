@@ -16,7 +16,7 @@
           <div class="info">
             <h3><?php echo clean($search_result["nombre"]); ?></h3>
             <p class="user-id"><?php echo clean($search_result["usuario"]); ?></p>
-            <article class="follows"><a class='data' href='followers.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
+            <article class="follows"><a class='data' href='users.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidores"]); ?>' id='profile-followers'>seguidores</a>
               <div class="follows-separator"></div><a class='data' href='users.php<?php echo $extra; ?>' data='<?php echo clean($search_result["seguidos"]); ?>'>seguidos</a>
             </article><?php if(!$isMyProfile && $isFollowMe) { ?>
             <p class='follow-you'>Te sigue</p>

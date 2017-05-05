@@ -1,3 +1,24 @@
+.users {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+
+	.user-box {
+		@include from(800px) {
+			width: calc(50% - #{$gutter * 2});
+		}
+
+		@include from(laptop) {
+			width: calc(33.33% - #{$gutter * 2});
+		}
+
+		@include from(4000px) {
+			width: calc(25% - #{$gutter * 2});
+		}
+	}
+}
+
+
 .user-box {
 	display: flex;
 	align-items: center;
@@ -6,28 +27,7 @@
 	padding: $gutter;
 	margin: $gutter;
 	width: 100%;
-	position: relative;
 	box-shadow: 0 3px 10px 0 $borde;
-
-	@include from(600px) {
-		width: calc(50% - #{$gutter * 2});
-	}
-
-	@include from(pc) {
-		width: calc(33.33% - #{$gutter * 2});
-	}
-
-	@include from(2200px) {
-		width: calc(25% - #{$gutter * 2});
-	}
-
-	@include from(3000px) {
-		width: calc(20% - #{$gutter * 2});
-	}
-
-	@include from(3800px) {
-		width: calc(16.66% - #{$gutter * 2});
-	}
 
 	.user-data {
 		flex-grow: 1;
@@ -41,11 +41,7 @@
 	}
 
 	.user-follow {
-		align-self: flex-end;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		margin: $gutter;
+		margin-left: $gutter;
 		font-size: 0.8em;
 
 		&.ilm-follow {

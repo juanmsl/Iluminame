@@ -12,7 +12,7 @@ include ('php/home_content.php');
 if (isset($search)) {
 	$items_query = dbquery("SELECT
 		monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
-		estudiantes.nombre as estudiante_nombre, estudiantes.usuario, estudiantes.foto,
+		estudiantes.nombre as estudiante_nombre, estudiantes.id as monitor_id, estudiantes.usuario, estudiantes.foto,
 		materias.nombre as materia_nombre,
 		estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
 		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id) AND estudiante_id = " . USER_ID . ") as inscrito,
@@ -34,7 +34,7 @@ if (isset($search)) {
 } else {
 	$items_query = dbquery("SELECT
 		monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
-		estudiantes.nombre as estudiante_nombre, estudiantes.usuario, estudiantes.foto,
+		estudiantes.nombre as estudiante_nombre, estudiantes.id as monitor_id, estudiantes.usuario, estudiantes.foto,
 		materias.nombre as materia_nombre,
 		estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
 		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id) AND estudiante_id = " . USER_ID . ") as inscrito,
@@ -54,9 +54,9 @@ if ($items_available > 0)
 	{
 		echo "<script>
 			addHomeMonitorie({
-				link: '#',
+				isMe: '" . (clean($item["monitor_id"]) == USER_ID) . "',
+				link: 'tutorie.php?id=" . clean($item["monitoria_id"]) . "',
 				id: '" . clean($item["monitoria_id"]) . "',
-				user_link: 'profile.php?user=" . clean($item["usuario"]) . "',
 				user_picture: '" . clean($item["foto"]) . "',
 				subject_name: '" . clean($item["materia_nombre"]) . "',
 				user_name: '" . clean($item["estudiante_nombre"]) . "',
@@ -80,7 +80,7 @@ if(isset($search)) {
 		while ($user = $users_query->fetch_assoc())
 		{
 			echo "<script>
-				addUserSearch({
+				addUserTo({
 					link: 'profile.php?user=" . clean($user["usuario"]) . "',
 					picture: '" . clean($user["foto"]) . "',
 					name: '" . clean($user["nombre"]) . "',
@@ -89,7 +89,7 @@ if(isset($search)) {
 					isFollowMe: '" . clean($user["isFollowMe"]) . "',
 					isFollow: '" . clean($user["isFollow"]) . "',
 					isMe: '" . (clean($user["id"]) == USER_ID) . "'
-				});
+				}, '#users-search');
 			</script>";
 		}
 	}

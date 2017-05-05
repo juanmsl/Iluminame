@@ -11,71 +11,69 @@
   </head>
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
-      <section class="box monitoria">
-        <section class="box-header box-info">
-          <p class="main-title">Monitoria de Ingenieria de software</p>
-        </section>
-        <section class="box-flex-content monitoria-info"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg" class="photo"/>
-          <div class="ranking">
-            <div class="fst">&#x2606&#x2606&#x2606&#x2606&#x2606</div>
-            <div style="width: 0%;" class="scd">&#x2605&#x2605&#x2605&#x2605&#x2605</div>
-            <div class="value">0 / 100</div>
-            <div class="data">Aun no ha sido calificada</div>
-          </div>
-          <section class="box-info">
-            <p name="Monitor: " class="box-data">Carlos Quimbay Cunalata</p>
-            <p name="Lugar: " class="box-data">Biblioteca sotano 2 - sala 3</p>
-            <p name="Fecha: " class="box-data">19/04/2017</p>
-            <p name="Duración: " class="box-data">2:00 pm - 4:00 pm</p>
-            <p name="Modalidad de la monitoria: " class="box-data">Publica / Privada</p>
-            <p name="Estado actual: " class="box-data">En espera / Aceptada / En progreso / Finalizada / Cancelada</p>
+      <section class="monitoria">
+        <section class="header"><a href='profile.php?user=<?php echo $usuario; ?>'><img src='<?php echo $foto; ?>' class='photo'></a>
+          <section class="header-group">
+            <p class="main-title"><?php echo $materia; ?></p>
+            <p><?php echo $monitor; ?></p>
+            <section class="header-sub-group"><br/>
+              <p class="ilm-date"><?php echo $fecha; ?></p>
+              <p class="ilm-time"><?php echo $duracion; ?></p><br/><p class='ilm-user<?php echo ($es_publica ? 's' : ''); ?>'>Monitoria <?php echo (($es_publica) ? 'publica' : 'privada'); ?></p>
+              <p class="ilm-place"><?php echo $lugar; ?></p>
+              <p class="ilm-money"><?php echo $costo; ?></p>
+              <p title="En espera / Aceptada / En progreso / Finalizada / Cancelada" class="ilm-state">Aceptada</p>
+            </section><?php if(!$is_my_monitorie) { ?>
+            	<div class='monitoria-actions'>
+            		<button class='<?php echo $button_class; ?>-button' <?php echo $button_function; ?> <?php echo $button_enable; ?>><?php echo $button_text; ?></button>
+            		<a href="messages.php?user=<?php echo $usuario; ?>">
+            			<button class='chat-button'>Chat</button>
+            		</a>
+            	</div>
+            <?php } ?>
           </section>
         </section>
-        <section class="box-footer">
-          <div name="Estudiantes inscritos" class="separator"></div>
-          <div class="box-group"><a href="#" class="box card box-margin">
-              <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="big-picture"/>
-                <div class="box-v-section box-justify-center gutter-0">
-                  <p class="sub-title">Maria Paula Moreno</p>
-                  <p name="12 " class="box-data">seguidores</p>
+        <section class="information">
+          <section class="information-group">
+            <div name="Estudiantes inscritos" class="separator"></div>
+            <div id="estudents" class="box-group"></div>
+          </section>
+          <section class="information-group">
+            <div name="Comentarios" class="separator"></div>
+            <div class="box-group">
+              <div class="box box-margin">
+                <div class="box-h-section"><img src="http://placehold.it/200/200" class="big-picture"/>
+                  <div class="box-v-section gutter-0">
+                    <div class="sub-title">Juan Manuel Sánchez</div>
+                    <div class="rating">
+                      <div data-value="3 / 5" id="rating1" class="rating-stars active">
+                        <input type="radio" name="rating" id="rt-five-full" value="5 / 5"/>
+                        <label for="rt-five-full" title="5.0"></label>
+                        <input type="radio" name="rating" id="rt-four-half" value="4.5 / 5"/>
+                        <label for="rt-four-half" title="4.5"></label>
+                        <input type="radio" name="rating" id="rt-four-full" value="4 / 5"/>
+                        <label for="rt-four-full" title="4.0"></label>
+                        <input type="radio" name="rating" id="rt-tree-half" value="3.5 / 5"/>
+                        <label for="rt-tree-half" title="3.5"></label>
+                        <input type="radio" name="rating" id="rt-tree-full" value="3 / 5" checked="checked"/>
+                        <label for="rt-tree-full" title="3.0"></label>
+                        <input type="radio" name="rating" id="rt-two-half" value="2.5 / 5"/>
+                        <label for="rt-two-half" title="2.5"></label>
+                        <input type="radio" name="rating" id="rt-two-full" value="2 / 5"/>
+                        <label for="rt-two-full" title="2.0"></label>
+                        <input type="radio" name="rating" id="rt-one-half" value="1.5 / 5"/>
+                        <label for="rt-one-half" title="1.5"></label>
+                        <input type="radio" name="rating" id="rt-one-full" value="1 / 5"/>
+                        <label for="rt-one-full" title="1.0"></label>
+                        <input type="radio" name="rating" id="rt-half" value="0.5 / 5"/>
+                        <label for="rt-half" title="0.5"></label>
+                      </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam aut sapiente ducimus non placeat illum eum repellat, culpa obcaecati cupiditate.</p>
+                  </div>
                 </div>
-              </section></a><a href="#" class="box card box-margin">
-              <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg" class="big-picture"/>
-                <div class="box-v-section box-justify-center gutter-0">
-                  <p class="sub-title">Stephanie Domínguez</p>
-                  <p name="12 " class="box-data">seguidores</p>
-                </div>
-              </section></a><a href="#" class="box card box-margin">
-              <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
-                <div class="box-v-section box-justify-center gutter-0">
-                  <p class="sub-title">Luis David Zarate</p>
-                  <p name="12 " class="box-data">seguidores</p>
-                </div>
-              </section></a>
-          </div>
-        </section>
-        <section class="box-footer">
-          <div name="Comentarios" class="separator"></div>
-          <div class="box-group"><a href="#" class="box card box-margin">
-              <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg" class="big-picture"/>
-                <div class="box-v-section box-justify-center gutter-0">
-                  <p class="sub-title">Maria Paula Moreno</p>
-                  <p name="12 " class="box-data">seguidores</p>
-                </div>
-              </section></a><a href="#" class="box card box-margin">
-              <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/11887148_1617879835152288_232994344_a.jpg" class="big-picture"/>
-                <div class="box-v-section box-justify-center gutter-0">
-                  <p class="sub-title">Stephanie Domínguez</p>
-                  <p name="12 " class="box-data">seguidores</p>
-                </div>
-              </section></a><a href="#" class="box card box-margin">
-              <section class="box-h-section"><img src="https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg" class="big-picture"/>
-                <div class="box-v-section box-justify-center gutter-0">
-                  <p class="sub-title">Luis David Zarate</p>
-                  <p name="12 " class="box-data">seguidores</p>
-                </div>
-              </section></a>
-          </div>
+              </div>
+            </div>
+          </section>
         </section>
       </section>
     </div>

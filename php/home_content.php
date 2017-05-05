@@ -16,7 +16,7 @@
       <?php } ?>
       <div id="home-monitories" class="box-group"></div><?php if (isset($search)) { ?>
       <div class='separator' name="Usuarios relacionados a '<?php echo clean($search) ?>'"></div>
-      <div class='box-group' id='users-search'></div>
+      <div class='users'><div class='box-group' id='users-search'></div></div>
       <?php } ?>
     </div>
     <footer class="footer">
