@@ -14,7 +14,7 @@ class uberUsers
 
 	public function IsValidName($nm = '')
 	{
-		if (preg_match('/^[a-z0-9\d-.,;:!?@]+$/i', $nm) && strlen($nm) >= 3 && strlen($nm) <= 14)
+		if (preg_match('/^[a-z0-9\d-_.,;:!?@]+$/i', $nm) && strlen($nm) >= 3 && strlen($nm) <= 14)
 		{
 			return true;
 		}

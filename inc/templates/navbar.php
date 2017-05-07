@@ -1,6 +1,6 @@
 <?php include('php/php_navbar.php') ?>
 <nav id="main-navbar" class="navbar"><a href="/"><img src="resources/images/icon.png" class="logo"/></a><a href="/" class="logo-title">Ilumíname</a>
-  <form action="home.php" method="get" class="navbar-finder"><input type='text' placeholder='¿Buscas una materia?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'><i onclick="search.submit()" class="ilm-search"></i></form>
+  <form action="home.php" method="get" class="navbar-finder"><input type='search' placeholder='¿Buscas una materia?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'><i onclick="search.submit()" class="ilm-search"></i></form>
   <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
   <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
   <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
@@ -8,7 +8,7 @@
   <aside id="user-profile-widget" class="profile-widget">
     <section class="profile-widget-mainSection">
       <section class="profile-widget-user"><img src='<?php echo $myPic; ?>' class='profile-widget-userPicture'>
-        <section class="profile-widget-userinfo"><a href="profile.php" class="title"><?php echo $myName; ?></a><a href="profile.php" class="user-id"><?php echo $myUsername; ?></a><p class='profile-widget-followers' counter='<?php echo $myFollowers; ?>'></p></section><a href="#" class="profile-widget-configIcon ilm-configuration"></a>
+        <section class="profile-widget-userinfo"><a href="profile.php" class="title"><?php echo $myName; ?></a><a href="profile.php" class="user-id"><?php echo $myUsername; ?></a><p class='profile-widget-followers' counter='<?php echo $myFollowers; ?>'></p></section><a href="configuration.php" class="profile-widget-configIcon ilm-configuration"></a>
       </section>
       <section class="user-description"><?php echo $myDescription; ?></section>
     </section>

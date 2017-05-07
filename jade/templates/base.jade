@@ -13,7 +13,12 @@ html(lang="es")
 			meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1")
 			link(href="https://file.myfontastic.com/dgDbkkB8Fa2a8wimvMu34f/icons.css" rel="stylesheet")
 			link(href="css/normalize.css" rel="stylesheet")
-			link(href="css/styles.css" rel="stylesheet")
+			| <link href="css/styles.css?<?php echo time(); ?>" rel="stylesheet">
+			| <script>
+			| if(window.location.href.match("http:")) {
+			|	window.location.href = window.location.href.replace('http', 'https');
+			| }
+			| </script>
 	body(class=bodyClass)
 		block header
 		block nav
@@ -23,7 +28,7 @@ html(lang="es")
 
 	script(src="js/jquery.js")
 	script(src="js/push.min.js")
-	script(src="js/scripts.js")
+	<script src="js/scripts.js?<?php echo time(); ?>"></script>
 	if isIndex
 		script(src="js/form.js")
 	else

@@ -17,82 +17,82 @@
 
 .join-button {
 	background: $button-join;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-join, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-join;
 	}
 }
 
 .add-button {
 	background: $button-add;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-add, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-add;
 	}
 }
 
 .full-button {
 	background: $button-full;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-full, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-full;
 	}
 }
 
 .send-button {
 	background: $button-send;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-send, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-send;
 	}
 }
 
 .cancel-button {
 	background: $button-cancel;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-cancel, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-cancel;
 	}
 }
 
 .leave-button {
 	background: $button-leave;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-leave, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-leave;
 	}
 }
 
 .follow-button {
 	background: $button-follow;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-follow, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-follow;
 	}
 }
 
 .unfollow-button {
 	background: $button-unfollow;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-unfollow, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-unfollow;
 	}
 }
 
 .chat-button {
 	background: $button-chat;
-	box-shadow: 0 0 30px 20px transparent, 0 2px 5px 0 $button-color;
+	box-shadow: 0 0 30px 20px transparent, 0 1px 3px 0 $button-color;
 
 	&:active {
-		box-shadow: 0 0 0 0 $button-chat, 0 1px 3px 0 $button-color;
+		box-shadow: 0 0 0 0 $button-chat;
 	}
 }
 
@@ -121,8 +121,4 @@
 	&:active {
 		box-shadow: 0 0 0 0;
 	}
-}
-
-.no-shadow {
-	box-shadow: 0 0 30px 20px transparent;
 }

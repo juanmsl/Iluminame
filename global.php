@@ -62,7 +62,7 @@ else
 	define('USER_HASH', null);
 }
 
-//$core->CheckCookies();
+$core->CheckCookies();
 
 function dbquery($strQuery = '')
 {

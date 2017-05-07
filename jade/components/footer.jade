@@ -1,5 +1,10 @@
 footer.footer
+	| <?php
+	| $executionTime = microtime(true) - $core->execStart;
+	| $numQueries = $db->numQueries;
+	| echo "<!-- Generated in: $executionTime, with $numQueries queries -->";
+	| ?>
 	.copyright
-		| Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños
+		| Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Generated in: $executionTime, with $numQueries queries";?>
 	.github-link
 		a(href='https://github.com/juanmsl/Iluminame').ilm-github View Source

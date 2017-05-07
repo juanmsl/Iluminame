@@ -53,7 +53,6 @@ class uberCore
 		return $_SERVER["REMOTE_ADDR"];
 	}
 
-	/*
 	public function CheckCookies()
 	{
 		if (LOGGED_IN)
@@ -64,7 +63,7 @@ class uberCore
 		{
 			$name = filter($_COOKIE['rememberme_name']);
 			$token = filter($_COOKIE['rememberme_token']);
-			$find = dbquery("SELECT null FROM users WHERE username = '" . $name . "' AND password = '" . $token . "' LIMIT 1");
+			$find = dbquery("SELECT null FROM estudiantes WHERE usuario = '" . $name . "' AND contrasena = '" . $token . "' LIMIT 1");
 
 			if (mysqli_num_rows($find) > 0)
 			{
@@ -72,10 +71,10 @@ class uberCore
 				$_SESSION['UBER_USER_H'] = $token;
 				$_SESSION['set_cookies'] = true; // renew cookies
 
-				header("Location: " . WWW . "/security_check");
+				header("Location: " . WWW . "/security_check.php");
 				exit;
 			}
 		}
-	}*/
+	}
 }
 ?>

@@ -38,6 +38,7 @@ if (isset($_POST['login_username']) && isset($_POST['login_password']))
 		{
 			$_SESSION['UBER_USER_E'] = $credUser;
 			$_SESSION['UBER_USER_H'] = $core->UberHash($credPass);
+			$_SESSION['set_cookies'] = true;
 			header("Location: " . WWW . "/security_check.php");
 			exit;
 		}

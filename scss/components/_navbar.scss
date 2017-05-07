@@ -152,6 +152,7 @@
 	#{&}-profile {
 		box-shadow: 0 2px 3px $navbar-border;
 		margin: $gutter / 2;
+		object-fit: cover;
 
 		@include from(tablet) {
 			&.is-hover, &:hover {

@@ -62,6 +62,7 @@
 		border-radius: 50%;
 		display: block;
 		margin-right: $gutter;
+		object-fit: cover;
 
 		@include from(tablet) {
 			width: 70px;

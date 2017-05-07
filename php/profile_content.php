@@ -29,7 +29,7 @@
             	</a>
             </article>
             <?php	} else { ?>
-            <a href='#' class='profile-edit ilm-configuration'></a>
+            <a href='configuration.php' class='profile-edit ilm-configuration'></a>
             <?php	} ?>
           </div>
         </section>
@@ -252,13 +252,17 @@
       </section>
     </div>
     <footer class="footer">
-      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños</div>
+      <?php
+      $executionTime = microtime(true) - $core->execStart;
+      $numQueries = $db->numQueries;
+      echo "<!-- Generated in: $executionTime, with $numQueries queries -->";
+      ?>
+      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Generated in: $executionTime, with $numQueries queries";?></div>
       <div class="github-link"><a href="https://github.com/juanmsl/Iluminame" class="ilm-github">View Source</a></div>
     </footer>
   </body>
   <script src="js/jquery.js"></script>
-  <script src="js/push.min.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="js/push.min.js"></script><script src="js/scripts.js?<?php echo time(); ?>"></script>
   <script src="js/navbar.js"></script><?php echo $notifications; ?>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/profile.js"></script>

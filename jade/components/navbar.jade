@@ -5,7 +5,7 @@ nav.navbar#main-navbar
 		img(src='resources/images/icon.png').logo
 	a(href='/').logo-title Ilumíname
 	form(action='home.php' method='get').navbar-finder
-		| <input type='text' placeholder='¿Buscas una materia?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
+		| <input type='search' placeholder='¿Buscas una materia?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
 		i(onclick='search.submit()').ilm-search
 	.navbar-notificator.ilm-notification#toggle-notification(counter='0' target='#notification')
 	.navbar-notificator.ilm-chat#toggle-chat(counter='0' target='#chat')
@@ -21,7 +21,7 @@ nav.navbar#main-navbar
 					a(href="profile.php").title <?php echo $myName; ?>
 					a(href='profile.php').user-id <?php echo $myUsername; ?>
 					| <p class='profile-widget-followers' counter='<?php echo $myFollowers; ?>'></p>
-				a(href='#').profile-widget-configIcon.ilm-configuration
+				a(href='configuration.php').profile-widget-configIcon.ilm-configuration
 			section.user-description <?php echo $myDescription; ?>
 		section.profile-widget-notifications
 			| <a href='notifications.php' class='profile-widget-section ilm-notification' counter='<?php echo clean($navbar_query["count_notifications"]); ?>'>Notificaciones</a>

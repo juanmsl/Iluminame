@@ -226,7 +226,7 @@ let user_box = "" +
 "	<button class='user-follow default-button ilm-[button_class] [hidden]' onclick='[button_action]([user_id], this, false)' title='[button_text]'></button>" +
 "</section>";
 
-let createUser = function(n) {
+let addUserTo = function(n, container) {
 	var follow_button_action = (n.isFollow == '1') ? 'unfollow' : 'follow';
 	var follow_button_text = (n.isFollow == '1') ? 'Dejar de seguir' : 'Seguir';
 	var is_follow_me = (n.isFollowMe == '1') ? '<b class="dot"></b>Te sigue' : '';
@@ -244,11 +244,6 @@ let createUser = function(n) {
 		.replace('[user_id]', n.user_id)
 		.replace('[button_text]', follow_button_text)
 		.replace('[hidden]', n.isMe ? 'hidden' : '');
-	return user;
-}
-
-let addUserTo = function(user, container) {
-	var user = createUser(user);
 	$(container).append(user);
 }
 
@@ -258,4 +253,86 @@ $('input[name = "rating"]').on('click', function(){
 	var value = element.value;
 	console.log(value);
 	parent.setAttribute('data-value', value);
+});
+
+let subject_template = "" +
+"<section class='box card box-margin'>" +
+"	<a href='#' class='box-v-section box-header'>" +
+"		<p class='sub-title'>[subject_name]</p>" +
+"		<div class='rating'>" +
+"			<div data-value='[rating_value] / 5' id='[rating_id]' class='rating-stars'>" +
+"				<input type='radio' name='rating' id='rt-five-full' value='5 / 5' [rating_checked] disabled>" +
+"				<label for='rt-five-full' title='5.0'></label>" +
+"				<input type='radio' name='rating' id='rt-four-half' value='4.5 / 5' [rating_checked] disabled>" +
+"				<label for='rt-four-half' title='4.5'></label>" +
+"				<input type='radio' name='rating' id='rt-four-full' value='4 / 5' [rating_checked] disabled>" +
+"				<label for='rt-four-full' title='4.0'></label>" +
+"				<input type='radio' name='rating' id='rt-tree-half' value='3.5 / 5' [rating_checked] disabled>" +
+"				<label for='rt-tree-half' title='3.5'></label>" +
+"				<input type='radio' name='rating' id='rt-tree-full' value='3 / 5'  [rating_checked] disabled>" +
+"				<label for='rt-tree-full' title='3.0'></label>" +
+"				<input type='radio' name='rating' id='rt-two-half' value='2.5 / 5' [rating_checked] disabled>" +
+"				<label for='rt-two-half' title='2.5'></label>" +
+"				<input type='radio' name='rating' id='rt-two-full' value='2 / 5' [rating_checked] disabled>" +
+"				<label for='rt-two-full' title='2.0'></label>" +
+"				<input type='radio' name='rating' id='rt-one-half' value='1.5 / 5' [rating_checked] disabled>" +
+"				<label for='rt-one-half' title='1.5'></label>" +
+"				<input type='radio' name='rating' id='rt-one-full' value='1 / 5' [rating_checked] disabled>" +
+"				<label for='rt-one-full' title='1.0'></label>" +
+"				<input type='radio' name='rating' id='rt-half' value='0.5 / 5' [rating_checked] disabled>" +
+"				<label for='rt-half' title='0.5'></label>" +
+"			</div>" +
+"		</div>" +
+"	</a>" +
+"	<section class='box-v-section'>" +
+"		<p class='box-data'>[description]</p>" +
+"	</section>" +
+"	<section class='box-v-section box-align-center'>" +
+"		<p name='$[cost_pr] / hora privada' data-tooltip-long='Solo tu y el monitor' data-tooltip-short='(x1)' class='box-data'></p>" +
+"		<p name='$[cost_pb] / hora publica' data-tooltip-long='Maximo [max] personas' data-tooltip-short='(x[max])' class='box-data'></p>" +
+"	</section>" +
+"	<section class='box-h-section box-footer box-justify-center'>" +
+"		<button class='join-button'>Solicitar una monitoria</button>" +
+"	</section>" +
+"</section>";
+
+let addSubjectTo = function(s, container) {
+	var subject = subject_template
+		.replace('[subject_name]',s.subject_name)
+		.replace('[rating_value]',s.rating_value)
+		.replace('[rating_id]',s.rating_id);
+
+	var value = parseFloat(s.rating_value);
+
+	for(var i = 9; i >= 0; i--) {
+		console.log(parseFloat(i/2)  + ' <= ' + value + ' < ' + parseFloat((i + 1)/2));
+		if(parseFloat(i/2) <= value && value < parseFloat((i + 1)/2)) {
+			subject = subject.replace('[rating_checked]', 'checked');
+			console.log("Checked");
+		} else {
+			subject = subject.replace('[rating_checked]', '');
+		}
+	}
+	subject = subject
+		.replace('[description]',s.description)
+		.replace('[cost_pr]',s.cost_pr)
+		.replace('[cost_pb]',s.cost_pb)
+		.replace('[max]',s.max)
+		.replace('[max]',s.max);
+	$(container).append(subject);
+	console.log(subject);
+}
+
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$('#edit-image').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+
+$('#edit-image-control').change(function(){
+	readURL(this);
 });
