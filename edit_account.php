@@ -64,7 +64,7 @@ if(isset($_POST['name']) &&
 				  //echo "Unaccepted image format";
 				  exit;
 				}
-				$target_name = "user_pictures/" . USER_ID . "-" . time() . "." . $extension;
+				$target_name = "user_pictures/" . USER_ID . "-" . $myrow["usuario"] . "." . $extension;
 
 				if ($_FILES["photo"]["size"] > 5000000) {
 					//echo "Sorry, your file is too large.";
@@ -72,7 +72,7 @@ if(isset($_POST['name']) &&
 				}
 				if (move_uploaded_file($temp_file, $target_name)) {
 					//echo "The file " . $target_name . " has been uploaded.";
-					$update_query .= ', foto = "/' . $target_name . '"';
+					$update_query .= ', foto = "https://iluminame.co/' . $target_name . '"';
 				} else {
 					//echo "Sorry, there was an error uploading your file.";
 				}

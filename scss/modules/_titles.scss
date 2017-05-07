@@ -1,6 +1,5 @@
 [class *= 'title'] {
 	font-family: $title-font;
-	font-weight: bold;
 	display: block;
 	padding: 0;
 }
@@ -10,6 +9,10 @@
 	font-family: $logo-font;
 	font-size: $h3;
 	font-weight: bold;
+}
+
+.iluminame {
+	font-family: $logo-font;
 }
 
 .main-title {

@@ -5,7 +5,7 @@ nav.navbar#main-navbar
 		img(src='resources/images/icon.png').logo
 	a(href='/').logo-title Ilumíname
 	form(action='home.php' method='get').navbar-finder
-		| <input type='search' placeholder='¿Buscas una materia?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
+		| <input type='search' placeholder='¿Buscas una materia, usuario o monitoria?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
 		i(onclick='search.submit()').ilm-search
 	.navbar-notificator.ilm-notification#toggle-notification(counter='0' target='#notification')
 	.navbar-notificator.ilm-chat#toggle-chat(counter='0' target='#chat')
@@ -18,14 +18,14 @@ nav.navbar#main-navbar
 			section.profile-widget-user
 				| <img src='<?php echo $myPic; ?>' class='profile-widget-userPicture'>
 				section.profile-widget-userinfo
-					a(href="profile.php").title <?php echo $myName; ?>
+					h5.title
+						a(href="profile.php") <?php echo $myName; ?>
 					a(href='profile.php').user-id <?php echo $myUsername; ?>
 					| <p class='profile-widget-followers' counter='<?php echo $myFollowers; ?>'></p>
 				a(href='configuration.php').profile-widget-configIcon.ilm-configuration
 			section.user-description <?php echo $myDescription; ?>
 		section.profile-widget-notifications
 			| <a href='notifications.php' class='profile-widget-section ilm-notification' counter='<?php echo clean($navbar_query["count_notifications"]); ?>'>Notificaciones</a>
-			| <a href='messages.php' class='profile-widget-section ilm-chat' counter='<?php echo clean($navbar_query["count_msgs"]); ?>'>Mensajes</a>
 			| <a href='my-tutories.php' class='profile-widget-section ilm-my-tutories' counter='<?php echo clean($navbar_query["count_my_monitories"]); ?>'>Mis monitorias</a>
 			| <a href='users.php' class='profile-widget-section ilm-users' counter='<?php echo clean($navbar_query["count_users"]); ?>'>Seguidores / Seguidos</a>
 			| <a href='subjects.php' class='profile-widget-section ilm-subject' counter='<?php echo clean($navbar_query["count_subjects"]); ?>'>Materias</a>
@@ -33,18 +33,17 @@ nav.navbar#main-navbar
 			a(href='logout.php').profile-widget-logout.ilm-logout Cerrar sesión
 
 	section.navbar-boxNotification#my-tutories
-		label.title.navbar-title Monitorias pendientes
+		h5.navbar-title Monitorias pendientes
 		section.navbar-notifications
 		a(href='my-tutories.php').navbar-more Ver todo
 	section.navbar-boxNotification#tutories
-		label.title.navbar-title Monitorias por dictar
+		h5.navbar-title Monitorias por dictar
 		section.navbar-notifications
 		a(href='tutories.php').navbar-more Ver todo
 	section.navbar-boxNotification#chat
-		label.title.navbar-title Mensajes
+		h5.navbar-title Mensajes
 		section.navbar-notifications
-		a(href='messages.php').navbar-more Ver todo
 	section.navbar-boxNotification#notification
-		label.title.navbar-title Notificaciones
+		h5.navbar-title Notificaciones
 		section.navbar-notifications
 		a(href='notifications.php').navbar-more Ver todo

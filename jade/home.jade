@@ -11,6 +11,29 @@ block main
 		<?php if (isset($search)) { ?>
 		<div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($search) ?>'"></div>
 		<?php } ?>
+		<?php if(!$have_follows && !isset($search)) {?>
+		section.welcome
+			section.welcome-header
+				img(src='resources/svgs/laughing.svg').welcome-emoji
+				h2 Bienvenido <?php echo $myrow['nombre'];?> a Ilumíname, la red de estudiantes y monitores más cool de la Javeriana
+			section.welcome-information
+				a(href='configuration.php').welcome-help
+					img(src='resources/svgs/cool.svg').welcome-image
+					h6.sub-title.ilm-configuration Cambia tu foto de perfil y tus datos personales
+				.welcome-help
+					img(src='resources/svgs/search.svg').welcome-image
+					h6.sub-title.ilm-search Buscar materias, usuarios y monitorias que desees
+				.welcome-help
+					img(src='resources/svgs/learn.svg').welcome-image
+					h6.sub-title.ilm-users Sigue a otros usuarios para estar pendiente de las monitorias que ellos brindan
+				.welcome-help
+					img(src='resources/svgs/talk.svg').welcome-image
+					h6.sub-title.ilm-chat Conversa directamente con un usuario de forma rapida
+				.welcome-help
+					img(src='resources/svgs/mobile.svg').welcome-image
+					h6.sub-title Disfruta de nuestro servicio desde cualquier dispositivo movil
+					
+		<?php }?>
 		.box-group#home-monitories
 		<?php if (isset($search)) { ?>
 		<div class='separator' name="Usuarios relacionados a '<?php echo clean($search) ?>'"></div>

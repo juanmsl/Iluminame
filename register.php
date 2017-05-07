@@ -34,7 +34,7 @@ if (isset($_POST['register_name']) && isset($_POST['register_username']) && isse
 		$_SESSION['UBER_USER_E'] = $reg_username;
 		$_SESSION['UBER_USER_H'] = $reg_password;
 		$_SESSION['set_cookies'] = true;
-
+		
 		header("Location: " . WWW . "/security_check.php");
 	}
 	else

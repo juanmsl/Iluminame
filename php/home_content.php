@@ -18,6 +18,27 @@
       <?php if (isset($search)) { ?>
       <div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($search) ?>'"></div>
       <?php } ?>
+      <?php if(!$have_follows && !isset($search)) {?>
+      <section class="welcome">
+        <section class="welcome-header"><img src="resources/svgs/laughing.svg" class="welcome-emoji"/>
+          <h2>Bienvenido <?php echo $myrow['nombre'];?> a Ilumíname, la red de estudiantes y monitores más cool de la Javeriana</h2>
+        </section>
+        <section class="welcome-information"><a href="configuration.php" class="welcome-help"><img src="resources/svgs/cool.svg" class="welcome-image"/>
+            <h6 class="sub-title ilm-configuration">Cambia tu foto de perfil y tus datos personales</h6></a>
+          <div class="welcome-help"><img src="resources/svgs/search.svg" class="welcome-image"/>
+            <h6 class="sub-title ilm-search">Buscar materias, usuarios y monitorias que desees</h6>
+          </div>
+          <div class="welcome-help"><img src="resources/svgs/learn.svg" class="welcome-image"/>
+            <h6 class="sub-title ilm-users">Sigue a otros usuarios para estar pendiente de las monitorias que ellos brindan</h6>
+          </div>
+          <div class="welcome-help"><img src="resources/svgs/talk.svg" class="welcome-image"/>
+            <h6 class="sub-title ilm-chat">Conversa directamente con un usuario de forma rapida</h6>
+          </div>
+          <div class="welcome-help"><img src="resources/svgs/mobile.svg" class="welcome-image"/>
+            <h6 class="sub-title">Disfruta de nuestro servicio desde cualquier dispositivo movil</h6>
+          </div>
+        </section>
+      </section><?php }?>
       <div id="home-monitories" class="box-group"></div><?php if (isset($search)) { ?>
       <div class='separator' name="Usuarios relacionados a '<?php echo clean($search) ?>'"></div>
       <div class='users'><div class='box-group' id='users-search'></div></div>
@@ -29,7 +50,7 @@
       $numQueries = $db->numQueries;
       echo "<!-- Generated in: $executionTime, with $numQueries queries -->";
       ?>
-      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Generated in: $executionTime, with $numQueries queries";?></div>
+      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Tiempo de carga: " . round($executionTime, 2) . " segundos, con $numQueries consultas";?></div>
       <div class="github-link"><a href="https://github.com/juanmsl/Iluminame" class="ilm-github">View Source</a></div>
     </footer>
   </body>

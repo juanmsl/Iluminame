@@ -7,7 +7,7 @@ let tutorie_notification_template = "" +
 "	<section class='box-h-section'>" +
 "		<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
-"			<p class='sub-title'>[subject_name]</p>" +
+"			<h6 class='sub-title'>[subject_name]</h6>" +
 "			<p class='box-data' name='Monitor: '>[user_name]</p>" +
 "			<p class='box-data' name='Tipo: '>[monitorie_type]</p>" +
 "			<p class='box-data' name='Lugar: '>[monitorie_place]</p>" +
@@ -22,7 +22,7 @@ let my_tutorie_notification_template = "" +
 "	<section class='box-h-section'>" +
 "		<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
-"			<p class='sub-title'>[subject_name]</p>" +
+"			<h6 class='sub-title'>[subject_name]</h6>" +
 "			<p class='box-data' name='Tipo: '>[monitorie_type]</p>" +
 "			<p class='box-data' name='Lugar: '>[monitorie_place]</p>" +
 "			<p class='box-data' name='Fecha: '>[monitorie_date]</p>" +
@@ -46,7 +46,7 @@ let chat_notification_template = "" +
 "	<section class='box-h-section'>" +
 "		<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
-"			<p class='sub-title'>[user_name]</p>" +
+"			<h6 class='sub-title'>[user_name]</h6>" +
 "			<p class='box-data'>[notification_description]</p>" +
 "		</div>" +
 "	</section" +
@@ -59,7 +59,7 @@ let monitorie_template = "" +
 "	<a href='[link]' class='box-h-section box-header'>" +
 "		<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
-"			<p class='sub-title'>[subject_name]</p>" +
+"			<h6 class='sub-title'>[subject_name]</h6>" +
 "			<p>[user_name]</p>" +
 "		</div>" +
 "	</a>" +
@@ -217,7 +217,7 @@ let user_box = "" +
 "<section class='user-box'>" +
 "	<a href='[link]'><img src='[picture]' class='big-picture'></a>" +
 "	<div class='user-data'>" +
-"		<a href='[link]' class='sub-title'>[name]</a>" +
+"		<h6 class='sub-title'><a href='[link]'>[name]</a></h6>" +
 "		<div class='user-sub-group'>" +
 "			<a href='[link]' class='user-id'>[user]</a>" +
 "			<p class='follow-you'>[isFollowMe]</p>" +
@@ -258,7 +258,7 @@ $('input[name = "rating"]').on('click', function(){
 let subject_template = "" +
 "<section class='box card box-margin'>" +
 "	<a href='#' class='box-v-section box-header'>" +
-"		<p class='sub-title'>[subject_name]</p>" +
+"		<h6 class='sub-title'>[subject_name]</h6>" +
 "		<div class='rating'>" +
 "			<div data-value='[rating_value] / 5' id='[rating_id]' class='rating-stars'>" +
 "				<input type='radio' name='rating' id='rt-five-full' value='5 / 5' [rating_checked] disabled>" +

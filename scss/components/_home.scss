@@ -1,0 +1,45 @@
+.welcome {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+
+	#{&}-header {
+		padding: $gutter * 4;
+		text-align: center;
+		background: $background-1;
+		color: $color-1;
+	}
+
+	#{&}-information {
+		padding: $gutter;
+		background: $background-2;
+		color: $color-2;
+		text-align: center;
+		flex-grow: 1;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+	}
+
+	#{&}-help {
+		width: 300px;
+		margin: $gutter * 2;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#{&}-emoji {
+		width: 200px;
+		height: 200px;
+		margin-bottom: $gutter;
+	}
+
+	#{&}-image {
+		width: 50px;
+		height: 50px;
+		margin-bottom: $gutter;
+	}
+}

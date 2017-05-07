@@ -7,6 +7,9 @@ if (!LOGGED_IN)
 	exit;
 }
 
+$follows_query = dbquery("SELECT count(*) as seguidos FROM estudiantes_seguidores WHERE estudiante_id_seguidor = " . USER_ID . ";")->fetch_assoc();
+$have_follows = (clean($follows_query['seguidos']) != '0');
+
 include ('php/home_content.php');
 
 if (isset($search)) {
