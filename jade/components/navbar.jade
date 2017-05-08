@@ -5,8 +5,21 @@ nav.navbar#main-navbar
 		img(src='resources/images/icon.png').logo
 	a(href='/').logo-title Ilumíname
 	form(action='home.php' method='get').navbar-finder
-		| <input type='search' placeholder='¿Buscas una materia, usuario o monitoria?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
-		i(onclick='search.submit()').ilm-search
+		//| <input type='search' placeholder='¿Buscas una materia, usuario o monitoria?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
+		section.main-bar
+			| <input type='search' name='search' placeholder='¿Buscas una materia, usuario o monitoria?' value='<?php if(isset($search)) echo clean($search); ?>' maxlength=20 class='search-bar'>
+			section.radio-group
+				article.radio-option
+					| <input type='radio' name='type' id='Monitoria' value='Monitoria' <?php if((isset($_GET['search']) && $_GET['type'] == 'Monitoria') || !isset($_GET['search'])) echo 'checked'; ?>>
+					label(for='Monitoria') Monitoria
+				article.radio-option
+					| <input type='radio' name='type' id='Materia' value='Materia' <?php if(isset($_GET['search']) && $_GET['type'] == 'Materia') echo 'checked'; ?>>
+					label(for='Materia') Materia
+				article.radio-option
+					| <input type='radio' name='type' id='Usuario' value='Usuario' <?php if(isset($_GET['search']) && $_GET['type'] == 'Usuario') echo 'checked'; ?>>
+					label(for='Usuario') Usuario
+		button(onclick='search.submit()' title='Buscar').submit
+			i.icon-search
 	.navbar-notificator.ilm-notification#toggle-notification(counter='0' target='#notification')
 	.navbar-notificator.ilm-chat#toggle-chat(counter='0' target='#chat')
 	.navbar-notificator.ilm-my-tutories#toggle-my-tutories(counter='0' target='#my-tutories')

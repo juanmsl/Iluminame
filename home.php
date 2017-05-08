@@ -12,28 +12,32 @@ $have_follows = (clean($follows_query['seguidos']) != '0');
 
 include ('php/home_content.php');
 
-if (isset($search)) {
-	$items_query = dbquery("SELECT
-		monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
-		estudiantes.nombre as estudiante_nombre, estudiantes.id as monitor_id, estudiantes.usuario, estudiantes.foto,
-		materias.nombre as materia_nombre,
-		estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
-		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id) AND estudiante_id = " . USER_ID . ") as inscrito,
-		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id)) as monitoria_inscripciones
-		FROM monitorias
-		JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id)
-		JOIN materias ON (materias.id = monitorias.materia_id)
-		JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
-		WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores)
-		AND (materias.nombre LIKE '%" . $search . "%')
-		ORDER BY fecha_inicio DESC;");
+if (isset($_GET['search'])) {
+	if($_GET['type'] == 'Monitoria') {
+		$items_query = dbquery("SELECT
+			monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
+			estudiantes.nombre as estudiante_nombre, estudiantes.id as monitor_id, estudiantes.usuario, estudiantes.foto,
+			materias.nombre as materia_nombre,
+			estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
+			(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id) AND estudiante_id = " . USER_ID . ") as inscrito,
+			(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = (monitorias.id)) as monitoria_inscripciones
+			FROM monitorias
+			JOIN estudiantes ON (estudiantes.id = monitorias.estudiante_id)
+			JOIN materias ON (materias.id = monitorias.materia_id)
+			JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
+			WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores)
+			AND (materias.nombre LIKE '%" . $search . "%')
+			ORDER BY fecha_inicio DESC;");
+	} else if($_GET['type'] == 'Materia') {
 
-	$users_query = dbquery("SELECT estudiantes.id, estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
-		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = estudiantes.id AND estudiante_id_seguido = " . USER_ID . ") as isFollowMe,
-		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . USER_ID . "' AND estudiante_id_seguido = id) as isFollow
-		FROM estudiantes
-		WHERE estudiantes.nombre LIKE '%" . $search . "%' OR estudiantes.usuario LIKE '%" . $search . "%'
-		ORDER BY nombre;");
+	} else if($_GET['type'] == 'Usuario') {
+		$users_query = dbquery("SELECT estudiantes.id, estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
+			(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = estudiantes.id AND estudiante_id_seguido = " . USER_ID . ") as isFollowMe,
+			(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . USER_ID . "' AND estudiante_id_seguido = id) as isFollow
+			FROM estudiantes
+			WHERE estudiantes.nombre LIKE '%" . $search . "%' OR estudiantes.usuario LIKE '%" . $search . "%'
+			ORDER BY nombre;");
+	}
 } else {
 	$items_query = dbquery("SELECT
 		monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.estudiante_id, monitorias.materia_id, monitorias.es_publica,
@@ -50,11 +54,8 @@ if (isset($search)) {
 		ORDER BY fecha_inicio DESC;");
 }
 
-$items_available = $items_query->num_rows;
-if ($items_available > 0)
-{
-	while ($item = $items_query->fetch_assoc())
-	{
+if ((isset($_GET['search']) && $_GET['type'] == 'Monitoria') || !isset($_GET['search'])) {
+	while ($item = $items_query->fetch_assoc()) {
 		echo "<script>
 			addHomeMonitorie({
 				isMe: '" . (clean($item["monitor_id"]) == USER_ID) . "',
@@ -76,7 +77,7 @@ if ($items_available > 0)
 	}
 }
 
-if(isset($search)) {
+if(isset($_GET['search']) && $_GET['type'] == 'Usuario') {
 	$users = $users_query->num_rows;
 	if ($users > 0)
 	{

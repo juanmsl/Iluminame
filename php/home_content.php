@@ -14,11 +14,7 @@
     </script>
   </head>
   <body><?php include('inc/templates/navbar.php') ?>
-    <div class="mainContent">
-      <?php if (isset($search)) { ?>
-      <div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($search) ?>'"></div>
-      <?php } ?>
-      <?php if(!$have_follows && !isset($search)) {?>
+    <div class="mainContent"><?php if(!$have_follows && !isset($_GET['search'])) {?>
       <section class="welcome">
         <section class="welcome-header"><img src="resources/svgs/laughing.svg" class="welcome-emoji"/>
           <h2>Bienvenido <?php echo $myrow['nombre'];?> a Ilumíname, la red de estudiantes y monitores más cool de la Javeriana</h2>
@@ -39,8 +35,15 @@
           </div>
         </section>
       </section><?php }?>
-      <div id="home-monitories" class="box-group"></div><?php if (isset($search)) { ?>
-      <div class='separator' name="Usuarios relacionados a '<?php echo clean($search) ?>'"></div>
+      <?php if (isset($_GET['search']) && $_GET['type'] == 'Monitoria') { ?>
+      <div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($_GET['search']) ?>'"></div>
+      <?php } ?>
+      <div id="home-monitories" class="box-group"></div><?php if (isset($_GET['search']) && $_GET['type'] == 'Materia') { ?>
+      <div class='separator' name="Materias relacionadas a '<?php echo clean($_GET['search']) ?>'"></div>
+      <div class='box-group' id='subjects-search'></div>
+      <?php } ?>
+      <?php if (isset($_GET['search']) && $_GET['type'] == 'Usuario') { ?>
+      <div class='separator' name="Usuarios relacionados a '<?php echo clean($_GET['search']) ?>'"></div>
       <div class='users'><div class='box-group' id='users-search'></div></div>
       <?php } ?>
     </div>

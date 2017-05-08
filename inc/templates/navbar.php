@@ -1,6 +1,22 @@
 <?php include('php/php_navbar.php') ?>
 <nav id="main-navbar" class="navbar"><a href="/"><img src="resources/images/icon.png" class="logo"/></a><a href="/" class="logo-title">Ilumíname</a>
-  <form action="home.php" method="get" class="navbar-finder"><input type='search' placeholder='¿Buscas una materia, usuario o monitoria?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'><i onclick="search.submit()" class="ilm-search"></i></form>
+  <form action="home.php" method="get" class="navbar-finder">
+    <!--| <input type='search' placeholder='¿Buscas una materia, usuario o monitoria?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>-->
+    <section class="main-bar"><input type='search' name='search' placeholder='¿Buscas una materia, usuario o monitoria?' value='<?php if(isset($search)) echo clean($search); ?>' maxlength=20 class='search-bar'>
+      <section class="radio-group">
+        <article class="radio-option"><input type='radio' name='type' id='Monitoria' value='Monitoria' <?php if((isset($_GET['search']) && $_GET['type'] == 'Monitoria') || !isset($_GET['search'])) echo 'checked'; ?>>
+          <label for="Monitoria">Monitoria</label>
+        </article>
+        <article class="radio-option"><input type='radio' name='type' id='Materia' value='Materia' <?php if(isset($_GET['search']) && $_GET['type'] == 'Materia') echo 'checked'; ?>>
+          <label for="Materia">Materia</label>
+        </article>
+        <article class="radio-option"><input type='radio' name='type' id='Usuario' value='Usuario' <?php if(isset($_GET['search']) && $_GET['type'] == 'Usuario') echo 'checked'; ?>>
+          <label for="Usuario">Usuario</label>
+        </article>
+      </section>
+    </section>
+    <button onclick="search.submit()" title="Buscar" class="submit"><i class="icon-search"></i></button>
+  </form>
   <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
   <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
   <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
