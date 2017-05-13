@@ -7,8 +7,10 @@ nav.navbar#main-navbar
 	form(action='home.php' method='get').navbar-finder
 		//| <input type='search' placeholder='¿Buscas una materia, usuario o monitoria?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>
 		section.main-bar
+			.toggle#toggleOptions(target='#radio-options')
+				i.icon-caret-down
 			| <input type='search' name='search' placeholder='¿Buscas una materia, usuario o monitoria?' value='<?php if(isset($search)) echo clean($search); ?>' maxlength=20 class='search-bar'>
-			section.radio-group
+			section.radio-group#radio-options
 				article.radio-option
 					| <input type='radio' name='type' id='Monitoria' value='Monitoria' <?php if((isset($_GET['search']) && $_GET['type'] == 'Monitoria') || !isset($_GET['search'])) echo 'checked'; ?>>
 					label(for='Monitoria') Monitoria

@@ -46,23 +46,30 @@ if ($msgs_available > 0)
 		}
 	}
 }
-$msgs_query = dbquery("SELECT notificaciones.descripcion, notificaciones.id, notificaciones.fecha, notificaciones.fecha, notificaciones.vista, notificaciones.estudiante_id_recibe, notificaciones.estudiante_id_envia, estudiantes.nombre, estudiantes.foto, estudiantes.usuario
+$msgs_query = dbquery("SELECT notificaciones.descripcion, notificaciones.fecha, notificaciones.vista,
+	estudiantes.foto, estudiantes.usuario
 	FROM notificaciones JOIN estudiantes ON (notificaciones.estudiante_id_envia = estudiantes.id)
-	WHERE notificaciones.vista = '0' AND notificaciones.estudiante_id_recibe = " . USER_ID . "
-	ORDER BY fecha DESC;");
+	WHERE notificaciones.estudiante_id_recibe = " . USER_ID . "
+	ORDER BY vista ASC, fecha DESC;");
 $msgs_available = $msgs_query->num_rows;
+$count_ntf = 0;
 if ($msgs_available > 0)
 {
 	while ($msg = $msgs_query->fetch_assoc())
 	{
-		$notifications .= "<script>
+		//echo "<script>console.log('<" . $msg["vista"] . ">');</script>";
+		if($count_ntf < 15 || ($count_ntf >= 15 && $msg["vista"] == '0')) {
+			$notifications .= "<script>
 			addNotification({
 				notification_link: 'profile.php?user=" . clean($msg["usuario"]) . "',
 				notification_date: '" . strftime("%d de %B del %Y, %I:%M %p", $msg["fecha"]) . "',
 				user_picture: '" . clean($msg["foto"]) . "',
+				viewed: " . ($msg["vista"] == '1' ? 'true' : 'false') . ",
 				notification_description: '" . $msg["descripcion"] . "'
 			});
-		</script>";
+			</script>";
+			$count_ntf++;
+		}
 	}
 }
 $msgs_query = dbquery("SELECT materias.nombre as materia, foto, usuario, monitorias.id as monitoria_id, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
@@ -73,7 +80,8 @@ if ($msgs_available > 0)
 {
 	while ($msg = $msgs_query->fetch_assoc())
 	{
-		$notifications .= "<script>
+		if($msg["fecha_inicio"] > time()) {
+			$notifications .= "<script>
 			addMyTutorie({
 				monitorie_link: 'tutorie.php?id=" . clean($msg["monitoria_id"]) . "',
 				user_picture: '" . clean($msg["foto"]) . "',
@@ -83,7 +91,8 @@ if ($msgs_available > 0)
 				monitorie_date: '" . strftime("%d de %B del %Y", $msg["fecha_inicio"]) . "',
 				monitorie_time: '" . strftime("%I:%M %p", $msg["fecha_inicio"]) . " - " . strftime("%I:%M %p", $msg["fecha_fin"]) . "'
 			});
-		</script>";
+			</script>";
+		}
 	}
 }
 $msgs_query = dbquery("SELECT materias.nombre as materia, estudiantes.nombre, foto, usuario, monitorias.id as monitoria_id, monitorias.es_publica, monitorias.lugar, monitorias.fecha_inicio, monitorias.fecha_fin
@@ -94,18 +103,20 @@ if ($msgs_available > 0)
 {
 	while ($msg = $msgs_query->fetch_assoc())
 	{
-		$notifications .= "<script>
-			addTutorie({
-				monitorie_link: 'tutorie.php?id=" . clean($msg["monitoria_id"]) . "',
-				user_picture: '" . clean($msg["foto"]) . "',
-				subject_name: '" . clean($msg["materia"]) . "',
-				user_name: '" . clean($msg["nombre"]) . "',
-				monitorie_type: '" . ($msg["es_publica"] == '1' ? 'Publica' : 'Privada') . "',
-				monitorie_place: '" . clean($msg["lugar"]) . "',
-				monitorie_date: '" . strftime("%d de %B del %Y", $msg["fecha_inicio"]) . "',
-				monitorie_time: '" . strftime("%I:%M %p", $msg["fecha_inicio"]) . " - " . strftime("%I:%M %p", $msg["fecha_fin"]) . "'
-			});
-		</script>";
+		if($msg["fecha_inicio"] > time()) {
+			$notifications .= "<script>
+				addTutorie({
+					monitorie_link: 'tutorie.php?id=" . clean($msg["monitoria_id"]) . "',
+					user_picture: '" . clean($msg["foto"]) . "',
+					subject_name: '" . clean($msg["materia"]) . "',
+					user_name: '" . clean($msg["nombre"]) . "',
+					monitorie_type: '" . ($msg["es_publica"] == '1' ? 'Publica' : 'Privada') . "',
+					monitorie_place: '" . clean($msg["lugar"]) . "',
+					monitorie_date: '" . strftime("%d de %B del %Y", $msg["fecha_inicio"]) . "',
+					monitorie_time: '" . strftime("%I:%M %p", $msg["fecha_inicio"]) . " - " . strftime("%I:%M %p", $msg["fecha_fin"]) . "'
+				});
+			</script>";
+		}
 	}
 }
 ?>

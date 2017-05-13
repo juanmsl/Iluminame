@@ -14,7 +14,10 @@
     </script>
   </head>
   <body><?php include('inc/templates/navbar.php') ?>
-    <div class="mainContent"><?php if(!$have_follows && !isset($_GET['search'])) {?>
+    <div class="mainContent">
+      <?php if ($welcome || $home_query || $search_monitoria) { ?>
+      <div class='box-group box-grow' id='home-monitories'>
+      <?php if ($welcome) { ?>
       <section class="welcome">
         <section class="welcome-header"><img src="resources/svgs/laughing.svg" class="welcome-emoji"/>
           <h2>Bienvenido <?php echo $myrow['nombre'];?> a Ilumíname, la red de estudiantes y monitores más cool de la Javeriana</h2>
@@ -34,17 +37,33 @@
             <h6 class="sub-title">Disfruta de nuestro servicio desde cualquier dispositivo movil</h6>
           </div>
         </section>
-      </section><?php }?>
-      <?php if (isset($_GET['search']) && $_GET['type'] == 'Monitoria') { ?>
-      <div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($_GET['search']) ?>'"></div>
+      </section><?php } elseif($query_results == 0) { ?>
+      <div class="not-found-box box">
+        <div class="planet"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+          <h5 class='glitch' data-text='No hubieron resultados'>No hubieron resultados</h5>
+        </div>
+      </div><?php } ?>
+      </div>
       <?php } ?>
-      <div id="home-monitories" class="box-group"></div><?php if (isset($_GET['search']) && $_GET['type'] == 'Materia') { ?>
-      <div class='separator' name="Materias relacionadas a '<?php echo clean($_GET['search']) ?>'"></div>
-      <div class='box-group' id='subjects-search'></div>
+      <?php if ($search_materia) { ?>
+      <div class='box-group box-grow' id='subjects-search'>
+      <?php if ($query_results == 0) { ?>
+      <div class="not-found-box box">
+        <div class="planet"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+          <h5 class='glitch' data-text='No hubieron resultados'>No hubieron resultados</h5>
+        </div>
+      </div><?php } ?>
+      </div>
       <?php } ?>
-      <?php if (isset($_GET['search']) && $_GET['type'] == 'Usuario') { ?>
-      <div class='separator' name="Usuarios relacionados a '<?php echo clean($_GET['search']) ?>'"></div>
-      <div class='users'><div class='box-group' id='users-search'></div></div>
+      <?php if ($search_usuario) { ?>
+      <div class='users'><div class='box-group box-grow' id='users-search'>
+      <?php if ($query_results == 0) { ?>
+      <div class="not-found-box box">
+        <div class="planet"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+          <h5 class='glitch' data-text='No hubieron resultados'>No hubieron resultados</h5>
+        </div>
+      </div><?php } ?>
+      </div></div>
       <?php } ?>
     </div>
     <footer class="footer">

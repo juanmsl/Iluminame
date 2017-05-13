@@ -8,7 +8,9 @@ block nav
 
 block main
 	.mainContent
-		<?php if(!$have_follows && !isset($_GET['search'])) {?>
+		<?php if ($welcome || $home_query || $search_monitoria) { ?>
+		<div class='box-group box-grow' id='home-monitories'>
+		<?php if ($welcome) { ?>
 		section.welcome
 			section.welcome-header
 				img(src='resources/svgs/laughing.svg').welcome-emoji
@@ -29,20 +31,36 @@ block main
 				.welcome-help
 					img(src='resources/svgs/mobile.svg').welcome-image
 					h6.sub-title Disfruta de nuestro servicio desde cualquier dispositivo movil
-					
-		<?php }?>
-		
-		<?php if (isset($_GET['search']) && $_GET['type'] == 'Monitoria') { ?>
-		<div class='separator' name="Monitorias de materias relacionadas a '<?php echo clean($_GET['search']) ?>'"></div>
+		<?php } elseif($query_results == 0) { ?>
+		.not-found-box.box
+			.planet
+				i.ilm-sad
+				| <h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+				| <h5 class='glitch' data-text='No hubieron resultados'>No hubieron resultados</h5>
 		<?php } ?>
-		.box-group#home-monitories
-		
-		<?php if (isset($_GET['search']) && $_GET['type'] == 'Materia') { ?>
-		<div class='separator' name="Materias relacionadas a '<?php echo clean($_GET['search']) ?>'"></div>
-		<div class='box-group' id='subjects-search'></div>
+		</div>
 		<?php } ?>
 		
-		<?php if (isset($_GET['search']) && $_GET['type'] == 'Usuario') { ?>
-		<div class='separator' name="Usuarios relacionados a '<?php echo clean($_GET['search']) ?>'"></div>
-		<div class='users'><div class='box-group' id='users-search'></div></div>
+		<?php if ($search_materia) { ?>
+		<div class='box-group box-grow' id='subjects-search'>
+		<?php if ($query_results == 0) { ?>
+		.not-found-box.box
+			.planet
+				i.ilm-sad
+				| <h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+				| <h5 class='glitch' data-text='No hubieron resultados'>No hubieron resultados</h5>
+		<?php } ?>
+		</div>
+		<?php } ?>
+		
+		<?php if ($search_usuario) { ?>
+		<div class='users'><div class='box-group box-grow' id='users-search'>
+		<?php if ($query_results == 0) { ?>
+		.not-found-box.box
+			.planet
+				i.ilm-sad
+				| <h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+				| <h5 class='glitch' data-text='No hubieron resultados'>No hubieron resultados</h5>
+		<?php } ?>
+		</div></div>
 		<?php } ?>

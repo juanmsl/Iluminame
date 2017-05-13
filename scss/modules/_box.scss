@@ -72,6 +72,10 @@
 		}
 	}
 
+	&.active {
+		background: lighten($background-3, 10);
+	}
+
 	#{&}-v-section, #{&}-h-section {
 		display: flex;
 		padding: $gutter;
@@ -88,7 +92,6 @@
 
 	#{&}-v-section {
 		flex-direction: column;
-		flex-grow: 1;
 	}
 
 	#{&}-h-section {
@@ -111,11 +114,13 @@
 	#{&}-header {
 		background: $box-header-background;
 		flex-shrink: 0;
+		flex-grow: 0;
 	}
 
 	#{&}-footer {
 		background: $box-footer-background;
 		flex-shrink: 0;
+		flex-grow: 0;
 	}
 
 	#{&}-data {
@@ -165,4 +170,12 @@
 			background: $box-footer-disabled;
 		}
 	}
+}
+
+.box-grow {
+	flex-grow: 1;
+}
+
+.box-no-grow {
+	flex-grow: 0;
 }

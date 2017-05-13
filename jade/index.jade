@@ -19,6 +19,9 @@ block main
 						label.fm-form_warning <?php echo clean($login_result);?>
 						| <input type='text' class='fm-form_control' name='login_username' placeholder='Usuario' value='<?php echo clean($login_username);?>' required>
 						input(type='password' name="login_password" placeholder='Contraseña' required).fm-form_control
+						.fm-form_remember
+							input(type='checkbox' id='remember_me' name="remember_me" value=true placeholder='asdf')
+							label(for='remember_me').fm-form_message Mantener la sesión iniciada
 						input(type='submit' value='Ingresar').fm-form_button
 					.fm-form_group
 						p.fm-form_message ¿No tienes una cuenta aun? 
@@ -36,6 +39,9 @@ block main
 						input(type='email' name='register_email' placeholder='Correo' required).fm-form_control
 						input(type='password' name='register_password' placeholder='Contraseña' required).fm-form_control
 						input(type='password' name='register_password_conf' placeholder='Contraseña' required).fm-form_control
+						.fm-form_remember
+							input(type='checkbox' id='remember_me' name="remember_me" value=true placeholder='asdf')
+							label(for='remember_me').fm-form_message Mantener la sesión iniciada
 						input(type='submit' value='Registrarme').fm-form_button
 					.fm-form_group
 						p.fm-form_message ¿Ya tienes una cuenta? 

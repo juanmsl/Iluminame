@@ -2,8 +2,9 @@
 <nav id="main-navbar" class="navbar"><a href="/"><img src="resources/images/icon.png" class="logo"/></a><a href="/" class="logo-title">Ilumíname</a>
   <form action="home.php" method="get" class="navbar-finder">
     <!--| <input type='search' placeholder='¿Buscas una materia, usuario o monitoria?' name='search' value='<?php if(isset($search)) echo clean($search); ?>' class='navbar-input'>-->
-    <section class="main-bar"><input type='search' name='search' placeholder='¿Buscas una materia, usuario o monitoria?' value='<?php if(isset($search)) echo clean($search); ?>' maxlength=20 class='search-bar'>
-      <section class="radio-group">
+    <section class="main-bar">
+      <div id="toggleOptions" target="#radio-options" class="toggle"><i class="icon-caret-down"></i></div><input type='search' name='search' placeholder='¿Buscas una materia, usuario o monitoria?' value='<?php if(isset($search)) echo clean($search); ?>' maxlength=20 class='search-bar'>
+      <section id="radio-options" class="radio-group">
         <article class="radio-option"><input type='radio' name='type' id='Monitoria' value='Monitoria' <?php if((isset($_GET['search']) && $_GET['type'] == 'Monitoria') || !isset($_GET['search'])) echo 'checked'; ?>>
           <label for="Monitoria">Monitoria</label>
         </article>

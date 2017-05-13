@@ -22,15 +22,41 @@ let toggleTarget = function(element) {
 
 toggles.on('click', function(){
 	toggleTarget($(this));
+	var object = $(this);
+	if($(this).attr('id') == 'toggle-notification' && !$(this).hasClass('is-hover')) {
+		if(object.attr('counter') != 0) {
+			$.ajax({
+				type: "POST",
+				url: "/ajax/readNotifications.php",
+				success: function (msg) {
+					var response = JSON.parse(msg);
+					console.log(response.result);
+					let target = object.attr('target');
+					object.attr('counter', '0');
+					object.removeClass('activate');
+					$(target + ' a.box.notification').each(function(index) {
+						$(this).removeClass('active');
+					});
+				}
+			});
+		}
+	}
 });
 
-let addAndUpdateNotificators = function(boxElement, element) {
+$('#toggleOptions').on('click', function(){
+	var target = $(this).attr('target');
+	$(target).fadeToggle('fast');
+});
+
+let addAndUpdateNotificators = function(boxElement, element, update) {
 	let target = boxElement.attr('target');
-	let counter = boxElement.attr('counter');
-	if(counter == 0) {
-		boxElement.addClass('activate');
+	if(update) {
+		let counter = boxElement.attr('counter');
+		if(counter == 0) {
+			boxElement.addClass('activate');
+		}
+		boxElement.attr('counter', parseInt(counter) + 1);
 	}
-	boxElement.attr('counter', parseInt(counter) + 1);
 	$(navbar + ' ' + target + ' .navbar-notifications').append(element);
 }
 
@@ -44,7 +70,7 @@ let addTutorie = function(notification) {
 		.replace('[monitorie_place]', notification.monitorie_place)
 		.replace('[monitorie_date]', notification.monitorie_date)
 		.replace('[monitorie_time]', notification.monitorie_time);
-	addAndUpdateNotificators($(navbar + ' #toggle-my-tutories'), element);
+	addAndUpdateNotificators($(navbar + ' #toggle-my-tutories'), element, true);
 }
 
 let addMyTutorie = function(notification) {
@@ -56,7 +82,7 @@ let addMyTutorie = function(notification) {
 		.replace('[monitorie_place]', notification.monitorie_place)
 		.replace('[monitorie_date]', notification.monitorie_date)
 		.replace('[monitorie_time]', notification.monitorie_time);
-	addAndUpdateNotificators($(navbar + ' #toggle-tutories'), element);
+	addAndUpdateNotificators($(navbar + ' #toggle-tutories'), element, true);
 }
 
 let addNotification = function(notification) {
@@ -64,8 +90,9 @@ let addNotification = function(notification) {
 		.replace('[notification_link]', notification.notification_link)
 		.replace('[notification_date]', notification.notification_date)
 		.replace('[user_picture]', notification.user_picture)
+		.replace('[active]', notification.viewed ? '' : 'active')
 		.replace('[notification_description]', notification.notification_description);
-	addAndUpdateNotificators($(navbar + ' #toggle-notification'), element);
+	addAndUpdateNotificators($(navbar + ' #toggle-notification'), element, !notification.viewed);
 }
 
 let addChatNotification = function(notification) {
@@ -75,5 +102,5 @@ let addChatNotification = function(notification) {
 		.replace('[user_picture]', notification.user_picture)
 		.replace('[user_name]', notification.user_name)
 		.replace('[notification_description]', notification.notification_description);
-	addAndUpdateNotificators($(navbar + ' #toggle-chat'), element);
+	addAndUpdateNotificators($(navbar + ' #toggle-chat'), element, true);
 }

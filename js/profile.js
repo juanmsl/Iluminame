@@ -14,23 +14,8 @@ $('#cards').owlCarousel({
 		800:{
 			items:3
 		},
-		1200:{
+		1300:{
 			items:4
-		}
-	}
-});
-
-$('#profile-subjects, #profile-active-monitories').owlCarousel({
-	loop: true,
-	responsive:{
-		0:{
-			items:1
-		},
-		600:{
-			items:2
-		},
-		1200:{
-			items:3
 		}
 	}
 });

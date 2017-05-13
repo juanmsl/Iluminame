@@ -63,6 +63,8 @@ if (isset($_GET["id"])) {
 		$button_enable = (($is_signed || $inscritos < $maximo) ? '' : 'disabled');
 		$button_text = (($is_signed) ? 'Abandonar monitoria' : (($inscritos == $maximo) ? 'Monitoria llena' : 'Deseo unirme'));
 
+		$is_disabled = ($monitorie_query["fecha_inicio"] < time());
+
 		include ('php/tutorie_content.php');
 
 		if($user_query->num_rows > 0) {

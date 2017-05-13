@@ -79,6 +79,14 @@
 		font-weight: bold;
 	}
 
+	#{&}_remember {
+		width: 80%;
+		margin: 0 auto $gutter / 2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	#{&}_warning {
 		color: $form-warning;
 		margin-top: $gutter;
@@ -109,6 +117,7 @@
 		font-size: 0.8em;
 		margin: 0;
 		margin-top: 3px;
+		padding: 0 $gutter;
 	}
 
 	#{&}_link {

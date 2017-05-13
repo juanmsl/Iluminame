@@ -31,7 +31,7 @@
       $numQueries = $db->numQueries;
       echo "<!-- Generated in: $executionTime, with $numQueries queries -->";
       ?>
-      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Generated in: $executionTime, with $numQueries queries";?></div>
+      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Tiempo de carga: " . round($executionTime, 2) . " segundos, con $numQueries consultas";?></div>
       <div class="github-link"><a href="https://github.com/juanmsl/Iluminame" class="ilm-github">View Source</a></div>
     </footer>
   </body>

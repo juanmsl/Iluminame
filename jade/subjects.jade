@@ -8,7 +8,37 @@ block nav
 
 block main
 	.mainContent
+		<?php if($my_subjects) { ?>
 		.separator(name='Materias que dictas monitorias')
 		.buttons-group
 			button.add-button Añadir materia
 		.box-group#subjects-group
+		<?php } else { ?>
+		section.monitoria
+			section.header
+				| <a href='profile.php?user=<?php echo $usuario; ?>'><img src='<?php echo $foto; ?>' class='photo'></a>
+				section.header-group
+					p.main-title <?php echo $materia; ?>
+					p <?php echo $monitor; ?>
+					section.header-sub-group
+						br
+						p.ilm-user <?php echo $costo_pr; ?> / hora privada
+						p.ilm-users <?php echo $costo_pb; ?> / hora publica
+						br
+						p <?php echo $descripcion; ?>
+					| <?php if(!$is_my_subject) { ?>
+					|	<div class='monitoria-actions'>
+					|		<button class='join-button' <?php echo $button_function; ?>>Solicitar una monitoria</button>
+					|		<a href="messages.php?user=<?php echo $usuario; ?>">
+					|			<button class='chat-button'>Chat</button>
+					|		</a>
+					|	</div>
+					| <?php } ?>
+			section.information-full
+				section.information-full-group
+					.separator(name='Monitorias activas')
+					.box-group#active-monitories
+				section.information-full-group
+					.separator(name='Monitorias dictadas')
+					.box-group#past-monitories
+		<?php } ?>

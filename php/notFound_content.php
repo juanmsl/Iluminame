@@ -16,8 +16,9 @@
   <body><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
       <div class="not-found-box box">
-        <div class="planet"><a target="_blank" href="http://codepen.io/jonny-dev/"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
-            <h5 class='glitch' data-text='<?php echo $object_not_found; ?>'><?php echo $object_not_found; ?></h5></a></div>
+        <div class="planet"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+          <h5 class='glitch' data-text='<?php echo $object_not_found; ?>'><?php echo $object_not_found; ?></h5>
+        </div>
       </div>
     </div>
     <footer class="footer">
@@ -26,7 +27,7 @@
       $numQueries = $db->numQueries;
       echo "<!-- Generated in: $executionTime, with $numQueries queries -->";
       ?>
-      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Generated in: $executionTime, with $numQueries queries";?></div>
+      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Tiempo de carga: " . round($executionTime, 2) . " segundos, con $numQueries consultas";?></div>
       <div class="github-link"><a href="https://github.com/juanmsl/Iluminame" class="ilm-github">View Source</a></div>
     </footer>
   </body>

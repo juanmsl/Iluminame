@@ -32,7 +32,7 @@ let my_tutorie_notification_template = "" +
 "</a>";
 
 let notification_template = "" +
-"<a class='box notification data-fixed' href='[notification_link]' data-fixed='[notification_date]'>" +
+"<a class='box notification data-fixed [active]' href='[notification_link]' data-fixed='[notification_date]'>" +
 "	<section class='box-h-section'>" +
 "		<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
@@ -55,7 +55,7 @@ let chat_notification_template = "" +
 // Monitories
 
 let monitorie_template = "" +
-"<section class='box card box-margin'>" +
+"<section class='box [card] box-margin [disabled]'>" +
 "	<a href='[link]' class='box-h-section box-header'>" +
 "		<img src='[user_picture]' class='picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
@@ -71,20 +71,21 @@ let monitorie_template = "" +
 "	</section>" +
 "	<section class='box-v-section box-footer box-align-center box-justify-center'>" +
 "		<p class='box-data' id='state_monitorie_[id]'>[type]</p>" +
-"		<button class='[button_class]-button no-shadow' id='button_monitorie_[id]' [button_function] [button_enable]>[button_text]</button>" +
+"		<button class='[button_class]-button' id='button_monitorie_[id]' [button_function] [button_enable]>[button_text]</button>" +
 "	</section>" +
 "</section>";
 
-let addHomeMonitorie = function(n) {
+let createMonitorie = function(n) {
 	var state = (n.type) ? n.inscriptions + ' / ' + n.maximun + ' inscritos' : 'Privada';
 	var button_class = (n.is_signed == 1) ? 'leave' : (n.inscriptions == n.maximun) ? 'full' : 'join';
 	var button_function = (n.is_signed == 1) ? 'leave' : (n.inscriptions == n.maximun) ? '' : 'join';
 	var button_text = (n.is_signed == 1) ? 'Abandonar monitoria' : (n.inscriptions == n.maximun) ? 'Monitoria llena' : 'Deseo unirme';
-	var button_enable = (n.is_signed == 1 || n.inscriptions < n.maximun);
+	var button_enable = (n.is_signed == 1 || n.inscriptions < n.maximun || !n.disabled);
 
 	var element = monitorie_template
 		.replace('[id]', n.id)
 		.replace('[id]', n.id)
+		.replace('[card]', n.card)
 		.replace('[link]', n.link)
 		.replace('[user_picture]', n.user_picture)
 		.replace('[subject_name]', n.subject_name)
@@ -93,13 +94,19 @@ let addHomeMonitorie = function(n) {
 		.replace('[date]', n.date)
 		.replace('[time]', n.time)
 		.replace('[price]', n.price)
+		.replace('[disabled]', (n.disabled ? 'box-disabled' : ''))
 		.replace('[type]', state)
 		.replace('[button_class]', button_class)
 		.replace('[button_function]', button_function == '' ? '' : 'onclick=\'' + button_function + '_monitorie(' + n.id + ', this, true)\'')
 		.replace('[button_text]', button_text)
 		.replace('[button_enable]', button_enable ? '' : 'disabled');
-	$('#home-monitories').append(element);
-	if(n.isMe == 1) {
+	return element;
+}
+
+let addMonitorieTo = function(n, container) {
+	var element = createMonitorie(n);
+	$(container).append(element);
+	if(n.isMe == 1 || n.disabled) {
 		var button = document.getElementById('button_monitorie_' + n.id);
 		button.parentElement.removeChild(button);
 	}
@@ -256,38 +263,41 @@ $('input[name = "rating"]').on('click', function(){
 });
 
 let subject_template = "" +
-"<section class='box card box-margin'>" +
-"	<a href='#' class='box-v-section box-header'>" +
-"		<h6 class='sub-title'>[subject_name]</h6>" +
-"		<div class='rating'>" +
-"			<div data-value='[rating_value] / 5' id='[rating_id]' class='rating-stars'>" +
-"				<input type='radio' name='rating' id='rt-five-full' value='5 / 5' [rating_checked] disabled>" +
-"				<label for='rt-five-full' title='5.0'></label>" +
-"				<input type='radio' name='rating' id='rt-four-half' value='4.5 / 5' [rating_checked] disabled>" +
-"				<label for='rt-four-half' title='4.5'></label>" +
-"				<input type='radio' name='rating' id='rt-four-full' value='4 / 5' [rating_checked] disabled>" +
-"				<label for='rt-four-full' title='4.0'></label>" +
-"				<input type='radio' name='rating' id='rt-tree-half' value='3.5 / 5' [rating_checked] disabled>" +
-"				<label for='rt-tree-half' title='3.5'></label>" +
-"				<input type='radio' name='rating' id='rt-tree-full' value='3 / 5'  [rating_checked] disabled>" +
-"				<label for='rt-tree-full' title='3.0'></label>" +
-"				<input type='radio' name='rating' id='rt-two-half' value='2.5 / 5' [rating_checked] disabled>" +
-"				<label for='rt-two-half' title='2.5'></label>" +
-"				<input type='radio' name='rating' id='rt-two-full' value='2 / 5' [rating_checked] disabled>" +
-"				<label for='rt-two-full' title='2.0'></label>" +
-"				<input type='radio' name='rating' id='rt-one-half' value='1.5 / 5' [rating_checked] disabled>" +
-"				<label for='rt-one-half' title='1.5'></label>" +
-"				<input type='radio' name='rating' id='rt-one-full' value='1 / 5' [rating_checked] disabled>" +
-"				<label for='rt-one-full' title='1.0'></label>" +
-"				<input type='radio' name='rating' id='rt-half' value='0.5 / 5' [rating_checked] disabled>" +
-"				<label for='rt-half' title='0.5'></label>" +
+"<section class='box [card] box-margin'>" +
+"	<section href='#' class='box-h-section box-header'>" +
+"		<a href='[user_link]' title='[user_name]'><img src='[user_picture]' class='big-picture'></a>" +
+"		<div class='box-v-section box-justify-center gutter-0'>" +
+"			<h6 class='sub-title'><a href='[subject_link]'>[subject_name]</a></h6>" +
+"			<div class='rating'>" +
+"				<div data-value='[rating_value] / 5' class='rating-stars'>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-five-full' value='5 / 5' [rating_checked] disabled>" +
+"					<label for='rt-five-full' title='5.0'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-four-half' value='4.5 / 5' [rating_checked] disabled>" +
+"					<label for='rt-four-half' title='4.5'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-four-full' value='4 / 5' [rating_checked] disabled>" +
+"					<label for='rt-four-full' title='4.0'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-tree-half' value='3.5 / 5' [rating_checked] disabled>" +
+"					<label for='rt-tree-half' title='3.5'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-tree-full' value='3 / 5'  [rating_checked] disabled>" +
+"					<label for='rt-tree-full' title='3.0'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-two-half' value='2.5 / 5' [rating_checked] disabled>" +
+"					<label for='rt-two-half' title='2.5'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-two-full' value='2 / 5' [rating_checked] disabled>" +
+"					<label for='rt-two-full' title='2.0'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-one-half' value='1.5 / 5' [rating_checked] disabled>" +
+"					<label for='rt-one-half' title='1.5'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-one-full' value='1 / 5' [rating_checked] disabled>" +
+"					<label for='rt-one-full' title='1.0'></label>" +
+"					<input type='radio' name='rating-[rating_id]' id='rt-half' value='0.5 / 5' [rating_checked] disabled>" +
+"					<label for='rt-half' title='0.5'></label>" +
+"				</div>" +
 "			</div>" +
 "		</div>" +
-"	</a>" +
-"	<section class='box-v-section'>" +
+"	</section>" +
+"	<section class='box-grow box-v-section'>" +
 "		<p class='box-data'>[description]</p>" +
 "	</section>" +
-"	<section class='box-v-section box-align-center'>" +
+"	<section class='box-no-grow box-v-section box-align-center' style='text-align: center;'>" +
 "		<p name='$[cost_pr] / hora privada' data-tooltip-long='Solo tu y el monitor' data-tooltip-short='(x1)' class='box-data'></p>" +
 "		<p name='$[cost_pb] / hora publica' data-tooltip-long='Maximo [max] personas' data-tooltip-short='(x[max])' class='box-data'></p>" +
 "	</section>" +
@@ -300,15 +310,18 @@ let addSubjectTo = function(s, container) {
 	var subject = subject_template
 		.replace('[subject_name]',s.subject_name)
 		.replace('[rating_value]',s.rating_value)
-		.replace('[rating_id]',s.rating_id);
+		.replace('[user_picture]',s.user_picture)
+		.replace('[user_link]',s.user_link)
+		.replace('[subject_link]',s.subject_link)
+		.replace('[user_name]',s.user_name)
+		.replace('[card]', s.card)
 
 	var value = parseFloat(s.rating_value);
 
 	for(var i = 9; i >= 0; i--) {
-		console.log(parseFloat(i/2)  + ' <= ' + value + ' < ' + parseFloat((i + 1)/2));
-		if(parseFloat(i/2) <= value && value < parseFloat((i + 1)/2)) {
+		subject = subject.replace('[rating_id]',s.subject_id + s.user_id);
+		if(parseFloat(i/2) < value && value <= parseFloat((i + 1)/2)) {
 			subject = subject.replace('[rating_checked]', 'checked');
-			console.log("Checked");
 		} else {
 			subject = subject.replace('[rating_checked]', '');
 		}
@@ -320,7 +333,6 @@ let addSubjectTo = function(s, container) {
 		.replace('[max]',s.max)
 		.replace('[max]',s.max);
 	$(container).append(subject);
-	console.log(subject);
 }
 
 function readURL(input) {

@@ -26,6 +26,10 @@
               <label class="fm-form_introMessage">¡Hola! Bienvenido</label>
               <label class="fm-form_warning"><?php echo clean($login_result);?></label><input type='text' class='fm-form_control' name='login_username' placeholder='Usuario' value='<?php echo clean($login_username);?>' required>
               <input type="password" name="login_password" placeholder="Contraseña" required="required" class="fm-form_control"/>
+              <div class="fm-form_remember">
+                <input type="checkbox" id="remember_me" name="remember_me" value="value" placeholder="asdf"/>
+                <label for="remember_me" class="fm-form_message">Mantener la sesión iniciada</label>
+              </div>
               <input type="submit" value="Ingresar" class="fm-form_button"/>
             </div>
             <div class="fm-form_group">
@@ -42,6 +46,10 @@
               <input type="email" name="register_email" placeholder="Correo" required="required" class="fm-form_control"/>
               <input type="password" name="register_password" placeholder="Contraseña" required="required" class="fm-form_control"/>
               <input type="password" name="register_password_conf" placeholder="Contraseña" required="required" class="fm-form_control"/>
+              <div class="fm-form_remember">
+                <input type="checkbox" id="remember_me" name="remember_me" value="value" placeholder="asdf"/>
+                <label for="remember_me" class="fm-form_message">Mantener la sesión iniciada</label>
+              </div>
               <input type="submit" value="Registrarme" class="fm-form_button"/>
             </div>
             <div class="fm-form_group">
@@ -70,7 +78,7 @@
       $numQueries = $db->numQueries;
       echo "<!-- Generated in: $executionTime, with $numQueries queries -->";
       ?>
-      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Generated in: $executionTime, with $numQueries queries";?></div>
+      <div class="copyright">Copyright &copy; 2017 - Iluminame.co - Todos los derechos reservados a sus respectivos dueños | <?php echo "Tiempo de carga: " . round($executionTime, 2) . " segundos, con $numQueries consultas";?></div>
       <div class="github-link"><a href="https://github.com/juanmsl/Iluminame" class="ilm-github">View Source</a></div>
     </footer>
   </body>

@@ -2,71 +2,51 @@
 
 .rating {
 	display: flex;
-}
 
-.rating-stars {
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: flex-end;
-	position: relative;
-	margin-bottom: $gutter;
+	.rating-stars {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+		position: relative;
 
-	label {
-		color: #aaa;
+		label {
+			color: #aaa;
+
+			&::before {
+				font-family: FontAwesome;
+				content: "\f005";
+			}
+		}
+
+		[for *= '-half']::before {
+			position: absolute;
+			content: "\f089";
+		}
+
+		[for *= '-full']::before {
+			text-shadow: 0 1px 0 black, 0 2px 0 black;
+		}
+
+		input {
+			display: none;
+		}
+
+		input:checked ~ label {
+			color: $amarillo-base;
+		}
+
+		&.active {
+			label:hover ~ label, label:hover {
+				color: $amarillo-claro;
+			}
+		}
 
 		&::before {
-			font-family: FontAwesome;
-			content: "\f005";
+			transition: all 0.5s ease-out;
+			content: attr(data-value);
+			padding: 0 $gutter;
+			border-radius: 3px;
+			text-align: center;
 		}
 	}
-
-	[for *= '-half']::before {
-		position: absolute;
-		content: "\f089";
-	}
-
-	[for *= '-full']::before {
-		text-shadow: 0 1px 0 black, 0 2px 0 black;
-	}
-
-	input {
-		display: none;
-	}
-
-	input:checked ~ label {
-		color: $amarillo-base;
-	}
-
-	&.active {
-		input:hover ~ label, label:hover ~ label {
-			color: $amarillo-claro;
-		}
-	}
-
-	&::before {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		transform: translateY(-50%);
-		font-size: 0.7em;
-		transition: all 0.5s ease-out;
-		opacity: 0;
-		content: attr(data-value);
-		background: $background-1;
-		color: $color-1;
-		padding: 0 $gutter;
-		border-radius: 3px;
-		width: 80%;
-		text-align: center;
-	}
-
-	&:hover::before {
-		left: calc(110%);
-		opacity: 1;
-	}
-}
-
-.rating-value {
-	text-align: center;
-	margin-left: $gutter;
 }
