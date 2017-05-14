@@ -9,25 +9,34 @@ if (!LOGGED_IN)
 
 include ('php/notifications_content.php');
 
-/*$ntfs = dbquery("SELECT notificaciones.descripcion, notificaciones.id, notificaciones.fecha, notificaciones.fecha, notificaciones.vista, notificaciones.estudiante_id_recibe, notificaciones.estudiante_id_envia, estudiantes.nombre, estudiantes.foto, estudiantes.usuario
+$ntfs = dbquery("SELECT notificaciones.descripcion, notificaciones.fecha, notificaciones.vista,
+	estudiantes.foto, estudiantes.usuario
 	FROM notificaciones JOIN estudiantes ON (notificaciones.estudiante_id_envia = estudiantes.id)
-	WHERE notificaciones.vista = '0' AND notificaciones.estudiante_id_recibe = " . USER_ID . "
+	WHERE notificaciones.estudiante_id_recibe = " . USER_ID . "
 	ORDER BY fecha DESC;");
 
 $ntfs_available = $ntfs->num_rows;
 $group_date = array();
+$id_current_group = 0;
 if ($ntfs_available > 0)
 {
 	while ($ntf = $ntfs->fetch_assoc())
 	{
-		$notifications .= "<script>
-			addNotification({
-				notification_link: 'profile.php?user=" . clean($ntf["usuario"]) . "',
-				notification_date: '" . strftime("%d de %B del %Y, %I:%M %p", $ntf["fecha"]) . "',
-				user_picture: '" . clean($ntf["foto"]) . "',
-				notification_description: '" . clean($ntf["descripcion"]) . "'
-			});
+		$date = strftime("%d de %B del %Y", $ntf["fecha"]);
+		if(!in_array($date,$group_date)) {
+			$group_date[] = $date;
+			$id_current_group = count($group_date);
+			echo "<script> createGroupNotifications('#notifications-group', {date: '" . $date . "', id: '" . $id_current_group . "'}); </script>";
+		}
+		echo "<script>
+			addNotificationToGroup({
+				link: 'profile.php?user=" . clean($ntf["usuario"]) . "',
+				hour: '" . strftime("%I:%M %p", $ntf["fecha"]) . "',
+				picture: '" . clean($ntf["foto"]) . "',
+				viewed: " . ($ntf["vista"] == '1' ? 'true' : 'false') . ",
+				description: '" . $ntf["descripcion"] . "'
+			}, '#" . $id_current_group . "');
 		</script>";
 	}
-}*/
+}
 ?>

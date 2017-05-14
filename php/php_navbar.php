@@ -9,7 +9,7 @@ if (isset($_GET["search"])) {
 	$search = filter($_GET["search"]);
 }
 $navbar_query = dbquery("SELECT
-	(SELECT COUNT(*) FROM notificaciones WHERE notificaciones.estudiante_id_recibe = estudiantes.id) as count_notifications,
+	(SELECT COUNT(*) FROM notificaciones WHERE notificaciones.estudiante_id_recibe = estudiantes.id AND notificaciones.vista = '0') as count_notifications,
 	(SELECT COUNT(*) FROM estudiantes_monitorias_inscripciones WHERE estudiantes_monitorias_inscripciones.estudiante_id = estudiantes.id) as count_my_monitories,
 	(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiantes_seguidores.estudiante_id_seguidor = estudiantes.id) as count_users,
 	(SELECT count(*) FROM estudiantes_materias WHERE estudiantes_materias.estudiante_id = estudiantes.id) as count_subjects,
@@ -57,7 +57,6 @@ if ($msgs_available > 0)
 {
 	while ($msg = $msgs_query->fetch_assoc())
 	{
-		//echo "<script>console.log('<" . $msg["vista"] . ">');</script>";
 		if($count_ntf < 15 || ($count_ntf >= 15 && $msg["vista"] == '0')) {
 			$notifications .= "<script>
 			addNotification({

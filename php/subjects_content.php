@@ -25,6 +25,7 @@
           <section class="header-group">
             <p class="main-title"><?php echo $materia; ?></p>
             <p><?php echo $monitor; ?></p>
+            <section id="subject-rating"></section>
             <section class="header-sub-group"><br/>
               <p class="ilm-user"><?php echo $costo_pr; ?> / hora privada</p>
               <p class="ilm-users"><?php echo $costo_pb; ?> / hora publica</p><br/>
@@ -63,5 +64,6 @@
   </body>
   <script src="js/jquery.js"></script>
   <script src="js/push.min.js"></script><script src="js/scripts.js?<?php echo time(); ?>"></script>
-  <script src="js/navbar.js"></script><?php echo $notifications; ?>
+  <script src="js/navbar.js?<?php echo time(); ?>"></script>
+  <?php echo $notifications; ?>
 </html>

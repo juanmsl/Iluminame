@@ -76,11 +76,11 @@ let monitorie_template = "" +
 "</section>";
 
 let createMonitorie = function(n) {
-	var state = (n.type) ? n.inscriptions + ' / ' + n.maximun + ' inscritos' : 'Privada';
-	var button_class = (n.is_signed == 1) ? 'leave' : (n.inscriptions == n.maximun) ? 'full' : 'join';
-	var button_function = (n.is_signed == 1) ? 'leave' : (n.inscriptions == n.maximun) ? '' : 'join';
-	var button_text = (n.is_signed == 1) ? 'Abandonar monitoria' : (n.inscriptions == n.maximun) ? 'Monitoria llena' : 'Deseo unirme';
-	var button_enable = (n.is_signed == 1 || n.inscriptions < n.maximun || !n.disabled);
+	var state = (n.is_public) ? n.inscriptions + ' / ' + n.maximun + ' inscritos' : 'Privada';
+	var button_class = (n.is_signed == 1 && n.is_public) ? 'leave' : (n.inscriptions == n.maximun || !n.is_public) ? 'full' : 'join';
+	var button_function = (n.is_signed == 1 && n.is_public) ? 'leave' : (n.inscriptions == n.maximun && n.is_public) ? '' : ((!n.is_public) ? 'cancel' : 'join');
+	var button_text = (n.is_signed == 1 && n.is_public) ? 'Abandonar monitoria' : (n.inscriptions == n.maximun && n.is_public) ? 'Monitoria llena' : ((!n.is_public) ? 'Cancelar monitoria' : 'Deseo unirme');
+	var button_enable = (n.is_signed == 1 || n.inscriptions < n.maximun);
 
 	var element = monitorie_template
 		.replace('[id]', n.id)
@@ -104,11 +104,13 @@ let createMonitorie = function(n) {
 }
 
 let addMonitorieTo = function(n, container) {
-	var element = createMonitorie(n);
-	$(container).append(element);
-	if(n.isMe == 1 || n.disabled) {
-		var button = document.getElementById('button_monitorie_' + n.id);
-		button.parentElement.removeChild(button);
+	if(n.is_public || (!n.is_public && (n.is_signed || n.isMe)) || n.ignoreConditions) {
+		var element = createMonitorie(n);
+		$(container).append(element);
+		if(n.isMe || n.disabled) {
+			var button = document.getElementById('button_monitorie_' + n.id);
+			button.parentElement.removeChild(button);
+		}
 	}
 }
 
@@ -262,36 +264,60 @@ $('input[name = "rating"]').on('click', function(){
 	parent.setAttribute('data-value', value);
 });
 
+
+let template_rating = "" +
+"<div class='rating'>" +
+"	<div data-value='[rating_value] / 5' class='rating-stars'>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-five-full' value='5 / 5' [rating_checked] disabled>" +
+"		<label for='rt-five-full' title='5.0'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-four-half' value='4.5 / 5' [rating_checked] disabled>" +
+"		<label for='rt-four-half' title='4.5'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-four-full' value='4 / 5' [rating_checked] disabled>" +
+"		<label for='rt-four-full' title='4.0'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-tree-half' value='3.5 / 5' [rating_checked] disabled>" +
+"		<label for='rt-tree-half' title='3.5'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-tree-full' value='3 / 5'  [rating_checked] disabled>" +
+"		<label for='rt-tree-full' title='3.0'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-two-half' value='2.5 / 5' [rating_checked] disabled>" +
+"		<label for='rt-two-half' title='2.5'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-two-full' value='2 / 5' [rating_checked] disabled>" +
+"		<label for='rt-two-full' title='2.0'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-one-half' value='1.5 / 5' [rating_checked] disabled>" +
+"		<label for='rt-one-half' title='1.5'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-one-full' value='1 / 5' [rating_checked] disabled>" +
+"		<label for='rt-one-full' title='1.0'></label>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-half' value='0.5 / 5' [rating_checked] disabled>" +
+"		<label for='rt-half' title='0.5'></label>" +
+"	</div>" +
+"</div>";
+
+function createRating(id, value) {
+	value = parseFloat(value).toFixed(1);
+	var rating = template_rating.replace('[rating_value]', value);
+
+	for(var i = 9; i >= 0; i--) {
+		rating = rating.replace('[rating_id]', id);
+		if(parseFloat(i/2) < value && value <= parseFloat((i + 1)/2)) {
+			rating = rating.replace('[rating_checked]', 'checked');
+		} else {
+			rating = rating.replace('[rating_checked]', '');
+		}
+	}
+	return rating;
+}
+
+function addRatingTo(id, value, container) {
+	var rating = createRating(id, value);
+	$(container).append(rating);
+}
+
 let subject_template = "" +
 "<section class='box [card] box-margin'>" +
 "	<section href='#' class='box-h-section box-header'>" +
 "		<a href='[user_link]' title='[user_name]'><img src='[user_picture]' class='big-picture'></a>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
 "			<h6 class='sub-title'><a href='[subject_link]'>[subject_name]</a></h6>" +
-"			<div class='rating'>" +
-"				<div data-value='[rating_value] / 5' class='rating-stars'>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-five-full' value='5 / 5' [rating_checked] disabled>" +
-"					<label for='rt-five-full' title='5.0'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-four-half' value='4.5 / 5' [rating_checked] disabled>" +
-"					<label for='rt-four-half' title='4.5'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-four-full' value='4 / 5' [rating_checked] disabled>" +
-"					<label for='rt-four-full' title='4.0'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-tree-half' value='3.5 / 5' [rating_checked] disabled>" +
-"					<label for='rt-tree-half' title='3.5'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-tree-full' value='3 / 5'  [rating_checked] disabled>" +
-"					<label for='rt-tree-full' title='3.0'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-two-half' value='2.5 / 5' [rating_checked] disabled>" +
-"					<label for='rt-two-half' title='2.5'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-two-full' value='2 / 5' [rating_checked] disabled>" +
-"					<label for='rt-two-full' title='2.0'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-one-half' value='1.5 / 5' [rating_checked] disabled>" +
-"					<label for='rt-one-half' title='1.5'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-one-full' value='1 / 5' [rating_checked] disabled>" +
-"					<label for='rt-one-full' title='1.0'></label>" +
-"					<input type='radio' name='rating-[rating_id]' id='rt-half' value='0.5 / 5' [rating_checked] disabled>" +
-"					<label for='rt-half' title='0.5'></label>" +
-"				</div>" +
-"			</div>" +
+"			[RATING]" +
 "		</div>" +
 "	</section>" +
 "	<section class='box-grow box-v-section'>" +
@@ -309,29 +335,17 @@ let subject_template = "" +
 let addSubjectTo = function(s, container) {
 	var subject = subject_template
 		.replace('[subject_name]',s.subject_name)
-		.replace('[rating_value]',s.rating_value)
 		.replace('[user_picture]',s.user_picture)
 		.replace('[user_link]',s.user_link)
 		.replace('[subject_link]',s.subject_link)
 		.replace('[user_name]',s.user_name)
 		.replace('[card]', s.card)
-
-	var value = parseFloat(s.rating_value);
-
-	for(var i = 9; i >= 0; i--) {
-		subject = subject.replace('[rating_id]',s.subject_id + s.user_id);
-		if(parseFloat(i/2) < value && value <= parseFloat((i + 1)/2)) {
-			subject = subject.replace('[rating_checked]', 'checked');
-		} else {
-			subject = subject.replace('[rating_checked]', '');
-		}
-	}
-	subject = subject
 		.replace('[description]',s.description)
 		.replace('[cost_pr]',s.cost_pr)
 		.replace('[cost_pb]',s.cost_pb)
 		.replace('[max]',s.max)
-		.replace('[max]',s.max);
+		.replace('[max]',s.max)
+		.replace('[RATING]', createRating(s.subject_id + s.user_id, s.rating_value));
 	$(container).append(subject);
 }
 
@@ -348,3 +362,53 @@ function readURL(input) {
 $('#edit-image-control').change(function(){
 	readURL(this);
 });
+
+let template_notification_box = "" +
+"<a href='[link]' data-fixed='[hour]' class='box card box-margin data-fixed [active]'>" +
+"	<section class='box-h-section'><img src='[picture]' class='big-picture'>" +
+"		<div class='box-v-section box-justify-center gutter-0'>" +
+"			<p class='box-data'>[description]</p>" +
+"		</div>" +
+"	</section>" +
+"</a>";
+
+function createGroupNotifications(container, g) {
+	var group = "<div class='box-group' id='" + g.id + "'></div>";
+	$(container).append("<div name='" + g.date + "' class='separator'></div>");
+	$(container).append(group);
+}
+
+function addNotificationToGroup(n, group) {
+	var notification = template_notification_box
+		.replace('[link]', n.link)
+		.replace('[hour]', n.hour)
+		.replace('[picture]', n.picture)
+		.replace('[active]', n.viewed ? '' : 'active')
+		.replace('[description]', n.description);
+	$(group).append(notification);
+}
+
+let template_comentary = "" +
+"<div class='box box-margin' style='width: 100%;'>" +
+"	<div class='box-h-section'>" +
+"		<img src='[picture]' class='big-picture' data-pin-nopin='true'>" +
+"		<div class='box-v-section gutter-0 box-justify-center'>" +
+"			<div class='box-v-section gutter-0 box-justify-center'>" +
+"				<div class='sub-title'>[name]</div>" +
+"				[RATING]" +
+"			</div>" +
+"			<div class='box-h-section'>" +
+"				<p>[description]</p>" +
+"			</div>" +
+"		</div>" +
+"	</div>" +
+"</div>";
+
+function addComentaryTo(c, container) {
+	var subject = template_comentary
+		.replace('[picture]',c.picture)
+		.replace('[name]',c.name)
+		.replace('[description]',c.description)
+		.replace('[RATING]', createRating(c.comentary_id, c.rating_value));
+	$(container).append(subject);
+}

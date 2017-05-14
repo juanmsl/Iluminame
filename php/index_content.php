@@ -83,6 +83,5 @@
     </footer>
   </body>
   <script src="js/jquery.js"></script>
-  <script src="js/push.min.js"></script><script src="js/scripts.js?<?php echo time(); ?>"></script>
-  <script src="js/form.js"></script>
+  <script src="js/push.min.js"></script><script src="js/scripts.js?<?php echo time(); ?>"></script><script src="js/form.js?<?php echo time(); ?>"></script>
 </html>

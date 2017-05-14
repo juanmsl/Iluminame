@@ -18,10 +18,10 @@
     </section>
     <button onclick="search.submit()" title="Buscar" class="submit"><i class="icon-search"></i></button>
   </form>
-  <div id="toggle-notification" counter="0" target="#notification" class="navbar-notificator ilm-notification"></div>
-  <div id="toggle-chat" counter="0" target="#chat" class="navbar-notificator ilm-chat"></div>
-  <div id="toggle-my-tutories" counter="0" target="#my-tutories" class="navbar-notificator ilm-my-tutories"></div>
-  <div id="toggle-tutories" counter="0" target="#tutories" class="navbar-notificator ilm-tutories"></div><img src='<?php echo $myPic; ?>' class='navbar-profile picture' id='toggle-user-profile-widget' target='#user-profile-widget'>
+  <div id="toggle-notification" counter="0" target="#notification" title="Notificaciones" class="navbar-notificator ilm-notification"></div>
+  <div id="toggle-chat" counter="0" target="#chat" title="Mensajes" class="navbar-notificator ilm-chat"></div>
+  <div id="toggle-my-tutories" counter="0" target="#my-tutories" title="Monitorias pendientes" class="navbar-notificator ilm-my-tutories"></div>
+  <div id="toggle-tutories" counter="0" target="#tutories" title="Monitorias por dictar" class="navbar-notificator ilm-tutories"></div><img src='<?php echo $myPic; ?>' class='navbar-profile picture' id='toggle-user-profile-widget' target='#user-profile-widget'>
   <aside id="user-profile-widget" class="profile-widget">
     <section class="profile-widget-mainSection">
       <section class="profile-widget-user"><img src='<?php echo $myPic; ?>' class='profile-widget-userPicture'>

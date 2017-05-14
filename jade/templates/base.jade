@@ -30,8 +30,8 @@ html(lang="es")
 	script(src="js/push.min.js")
 	<script src="js/scripts.js?<?php echo time(); ?>"></script>
 	if isIndex
-		script(src="js/form.js")
+		<script src="js/form.js?<?php echo time(); ?>"></script>
 	else
-		script(src="js/navbar.js")
-		| <?php echo $notifications; ?>
+		<script src="js/navbar.js?<?php echo time(); ?>"></script>
+		<?php echo $notifications; ?>
 	block scripts

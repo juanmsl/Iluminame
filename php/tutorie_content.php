@@ -20,6 +20,7 @@
           <section class="header-group">
             <p class="main-title"><?php echo $materia; ?></p>
             <p><?php echo $monitor; ?></p>
+            <section id="tutorie-rating"></section>
             <section class="header-sub-group"><br/>
               <p class="ilm-date"><?php echo $fecha; ?></p>
               <p class="ilm-time"><?php echo $duracion; ?></p><br/><p class='ilm-user<?php echo ($es_publica ? 's' : ''); ?>'>Monitoria <?php echo (($es_publica) ? 'publica' : 'privada'); ?></p>
@@ -45,42 +46,7 @@
           </section>
           <section class="information-group">
             <div name="Comentarios" class="separator"></div>
-            <div class="box-group">
-              <div class="box box-margin">
-                <div class="box-h-section"><img src="http://placehold.it/200/200" class="big-picture"/>
-                  <div class="box-v-section gutter-0 box-justify-center">
-                    <div class="sub-title">Juan Manuel Sánchez</div>
-                    <div class="rating">
-                      <div id="RATE" class="rating-stars active">
-                        <input type="radio" name="rating" id="rt-five-full" value="5.0 / 5.0"/>
-                        <label for="rt-five-full" title="5.0"></label>
-                        <input type="radio" name="rating" id="rt-four-half" value="4.5 / 5.0"/>
-                        <label for="rt-four-half" title="4.5"></label>
-                        <input type="radio" name="rating" id="rt-four-full" value="4.0 / 5.0"/>
-                        <label for="rt-four-full" title="4.0"></label>
-                        <input type="radio" name="rating" id="rt-tree-half" value="3.5 / 5.0"/>
-                        <label for="rt-tree-half" title="3.5"></label>
-                        <input type="radio" name="rating" id="rt-tree-full" value="3.0 / 5.0"/>
-                        <label for="rt-tree-full" title="3.0"></label>
-                        <input type="radio" name="rating" id="rt-two-half" value="2.5 / 5.0"/>
-                        <label for="rt-two-half" title="2.5"></label>
-                        <input type="radio" name="rating" id="rt-two-full" value="2.0 / 5.0"/>
-                        <label for="rt-two-full" title="2.0"></label>
-                        <input type="radio" name="rating" id="rt-one-half" value="1.5 / 5.0"/>
-                        <label for="rt-one-half" title="1.5"></label>
-                        <input type="radio" name="rating" id="rt-one-full" value="1.0 / 5.0"/>
-                        <label for="rt-one-full" title="1.0"></label>
-                        <input type="radio" name="rating" id="rt-half" value="0.5 / 5.0"/>
-                        <label for="rt-half" title="0.5"></label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="box-h-section">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam aut sapiente ducimus non placeat illum eum repellat, culpa obcaecati cupiditate.</p>
-                </div>
-              </div>
-            </div>
+            <div id="comments" class="box-group"></div>
           </section>
         </section>
       </section>
@@ -97,5 +63,6 @@
   </body>
   <script src="js/jquery.js"></script>
   <script src="js/push.min.js"></script><script src="js/scripts.js?<?php echo time(); ?>"></script>
-  <script src="js/navbar.js"></script><?php echo $notifications; ?>
+  <script src="js/navbar.js?<?php echo time(); ?>"></script>
+  <?php echo $notifications; ?>
 </html>

@@ -23,21 +23,24 @@ let toggleTarget = function(element) {
 toggles.on('click', function(){
 	toggleTarget($(this));
 	var object = $(this);
-	if($(this).attr('id') == 'toggle-notification' && !$(this).hasClass('is-hover')) {
-		if(object.attr('counter') != 0) {
+	if($(this).attr('id') == 'toggle-notification') {
+		if($(this).hasClass('is-hover') && object.attr('counter') != 0 && $(this).hasClass('activate')) {
+			console.log('1');
+			object.removeClass('activate');
 			$.ajax({
 				type: "POST",
 				url: "/ajax/readNotifications.php",
 				success: function (msg) {
 					var response = JSON.parse(msg);
 					console.log(response.result);
-					let target = object.attr('target');
-					object.attr('counter', '0');
-					object.removeClass('activate');
-					$(target + ' a.box.notification').each(function(index) {
-						$(this).removeClass('active');
-					});
 				}
+			});
+		} else if(!$(this).hasClass('is-hover') && object.attr('counter') != 0 && !$(this).hasClass('activate')) {
+			console.log('2');
+			let target = object.attr('target');
+			object.attr('counter', '0');
+			$(target + ' a.box.notification').each(function(index) {
+				$(this).removeClass('active');
 			});
 		}
 	}

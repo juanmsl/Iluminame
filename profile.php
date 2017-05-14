@@ -39,7 +39,7 @@ $monitorie_query = dbquery("SELECT
 		FROM monitorias JOIN estudiantes ON (monitorias.estudiante_id  = estudiantes.id) JOIN materias
 		ON (materias.id = monitorias.materia_id) JOIN estudiantes_materias
 		ON (estudiantes_materias.estudiante_id = estudiantes.id AND estudiantes_materias.materia_id = materias.id)
-		WHERE estudiantes.usuario = '" . $user_name . "' AND monitorias.es_publica
+		WHERE estudiantes.usuario = '" . $user_name . "' AND monitorias.es_publica AND fecha_inicio > " . time() . "
 		ORDER BY fecha_inicio DESC;");
 
 $subjects_query = dbquery("SELECT
@@ -53,9 +53,8 @@ $subjects_query = dbquery("SELECT
 		estudiantes_materias.costo_h_priv,
 		estudiantes_materias.costo_h_public,
 		estudiantes_materias.max_estud,
-		IFNULL((SELECT AVG(calificacion) FROM comentarios WHERE comentarios.monitoria_id = monitorias.id),0) as promedio
-		FROM estudiantes_materias JOIN monitorias
-			ON (monitorias.materia_id = estudiantes_materias.materia_id AND monitorias.estudiante_id = estudiantes_materias.estudiante_id) JOIN materias
+		IFNULL((SELECT AVG(calificacion) FROM comentarios JOIN monitorias ON (comentarios.monitoria_id = monitorias.id) WHERE monitorias.estudiante_id = estudiantes.id AND monitorias.materia_id = materias.id),0) as promedio
+		FROM estudiantes_materias JOIN materias
 			ON (materias.id = estudiantes_materias.materia_id) JOIN estudiantes
 			ON (estudiantes_materias.estudiante_id = estudiantes.id)
 		WHERE estudiantes.usuario = '" . $user_name . "'
@@ -113,7 +112,7 @@ if ($user_query->num_rows == 1) {
 				time: '" . strftime("%I:%M %p", $monitorie["fecha_inicio"]) . " - " . strftime("%I:%M %p", $monitorie["fecha_fin"]) . "',
 				price: '" . easyNumber(clean($monitorie["costo_h_public"])) . "',
 				inscriptions: '" . clean($monitorie["monitoria_inscripciones"]) . "',
-				type: '" . (clean($monitorie["es_publica"]) == '0'? false : true ) . "',
+				is_public: '" . (clean($monitorie["es_publica"]) == '0'? false : true ) . "',
 				is_signed: " . clean($monitorie["inscrito"]) . ",
 				card: '',
 				disabled: " . ($monitorie["fecha_inicio"] < time() ? 1 : 0) . ",

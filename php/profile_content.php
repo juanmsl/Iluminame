@@ -84,7 +84,8 @@
   </body>
   <script src="js/jquery.js"></script>
   <script src="js/push.min.js"></script><script src="js/scripts.js?<?php echo time(); ?>"></script>
-  <script src="js/navbar.js"></script><?php echo $notifications; ?>
+  <script src="js/navbar.js?<?php echo time(); ?>"></script>
+  <?php echo $notifications; ?>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/profile.js"></script>
 </html>

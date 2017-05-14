@@ -35,7 +35,7 @@ if($search_monitoria) {
 		JOIN materias ON (materias.id = monitorias.materia_id)
 		JOIN estudiantes_materias ON (estudiantes_materias.materia_id = monitorias.materia_id AND estudiantes_materias.estudiante_id = monitorias.estudiante_id)
 		WHERE monitorias.estudiante_id IN (SELECT estudiantes_seguidores.estudiante_id_seguido FROM estudiantes_seguidores)
-		AND (materias.nombre LIKE '%" . $_GET['search'] . "%') AND monitorias.fecha_inicio > " . time() . "
+		AND (materias.nombre LIKE '%" . $_GET['search'] . "%' OR estudiantes.nombre LIKE '%" . $_GET['search'] . "%' OR estudiantes.usuario LIKE '%" . $_GET['search'] . "%') AND monitorias.fecha_inicio > " . time() . "
 		ORDER BY fecha_inicio DESC;");
 } else if($search_materia) {
 	$query = dbquery("SELECT
@@ -49,12 +49,11 @@ if($search_monitoria) {
 			estudiantes_materias.costo_h_priv,
 			estudiantes_materias.costo_h_public,
 			estudiantes_materias.max_estud,
-			IFNULL((SELECT AVG(calificacion) FROM comentarios WHERE comentarios.monitoria_id = monitorias.id),0) as promedio
-			FROM estudiantes_materias JOIN monitorias
-				ON (monitorias.materia_id = estudiantes_materias.materia_id AND monitorias.estudiante_id = estudiantes_materias.estudiante_id) JOIN materias
+		IFNULL((SELECT AVG(calificacion) FROM comentarios JOIN monitorias ON (comentarios.monitoria_id = monitorias.id) WHERE monitorias.estudiante_id = estudiantes.id AND monitorias.materia_id = materias.id),0) as promedio
+			FROM estudiantes_materias JOIN materias
 				ON (materias.id = estudiantes_materias.materia_id) JOIN estudiantes
 				ON (estudiantes_materias.estudiante_id = estudiantes.id)
-			WHERE materias.nombre like '%" . $_GET['search'] . "%'
+			WHERE materias.nombre like '%" . $_GET['search'] . "%' OR estudiantes.nombre LIKE '%" . $_GET['search'] . "%' OR estudiantes.usuario LIKE '%" . $_GET['search'] . "%'
 			ORDER BY promedio DESC;");
 } else if($search_usuario) {
 	$query = dbquery("SELECT estudiantes.id, estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
@@ -100,7 +99,7 @@ if ($search_monitoria || $home_query) {
 				time: '" . strftime("%I:%M %p", $item["fecha_inicio"]) . " - " . strftime("%I:%M %p", $item["fecha_fin"]) . "',
 				price: '" . easyNumber(clean($item["costo_h_public"])) . "',
 				inscriptions: '" . clean($item["monitoria_inscripciones"]) . "',
-				type: '" . (clean($item["es_publica"]) == '0'? false : true ) . "',
+				is_public: '" . (clean($item["es_publica"]) == '0'? false : true ) . "',
 				is_signed: " . clean($item["inscrito"]) . ",
 				card: 'card',
 				disabled: " . ($item["fecha_inicio"] < time() ? 1 : 0) . ",

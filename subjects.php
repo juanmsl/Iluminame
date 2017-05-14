@@ -34,23 +34,23 @@ if (isset($_GET["id"]) && isset($_GET["user"])) {
 			estudiantes_materias.costo_h_priv,
 			estudiantes_materias.costo_h_public,
 			estudiantes_materias.max_estud,
-			IFNULL((SELECT AVG(calificacion) FROM comentarios WHERE comentarios.monitoria_id = monitorias.id),0) as promedio
-			FROM estudiantes_materias JOIN monitorias
-				ON (monitorias.materia_id = estudiantes_materias.materia_id AND monitorias.estudiante_id = estudiantes_materias.estudiante_id) JOIN materias
+		IFNULL((SELECT AVG(calificacion) FROM comentarios JOIN monitorias ON (comentarios.monitoria_id = monitorias.id) WHERE monitorias.estudiante_id = estudiantes.id AND monitorias.materia_id = materias.id),0) as promedio
+			FROM estudiantes_materias JOIN materias
 				ON (materias.id = estudiantes_materias.materia_id) JOIN estudiantes
 				ON (estudiantes_materias.estudiante_id = estudiantes.id)
-			WHERE estudiantes_materias.materia_id = " . $id . " and estudiantes_materias.estudiante_id = " . $user_id . ";");
+			WHERE estudiantes_materias.materia_id = " . $id . " and estudiantes_materias.estudiante_id = " . $user_id . "
+			ORDER BY promedio DESC");
 
 	if($subjects_query->num_rows == 1) {
 		$subjects_query = $subjects_query->fetch_assoc();
-
 		$subject_monitories = dbquery("SELECT
 			monitorias.id as monitoria_id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.es_publica, monitorias.estudiante_id as monitor_id,
 			estudiantes.nombre as estudiante_nombre, estudiantes.foto,
 			materias.nombre as materia_nombre,
 			estudiantes_materias.costo_h_priv, estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
 			(SELECT COUNT(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = monitorias.id) as monitoria_inscripciones,
-			(SELECT COUNT(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = monitorias.id AND estudiante_id = " . USER_ID . ") as inscrito
+			(SELECT COUNT(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = monitorias.id AND estudiante_id = " . USER_ID . ") as inscrito,
+			IFNULL((SELECT AVG(calificacion) FROM comentarios WHERE comentarios.monitoria_id = monitorias.id),0) as promedio
 			FROM monitorias JOIN estudiantes ON (monitorias.estudiante_id  = estudiantes.id) JOIN materias
 			ON (materias.id = monitorias.materia_id) JOIN estudiantes_materias
 			ON (estudiantes_materias.estudiante_id = estudiantes.id AND estudiantes_materias.materia_id = materias.id)
@@ -65,13 +65,16 @@ if (isset($_GET["id"]) && isset($_GET["user"])) {
 		$costo_pb = '$ ' . easyNumber(clean($subjects_query['costo_h_public']));
 		$is_my_subject = (clean($subjects_query['id']) == USER_ID);
 		$descripcion = clean($subjects_query["descripcion"]);
+		$calificacion = clean($subjects_query["promedio"]);
 		$button_function = '';
 
 		include ('php/subjects_content.php');
 
+		echo "<script> addRatingTo('subject-rating', " . $calificacion . ", '#subject-rating'); </script>";
+
 		while($monitorie = $subject_monitories->fetch_assoc()) {
 			$container = (($monitorie["fecha_inicio"] > time()) ? '#active-monitories' : '#past-monitories' );
-
+			echo "<script>console.log('" . $container . "');</script>";
 			echo "<script>
 				addMonitorieTo({
 					isMe: '" . (clean($monitorie["monitor_id"]) == USER_ID) . "',
@@ -85,11 +88,12 @@ if (isset($_GET["id"]) && isset($_GET["user"])) {
 					time: '" . strftime("%I:%M %p", $monitorie["fecha_inicio"]) . " - " . strftime("%I:%M %p", $monitorie["fecha_fin"]) . "',
 					price: '" . easyNumber(clean($monitorie["costo_h_public"])) . "',
 					inscriptions: '" . clean($monitorie["monitoria_inscripciones"]) . "',
-					type: '" . (clean($monitorie["es_publica"]) == '0'? false : true ) . "',
+					is_public: '" . (clean($monitorie["es_publica"]) == '0'? false : true ) . "',
 					is_signed: " . clean($monitorie["inscrito"]) . ",
-					card: '',
+					card: 'card',
 					disabled: " . ($monitorie["fecha_inicio"] < time() ? 1 : 0) . ",
-					maximun: '" . clean($monitorie["max_estud"]) . "'
+					maximun: '" . clean($monitorie["max_estud"]) . "',
+					ignoreConditions: " . ($monitorie["fecha_inicio"] < time() ? 1 : 0) . "
 				}, '" . $container . "');
 			</script>";
 		}
