@@ -9,7 +9,7 @@ if (!LOGGED_IN)
 
 include ('php/notifications_content.php');
 
-$ntfs = dbquery("SELECT notificaciones.descripcion, notificaciones.fecha, notificaciones.vista,
+$ntfs = dbquery("SELECT notificaciones.descripcion, notificaciones.fecha, notificaciones.vista, notificaciones.link_event,
 	estudiantes.foto, estudiantes.usuario
 	FROM notificaciones JOIN estudiantes ON (notificaciones.estudiante_id_envia = estudiantes.id)
 	WHERE notificaciones.estudiante_id_recibe = " . USER_ID . "
@@ -30,11 +30,11 @@ if ($ntfs_available > 0)
 		}
 		echo "<script>
 			addNotificationToGroup({
-				link: 'profile.php?user=" . clean($ntf["usuario"]) . "',
+				link: '" . base64_decode(clean($ntf["link_event"])) . "',
 				hour: '" . strftime("%I:%M %p", $ntf["fecha"]) . "',
 				picture: '" . clean($ntf["foto"]) . "',
 				viewed: " . ($ntf["vista"] == '1' ? 'true' : 'false') . ",
-				description: '" . $ntf["descripcion"] . "'
+				description: '" . base64_decode(clean($ntf["descripcion"])) . "'
 			}, '#" . $id_current_group . "');
 		</script>";
 	}

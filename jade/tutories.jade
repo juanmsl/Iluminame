@@ -8,21 +8,43 @@ block nav
 
 block main
 	.mainContent
+		<?php if($my_tutories) { ?>
 		.separator(name='Mis monitorias por dictar')
-		.box-group
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg','Pensamiento algoritmico','Maria Paula Moreno','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','2/5 personas','cancel-button','Cancelar monitoria')
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg','Lenguajes de programación','Carlos Quimbay Cunalata','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','Privada','cancel-button','Cancelar monitoria')
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg','Ingenieria de software','Luis David Zarate','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','3/3 personas','cancel-button','Cancelar monitoria')
+		.box-group#active-monitories
 		.separator(name='Historial de monitorias dictadas')
-		.box-group
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg','Pensamiento algoritmico','Maria Paula Moreno','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','2/5 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg','Lenguajes de programación','Carlos Quimbay Cunalata','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','5/5 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg','Analisis de algoritmos','José Domínguez','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','1/5 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg','Ingenieria de software','Luis David Zarate','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','2/5 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg','Pensamiento algoritmico','Maria Paula Moreno','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','3/3 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg','Analisis de algoritmos','José Domínguez','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','1/5 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg','Ingenieria de software','Luis David Zarate','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','2/5 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/12825742_1692854517660573_747437461_a.jpg','Pensamiento algoritmico','Maria Paula Moreno','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','3/3 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11410339_857773544301773_1638908020_a.jpg','Lenguajes de programación','Carlos Quimbay Cunalata','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','2/5 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/11809532_1484827938495184_412409702_a.jpg','Analisis de algoritmos','José Domínguez','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','2/3 personas','disabled-button','Cerrada', true)
-			+monitoria('https://instagram.feoh1-1.fna.fbcdn.net/t51.2885-19/s150x150/15803548_1860855724157140_2949620093912350720_a.jpg','Ingenieria de software','Luis David Zarate','Edificio Baron - Salón 402','22/04/2017','9:00pm - 10:00pm','$40.000','3/3 personas','disabled-button','Cerrada', true)
+		.box-group#past-monitories
+		<?php } else { ?>
+		section.monitoria
+			section.header
+				| <a href='profile.php?user=<?php echo $usuario; ?>'><img src='<?php echo $foto; ?>' class='photo'></a>
+				section.header-group
+					p.main-title <?php echo $materia; ?>
+					p <?php echo $monitor; ?>
+					section#tutorie-rating
+					section.header-sub-group
+						br
+						p.ilm-date <?php echo $fecha; ?>
+						p.ilm-time <?php echo $duracion; ?>
+						br
+						| <p class='ilm-user<?php echo ($es_publica ? 's' : ''); ?>'>Monitoria <?php echo (($es_publica) ? 'publica' : 'privada'); ?></p>
+						p.ilm-place <?php echo $lugar; ?>
+						p.ilm-money <?php echo $costo; ?>
+						p.ilm-state(title='En espera / Aceptada / En progreso / Finalizada / Cancelada') Aceptada
+					| <?php if(!$is_my_monitorie) { ?>
+					|	<div class='monitoria-actions'>
+					| 		<?php if(!$is_disabled) { ?>
+					|			<button class='<?php echo $button_class; ?>-button' <?php echo $button_function; ?> <?php echo $button_enable; ?>><?php echo $button_text; ?></button>
+					| 		<?php } ?>
+					|		<a href="messages.php?user=<?php echo $usuario; ?>">
+					|			<button class='chat-button'>Chat</button>
+					|		</a>
+					|	</div>
+					| <?php } ?>
+			section.information
+				section.information-group
+					.separator(name='Estudiantes inscritos')
+					.box-group#estudents
+				section.information-group
+					.separator(name='Comentarios')
+					.box-group#comments
+		<?php } ?>

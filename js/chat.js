@@ -14,26 +14,24 @@ function scrollDown() {
 	container.scroll();
 	container.animate({
 		scrollTop: height
-	}, 1000);
+	}, 500);
 }
 
-function addMessageFromMe(date, text)
-{
-  var container = $("#message-container");
-  var child = '<article time="' + date + '" class="chat-message chat-user-2">' + text + '</article>';
-  container.append(child);
+function addMessageFromMe(date, text) {
+	var container = $("#message-container");
+	var child = '<article time="' + date + '" class="chat-message chat-user-2">' + text + '</article>';
+	container.append(child);
 }
 
-function addMessageFromPartner(date, text)
-{
-  var container = $("#message-container");
-  var child = '<article time="' + date + '" class="chat-message chat-user-1">' + text + '</article>';
-  container.append(child);
+function addMessageFromPartner(date, text) {
+	var container = $("#message-container");
+	var child = '<article time="' + date + '" class="chat-message chat-user-1">' + text + '</article>';
+	container.append(child);
 }
 
 function sendMessage(user) {
-	console.log("Sending...");
 	var text = $("#message-input").val();
+	console.log("Sending: [" + text + "]");
 	$("#message-input").val("");
 	$.ajax({
 	type: "POST",
@@ -42,14 +40,13 @@ function sendMessage(user) {
 		success: function (msg) {
 			console.log("Ok!");
 			var response = JSON.parse(msg);
-			addMessageFromMe(response.date, atob(response.text));
+			addMessageFromMe(response.date, response.text);
 			scrollDown();
 		}
 	});
 }
 
-function checkMessages(user)
-{
+function checkMessages(user) {
 	console.log("Checking...");
 	$.ajax({
 		type: "POST",
@@ -58,12 +55,13 @@ function checkMessages(user)
 		success: function (msg) {
 			console.log("Ok!")
 			var response = JSON.parse(msg);
-			for (var i = 0; i < response.length; i++)
-			{
-				addMessageFromPartner(response[i].date, atob(response[i].text));
+			for (var i = 0; i < response.length; i++) {
+				addMessageFromPartner(response[i].date, response[i].text);
 				last_message_id = response[i].id;
 			}
-			scrollDown();
+			if(response.length > 0) {
+				scrollDown();
+			}
 		}
 	});
 }

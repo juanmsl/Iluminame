@@ -78,7 +78,7 @@ if (isset($_GET["id"]) && isset($_GET["user"])) {
 			echo "<script>
 				addMonitorieTo({
 					isMe: '" . (clean($monitorie["monitor_id"]) == USER_ID) . "',
-					link: 'tutorie.php?id=" . clean($monitorie["monitoria_id"]) . "',
+					link: 'tutories.php?id=" . clean($monitorie["monitoria_id"]) . "',
 					id: '" . clean($monitorie["monitoria_id"]) . "',
 					user_picture: '" . clean($monitorie["foto"]) . "',
 					subject_name: '" . clean($monitorie["materia_nombre"]) . "',

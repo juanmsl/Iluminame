@@ -19,7 +19,6 @@
 	#{&}-message {
 		padding: $gutter;
 		max-width: 80%;
-		width: auto;
 		display: inline-block;
 		margin: $gutter;
 		margin-bottom: $gutter * 2.5;
@@ -41,7 +40,7 @@
 		&::after {
 			content: attr(time);
 			top: 100%;
-			min-width: 150px;
+			min-width: 250px;
 			font-size: 0.7em;
 			margin: $gutter / 2 $gutter 0;
 		}

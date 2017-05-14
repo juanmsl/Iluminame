@@ -59,7 +59,7 @@
 		outline: 0;
 
 		&:focus {
-			border-bottom-width: 3px;
+			border-bottom: 3px solid $background-1;
 		}
 	}
 

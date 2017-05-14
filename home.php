@@ -89,7 +89,7 @@ if ($search_monitoria || $home_query) {
 			echo "<script>
 			addMonitorieTo({
 				isMe: '" . (clean($item["monitor_id"]) == USER_ID) . "',
-				link: 'tutorie.php?id=" . clean($item["monitoria_id"]) . "',
+				link: 'tutories.php?id=" . clean($item["monitoria_id"]) . "',
 				id: '" . clean($item["monitoria_id"]) . "',
 				user_picture: '" . clean($item["foto"]) . "',
 				subject_name: '" . clean($item["materia_nombre"]) . "',

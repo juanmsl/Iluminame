@@ -21,8 +21,12 @@ $monitoria = dbquery("SELECT estudiantes.id as id_monitor, estudiantes.nombre as
 	WHERE monitorias.id = " . $id . ";");
 
 $monitoria = $monitoria->fetch_assoc();
+$msg = base64_encode("<b>" . filter($myrow["nombre"]) . "</b> ha abandonado tu monitoria de <b>" . filter($monitoria["materia"]) . "</b>");
+$link = base64_encode("tutories.php?id=" . $id . "");
 
-dbquery("INSERT INTO notificaciones (descripcion, fecha, vista, estudiante_id_recibe, estudiante_id_envia) VALUES ('<b>" . filter($myrow["nombre"]) . "</b> ha abandonado tu monitoria de <b>" . filter($monitoria["materia"]) . "</b>', " . time() . ", '0', " . $monitoria["id_monitor"] . " , " . USER_ID . ")");
+dbquery("INSERT
+	INTO notificaciones (descripcion, fecha, vista, estudiante_id_recibe, estudiante_id_envia, link_event)
+	VALUES ('" . $msg . "', " . time() . ", '0', " . $monitoria["id_monitor"] . " , " . USER_ID . ", '" . $link . "')");
 
 @$myObj->result = "Has abandonado la monitoria";
 $myObj->monitor = clean($monitoria["monitor"]);

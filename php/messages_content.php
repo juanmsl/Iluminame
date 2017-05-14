@@ -16,8 +16,8 @@
   <body class="chatBody"><?php include('inc/templates/navbar.php') ?>
     <div class="mainContent">
       <section class="box chat">
-        <section class="box-h-section box-header box-align-center"><a href="#"><img src='<?php echo clean($search_result["foto"]); ?>' class='picture'></a>
-          <section class="box-v-section gutter-0"><a href="#" class="title"><?php echo clean($search_result["nombre"]); ?></a></section>
+        <section class="box-h-section box-header box-align-center"><a href='profile.php?user=<?php echo $user_name; ?>'><img src='<?php echo clean($search_result["foto"]); ?>' class='picture'></a>
+          <section class="box-v-section gutter-0"><a href='profile.php?user=<?php echo $user_name; ?>'><h5 class='title'><?php echo clean($search_result["nombre"]); ?></h5></a></section>
         </section>
         <section id="message-container" class="box-v-section chat-history"></section> 
         <form class='box-h-section box-footer chat-footer' id='message-chat' action="javascript:sendMessage('<?php echo clean($search_result["id"]); ?>')">

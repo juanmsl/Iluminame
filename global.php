@@ -129,25 +129,26 @@ function timeAgo($timestamp, $minute = "minuto", $hour = "hora", $day = "d&iacut
 {
 	$difference = time() - $timestamp;
 	if ($difference < 60)
-		return "$difference $seconds";
+		return "Hace $difference $seconds";
 	else
 	{
 		$difference = round($difference / 60);
 		if ($difference < 60)
 		{
-			if ($difference == 1) return "$difference $minute";
-			else return "$difference $minutes";
+			if ($difference == 1) return "Hace $difference $minute";
+			else return "Hace $difference $minutes";
 		}
 		else
 			$difference = round($difference / 60);
 
 		if ($difference < 24)
 		{
-			if ($difference == 1) return "$difference $hour";
-			else return "$difference $hours";
+			if ($difference == 1) return "Hace $difference $hour";
+			else return "Hace $difference $hours";
 		}
 		else
-			$difference = round($difference / 24);
+			return strftime("%d de %B del %Y, %I:%M %p", $timestamp);
+			//$difference = round($difference / 24);
 
 		if ($difference < 7)
 		{

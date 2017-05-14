@@ -11,10 +11,9 @@ block main
 	.mainContent
 		section.box.chat
 			section.box-h-section.box-header.box-align-center
-				a(href='#')
-					| <img src='<?php echo clean($search_result["foto"]); ?>' class='picture'>
+				<a href='profile.php?user=<?php echo $user_name; ?>'><img src='<?php echo clean($search_result["foto"]); ?>' class='picture'></a>
 				section.box-v-section.gutter-0
-					a(href='#').title <?php echo clean($search_result["nombre"]); ?>
+					<a href='profile.php?user=<?php echo $user_name; ?>'><h5 class='title'><?php echo clean($search_result["nombre"]); ?></h5></a>
 			section.box-v-section.chat-history#message-container
 			| 
 			| <form class='box-h-section box-footer chat-footer' id='message-chat' action="javascript:sendMessage('<?php echo clean($search_result["id"]); ?>')">

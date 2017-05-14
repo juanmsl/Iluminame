@@ -63,7 +63,7 @@ let addAndUpdateNotificators = function(boxElement, element, update) {
 	$(navbar + ' ' + target + ' .navbar-notifications').append(element);
 }
 
-let addTutorie = function(notification) {
+let addMyTutorie = function(notification) {
 	var element = tutorie_notification_template
 		.replace('[monitorie_link]', notification.monitorie_link)
 		.replace('[user_picture]', notification.user_picture)
@@ -76,7 +76,7 @@ let addTutorie = function(notification) {
 	addAndUpdateNotificators($(navbar + ' #toggle-my-tutories'), element, true);
 }
 
-let addMyTutorie = function(notification) {
+let addTutorie = function(notification) {
 	var element = my_tutorie_notification_template
 		.replace('[monitorie_link]', notification.monitorie_link)
 		.replace('[user_picture]', notification.user_picture)
