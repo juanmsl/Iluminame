@@ -32,7 +32,7 @@
     </section>
     <section class="profile-widget-notifications">
       <a href='notifications.php' class='profile-widget-section ilm-notification' counter='<?php echo $count_notificaciones; ?>'>Notificaciones</a>
-      <a href='my-tutories.php' class='profile-widget-section ilm-chat' counter='<?php echo $count_chats; ?>'>Mensajes</a>
+      <a href='messages.php' class='profile-widget-section ilm-chat' counter='<?php echo $count_chats; ?>'>Mensajes</a>
       <a href='my-tutories.php' class='profile-widget-section ilm-my-tutories' counter='<?php echo $count_my_tutories; ?>'>Mis monitorias</a>
       <a href='users.php' class='profile-widget-section ilm-users'>Seguidores / Seguidos</a>
       <a href='subjects.php' class='profile-widget-section ilm-subject' counter='<?php echo clean($navbar_query["count_subjects"]); ?>'>Materias</a>

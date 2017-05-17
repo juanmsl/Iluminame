@@ -179,3 +179,11 @@
 .box-no-grow {
 	flex-grow: 0;
 }
+
+.box-shrink {
+	flex-shrink: 1;
+}
+
+.box-no-shrink {
+	flex-shrink: 0;
+}

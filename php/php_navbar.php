@@ -18,6 +18,25 @@ $navbar_query = dbquery("SELECT
 	FROM estudiantes
 	WHERE estudiantes.id = " . USER_ID . "")->fetch_assoc();
 
+$cm_query = dbquery("SELECT
+	monitorias.lugar,
+	monitorias.fecha_fin,
+	materias.nombre,
+	estudiantes.nombre as monitor,
+	estudiantes_monitorias_inscripciones.estudiante_id,
+	estudiantes_monitorias_inscripciones.monitoria_id
+	FROM estudiantes_monitorias_inscripciones JOIN monitorias
+		ON (monitorias.id = estudiantes_monitorias_inscripciones.monitoria_id) JOIN materias
+		ON (monitorias.materia_id = materias.id) JOIN estudiantes
+		ON (monitorias.estudiante_id = estudiantes.id)
+	WHERE estudiantes_monitorias_inscripciones.estudiante_id = " . USER_ID . "
+	AND (SELECT count(*) FROM comentarios WHERE monitoria_id = monitorias.id AND comentarios.estudiante_id = estudiantes_monitorias_inscripciones.estudiante_id) = 0
+	AND monitorias.fecha_fin < " . time() . ";");
+
+while($cm = $cm_query->fetch_assoc()) {
+	echo "<script>console.log('Tienes que comentar " . clean($cm['nombre']) . " de " . clean($cm['monitor']) . "');</script>";
+}
+
 $notifications = "";
 
 $notifications_query = dbquery("SELECT

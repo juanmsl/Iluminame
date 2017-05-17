@@ -12,29 +12,18 @@ $my_tutories = true;
 if (isset($_GET["id"])) {
 	$id = filter($_GET["id"]);
 	if ($id != $_GET["id"]) {
-		header("Location: " . WWW . "/logout.php");
+		header("Location: " . WWW . "/tutories.php");
 		exit;
 	}
 
 	$my_tutories = false;
 
-	$monitorie_query = dbquery("SELECT
-		monitorias.id, monitorias.fecha_inicio, monitorias.fecha_fin, monitorias.lugar, monitorias.es_publica, monitorias.estudiante_id as monitor_id,
-		estudiantes.nombre, estudiantes.usuario, estudiantes.foto, estudiantes.telefono, estudiantes.correo,
-		materias.nombre as materia, estudiantes_materias.descripcion, estudiantes_materias.costo_h_priv, estudiantes_materias.costo_h_public, estudiantes_materias.max_estud,
-		(SELECT count(*) FROM estudiantes_monitorias_inscripciones WHERE monitoria_id = monitorias.id AND estudiante_id = " . USER_ID . ") as inscrito,
-        IFNULL((SELECT AVG(calificacion) FROM comentarios WHERE comentarios.monitoria_id = monitorias.id),0) as promedio
-		FROM
-		estudiantes JOIN monitorias ON (estudiantes.id = monitorias.estudiante_id) JOIN
-		estudiantes_materias ON (estudiantes_materias.estudiante_id = monitorias.estudiante_id AND estudiantes_materias.materia_id = monitorias.materia_id) JOIN
-		materias ON (materias.id = estudiantes_materias.materia_id)
-		WHERE
-	monitorias.id = " . $id . ";");
+	$monitorie_query = monitorie_query("WHERE monitorias.id = " . $id);
 
 	if($monitorie_query->num_rows == 1) {
 		$monitorie_query = $monitorie_query->fetch_assoc();
 
-		$monitoria_id = clean($monitorie_query["id"]);
+		$monitoria_id = clean($monitorie_query["monitoria_id"]);
 		$fecha = strftime("%d de %B del %Y", $monitorie_query["fecha_inicio"]);
 		$duracion = strftime("%I:%M %p", $monitorie_query["fecha_inicio"]) . " - " . strftime("%I:%M %p", $monitorie_query["fecha_fin"]);
 		$lugar = clean($monitorie_query["lugar"]);
@@ -42,14 +31,12 @@ if (isset($_GET["id"])) {
 		$calificacion = clean($monitorie_query["promedio"]);
 
 		$monitor_id = clean($monitorie_query["monitor_id"]);
-		$monitor = clean($monitorie_query["nombre"]);
+		$monitor = clean($monitorie_query["estudiante_nombre"]);
 		$usuario = clean($monitorie_query["usuario"]);
 		$foto = clean($monitorie_query["foto"]);
-		$telefono = clean($monitorie_query["telefono"]);
-		$correo = clean($monitorie_query["correo"]);
 		$is_my_monitorie = $monitor_id == USER_ID;
 
-		$materia = clean($monitorie_query["materia"]);
+		$materia = clean($monitorie_query["materia_nombre"]);
 		$descripcion = clean($monitorie_query["descripcion"]);
 		$costo = easyNumber(($es_publica) ? clean($monitorie_query["costo_h_public"]) : clean($monitorie_query["costo_h_priv"]));
 		$maximo = clean($monitorie_query["max_estud"]);
@@ -61,11 +48,17 @@ if (isset($_GET["id"])) {
 			$user_query = dbquery("SELECT estudiantes.id, estudiantes.foto, estudiantes.nombre, estudiantes.usuario,
 				(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = estudiantes.id AND estudiante_id_seguido = " . USER_ID . ") as isFollowMe,
 				(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = " . USER_ID . " AND estudiante_id_seguido = estudiantes.id) as isFollow
-				FROM estudiantes JOIN estudiantes_monitorias_inscripciones ON (estudiantes.id = estudiantes_monitorias_inscripciones.estudiante_id)
+				FROM estudiantes JOIN estudiantes_monitorias_inscripciones
+				ON (estudiantes.id = estudiantes_monitorias_inscripciones.estudiante_id)
 				WHERE estudiantes_monitorias_inscripciones.monitoria_id = " . $id . "
-				order by nombre;");
+				ORDER BY nombre;");
 
-			$comentary_query = dbquery("SELECT estudiantes.foto, estudiantes.nombre, comentarios.calificacion, comentarios.descripcion, comentarios.id
+			$comentary_query = dbquery("SELECT
+				estudiantes.foto,
+				estudiantes.nombre,
+				comentarios.calificacion,
+				comentarios.descripcion,
+				comentarios.id
 				FROM estudiantes JOIN comentarios ON (estudiantes.id = comentarios.estudiante_id)
 				WHERE comentarios.monitoria_id = " . $id . ";");
 
@@ -81,30 +74,11 @@ if (isset($_GET["id"])) {
 			echo "<script> addRatingTo('tutorie-rating', " . $calificacion . ", '#tutorie-rating'); </script>";
 
 			while ($user = $user_query->fetch_assoc()) {
-				echo "<script>
-				addUserTo({
-					link: 'profile.php?user=" . clean($user["usuario"]) . "',
-					picture: '" . clean($user["foto"]) . "',
-					name: '" . clean($user["nombre"]) . "',
-					user: '" . clean($user["usuario"]) . "',
-					user_id: '" . clean($user["id"]) . "',
-					isFollowMe: '" . clean($user["isFollowMe"]) . "',
-					isFollow: '" . clean($user["isFollow"]) . "',
-					isMe: '" . (clean($user["id"]) == USER_ID) . "'
-				}, '#estudents');
-				</script>";
+				addUserTo($user, '#estudents');
 			}
 
 			while ($comentary = $comentary_query->fetch_assoc()) {
-				echo "<script>
-				addComentaryTo({
-					picture: '" . clean($comentary["foto"]) . "',
-					name: '" . clean($comentary["nombre"]) . "',
-					rating_value: '" . clean($comentary["calificacion"]) . "',
-					description: '" . clean($comentary["descripcion"]) . "',
-					comentary_id: '" . clean($comentary["id"]) . "'
-				}, '#comments');
-				</script>";
+				addComentaryTo($comentary, '#comments');
 			}
 		} else {
 			$object_not_found = 'Esta monitoria es privada';

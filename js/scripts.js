@@ -328,11 +328,26 @@ let subject_template = "" +
 "		<p name='$[cost_pb] / hora publica' data-tooltip-long='Maximo [max] personas' data-tooltip-short='(x[max])' class='box-data'></p>" +
 "	</section>" +
 "	<section class='box-h-section box-footer box-justify-center'>" +
-"		<button class='join-button'>Solicitar una monitoria</button>" +
+"		<button class='join-button' onclick=\"createSolicitud([SOLICITUD])\">Solicitar una monitoria</button>" +
 "	</section>" +
 "</section>";
 
 let addSubjectTo = function(s, container) {
+	var solicitud = "{" +
+	"	modal_id: 'solicitud_" + s.subject_id + "_" + s.user_id + "'," +
+	"	user_link: 'profile.php?user=" + s.user_user + "'," +
+	"	user_name: '" + s.user_name + "'," +
+	"	user_picture: '" + s.user_picture + "'," +
+	"	subject_link: 'subjects.php?id=" + s.subject_id + "&user=" + s.user_id + "'," +
+	"	subject_name: '" + s.subject_name + "'," +
+	"	rating_value: " + s.rating_value + "," +
+	"	description: '" + s.description + "'," +
+	"	cost_pr: '" + s.cost_pr + "'," +
+	"	cost_pb: '" + s.cost_pb + "'," +
+	"	user_id: '" + s.user_id + "'," +
+	"	subject_id: '" + s.subject_id + "'," +
+	"	max: " + s.max + "" +
+	"}";
 	var subject = subject_template
 		.replace('[subject_name]',s.subject_name)
 		.replace('[user_picture]',s.user_picture)
@@ -345,6 +360,7 @@ let addSubjectTo = function(s, container) {
 		.replace('[cost_pb]',s.cost_pb)
 		.replace('[max]',s.max)
 		.replace('[max]',s.max)
+		.replace('[SOLICITUD]', solicitud)
 		.replace('[RATING]', createRating(s.subject_id + s.user_id, s.rating_value));
 	$(container).append(subject);
 }
@@ -411,4 +427,118 @@ function addComentaryTo(c, container) {
 		.replace('[description]',c.description)
 		.replace('[RATING]', createRating(c.comentary_id, c.rating_value));
 	$(container).append(subject);
+}
+
+let template_solicitar_monitoria = "" +
+"<section class='modal' id='[modal_id]'>" +
+"	<section class='modal-content box'>" +
+"		<section href='#' class='box-h-section box-header'>" +
+"			<a href='[user_link]' title='[user_name]'><img src='[user_picture]' class='big-picture'></a>" +
+"			<div class='box-v-section box-justify-center gutter-0'>" +
+"				<h6 class='sub-title'><a href='[subject_link]'>[subject_name]</a></h6>" +
+"				[RATING]" +
+"			</div>" +
+"		</section>" +
+"		<section class='box-v-section'>" +
+"			<p class='box-data'>[description]</p>" +
+"		</section>" +
+"		<section class='box-v-section box-align-center' style='text-align: center;'>" +
+"			<p name='$[cost_pr] / hora privada' data-tooltip-long='Solo tu y el monitor' data-tooltip-short='(x1)' class='box-data'></p>" +
+"			<p name='$[cost_pb] / hora publica' data-tooltip-long='Maximo [max] personas' data-tooltip-short='(x[max])' class='box-data'></p>" +
+"		</section>" +
+"		<form class='box-v-section modal-form' id='form_[modal_id]' method='post' action='javascript:ask_for([monitor_id],[materia_id],[modal_id])'>" +
+"			<input type='hidden' id='monitor_id' value='[monitor_id]'>" +
+"			<input type='hidden' id='materia_id' value='[materia_id]'>" +
+"			<label for='lugar' class='form-label'>Lugar de la monitoria</label>" +
+"			<input type='text' name='lugar' id='lugar' class='form-item' maxlength='50' required>" +
+"			<label for='fecha' class='form-label'>Fecha  y hora para la monitoria</label>" +
+"			<input type='datetime-local' value='2017-06-01T14:00' name='fecha' id='fecha' class='form-item' required>" +
+"			<label for='duracion' class='form-label'>Duración de la monitoria (Horas)</label>" +
+"			<input type='number' name='duracion' id='duracion' min='1' max='8' value='1' class='form-item' onchange='changeValue(this, \"#type_privada_label\", \"#type_publica_label\")' required>" +
+"			<section class='form-subgroup' id='type-value-monitorie'>" +
+"				<input type='radio' name='type' id='type_publica' value='true' checked>" +
+"				<label for='type_publica' price='[cost_pr]' id='type_publica_label' price-value='[cost_pr]' class='form-radio-label'>Monitoria publica</label>" +
+"			</section>" +
+"			<section class='form-subgroup' id='type-value-monitorie'>" +
+"				<input type='radio' name='type' id='type_privada' value='false'>" +
+"				<label for='type_privada' price='[cost_pb]' id='type_privada_label' price-value='[cost_pb]' class='form-radio-label'>Monitoria privada</label>" +
+"			</section>" +
+"		</form>" +
+"		<section class='box-h-section box-footer box-justify-center'>" +
+"			<button class='join-button' form='form_[modal_id]'>Solicitar esta monitoria</button>" +
+"		</section>" +
+"	</section>" +
+"	<div class='modal-close'></div>" +
+"</section>" +
+"<script>" +
+"	$('.modal-close').on('click', function(){" +
+"		$(this).parent().fadeOut();" +
+"		setTimeout(function(elem){" +
+"			$(elem).parent().remove();" +
+"		}, 1000, this);" +
+"	});"+
+"</script>";
+
+function changeValue(element, pr, pb) {
+	var value = parseInt(element.value);
+	var value_pr = parseInt($(pr).attr('price'));
+	var value_pb = parseInt($(pb).attr('price'));
+	$(pr).attr('price-value', (value_pr * value));
+	$(pb).attr('price-value', (value_pb * value));
+}
+
+function createSolicitud(m) {
+	var modal = template_solicitar_monitoria
+		.replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id)
+		.replace('[user_link]', m.user_link)
+		.replace('[user_name]', m.user_name)
+		.replace('[user_picture]', m.user_picture)
+		.replace('[subject_link]', m.subject_link)
+		.replace('[subject_name]', m.subject_name)
+		.replace('[description]', m.description)
+		.replace('[monitor_id]', m.user_id).replace('[monitor_id]', m.user_id)
+		.replace('[materia_id]', m.subject_id).replace('[materia_id]', m.subject_id)
+		.replace('[description]', m.description)
+		.replace('[cost_pr]', m.cost_pr).replace('[cost_pr]', m.cost_pr).replace('[cost_pr]', m.cost_pr)
+		.replace('[cost_pb]', m.cost_pb).replace('[cost_pb]', m.cost_pb).replace('[cost_pb]', m.cost_pb)
+		.replace('[max]', m.max).replace('[max]', m.max)
+		.replace('[RATING]', createRating(m.modal_id, m.rating_value));
+	$('body').append(modal);
+	$('#' + m.modal_id).hide().fadeIn();
+}
+
+function getSolicitudData(user_id, subject_id) {
+	var form = $('#form_solicitud_' + subject_id + "_" + user_id);
+	var data = {
+		lugar: form.find('#lugar').val(),
+		fecha: form.find('#fecha').val(),
+		duracion: form.find('#duracion').val(),
+		publica: (form.find('#type_publica').prop('checked') ? 1 : 0),
+		monitor_id: form.find('#monitor_id').val(),
+		materia_id: form.find('#materia_id').val(),
+	};
+	return data;
+}
+
+function ask_for(user_id, subject_id, modal) {
+	var s_data = getSolicitudData(user_id, subject_id);
+	console.log(s_data);
+	$.ajax({
+		type: "POST",
+		url: "/ajax/askForMonitorie.php",
+		data: s_data,
+		success: function (msg) {
+			var response = JSON.parse(msg);
+			console.log(response.result);
+			Push.create(response.result, {
+				body: response.result,
+				icon: 'resources/emojis/happy-2.png',
+				timeout: 5000
+			});
+			$(modal).fadeOut();
+			setTimeout(function(elem){
+				$(modal).remove();
+			}, 1000, this);
+		}
+	});
 }

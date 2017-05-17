@@ -20,7 +20,7 @@
       <?php if ($welcome) { ?>
       <section class="welcome">
         <section class="welcome-header"><img src="resources/svgs/laughing.svg" class="welcome-emoji"/>
-          <h2>Bienvenido <?php echo $myrow['nombre'];?> a Ilumíname, la red de estudiantes y monitores más cool de la Javeriana</h2>
+          <h2>Bienvenido/a <?php echo $myrow['nombre'];?> a Ilumíname, la red de estudiantes y monitores más cool de la Javeriana</h2>
         </section>
         <section class="welcome-information"><a href="configuration.php" class="welcome-help"><img src="resources/svgs/cool.svg" class="welcome-image"/>
             <h6 class="sub-title ilm-configuration">Cambia tu foto de perfil y tus datos personales</h6></a>

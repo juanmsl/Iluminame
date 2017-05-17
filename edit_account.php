@@ -28,29 +28,37 @@ if(isset($_POST['name']) &&
 	if($isValidEmail && $isValidUser) {
 		if($email != $myrow["correo"] && !$users->IsEmailTaken($email)) {
 			$update_query .= ', correo = "' . $email . '" ';
+		} else if($email != $myrow["correo"]) {
+			$_SESSION['configuration_result'] = "Este correo ya esta registrado en el sistema";
+			$_SESSION['emoji'] = 'sad';
+			header("Location: " . WWW . "/configuration.php");
+			exit;
 		}
 		if($username != $myrow["usuario"] && !$users->IsNameTaken($username)) {
 			$update_query .= ', usuario = "' . $username . '" ';
 			$_SESSION['UBER_USER_E'] = $username;
+		} else if($username != $myrow["usuario"]) {
+			$_SESSION['configuration_result'] = "Este usuario ya esta registrado en el sistema";
+			$_SESSION['emoji'] = 'sad';
+			header("Location: " . WWW . "/configuration.php");
+			exit;
 		}
 		if($_FILES['photo']['error'] == 0) {
-			function getExtension($mime)
-			{
-			  $extensions = array("image/jpeg" => "jpg", "image/png" => "png", "image/gif" => "gif");
-			  if (array_key_exists($mime, $extensions))
-			  {
-				return $extensions[$mime];
-			  }
-			  else {
-				return null;
-			  }
+			function getExtension($mime) {
+				$extensions = array("image/jpeg" => "jpg", "image/png" => "png", "image/gif" => "gif");
+				if (array_key_exists($mime, $extensions)) {
+					return $extensions[$mime];
+				} else {
+					return null;
+				}
 			}
 
 			$extension = getExtension($_FILES["photo"]["type"]);
-			if ($extension == null)
-			{
-			  //echo "Invalid image";
-			  exit;
+			if ($extension == null) {
+				$_SESSION['configuration_result'] = "Esta imagen no es un formato valido";
+				$_SESSION['emoji'] = 'sad';
+				header("Location: " . WWW . "/configuration.php");
+				exit;
 			}
 
 			$temp_file = $_FILES["photo"]["tmp_name"];
@@ -59,27 +67,32 @@ if(isset($_POST['name']) &&
 			if ($check !== false) {
 				//echo "File is an image - " . $check["mime"] . ".";
 				$extension = getExtension($check["mime"]);
-				if ($extension == null)
-				{
-				  //echo "Unaccepted image format";
-				  exit;
+				if ($extension == null) {
+					$_SESSION['configuration_result'] = "Suba una imagen valida, el archivo cargado no es una imagen";
+					$_SESSION['emoji'] = 'sad';
+					header("Location: " . WWW . "/configuration.php");
+					exit;
 				}
 				$target_name = "user_pictures/" . USER_ID . "-" . $myrow["usuario"] . "." . $extension;
 
 				if ($_FILES["photo"]["size"] > 5000000) {
-					//echo "Sorry, your file is too large.";
+					$_SESSION['configuration_result'] = "El tamaño de la imagen no debe exceder los 5 MB";
+					$_SESSION['emoji'] = 'sad';
+					header("Location: " . WWW . "/configuration.php");
 					exit;
 				}
 				if (move_uploaded_file($temp_file, $target_name)) {
-					//echo "The file " . $target_name . " has been uploaded.";
+					echo "The file " . $target_name . " has been uploaded.";
 					$update_query .= ', foto = "https://iluminame.co/' . $target_name . '"';
 				} else {
-					//echo "Sorry, there was an error uploading your file.";
+					$_SESSION['configuration_result'] = "Hubo un error al subir la imagen, intentalo nuevamente";
+					$_SESSION['emoji'] = 'sad';
+					header("Location: " . WWW . "/configuration.php");
 				}
-			}
-			else
-			{
-				//echo "File is not an image.";
+			} else {
+				$_SESSION['configuration_result'] = "Suba una imagen valida, el archivo cargado no es una imagen";
+				$_SESSION['emoji'] = 'sad';
+				header("Location: " . WWW . "/configuration.php");
 				exit;
 			}
 		}

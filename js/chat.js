@@ -40,7 +40,7 @@ function sendMessage(user) {
 		success: function (msg) {
 			console.log("Ok!");
 			var response = JSON.parse(msg);
-			addMessageFromMe(response.date, response.text);
+			addMessageFromMe(response.date, atob(response.text));
 			scrollDown();
 		}
 	});
