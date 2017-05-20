@@ -54,5 +54,15 @@
   <section id="notification" class="navbar-boxNotification">
     <h5 class="navbar-title">Notificaciones</h5>
     <section class="navbar-notifications"></section><a href="notifications.php" class="navbar-more">Ver todo</a>
-  </section>
+  </section><?php if($comentaries) {?>
+  <section id="modal-coments" class="modal-c">
+    <section id="body" class="modal-c-body">
+      <section class="modal-c-content"><?php echo $comentaries_content; ?></section>
+      <section class="modal-c-buttons">
+        <button id="prev-button" class="prev">◄</button>
+        <section id="dots" class="modal-c-dots"></section>
+        <button id="next-button" class="next">►</button>
+      </section>
+    </section>
+  </section><?php } ?>
 </nav>

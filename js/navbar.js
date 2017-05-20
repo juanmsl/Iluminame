@@ -107,3 +107,76 @@ let addChatNotification = function(notification) {
 		.replace('[notification_description]', notification.notification_description);
 	addAndUpdateNotificators($(navbar + ' #toggle-chat'), element, true);
 }
+
+function initModal(id) {
+	var modal = $('#modal-coments');
+	var coments = modal.find('.comentary');
+	var dotsContainer = modal.find('#dots');
+	var size = coments.length;
+	dotsContainer.html('');
+	for(var i = 0; i < size; i++) {
+		var dot = "<div class='m-dot' target='" + i + "'>•</div>";
+		dotsContainer.append(dot);
+	}
+	var dots = dotsContainer.find('.m-dot');
+	var i = 0;
+	if(size > 0) {
+		coments.get(i).classList.add('active');
+		dots.get(i).classList.add('active');
+	} else {
+		modal.fadeOut();
+	}
+	var prev = modal.find('#prev-button');
+	var next = modal.find('#next-button');
+	var expand = modal.find('#expand');
+	var close = modal.find('#close');
+
+	function assign(prev, actual) {
+		coments.get(prev).classList.remove('active');
+		coments.get(actual).classList.add('active');
+		dots.get(prev).classList.remove('active');
+		dots.get(actual).classList.add('active');
+	}
+
+	prev.on('click', function(){
+		if(i > 0) {
+			assign(i--, i);
+		} else {
+			assign(i, i = size - 1);
+		}
+	});
+
+	next.on('click', function(){
+		if(i < size - 1) {
+			assign(i++, i);
+		} else {
+			assign(i, i = 0);
+		}
+	});
+
+	dots.on('click', function(){
+		var target = parseInt($(this).attr('target'));
+		assign(i, i = target);
+	});
+}
+
+initModal('#modal-coments');
+
+function comment(id, comment) {
+	var comment = $(comment);
+	var value = comment.find('[type=\'radio\']:checked').val();
+	var description = comment.find('textarea').val();
+	console.log(value + " - " + description);
+	$.ajax({
+	type: "POST",
+	url: "/ajax/comment.php",
+	data: { id : id, value : value, description : description },
+		success: function (msg) {
+			var response = JSON.parse(msg);
+			console.log(response.result);
+			comment.remove();
+
+			initModal('#modal-coments');
+		}
+	});
+}

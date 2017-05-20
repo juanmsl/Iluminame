@@ -61,3 +61,13 @@ nav.navbar#main-navbar
 		h5.navbar-title Notificaciones
 		section.navbar-notifications
 		a(href='notifications.php').navbar-more Ver todo
+
+	| <?php if($comentaries) {?>
+	section.modal-c#modal-coments
+		section.modal-c-body#body
+			section.modal-c-content <?php echo $comentaries_content; ?>
+			section.modal-c-buttons
+				button.prev#prev-button ◄
+				section.modal-c-dots#dots
+				button.next#next-button ►
+	| <?php } ?>

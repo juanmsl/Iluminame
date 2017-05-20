@@ -261,32 +261,32 @@ $('input[name = "rating"]').on('click', function(){
 	var parent = element.parentElement;
 	var value = element.value;
 	console.log(value);
-	parent.setAttribute('data-value', value);
+	parent.setAttribute('data-value', value + ' / 5');
 });
 
 
 let template_rating = "" +
 "<div class='rating'>" +
 "	<div data-value='[rating_value] / 5' class='rating-stars'>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-five-full' value='5 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-five-full' value='5' [rating_checked] disabled>" +
 "		<label for='rt-five-full' title='5.0'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-four-half' value='4.5 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-four-half' value='4.5' [rating_checked] disabled>" +
 "		<label for='rt-four-half' title='4.5'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-four-full' value='4 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-four-full' value='4' [rating_checked] disabled>" +
 "		<label for='rt-four-full' title='4.0'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-tree-half' value='3.5 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-tree-half' value='3.5' [rating_checked] disabled>" +
 "		<label for='rt-tree-half' title='3.5'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-tree-full' value='3 / 5'  [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-tree-full' value='3'  [rating_checked] disabled>" +
 "		<label for='rt-tree-full' title='3.0'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-two-half' value='2.5 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-two-half' value='2.5' [rating_checked] disabled>" +
 "		<label for='rt-two-half' title='2.5'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-two-full' value='2 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-two-full' value='2' [rating_checked] disabled>" +
 "		<label for='rt-two-full' title='2.0'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-one-half' value='1.5 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-one-half' value='1.5' [rating_checked] disabled>" +
 "		<label for='rt-one-half' title='1.5'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-one-full' value='1 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-one-full' value='1' [rating_checked] disabled>" +
 "		<label for='rt-one-full' title='1.0'></label>" +
-"		<input type='radio' name='rating-[rating_id]' id='rt-half' value='0.5 / 5' [rating_checked] disabled>" +
+"		<input type='radio' name='rating-[rating_id]' id='rt-half' value='0.5' [rating_checked] disabled>" +
 "		<label for='rt-half' title='0.5'></label>" +
 "	</div>" +
 "</div>";

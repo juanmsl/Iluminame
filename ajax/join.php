@@ -21,7 +21,7 @@ $monitoria = dbquery("SELECT estudiantes.id as id_monitor, estudiantes.nombre as
 	WHERE monitorias.id = " . $id . ";");
 
 $monitoria = $monitoria->fetch_assoc();
-$msg = base64_encode("<b>" . filter($myrow["nombre"]) . "</b> se ha unido a tu monitoria de <b>" . filter($monitoria["materia"]) . "</b>");
+$msg = base64_encode("<b>" . clean($myrow["nombre"]) . "</b> se ha unido a tu monitoria de <b>" . clean($monitoria["materia"]) . "</b>");
 $link = base64_encode("tutories.php?id=" . $id . "");
 
 dbquery("INSERT

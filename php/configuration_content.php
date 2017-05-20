@@ -17,7 +17,7 @@
     <div class="mainContent">
       <div class="user_information">
         <section class="user-picture-edit">
-          <img src='<?php echo $myrow["foto"];?>' id='edit-image' class='edit-foto'>
+          <img src='<?php echo clean($myrow["foto"]);?>' id='edit-image' class='edit-foto'>
           <div class='upload-item leave-button'>
           	<label for='edit-image-control' >Cambiar imagen</label>
           	<input type='file' name='photo' form='form-personal' id='edit-image-control' value='Cambiar foto'>
@@ -26,11 +26,11 @@
         <div class="forms-section">
           <div class='separator' name='Datos personales'></div>
           <form action='edit_account.php' method='post' class='edit-form' id='form-personal' enctype='multipart/form-data'>
-          	<input type='text' name='name' value='<?php echo $myrow["nombre"]; ?>' class='edit-item' placeholder='Y cuentanos, ¿Como te llamas?' required>
-          	<input type='text' name='username' value='<?php echo $myrow["usuario"]; ?>' placeholder='Se creativo, ¿con que usuario quieres identificarte?' class='edit-item' required>
-          	<input type='email' name='email' value='<?php echo $myrow["correo"]; ?>' placeholder='¿A qué correo te podran escribir?' class='edit-item' required>
-          	<input type='tel' name='phone_number' value='<?php echo $myrow["telefono"]; ?>' placeholder='¿Con que número te podran contactar?' class='edit-item'>
-          	<textarea name='aboutme' placeholder='Cuentanos un poco sobre ti, ¿que te gusta hacer?' class='edit-item' rows='5'><?php echo $myrow["aboutme"]; ?></textarea>
+          	<input type='text' name='name' value='<?php echo clean($myrow["nombre"]); ?>' class='edit-item' placeholder='Y cuentanos, ¿Como te llamas?' required>
+          	<input type='text' name='username' value='<?php echo clean($myrow["usuario"]); ?>' placeholder='Se creativo, ¿con que usuario quieres identificarte?' class='edit-item' required>
+          	<input type='email' name='email' value='<?php echo clean($myrow["correo"]); ?>' placeholder='¿A qué correo te podran escribir?' class='edit-item' required>
+          	<input type='tel' name='phone_number' value='<?php echo clean($myrow["telefono"]); ?>' placeholder='¿Con que número te podran contactar?' class='edit-item'>
+          	<textarea name='aboutme' placeholder='Cuentanos un poco sobre ti, ¿que te gusta hacer?' class='edit-item' rows='5'><?php echo clean($myrow["aboutme"]); ?></textarea>
           	<input type='submit' value='Guardar cambios' class='join-button'>
           </form>
           <div class='separator' name='Cambio de contraseña'></div>

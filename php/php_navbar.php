@@ -20,7 +20,10 @@ $navbar_query = dbquery("SELECT
 
 $cm_query = dbquery("SELECT
 	monitorias.lugar,
+	monitorias.fecha_inicio,
 	monitorias.fecha_fin,
+	monitorias.es_publica,
+	monitorias.id,
 	materias.nombre,
 	estudiantes.nombre as monitor,
 	estudiantes_monitorias_inscripciones.estudiante_id,
@@ -32,9 +35,57 @@ $cm_query = dbquery("SELECT
 	WHERE estudiantes_monitorias_inscripciones.estudiante_id = " . USER_ID . "
 	AND (SELECT count(*) FROM comentarios WHERE monitoria_id = monitorias.id AND comentarios.estudiante_id = estudiantes_monitorias_inscripciones.estudiante_id) = 0
 	AND monitorias.fecha_fin < " . time() . ";");
+$comentaries = $cm_query->num_rows > 0;
+$comentaries_content = "";
+$cm_count = 0;
 
 while($cm = $cm_query->fetch_assoc()) {
+	$comentaries_content .= "
+		<section class='comentary' id='cm-" . $cm_count . "'>
+			<section class='comentary-content'>
+				<h2 class='main-title'>" . clean($cm['nombre']) . "</h2>
+				<p>" . clean($cm['monitor']) . "</p>
+			</section>
+			<section class='comentary-content'>
+				<p class='ilm-date'>" . strftime("%d de %B del %Y", $cm["fecha_inicio"]) . "</p>
+				<p class='ilm-time'>" . strftime("%I:%M %p", $cm["fecha_inicio"]) . " - " . strftime("%I:%M %p", $cm["fecha_fin"]) . "</p>
+				<br>
+				<p class='ilm-user" . (($cm['es_publica'] == '1') ? 's' : '') . "'>Monitoria " . (($cm['es_publica'] == '1') ? 'publica' : 'privada') . "</p>
+				<p class='ilm-place'>" . clean($cm['lugar']) . "</p>
+			</section>
+			<form class='comentary-content' action=\"javascript:comment(" . clean($cm["id"]) . ", '#cm-" . $cm_count . "')\">
+				<div class='rating'>
+					<div data-value='0 / 5' class='rating-stars active'>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-five-full" . $cm_count . "' value='5' required>
+						<label for='rt-five-full" . $cm_count . "' title='5.0'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-four-half" . $cm_count . "' value='4.5'>
+						<label for='rt-four-half" . $cm_count . "' title='4.5'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-four-full" . $cm_count . "' value='4'>
+						<label for='rt-four-full" . $cm_count . "' title='4.0'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-tree-half" . $cm_count . "' value='3.5'>
+						<label for='rt-tree-half" . $cm_count . "' title='3.5'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-tree-full" . $cm_count . "' value='3' >
+						<label for='rt-tree-full" . $cm_count . "' title='3.0'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-two-half" . $cm_count . "' value='2.5'>
+						<label for='rt-two-half" . $cm_count . "' title='2.5'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-two-full" . $cm_count . "' value='2'>
+						<label for='rt-two-full" . $cm_count . "' title='2.0'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-one-half" . $cm_count . "' value='1.5'>
+						<label for='rt-one-half" . $cm_count . "' title='1.5'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-one-full" . $cm_count . "' value='1'>
+						<label for='rt-one-full" . $cm_count . "' title='1.0'></label>
+						<input type='radio' name='rating-" . $cm_count . "' id='rt-half" . $cm_count . "' value='0.5'>
+						<label for='rt-half" . $cm_count . "' title='0.5'></label>
+					</div>
+				</div>
+				<textarea placeholder='Cuentanos como te parecio esta monitoria, ¿hubo algun problema?' class='comentary-comentary' rows='3'></textarea>
+				<section style='text-align: center;'>
+					<input type='submit' class='join-button' value='Enviar comentario'>
+				</section>
+			</form>
+		</section>";
 	echo "<script>console.log('Tienes que comentar " . clean($cm['nombre']) . " de " . clean($cm['monitor']) . "');</script>";
+	$cm_count++;
 }
 
 $notifications = "";

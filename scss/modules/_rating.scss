@@ -2,12 +2,14 @@
 
 .rating {
 	display: flex;
+	width: 100%;
 
 	.rating-stars {
 		display: flex;
 		flex-direction: row-reverse;
 		justify-content: flex-end;
 		position: relative;
+		width: 100%;
 
 		label {
 			color: #aaa;
@@ -35,18 +37,24 @@
 			color: $amarillo-base;
 		}
 
-		&.active {
-			label:hover ~ label, label:hover {
-				color: $amarillo-claro;
-			}
-		}
-
 		&::before {
 			transition: all 0.5s ease-out;
 			content: attr(data-value);
 			padding: 0 $gutter;
 			border-radius: 3px;
 			text-align: center;
+		}
+
+		&.active {
+			font-size: 2em;
+			justify-content: center;
+			label:hover ~ label, label:hover {
+				color: $amarillo-claro;
+			}
+
+			&::before {
+				display: none;
+			}
 		}
 	}
 }
