@@ -42,5 +42,8 @@ if (isset($_GET["user"])) {
 		echo "<script> var last_message_id = " . $last_id . "; </script>\n";
 		echo "<script> setInterval(\"checkMessages('" . $search_result['id'] . "')\", 1000); </script>\n";
 	}
+} else {
+	$object_not_found = 'Lista de msg no disponible (Aún)';
+	include ('php/notFound_content.php');
 }
 ?>

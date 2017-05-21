@@ -63,8 +63,18 @@
 		}
 	}
 
+	.form-delete {
+		margin: $gutter;
+		margin: $gutter;
+
+		@include from(tablet) {
+			margin-top: auto;
+			align-self: flex-start;
+		}
+	}
+
 	textarea {
-		resize: vertical;
+		resize: none;
 	}
 
 	input, textarea {

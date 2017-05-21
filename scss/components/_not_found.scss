@@ -55,6 +55,11 @@ $size: 40vh;
 		transform-origin: center ($size / 2) + ($size * 0.48);
 	}
 
+	.sub {
+		width: 80%;
+		margin: 0 auto;
+	}
+
 	@keyframes giro {
 		to {
 			transform: rotate(1turn);

@@ -17,7 +17,7 @@
     <div class="mainContent">
       <div class="not-found-box box">
         <div class="planet"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
-          <h5 class='glitch' data-text='<?php echo $object_not_found; ?>'><?php echo $object_not_found; ?></h5>
+          <h5 class='glitch sub' data-text='<?php echo $object_not_found; ?>'><?php echo $object_not_found; ?></h5>
         </div>
       </div>
     </div>

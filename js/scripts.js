@@ -542,3 +542,15 @@ function ask_for(user_id, subject_id, modal) {
 		}
 	});
 }
+
+function delete_account() {
+	$.ajax({
+		type: "POST",
+		url: "/ajax/delete.php",
+		success: function (msg) {
+			var response = JSON.parse(msg);
+			console.log(response.result);
+			window.location('/logout.php');
+		}
+	});
+}
