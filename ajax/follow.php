@@ -23,7 +23,7 @@ $link = base64_encode("profile.php?user=" . filter($myrow["usuario"]) . "");
 
 dbquery("INSERT
 	INTO notificaciones (descripcion, fecha, vista, estudiante_id_recibe, estudiante_id_envia, link_event)
-	VALUES ('" . $msg . "', " . time() . ", '0', " . $id . " , " . USER_ID . ", '" . $link . "')");
+	VALUES ('" . $msg . "', " . time() . ", '0', " . $id . " , " . USER_ID . ", '" . $link . "');");
 
 @$myObj->result = "ok";
 $myObj->count = $count;

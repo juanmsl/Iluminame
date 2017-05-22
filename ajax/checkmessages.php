@@ -15,7 +15,7 @@ for ($i = 0; $i < $chat_query->num_rows; $i++) {
 	$chat_item = $chat_query->fetch_assoc();
 
 	@$myObj->id = intval($chat_item["id"]);
-	$myObj->text = base64_decode(clean($chat_item["mensaje"]));
+	$myObj->text = clean(base64_decode($chat_item["mensaje"]));
 	$myObj->date = "hace " . timeAgo($chat_item["fecha"]);
 	$messages[] = $myObj;
 }

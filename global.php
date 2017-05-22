@@ -200,6 +200,7 @@ function addSubjectTo($subject, $container, $card) {
 				cost_pb: '" . clean($subject["costo_h_public"]) . "',
 				max: '" . clean($subject["max_estud"]) . "',
 				rating_value: '" . clean($subject["promedio"]) . "',
+				isMe: '" . (clean($subject["id"]) == USER_ID) . "',
 				card: '" . $card . "'
 			}, '" . $container . "');
 		</script>";
@@ -234,6 +235,8 @@ function monitorie_query($where) {
 }
 
 function addMonitorieTo($monitorie, $container, $card, $ignoreConditions) {
+	$difference = ($monitorie["fecha_fin"] - $monitorie["fecha_inicio"]) / 3600;
+	$price = ($monitorie["es_publica"] == '0'? $monitorie["costo_h_priv"] : $monitorie["costo_h_public"] ) * $difference;
 	echo "<script>
 			addMonitorieTo({
 				isMe: '" . (clean($monitorie["monitor_id"]) == USER_ID) . "',
@@ -245,7 +248,7 @@ function addMonitorieTo($monitorie, $container, $card, $ignoreConditions) {
 				place: '" . clean($monitorie["lugar"]) . "',
 				date: '" . strftime("%d de %B del %Y", $monitorie["fecha_inicio"]) . "',
 				time: '" . strftime("%I:%M %p", $monitorie["fecha_inicio"]) . " - " . strftime("%I:%M %p", $monitorie["fecha_fin"]) . "',
-				price: '" . easyNumber(clean($monitorie["costo_h_public"])) . "',
+				price: '" . easyNumber($price) . "',
 				inscriptions: '" . clean($monitorie["monitoria_inscripciones"]) . "',
 				is_public: '" . (clean($monitorie["es_publica"]) == '0'? false : true ) . "',
 				is_signed: " . clean($monitorie["inscrito"]) . ",

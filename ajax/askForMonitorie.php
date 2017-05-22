@@ -26,6 +26,16 @@ if(isset($_POST["lugar"]) && isset($_POST["fecha"]) && isset($_POST["duracion"])
 		$id = mysqli_insert_id($db->link);
 
 		dbquery("REPLACE INTO estudiantes_monitorias_inscripciones (estudiante_id, monitoria_id) VALUES ('" . USER_ID . "', '" . $id . "');");
+		$materia = dbqueryEvaluate("SELECT materias.nombre as materia FROM monitorias JOIN materias ON (materias.id = monitorias.materia_id)
+			WHERE monitorias.id = " . $id . ";");
+
+		$msg = base64_encode("<b>" . clean($myrow["nombre"]) . "</b> te ha solicitado una monitoria de <b>" . clean($materia) . "</b>");
+		$link = base64_encode("tutories.php?id=" . $id . "");
+
+		dbquery("INSERT
+			INTO notificaciones (descripcion, fecha, vista, estudiante_id_recibe, estudiante_id_envia, link_event)
+			VALUES ('" . $msg . "', " . time() . ", '0', " . $monitor_id . " , " . USER_ID . ", '" . $link . "');");
+
 		$myObj->result = "ok";
 	} else {
 		$myObj->result = "Datos erroneos";

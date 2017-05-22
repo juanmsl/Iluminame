@@ -91,7 +91,7 @@ while($cm = $cm_query->fetch_assoc()) {
 $notifications = "";
 
 $notifications_query = dbquery("SELECT
-	notificaciones.descripcion, notificaciones.fecha, notificaciones.vista, notificaciones.link_event,
+	notificaciones.id, notificaciones.descripcion, notificaciones.fecha, notificaciones.vista, notificaciones.link_event,
 	estudiantes.foto, estudiantes.usuario
 	FROM notificaciones JOIN estudiantes
 	ON (notificaciones.estudiante_id_envia = estudiantes.id)
@@ -128,6 +128,7 @@ $my_tutories_query = dbquery("SELECT
 
 $count_ntf = 0;
 $count_notificaciones = 0;
+$last_ntf = -1;
 while ($msg = $notifications_query->fetch_assoc()) {
 	if($count_ntf < 15 || ($count_ntf >= 15 && $msg["vista"] == '0')) {
 		$notifications .= "<script>
@@ -141,8 +142,10 @@ while ($msg = $notifications_query->fetch_assoc()) {
 		</script>";
 		if($msg["vista"] == '0') $count_notificaciones++;
 		$count_ntf++;
+		$last_ntf = clean($msg["id"]) > $last_ntf ? clean($msg["id"]) : $last_ntf;
 	}
 }
+ echo "<script>var last_ntf = " . $last_ntf . ";</script>";
 
 $showed = array();
 $count_chats = 0;
@@ -169,7 +172,7 @@ while ($msg = $chats_query->fetch_assoc()) {
 while ($msg = $tutories_query->fetch_assoc()) {
 	$notifications .= "<script>
 	addTutorie({
-		monitorie_link: 'tutorie.php?id=" . clean($msg["monitoria_id"]) . "',
+		monitorie_link: 'tutories.php?id=" . clean($msg["monitoria_id"]) . "',
 		user_picture: '" . clean($msg["foto"]) . "',
 		subject_name: '" . clean($msg["materia"]) . "',
 		monitorie_type: '" . ($msg["es_publica"] == '1' ? 'Publica' : 'Privada') . "',
@@ -183,7 +186,7 @@ while ($msg = $tutories_query->fetch_assoc()) {
 while ($msg = $my_tutories_query->fetch_assoc()) {
 	$notifications .= "<script>
 		addMyTutorie({
-			monitorie_link: 'tutorie.php?id=" . clean($msg["monitoria_id"]) . "',
+			monitorie_link: 'tutories.php?id=" . clean($msg["monitoria_id"]) . "',
 			user_picture: '" . clean($msg["foto"]) . "',
 			subject_name: '" . clean($msg["materia"]) . "',
 			user_name: '" . clean($msg["nombre"]) . "',

@@ -28,7 +28,7 @@ block main
 						br
 						| <p class='ilm-user<?php echo ($es_publica ? 's' : ''); ?>'>Monitoria <?php echo (($es_publica) ? 'publica' : 'privada'); ?></p>
 						p.ilm-place <?php echo $lugar; ?>
-						p.ilm-money <?php echo $costo; ?>
+						p.ilm-money <?php echo $costo; ?> / hora
 						p.ilm-state(title='En espera / Aceptada / En progreso / Finalizada / Cancelada') Aceptada
 					| <?php if(!$is_my_monitorie) { ?>
 					|	<div class='monitoria-actions'>

@@ -327,7 +327,7 @@ let subject_template = "" +
 "		<p name='$[cost_pr] / hora privada' data-tooltip-long='Solo tu y el monitor' data-tooltip-short='(x1)' class='box-data'></p>" +
 "		<p name='$[cost_pb] / hora publica' data-tooltip-long='Maximo [max] personas' data-tooltip-short='(x[max])' class='box-data'></p>" +
 "	</section>" +
-"	<section class='box-h-section box-footer box-justify-center'>" +
+"	<section class='box-h-section box-footer box-justify-center' id='button_subject_[subject_id]_[user_id]'>" +
 "		<button class='join-button' onclick=\"createSolicitud([SOLICITUD])\">Solicitar una monitoria</button>" +
 "	</section>" +
 "</section>";
@@ -360,9 +360,15 @@ let addSubjectTo = function(s, container) {
 		.replace('[cost_pb]',s.cost_pb)
 		.replace('[max]',s.max)
 		.replace('[max]',s.max)
+		.replace('[subject_id]',s.subject_id)
+		.replace('[user_id]',s.user_id)
 		.replace('[SOLICITUD]', solicitud)
 		.replace('[RATING]', createRating(s.subject_id + s.user_id, s.rating_value));
 	$(container).append(subject);
+	if(s.isMe) {
+		var button = document.getElementById('button_subject_' + s.subject_id + "_" + s.user_id);
+		button.parentElement.removeChild(button);
+	}
 }
 
 function readURL(input) {

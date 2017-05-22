@@ -29,7 +29,7 @@
               <p class="ilm-date"><?php echo $fecha; ?></p>
               <p class="ilm-time"><?php echo $duracion; ?></p><br/><p class='ilm-user<?php echo ($es_publica ? 's' : ''); ?>'>Monitoria <?php echo (($es_publica) ? 'publica' : 'privada'); ?></p>
               <p class="ilm-place"><?php echo $lugar; ?></p>
-              <p class="ilm-money"><?php echo $costo; ?></p>
+              <p class="ilm-money"><?php echo $costo; ?> / hora</p>
               <p title="En espera / Aceptada / En progreso / Finalizada / Cancelada" class="ilm-state">Aceptada</p>
             </section><?php if(!$is_my_monitorie) { ?>
             	<div class='monitoria-actions'>

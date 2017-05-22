@@ -89,6 +89,7 @@ let addTutorie = function(notification) {
 }
 
 let addNotification = function(notification) {
+	console.log("Entre");
 	var element = notification_template
 		.replace('[notification_link]', notification.notification_link)
 		.replace('[notification_date]', notification.notification_date)
@@ -180,3 +181,23 @@ function comment(id, comment) {
 		}
 	});
 }
+
+$(document).ready(function() {
+	setInterval(function(){
+		$.ajax({
+			type: "POST",
+			url: "/ajax/updateNotifications.php",
+			data: { last_id : last_ntf },
+				success: function (msg) {
+					var response = JSON.parse(msg);
+					console.log(response.result);
+					for(var i = 0; i < response.ntfs.length; i++) {
+						console.log(response.ntfs[i]);
+						addNotification(response.ntfs[i]);
+					}
+					last_ntf = response.last_id;
+				}
+		});
+	}, 1000);
+	console.log("Listo " + last_ntf);
+});
