@@ -19,6 +19,7 @@ error_reporting(E_ALL);
 require_once INCLUDES . "class.core.php";
 require_once INCLUDES . "class.db.mysql.php";
 require_once INCLUDES . "class.users.php";
+require_once INCLUDES . "mail.php";
 
 $core = new uberCore();
 $users = new uberUsers();
@@ -287,5 +288,27 @@ function addComentaryTo($comentary, $container) {
 			}, '" . $container . "');
 		</script>";
 }
+function sendConfirmationEmail($name, $email)
+{
+  $mail_content = file_get_contents("inc/emails/register.html");
+  $mail_content = str_replace("%username%", $name, $mail_content);
+  return sendMail($name, $email, "Iluminame", "Registro correcto", $mail_content);
+}
 
+function sendRecuperationEmail($name, $email, $password)
+{
+  $mail_content = file_get_contents("inc/emails/password.html");
+  $mail_content = str_replace("%username%", $name, $mail_content);
+  $mail_content = str_replace("%password%", $password, $mail_content);
+  return sendMail($name, $email, "Iluminame", "Cambio de contraseña", $mail_content);
+}
+
+function sendJoinEmail($name, $email, $otherUser, $monitorie)
+{
+  $mail_content = file_get_contents("../inc/emails/join.html");
+  $mail_content = str_replace("%username%", $name, $mail_content);
+  $mail_content = str_replace("%otheruser%", $otherUser, $mail_content);
+  $mail_content = str_replace("%monitorie%", $monitorie, $mail_content);
+  return sendMail($name, $email, "Iluminame", $otherUser . " se ha unido a tu monitoría", $mail_content);
+}
 ?>

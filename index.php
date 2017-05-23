@@ -38,7 +38,7 @@ if (isset($_POST['login_username']) && isset($_POST['login_password']))
 		{
 			$_SESSION['UBER_USER_E'] = $credUser;
 			$_SESSION['UBER_USER_H'] = $core->UberHash($credPass);
-			$_SESSION['set_cookies'] = ($_POST['remember_me'] ? true : false);
+			$_SESSION['set_cookies'] = isset($_POST['remember_me']) && $_POST['remember_me'] === true;
 			header("Location: " . WWW . "/security_check.php");
 			exit;
 		}
@@ -47,6 +47,15 @@ if (isset($_POST['login_username']) && isset($_POST['login_password']))
 			$login_result = "El usuario o la contraseña no es correcto";
 		}
 	}
+}
+
+if (isset($_GET["forgot"]) && $_GET["forgot"] == true)
+{
+	$login_result = "Tu nueva contraseña ha sido enviada a tu correo";
+}
+if (isset($_GET["forgoterror"]) && $_GET["forgoterror"] == true)
+{
+	$login_result = "El correo ingresado no tiene una cuenta asociada";
 }
 
 include ('php/index_content.php');

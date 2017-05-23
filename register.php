@@ -33,9 +33,11 @@ if (isset($_POST['register_name']) && isset($_POST['register_username']) && isse
 		dbquery("INSERT INTO estudiantes (usuario, contrasena, correo, nombre, foto, telefono, aboutme) VALUES ('" . $reg_username . "', '" . $reg_password . "', '" . $reg_email . "', '" . $reg_name . "', '//i.imgur.com/jFUbUdc.jpg', '', 'Bienvenid@ a Iluminame');");
 		$_SESSION['UBER_USER_E'] = $reg_username;
 		$_SESSION['UBER_USER_H'] = $reg_password;
-		$_SESSION['set_cookies'] = ($_POST['remember_me'] ? true : false);
+		$_SESSION['set_cookies'] = isset($_POST['remember_me']) && $_POST['remember_me'] === true;
 
+		sendConfirmationEmail($reg_name, $reg_email);
 		header("Location: " . WWW . "/security_check.php");
+		exit;
 	}
 	else
 	{
