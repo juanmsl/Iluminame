@@ -26,6 +26,7 @@ $cm_query = dbquery("SELECT
 	monitorias.id,
 	materias.nombre,
 	estudiantes.nombre as monitor,
+	estudiantes.foto,
 	estudiantes_monitorias_inscripciones.estudiante_id,
 	estudiantes_monitorias_inscripciones.monitoria_id
 	FROM estudiantes_monitorias_inscripciones JOIN monitorias
@@ -43,8 +44,13 @@ while($cm = $cm_query->fetch_assoc()) {
 	$comentaries_content .= "
 		<section class='comentary' id='cm-" . $cm_count . "'>
 			<section class='comentary-content'>
-				<h2 class='main-title'>" . clean($cm['nombre']) . "</h2>
-				<p>" . clean($cm['monitor']) . "</p>
+				<section style='display: flex;'>
+					<img src='" . clean($cm['foto']) . "' class='big-picture'>
+					<section style='margin-left: 10px;'>
+						<h2 class='main-title'>" . clean($cm['nombre']) . "</h2>
+						<p>" . clean($cm['monitor']) . "</p>
+					</section>
+				</section>
 			</section>
 			<section class='comentary-content'>
 				<p class='ilm-date'>" . strftime("%d de %B del %Y", $cm["fecha_inicio"]) . "</p>

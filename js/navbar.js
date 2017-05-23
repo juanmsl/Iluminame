@@ -89,7 +89,6 @@ let addTutorie = function(notification) {
 }
 
 let addNotification = function(notification) {
-	console.log("Entre");
 	var element = notification_template
 		.replace('[notification_link]', notification.notification_link)
 		.replace('[notification_date]', notification.notification_date)
@@ -126,6 +125,9 @@ function initModal(id) {
 		dots.get(i).classList.add('active');
 	} else {
 		modal.fadeOut();
+		setTimeout(function(){
+			modal.remove();
+		}, 1000);
 	}
 	var prev = modal.find('#prev-button');
 	var next = modal.find('#next-button');
@@ -192,12 +194,10 @@ $(document).ready(function() {
 					var response = JSON.parse(msg);
 					console.log(response.result);
 					for(var i = 0; i < response.ntfs.length; i++) {
-						console.log(response.ntfs[i]);
 						addNotification(response.ntfs[i]);
 					}
 					last_ntf = response.last_id;
 				}
 		});
 	}, 1000);
-	console.log("Listo " + last_ntf);
 });

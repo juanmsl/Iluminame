@@ -19,7 +19,7 @@ block head
 
 block scripts
 	script(src="js/owl.carousel.min.js")
-	script(src="js/profile.js")
+	| <script src="js/profile.js?<?php echo time(); ?>"></script>
 
 block main
 	.mainContent.profile
@@ -72,10 +72,10 @@ block main
 		<?php if($have_subjects) {?>
 		section.profile-body
 			.separator(name='Materias en las que brindo monitorias')
-			.owl-carousel.owl-theme#profile-subjects
+			.owl-carousel.owl-theme.profile-cards#profile-subjects
 		<?php } ?>
 		<?php if($have_public_monitories) {?>
 		section.profile-body
 			.separator(name='Monitorias publicas activas')
-			.box-group.owl-carousel.owl-theme#profile-active-monitories
+			.box-group.owl-carousel.owl-theme.profile-cards#profile-active-monitories
 		<?php } ?>

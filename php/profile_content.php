@@ -64,12 +64,12 @@
       </section><?php if($have_subjects) {?>
       <section class="profile-body">
         <div name="Materias en las que brindo monitorias" class="separator"></div>
-        <div id="profile-subjects" class="owl-carousel owl-theme"></div>
+        <div id="profile-subjects" class="owl-carousel owl-theme profile-cards"></div>
       </section><?php } ?>
       <?php if($have_public_monitories) {?>
       <section class="profile-body">
         <div name="Monitorias publicas activas" class="separator"></div>
-        <div id="profile-active-monitories" class="box-group owl-carousel owl-theme"></div>
+        <div id="profile-active-monitories" class="box-group owl-carousel owl-theme profile-cards"></div>
       </section><?php } ?>
     </div>
     <footer class="footer">
@@ -86,6 +86,5 @@
   <script src="js/push.min.js"></script><script src="js/scripts.js?<?php echo time(); ?>"></script>
   <script src="js/navbar.js?<?php echo time(); ?>"></script>
   <?php echo $notifications; ?>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/profile.js"></script>
+  <script src="js/owl.carousel.min.js"></script><script src="js/profile.js?<?php echo time(); ?>"></script>
 </html>

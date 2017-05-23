@@ -34,7 +34,21 @@ if (isset($_GET["id"]) && isset($_GET["user"])) {
 		$is_my_subject = (clean($subjects_query['id']) == USER_ID);
 		$descripcion = clean($subjects_query["descripcion"]);
 		$calificacion = clean($subjects_query["promedio"]);
-		$button_function = '';
+		$button_function = "onclick=\"createSolicitud({
+			modal_id: 'solicitud_" . clean($subjects_query["materia_id"]) . "_" . clean($subjects_query["id"]) . "',
+			user_link: 'profile.php?user=" . $usuario . "',
+			user_name: '" .  clean($subjects_query["nombre_estu"]) . "',
+			user_picture: '" . $foto . "',
+			subject_link: 'subjects.php?id=" . clean($subjects_query["materia_id"]) . "&user=" . clean($subjects_query["id"]) . "',
+			subject_name: '" . $materia . "',
+			rating_value: " . $calificacion . ",
+			description: '" . $descripcion . "',
+			cost_pr: '" . clean($subjects_query['costo_h_priv']) . "',
+			cost_pb: '" . clean($subjects_query['costo_h_public']) . "',
+			user_id: '" . clean($subjects_query["id"]) . "',
+			subject_id: '" . clean($subjects_query["materia_id"]) . "',
+			max: " . clean($subjects_query["max_estud"]) . "
+		})\"";
 
 		include ('php/subjects_content.php');
 
@@ -49,9 +63,23 @@ if (isset($_GET["id"]) && isset($_GET["user"])) {
 		include ('php/notFound_content.php');
 	}
 } else {
+	$new_subjects_query = dbquery("SELECT
+		materias.id, materias.nombre
+		FROM materias
+		WHERE materias.id
+			NOT IN (SELECT materias.id
+				FROM materias JOIN estudiantes_materias ON (materias.id = estudiantes_materias.materia_id)
+				WHERE estudiantes_materias.estudiante_id = " . USER_ID . ");");
+	$new_subjects = '';
+
+	while($sbj = $new_subjects_query->fetch_assoc()) {
+		$new_subjects .= "<option value='" . clean($sbj['id']) . "'>" . clean($sbj['nombre']) . "</option>";
+	}
+
 	include ('php/subjects_content.php');
 
 	$subjects_query = subjects_query("WHERE estudiantes_materias.estudiante_id = " . USER_ID);
+
 	while($subject = $subjects_query->fetch_assoc()) {
 		addSubjectTo($subject, '#subjects-group', 'card');
 	}

@@ -13,8 +13,8 @@
     }
     </script>
   </head>
-  <body class="chatBody"><?php include('inc/templates/navbar.php') ?>
-    <div class="mainContent">
+  <body><?php include('inc/templates/navbar.php') ?>
+    <div class="mainContent"><?php if($personal_chat) { ?>
       <section class="box chat">
         <section class="box-h-section box-header box-align-center"><a href='profile.php?user=<?php echo $user_name; ?>'><img src='<?php echo clean($search_result["foto"]); ?>' class='picture'></a>
           <section class="box-v-section gutter-0"><a href='profile.php?user=<?php echo $user_name; ?>'><h5 class='title'><?php echo clean($search_result["nombre"]); ?></h5></a></section>
@@ -23,7 +23,16 @@
         <form class='box-h-section box-footer chat-footer' id='message-chat' action="javascript:sendMessage('<?php echo clean($search_result["id"]); ?>')">
         <textarea placeholder="Escribe tu mensaje aqui" rows="1" id="message-input" class="chat-typetext"></textarea>
         <input type="submit" value="Enviar" class="send-button"/></form>
-      </section>
+      </section><?php } else {?>
+      <div class='box-group box-grow' id='list-chats'>
+      <?php if ($chat_results == 0) { ?>
+      <div class="not-found-box box">
+        <div class="planet"><i class="ilm-sad"></i><h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+          <h5 class='glitch' data-text='No tienes chats aún'>No tienes chats aún</h5>
+        </div>
+      </div><?php } ?>
+      </div>
+      <?php }?>
     </div>
     <footer class="footer">
       <?php

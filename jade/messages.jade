@@ -2,13 +2,13 @@ extends templates/base
 
 append config
 	-title= "Ilumíname - Mensajes"
-	-bodyClass= "chatBody"
 
 block nav
 	|<?php include('inc/templates/navbar.php') ?>
 
 block main
 	.mainContent
+		| <?php if($personal_chat) { ?>
 		section.box.chat
 			section.box-h-section.box-header.box-align-center
 				<a href='profile.php?user=<?php echo $user_name; ?>'><img src='<?php echo clean($search_result["foto"]); ?>' class='picture'></a>
@@ -20,3 +20,14 @@ block main
 			textarea(placeholder='Escribe tu mensaje aqui' rows='1').chat-typetext#message-input
 			input(type='submit' class='send-button' value='Enviar')
 			</form>
+		| <?php } else {?>
+		<div class='box-group box-grow' id='list-chats'>
+		<?php if ($chat_results == 0) { ?>
+		.not-found-box.box
+			.planet
+				i.ilm-sad
+				| <h2 class='glitch' data-text='¡ Whooops !'>¡ Whooops !</h2>
+				| <h5 class='glitch' data-text='No tienes chats aún'>No tienes chats aún</h5>
+		<?php } ?>
+		</div>
+		| <?php }?>

@@ -57,10 +57,11 @@ let chat_notification_template = "" +
 let monitorie_template = "" +
 "<section class='box [card] box-margin [disabled]'>" +
 "	<a href='[link]' class='box-h-section box-header'>" +
-"		<img src='[user_picture]' class='picture'>" +
+"		<img src='[user_picture]' class='big-picture'>" +
 "		<div class='box-v-section box-justify-center gutter-0'>" +
 "			<h6 class='sub-title'>[subject_name]</h6>" +
 "			<p>[user_name]</p>" +
+"			[RATING]" +
 "		</div>" +
 "	</a>" +
 "	<section class='box-v-section'>" +
@@ -77,10 +78,12 @@ let monitorie_template = "" +
 
 let createMonitorie = function(n) {
 	var state = (n.is_public) ? n.inscriptions + ' / ' + n.maximun + ' inscritos' : 'Privada';
-	var button_class = (n.is_signed == 1 && n.is_public) ? 'leave' : (n.inscriptions == n.maximun || !n.is_public) ? 'full' : 'join';
-	var button_function = (n.is_signed == 1 && n.is_public) ? 'leave' : (n.inscriptions == n.maximun && n.is_public) ? '' : ((!n.is_public) ? 'cancel' : 'join');
-	var button_text = (n.is_signed == 1 && n.is_public) ? 'Abandonar monitoria' : (n.inscriptions == n.maximun && n.is_public) ? 'Monitoria llena' : ((!n.is_public) ? 'Cancelar monitoria' : 'Deseo unirme');
+	var button_class = n.isMe ? 'full' : ((n.is_signed == 1 && n.is_public) ? 'leave' : (n.inscriptions == n.maximun || !n.is_public) ? 'full' : 'join');
+	var button_function = n.isMe ? 'cancel' : ((n.is_signed == 1 && n.is_public) ? 'leave' : (n.inscriptions == n.maximun && n.is_public) ? '' : ((!n.is_public) ? 'cancel' : 'join'));
+	var button_text = n.isMe ? 'Cancelar monitoria' : ((n.is_signed == 1 && n.is_public) ? 'Abandonar monitoria' : (n.inscriptions == n.maximun && n.is_public) ? 'Monitoria llena' : ((!n.is_public) ? 'Cancelar monitoria' : 'Deseo unirme'));
 	var button_enable = (n.is_signed == 1 || n.inscriptions < n.maximun);
+
+	var rating = (n.disabled) ? createRating(n.id, n.value) : '';
 
 	var element = monitorie_template
 		.replace('[id]', n.id)
@@ -96,6 +99,7 @@ let createMonitorie = function(n) {
 		.replace('[price]', n.price)
 		.replace('[disabled]', (n.disabled ? 'box-disabled' : ''))
 		.replace('[type]', state)
+		.replace('[RATING]', rating)
 		.replace('[button_class]', button_class)
 		.replace('[button_function]', button_function == '' ? '' : 'onclick=\'' + button_function + '_monitorie(' + n.id + ', this, true)\'')
 		.replace('[button_text]', button_text)
@@ -107,7 +111,7 @@ let addMonitorieTo = function(n, container) {
 	if(n.is_public || (!n.is_public && (n.is_signed || n.isMe)) || n.ignoreConditions) {
 		var element = createMonitorie(n);
 		$(container).append(element);
-		if(n.isMe || n.disabled) {
+		if(n.disabled) {
 			var button = document.getElementById('button_monitorie_' + n.id);
 			button.parentElement.removeChild(button);
 		}
@@ -172,6 +176,29 @@ function leave_monitorie(id, element, update) {
 			element.classList.add('join-button');
 			element.innerHTML = 'Deseo unirme';
 			element.disabled = false;
+		}
+	});
+}
+
+function cancel_monitorie(id, element, update) {
+	element.disabled = true;
+	element.classList.remove('full-button');
+	element.classList.add('disabled-button');
+	element.innerHTML = "Procesando";
+	$.ajax({
+	type: "POST",
+	url: "/ajax/cancel.php",
+	data: { id : id },
+		success: function (msg) {
+			console.log(msg);
+			var response = JSON.parse(msg);
+			console.log(response.result + ' de ' + response.materia);
+			Push.create(response.materia, {
+				body: response.result + ' de ' + response.materia + ' de ' + response.monitor,
+				icon: 'resources/emojis/sad-2.png',
+				timeout: 5000
+			});
+			window.location = '/';
 		}
 	});
 }
@@ -438,6 +465,7 @@ function addComentaryTo(c, container) {
 let template_solicitar_monitoria = "" +
 "<section class='modal' id='[modal_id]'>" +
 "	<section class='modal-content box'>" +
+"		<div class='modal-close ilm-close'></div>" +
 "		<section href='#' class='box-h-section box-header'>" +
 "			<a href='[user_link]' title='[user_name]'><img src='[user_picture]' class='big-picture'></a>" +
 "			<div class='box-v-section box-justify-center gutter-0'>" +
@@ -474,16 +502,29 @@ let template_solicitar_monitoria = "" +
 "			<button class='join-button' form='form_[modal_id]'>Solicitar esta monitoria</button>" +
 "		</section>" +
 "	</section>" +
-"	<div class='modal-close'></div>" +
 "</section>" +
 "<script>" +
-"	$('.modal-close').on('click', function(){" +
-"		$(this).parent().fadeOut();" +
-"		setTimeout(function(elem){" +
-"			$(elem).parent().remove();" +
-"		}, 1000, this);" +
-"	});"+
+"	initNormalModal('#[modal_id]', false, true);" +
 "</script>";
+
+function initNormalModal(id, open, remove) {
+	var modal = $(id);
+	var close = modal.find('.modal-close');
+
+	if(open) {
+		modal.removeClass('hide');
+		modal.hide().fadeIn();
+	}
+
+	close.on('click', function(){
+		modal.fadeOut();
+		if(remove) {
+			setTimeout(function(elem){
+				modal.remove();
+			}, 1000, this);
+		}
+	});
+}
 
 function changeValue(element, pr, pb) {
 	var value = parseInt(element.value);
@@ -495,7 +536,7 @@ function changeValue(element, pr, pb) {
 
 function createSolicitud(m) {
 	var modal = template_solicitar_monitoria
-		.replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id)
+		.replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id).replace('[modal_id]', m.modal_id)
 		.replace('[user_link]', m.user_link)
 		.replace('[user_name]', m.user_name)
 		.replace('[user_picture]', m.user_picture)
@@ -556,7 +597,67 @@ function delete_account() {
 		success: function (msg) {
 			var response = JSON.parse(msg);
 			console.log(response.result);
-			window.location('/logout.php');
+			window.location = '/logout.php';
 		}
 	});
+}
+
+function addNewSubject(id_form) {
+	var modal = $(id_form);
+	var form = modal.find('form');
+	var data = {
+		subject: form.find('#materia').val(),
+		desc: form.find('#description').val(),
+		value_pr: form.find('#value_pr').val(),
+		value_pb: form.find('#value_pb').val(),
+		max: form.find('#max_estu').val()
+	};
+
+	$.ajax({
+		type: "POST",
+		url: "/ajax/add_subject.php",
+		data: data,
+		success: function(msg) {
+			console.log(msg);
+			var response = JSON.parse(msg);
+			console.log(response.result);
+			modal.fadeOut();
+			setTimeout(function(){
+				window.location = '/subjects.php';
+			}, 1000);
+		}
+	});
+}
+
+/*let user_box = "" +
+"<section class='user-box'>" +
+"	<a href='[link]'><img src='[picture]' class='big-picture'></a>" +
+"	<div class='user-data'>" +
+"		<h6 class='sub-title'><a href='[link]'>[name]</a></h6>" +
+"		<div class='user-sub-group'>" +
+"			<a href='[link]' class='user-id'>[user]</a>" +
+"			<p class='follow-you'>[isFollowMe]</p>" +
+"		</div>" +
+"	</div>" +
+"	<button class='user-follow default-button ilm-[button_class] [hidden]' onclick='[button_action]([user_id], this, false)' title='[button_text]'></button>" +
+"</section>";*/
+
+
+let template_chat_item_list = "" +
+"<a class='user-box data-fixed box' href='[notification_link]' data-fixed='[notification_date]' style='flex-direction: row;'>" +
+"	<img src='[user_picture]' class='big-picture'>" +
+"	<section class='user-data'>" +
+"		<h6 class='sub-title'>[user_name]</h6>" +
+"		<p class='box-data'>[notification_description]</p>" +
+"	</section" +
+"</a>";
+
+let addChatNotificationTo = function(notification, container) {
+	var element = template_chat_item_list
+		.replace('[notification_link]', notification.notification_link)
+		.replace('[notification_date]', notification.notification_date)
+		.replace('[user_picture]', notification.user_picture)
+		.replace('[user_name]', notification.user_name)
+		.replace('[notification_description]', notification.notification_description);
+	$(container).append(element);
 }

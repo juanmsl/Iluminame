@@ -23,23 +23,15 @@
 	display: flex;
 	flex-direction: column;
 
-	@include from(mobile) {
-		width: 91.6%;
-	}
-
 	@include from(tablet) {
-		width: 83.2%;
-	}
-
-	@include from(laptop) {
-		width: 74.8%;
+		width: 85%;
 	}
 
 	@include from(pc) {
-		width: 66.4%;
+		width: 70%;
 	}
 
 	@include from(large) {
-		width: 58%;
+		width: 65%;
 	}
 }

@@ -11,8 +11,29 @@ block main
 		<?php if($my_subjects) { ?>
 		.separator(name='Materias que dictas monitorias')
 		.buttons-group
-			button.add-button Añadir materia
+			button(onclick="initNormalModal('#new-subject', true, false)").add-button Añadir materia
 		.box-group#subjects-group
+		
+		section.modal.hide#new-subject
+			section.modal-content.box
+				.modal-close.ilm-close
+				section.box-h-section.box-header
+					.box-v-section.box-justify-center.gutter-0
+						h4 ¿Deseas ser monitor?
+						p Agrega una nueva materia en la que quieras dictar monitorias
+				form(action="javascript:addNewSubject('#new-subject')").box-v-section.modal-form#new-subject-form
+					label(for='materia').form-label Materia a dictar
+					select(name='materia' id='materia' required).form-item
+						| <?php echo $new_subjects; ?>
+					textarea(rows='5' maxlength='200' placeholder='¿Que temas dictarias de esta materia, o que nos puedes decir sobre la misma?' id='description' required).form-item
+					label(for='value_pr').form-label Valor por hora privada
+					input(type='number' id='value_pr' value='15000' step='1000' min='1000' required).form-item
+					label(for='value_pb').form-label Valor por hora publica
+					input(type='number' id='value_pb' value='10000' step='1000' min='1000' required).form-item
+					label(for='max_estu').form-label Maximo de estudiantes en la monitoria publica
+					input(type='number' id='max_estu' value='2' min='2' max='10' required).form-item
+				section.box-h-section.box-footer.box-justify-center
+					input(type='submit' form='new-subject-form' value='Agregar a mis materias').join-button
 		<?php } else { ?>
 		section.monitoria
 			section.header

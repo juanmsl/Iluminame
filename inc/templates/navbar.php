@@ -49,7 +49,7 @@
   </section>
   <section id="chat" class="navbar-boxNotification">
     <h5 class="navbar-title">Mensajes</h5>
-    <section class="navbar-notifications"></section>
+    <section class="navbar-notifications"></section><a href="messages.php" class="navbar-more">Ver todo</a>
   </section>
   <section id="notification" class="navbar-boxNotification">
     <h5 class="navbar-title">Notificaciones</h5>

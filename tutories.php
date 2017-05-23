@@ -63,11 +63,18 @@ if (isset($_GET["id"])) {
 				WHERE comentarios.monitoria_id = " . $id . ";");
 
 			$inscritos = $user_query->num_rows;
-			$button_class = (($is_signed && $es_publica) ? 'leave' : (($inscritos == $maximo || !$es_publica) ? 'full' : 'join'));
-			$button_function = (($is_signed && $es_publica) ? 'leave' : (($inscritos == $maximo && $es_publica) ? '' : ((!$es_publica) ? 'cancel' : 'join')));
+			if(!$is_my_monitorie) {
+				$button_class = (($is_signed && $es_publica) ? 'leave' : (($inscritos == $maximo || !$es_publica) ? 'full' : 'join'));
+				$button_function = (($is_signed && $es_publica) ? 'leave' : (($inscritos == $maximo && $es_publica) ? '' : ((!$es_publica) ? 'cancel' : 'join')));
+				$button_enable = (($is_signed || $inscritos < $maximo) ? '' : 'disabled');
+				$button_text = (($is_signed && $es_publica) ? 'Abandonar monitoria' : (($inscritos == $maximo && $es_publica) ? 'Monitoria llena' : ((!$es_publica) ? 'Cancelar monitoria' : 'Deseo unirme')));
+			} else {
+				$button_class = 'full';
+				$button_function = 'cancel';
+				$button_enable = '';
+				$button_text = 'Cancelar monitoria';
+			}
 			$button_function = (($button_function == '') ? '' : ('onclick=\'' . $button_function . '_monitorie(' . $monitoria_id . ', this, false)\''));
-			$button_enable = (($is_signed || $inscritos < $maximo) ? '' : 'disabled');
-			$button_text = (($is_signed && $es_publica) ? 'Abandonar monitoria' : (($inscritos == $maximo && $es_publica) ? 'Monitoria llena' : ((!$es_publica) ? 'Cancelar monitoria' : 'Deseo unirme')));
 
 			include ('php/tutories_content.php');
 
@@ -107,28 +114,7 @@ if (isset($_GET["id"])) {
 
 	while($monitorie = $monitories_query->fetch_assoc()) {
 		$container = (($monitorie["fecha_inicio"] > time()) ? '#active-monitories' : '#past-monitories' );
-		echo "<script>console.log('" . $container . "');</script>";
-		echo "<script>
-			addMonitorieTo({
-				isMe: '" . (clean($monitorie["monitor_id"]) == USER_ID) . "',
-				link: 'tutories.php?id=" . clean($monitorie["monitoria_id"]) . "',
-				id: '" . clean($monitorie["monitoria_id"]) . "',
-				user_picture: '" . clean($monitorie["foto"]) . "',
-				subject_name: '" . clean($monitorie["materia_nombre"]) . "',
-				user_name: '" . clean($monitorie["estudiante_nombre"]) . "',
-				place: '" . clean($monitorie["lugar"]) . "',
-				date: '" . strftime("%d de %B del %Y", $monitorie["fecha_inicio"]) . "',
-				time: '" . strftime("%I:%M %p", $monitorie["fecha_inicio"]) . " - " . strftime("%I:%M %p", $monitorie["fecha_fin"]) . "',
-				price: '" . easyNumber(clean($monitorie["costo_h_public"])) . "',
-				inscriptions: '" . clean($monitorie["monitoria_inscripciones"]) . "',
-				is_public: '" . (clean($monitorie["es_publica"]) == '0'? false : true ) . "',
-				is_signed: " . clean($monitorie["inscrito"]) . ",
-				card: 'card',
-				disabled: " . ($monitorie["fecha_inicio"] < time() ? 1 : 0) . ",
-				maximun: '" . clean($monitorie["max_estud"]) . "',
-				ignoreConditions: " . ($monitorie["fecha_inicio"] < time() ? 1 : 0) . "
-			}, '" . $container . "');
-		</script>";
+		addMonitorieTo($monitorie, $container, 'card', true);
 	}
 }
 

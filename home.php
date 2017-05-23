@@ -35,7 +35,7 @@ if($search_monitoria) {
 		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = estudiantes.id AND estudiante_id_seguido = " . USER_ID . ") as isFollowMe,
 		(SELECT COUNT(*) FROM estudiantes_seguidores WHERE estudiante_id_seguidor = '" . USER_ID . "' AND estudiante_id_seguido = id) as isFollow
 		FROM estudiantes
-		WHERE estudiantes.nombre LIKE '%" . $search . "%' OR estudiantes.usuario LIKE '%" . $search . "%'
+		WHERE estudiantes.nombre LIKE '%" . $search . "%' OR estudiantes.usuario LIKE '%" . $search . "%' OR estudiantes.correo LIKE '%" . $search . "%'
 		ORDER BY nombre;");
 		$query_results = $query->num_rows;
 } else if($home_query) {
@@ -45,17 +45,17 @@ if($search_monitoria) {
 
 include ('php/home_content.php');
 
-if ($search_monitoria || $home_query) {
+if (($search_monitoria || $home_query) && $query_results > 0) {
 	echo "<script>$('#home-monitories').removeClass('box-grow');</script>";
 	while ($item = $query->fetch_assoc()) {
 		addMonitorieTo($item, '#home-monitories', 'card', false);
 	}
-} else if($search_materia) {
+} else if($search_materia && $query_results > 0) {
 	echo "<script>$('#subjects-search').removeClass('box-grow');</script>";
 	while ($subject = $query->fetch_assoc()) {
 		addSubjectTo($subject, '#subjects-search', 'card');
 	}
-} else if($search_usuario) {
+} else if($search_usuario && $query_results > 0) {
 	echo "<script>$('#users-search').removeClass('box-grow');</script>";
 	while ($user = $query->fetch_assoc()) {
 		addUserTo($user, '#users-search');

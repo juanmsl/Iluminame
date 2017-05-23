@@ -249,6 +249,7 @@ function addMonitorieTo($monitorie, $container, $card, $ignoreConditions) {
 				date: '" . strftime("%d de %B del %Y", $monitorie["fecha_inicio"]) . "',
 				time: '" . strftime("%I:%M %p", $monitorie["fecha_inicio"]) . " - " . strftime("%I:%M %p", $monitorie["fecha_fin"]) . "',
 				price: '" . easyNumber($price) . "',
+				value: '" . clean($monitorie["promedio"]) . "',
 				inscriptions: '" . clean($monitorie["monitoria_inscripciones"]) . "',
 				is_public: '" . (clean($monitorie["es_publica"]) == '0'? false : true ) . "',
 				is_signed: " . clean($monitorie["inscrito"]) . ",

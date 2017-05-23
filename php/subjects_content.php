@@ -17,9 +17,34 @@
     <div class="mainContent"><?php if($my_subjects) { ?>
       <div name="Materias que dictas monitorias" class="separator"></div>
       <div class="buttons-group">
-        <button class="add-button">Añadir materia</button>
+        <button onclick="initNormalModal('#new-subject', true, false)" class="add-button">Añadir materia</button>
       </div>
-      <div id="subjects-group" class="box-group"></div><?php } else { ?>
+      <div id="subjects-group" class="box-group"></div>
+      <section id="new-subject" class="modal hide">
+        <section class="modal-content box">
+          <div class="modal-close ilm-close"></div>
+          <section class="box-h-section box-header">
+            <div class="box-v-section box-justify-center gutter-0">
+              <h4>¿Deseas ser monitor?</h4>
+              <p>Agrega una nueva materia en la que quieras dictar monitorias</p>
+            </div>
+          </section>
+          <form action="javascript:addNewSubject('#new-subject')" id="new-subject-form" class="box-v-section modal-form">
+            <label for="materia" class="form-label">Materia a dictar</label>
+            <select name="materia" id="materia" required="required" class="form-item"><?php echo $new_subjects; ?></select>
+            <textarea rows="5" maxlength="200" placeholder="¿Que temas dictarias de esta materia, o que nos puedes decir sobre la misma?" id="description" required="required" class="form-item"></textarea>
+            <label for="value_pr" class="form-label">Valor por hora privada</label>
+            <input type="number" id="value_pr" value="15000" step="1000" min="1000" required="required" class="form-item"/>
+            <label for="value_pb" class="form-label">Valor por hora publica</label>
+            <input type="number" id="value_pb" value="10000" step="1000" min="1000" required="required" class="form-item"/>
+            <label for="max_estu" class="form-label">Maximo de estudiantes en la monitoria publica</label>
+            <input type="number" id="max_estu" value="2" min="2" max="10" required="required" class="form-item"/>
+          </form>
+          <section class="box-h-section box-footer box-justify-center">
+            <input type="submit" form="new-subject-form" value="Agregar a mis materias" class="join-button"/>
+          </section>
+        </section>
+      </section><?php } else { ?>
       <section class="monitoria">
         <section class="header"><a href='profile.php?user=<?php echo $usuario; ?>'><img src='<?php echo $foto; ?>' class='photo'></a>
           <section class="header-group">

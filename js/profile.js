@@ -8,13 +8,13 @@ $('#cards').owlCarousel({
 			items:1,
 			loop:true
 		},
-		400:{
+		500:{
 			items:2
 		},
 		800:{
 			items:3
 		},
-		1300:{
+		1100:{
 			items:4
 		}
 	}

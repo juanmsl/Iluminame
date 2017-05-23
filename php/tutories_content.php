@@ -31,16 +31,16 @@
               <p class="ilm-place"><?php echo $lugar; ?></p>
               <p class="ilm-money"><?php echo $costo; ?> / hora</p>
               <p title="En espera / Aceptada / En progreso / Finalizada / Cancelada" class="ilm-state">Aceptada</p>
-            </section><?php if(!$is_my_monitorie) { ?>
-            	<div class='monitoria-actions'>
-            		<?php if(!$is_disabled) { ?>
-            			<button class='<?php echo $button_class; ?>-button' <?php echo $button_function; ?> <?php echo $button_enable; ?>><?php echo $button_text; ?></button>
-            		<?php } ?>
+            </section><div class='monitoria-actions'>
+            	<?php if(!$is_disabled) { ?>
+            		<button class='<?php echo $button_class; ?>-button' <?php echo $button_function; ?> <?php echo $button_enable; ?>><?php echo $button_text; ?></button>
+            	<?php } ?>
+            	<?php if(!$is_my_monitorie) { ?>
             		<a href="messages.php?user=<?php echo $usuario; ?>">
             			<button class='chat-button'>Chat</button>
             		</a>
-            	</div>
-            <?php } ?>
+            	<?php } ?>
+            </div>
           </section>
         </section>
         <section class="information">

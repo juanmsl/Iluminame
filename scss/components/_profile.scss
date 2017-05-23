@@ -36,6 +36,15 @@
 		}
 	}
 
+	.profile-cards {
+		.owl-stage, .owl-item {
+			display: flex;
+			.box {
+				width: 100%;
+			}
+		}
+	}
+
 	#{&}-mini-card {
 		min-width: 150px;
 		width: 200px;
